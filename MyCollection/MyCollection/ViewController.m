@@ -13,7 +13,32 @@ static NSString *cellIdentifier = @"CVCell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    
+    self.myCollectionView.delegate = self;
+    self.myCollectionView.dataSource = self;
+    
+    self.cellData = [[NSMutableArray alloc]init];
+    
+    for(int i = 0; i < 400; i++)
+    {
+        [self.cellData addObject:[NSString stringWithFormat:@"#%d", i+1]];
+    }
+    
+    /*
+    UINib *cellNib = [UINib nibWithNibName:@"CVCell"
+                                    bundle:nil];
+    [self.myCollectionView registerNib:cellNib
+            forCellWithReuseIdentifier:@"CVCell"];
+    */
+    
+    /*
+    UICollectionViewFlowLayout *layout =
+    [[UICollectionViewFlowLayout alloc] init];
+    
+    [layout setItemSize:CGSizeMake(100, 100)];
+    [layout setScrollDirection:UICollectionViewScrollDirectionVertical];
+    [self.myCollectionView setCollectionViewLayout:layout];
+     */
 }
 
 - (void)didReceiveMemoryWarning
