@@ -41,39 +41,28 @@ typedef NS_ENUM(NSInteger, menuItem) {
     }
     
     NSMutableArray *_yourMove  = [[NSMutableArray alloc] initWithObjects:
-                  [self randGameStr],
-                  [self randGameStr],
-                  [self randGameStr],
-                  [self randGameStr],
-                  [self randGameStr],
-                  nil];
+                                  [self randGameStr],
+                                  nil];
     NSMutableArray *_theirMove = [[NSMutableArray alloc] initWithObjects:
-                 [self randGameStr],
-                 [self randGameStr],
-                 [self randGameStr],
-                 [self randGameStr],
-                 [self randGameStr],
-                 nil];
+                                  [self randGameStr],
+                                  [self randGameStr],
+                                  [self randGameStr],
+                                  [self randGameStr],
+                                  nil];
     NSMutableArray *_wonGames  = [[NSMutableArray alloc] initWithObjects:
-                 [self randGameStr],
-                 [self randGameStr],
-                 [self randGameStr],
-                 [self randGameStr],
-                 [self randGameStr],
-                 nil];
+                                  [self randGameStr],
+                                  [self randGameStr],
+                                  [self randGameStr],
+                                  nil];
     NSMutableArray *_lostGames = [[NSMutableArray alloc] initWithObjects:
-                 [self randGameStr],
-                 [self randGameStr],
-                 [self randGameStr],
-                 [self randGameStr],
-                 [self randGameStr],
-                 nil];
+                                  [self randGameStr],
+                                  [self randGameStr],
+                                  nil];
     NSMutableArray *_options   = [[NSMutableArray alloc] initWithObjects:
-                 [self randGameStr],
-                 [self randGameStr],
-                 [self randGameStr],
-                 [self randGameStr],
-                 nil];
+                                  @"Option #1",
+                                  @"Option #2",
+                                  @"Option #3",
+                                  nil];
 
     _menu = [[NSMutableArray alloc] initWithObjects:
              _yourMove,
@@ -137,7 +126,8 @@ typedef NS_ENUM(NSInteger, menuItem) {
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    NSDate *object = [[_menu objectAtIndex: indexPath.section] objectAtIndex:indexPath.row];
+    NSMutableArray *section = [_menu objectAtIndex: indexPath.section];
+    NSDate *object = [section objectAtIndex:indexPath.row];
     cell.textLabel.text = [object description];
     return cell;
 }
@@ -201,7 +191,7 @@ typedef NS_ENUM(NSInteger, menuItem) {
 {
     int randomValue = rand() % 10000;
 
-    NSString *str = [[NSString alloc] initWithFormat:@"Game #%u", randomValue];
+    NSString *str = [[NSString alloc] initWithFormat:@"Game #%04d", randomValue];
     
     return str;
 }
