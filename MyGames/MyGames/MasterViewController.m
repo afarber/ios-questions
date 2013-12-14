@@ -137,7 +137,7 @@ typedef NS_ENUM(NSInteger, menuItem) {
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    NSDate *object = nil; //_yourMove[indexPath.row];
+    NSDate *object = [[_menu objectAtIndex: indexPath.section] objectAtIndex:indexPath.row];
     cell.textLabel.text = [object description];
     return cell;
 }
