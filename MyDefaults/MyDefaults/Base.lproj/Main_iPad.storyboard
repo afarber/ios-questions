@@ -83,10 +83,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="ageTextField" destination="8bC-Xf-vdC" id="BvI-bp-kGh"/>
-                        <outlet property="contactImageView" destination="8bC-Xf-vdC" id="3nB-hK-K9c"/>
-                        <outlet property="firstNameTextField" destination="8bC-Xf-vdC" id="xay-ra-tvm"/>
-                        <outlet property="lastNameTextField" destination="8bC-Xf-vdC" id="FjZ-TX-E5r"/>
+                        <outlet property="ageTextField" destination="Nz2-lG-GEr" id="c0L-ar-Xz2"/>
+                        <outlet property="contactImageView" destination="9sg-Z1-tZn" id="hiY-nz-KPJ"/>
+                        <outlet property="firstNameTextField" destination="Kt1-Mq-Jg2" id="dSz-y1-p9a"/>
+                        <outlet property="lastNameTextField" destination="Cxa-vz-LnV" id="Bzt-IP-a8j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

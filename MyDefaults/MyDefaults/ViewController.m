@@ -20,7 +20,7 @@
     _firstNameTextField.text = firstName;
     _lastNameTextField.text = lastName;
     _ageTextField.text = ageString;
-    //_contactImageView.image = contactImage;
+    _contactImageView.image = contactImage;
     [super viewDidLoad];
 }
 - (void)didReceiveMemoryWarning
@@ -58,7 +58,7 @@
     picker.delegate = self;
     picker.allowsEditing = YES;
     picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    [self presentModalViewController:picker animated:YES];
+    [self presentViewController:picker animated:YES completion:nil];
 }
 
 #pragma mark - Image Picker Delegate
@@ -69,7 +69,7 @@
 }
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
-    [picker dismissModalViewControllerAnimated:YES];
+    [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

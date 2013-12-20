@@ -89,10 +89,10 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="ageTextField" destination="GGd-OU-k21" id="9Mk-sf-eLK"/>
-                        <outlet property="contactImageView" destination="kh9-bI-dsS" id="y05-i7-jeD"/>
-                        <outlet property="firstNameTextField" destination="4Fr-hs-Cpe" id="T8F-pJ-Dpu"/>
-                        <outlet property="lastNameTextField" destination="FYL-uP-iwj" id="QXP-Wx-wZ4"/>
+                        <outlet property="ageTextField" destination="GGd-OU-k21" id="Lx9-F1-hed"/>
+                        <outlet property="contactImageView" destination="AtF-dT-gg6" id="IMU-cQ-u8g"/>
+                        <outlet property="firstNameTextField" destination="4Fr-hs-Cpe" id="uRF-qk-YmW"/>
+                        <outlet property="lastNameTextField" destination="FYL-uP-iwj" id="PeE-pj-P9B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
