@@ -61,6 +61,12 @@
     [self presentViewController:picker animated:YES completion:nil];
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    NSLog(@"%s %@", __PRETTY_FUNCTION__, textField);
+    [textField resignFirstResponder];
+    return YES;
+}
+
 #pragma mark - Image Picker Delegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
 {
