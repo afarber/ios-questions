@@ -44,21 +44,18 @@
     localPlayer.authenticateHandler = ^(UIViewController *viewController, NSError *error) {
         if (viewController != nil)
         {
-            //showAuthenticationDialogWhenReasonable: is an example method name. Create your own method that displays an authentication view when appropriate for your app.
-            //[self showAuthenticationDialogWhenReasonable: viewController];
             [self.window.rootViewController presentViewController:viewController
                                                          animated:YES
                                                        completion:nil];
         }
         else if (localPlayer.isAuthenticated)
         {
-            //authenticatedPlayer: is an example method name. Create your own method that is called after the loacal player is authenticated.
-            //[self authenticatedPlayer: localPlayer];
-            NSLog(@"isAuthenticated");
+            NSLog(@"isAuthenticated %@ %@",
+                  [localPlayer displayName],
+                  [localPlayer playerID]);
         }
         else
         {
-            //[self disableGameCenter];
             NSLog(@"disableGameCenter");
         }
     };
