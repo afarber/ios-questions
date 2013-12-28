@@ -53,6 +53,10 @@
             NSLog(@"isAuthenticated %@ %@",
                   [localPlayer displayName],
                   [localPlayer playerID]);
+            
+            // - (void)loadPhotoForSize:(GKPhotoSize)size withCompletionHandler:(void (^)(UIImage *photo, NSError *error))completionHandler
+            
+            // -[NSData base64EncodedDataWithOptions:]
         }
         else
         {
