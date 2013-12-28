@@ -28,6 +28,22 @@
         if (granted)
         {
             NSLog(@"Basic access granted");
+            
+            /*
+            NSURL *requestURL = [NSURL URLWithString:
+                                 @"https://graph.facebook.com/me/"];
+            
+            NSDictionary *params = @{
+                                      @"AAA" : @"BBB",
+                                      @"CCC" : @"DDD"};
+            
+            SLRequest *postRequest = [SLRequest
+                                      requestForServiceType:SLServiceTypeFacebook
+                                      requestMethod:SLRequestMethodGET
+                                      URL:requestURL parameters:params];
+            
+            postRequest.account = self.facebookAccount;
+             */
         }
         else
         {
