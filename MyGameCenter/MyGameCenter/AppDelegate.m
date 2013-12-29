@@ -62,6 +62,9 @@
         {
             NSLog(@"disableGameCenter");
         }
+        
+        NSLog(@"error: %@", error);
+
     };
 }
 
