@@ -464,6 +464,7 @@
 				741C4C26186EEA0A0031E9B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		741C4C27186EEA0A0031E9B5 /* Build configuration list for PBXNativeTarget "MyFacebookTests" */ = {
 			isa = XCConfigurationList;
@@ -472,6 +473,7 @@
 				741C4C29186EEA0A0031E9B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
