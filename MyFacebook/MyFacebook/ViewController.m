@@ -3,7 +3,7 @@
 #import <Accounts/Accounts.h>
 
 @interface ViewController ()
-
+@property (strong, nonatomic) ACAccountStore *accountStore;
 @end
 
 @implementation ViewController
@@ -12,38 +12,25 @@
 {
     [super viewDidLoad];
     
-    ACAccountStore *accountStore = [[ACAccountStore alloc] init];
-    ACAccountType *facebookAccountType = [accountStore accountTypeWithAccountTypeIdentifier: ACAccountTypeIdentifierFacebook];
+    _accountStore = [[ACAccountStore alloc] init];
     
+    ACAccountType *facebookAccountType = [_accountStore
+                                        accountTypeWithAccountTypeIdentifier: ACAccountTypeIdentifierFacebook];
     NSDictionary *options = @{
-                              ACFacebookAudienceKey : ACFacebookAudienceEveryone,
+                              //ACFacebookAppIdKey : @"262571703638",
                               ACFacebookAppIdKey : @"432298283565593",
                               ACFacebookPermissionsKey : @[@"id",
                                                            @"first_name",
                                                            @"gender",
                                                            @"location"]};
     
-    [accountStore requestAccessToAccountsWithType:facebookAccountType options:options completion:^(BOOL granted, NSError *error)
+    [_accountStore requestAccessToAccountsWithType:facebookAccountType
+                                           options:options
+                                        completion:^(BOOL granted, NSError *error)
     {
         if (granted)
         {
             NSLog(@"Basic access granted");
-            
-            /*
-            NSURL *requestURL = [NSURL URLWithString:
-                                 @"https://graph.facebook.com/me/"];
-            
-            NSDictionary *params = @{
-                                      @"AAA" : @"BBB",
-                                      @"CCC" : @"DDD"};
-            
-            SLRequest *postRequest = [SLRequest
-                                      requestForServiceType:SLServiceTypeFacebook
-                                      requestMethod:SLRequestMethodGET
-                                      URL:requestURL parameters:params];
-            
-            postRequest.account = self.facebookAccount;
-             */
         }
         else
         {
@@ -55,7 +42,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end
