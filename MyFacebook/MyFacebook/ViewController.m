@@ -6,8 +6,9 @@
 //#define FB_APP_ID @"262571703638"
 
 @interface ViewController ()
-@property (strong, nonatomic) ACAccountStore *accountStore;
 @property (strong, nonatomic) ACAccount *facebookAccount;
+@property (strong, nonatomic) ACAccountType *facebookAccountType;
+@property (strong, nonatomic) ACAccountStore *accountStore;
 @end
 
 @implementation ViewController
@@ -26,22 +27,48 @@
         _accountStore = [[ACAccountStore alloc] init];
     }
     
-    ACAccountType *facebookAccountType = [_accountStore
-                                        accountTypeWithAccountTypeIdentifier: ACAccountTypeIdentifierFacebook];
+    if (!_facebookAccountType) {
+        _facebookAccountType = [_accountStore accountTypeWithAccountTypeIdentifier: ACAccountTypeIdentifierFacebook];
+    }
+    
     NSDictionary *options = @{
                               ACFacebookAppIdKey: FB_APP_ID,
-                              ACFacebookPermissionsKey: @[@"basic_info"]};
+                              ACFacebookPermissionsKey: @[@"basic_info"]
+                              };
     
-    [_accountStore requestAccessToAccountsWithType:facebookAccountType
+    [_accountStore requestAccessToAccountsWithType:_facebookAccountType
                                            options:options
                                         completion:^(BOOL granted, NSError *error)
     {
         if (granted) {
             NSLog(@"Basic access granted");
+            NSArray *accounts = [_accountStore accountsWithAccountType:_facebookAccountType];
+            _facebookAccount = [accounts lastObject];
+            
+            [self printMe];
         } else {
             NSLog(@"Basic access denied %@", error);
         }
     }];
+}
+
+- (void) printMe {
+    NSURL *url = [NSURL URLWithString:@"https://graph.facebook.com/me"];
+    
+    SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeFacebook
+                                              requestMethod:SLRequestMethodGET
+                                                        URL:url
+                                                 parameters:nil];
+    
+    request.account = _facebookAccount;
+    
+    [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+        NSString *str = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+        
+        NSLog(@"%@", str);
+        
+    }];
+    
 }
 
 - (void)didReceiveMemoryWarning
