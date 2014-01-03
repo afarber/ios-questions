@@ -42,14 +42,11 @@
 {
     __weak GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
     localPlayer.authenticateHandler = ^(UIViewController *viewController, NSError *error) {
-        if (viewController != nil)
-        {
+        if (viewController != nil) {
             [self.window.rootViewController presentViewController:viewController
                                                          animated:YES
                                                        completion:nil];
-        }
-        else if (localPlayer.isAuthenticated)
-        {
+        } else if (localPlayer.isAuthenticated) {
             NSLog(@"isAuthenticated %@ %@",
                   [localPlayer displayName],
                   [localPlayer playerID]);
@@ -57,15 +54,27 @@
             // - (void)loadPhotoForSize:(GKPhotoSize)size withCompletionHandler:(void (^)(UIImage *photo, NSError *error))completionHandler
             
             // -[NSData base64EncodedDataWithOptions:]
-        }
-        else
-        {
+        } else {
             NSLog(@"disableGameCenter");
+            [self showAlert:@"Game Center has been disabled."];
         }
         
         NSLog(@"error: %@", error);
-
     };
+}
+
+- (void) showAlert:(NSString*) msg {
+    assert([NSThread isMainThread]);
+    
+    dispatch_async(dispatch_get_main_queue(), ^(void) {
+        UIAlertView *alertView = [[UIAlertView alloc]
+                                  initWithTitle:@"WARNING"
+                                  message:msg
+                                  delegate:nil
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
+        [alertView show];
+    });
 }
 
 @end
