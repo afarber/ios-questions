@@ -52,9 +52,6 @@
             request.account = _facebookAccount;
             
             [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-                //NSString *str = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-                //NSLog(@"%@", str);
-                
                 NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseData
                                                                                    options:NSJSONReadingMutableContainers
                                                                                      error:nil];
@@ -72,6 +69,8 @@
 }
 
 - (void) showAlert:(NSString*) msg {
+    assert([NSThread isMainThread]);
+    
     dispatch_async(dispatch_get_main_queue(), ^(void) {
         UIAlertView *alertView = [[UIAlertView alloc]
                                   initWithTitle:@"WARNING"
