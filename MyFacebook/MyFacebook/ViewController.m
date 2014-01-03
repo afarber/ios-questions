@@ -17,8 +17,8 @@
 {
     [super viewDidLoad];
     
-    if (! [SLComposeViewController isAvailableForServiceType: SLServiceTypeFacebook]) {
-        [self showAlert: @"Please login to Facebook in Settings!"];
+    if (NO == [SLComposeViewController isAvailableForServiceType: SLServiceTypeFacebook]) {
+        [self showAlert:@"There are no Facebook accounts configured. Please add or create a Facebook account in Settings."];
         return;
     }
     
@@ -31,7 +31,7 @@
     }
     
     if (! _facebookAccountType) {
-        _facebookAccountType = [_accountStore accountTypeWithAccountTypeIdentifier: ACAccountTypeIdentifierFacebook];
+        _facebookAccountType = [_accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook];
     }
     
     NSDictionary *options = @{ ACFacebookAppIdKey: FB_APP_ID };
@@ -40,37 +40,42 @@
                                            options: options
                                         completion: ^(BOOL granted, NSError *error) {
         if (granted) {
-            NSLog(@"Basic access granted");
-            
-            NSArray *accounts = [_accountStore accountsWithAccountType: _facebookAccountType];
+            NSArray *accounts = [_accountStore accountsWithAccountType:_facebookAccountType];
             _facebookAccount = [accounts lastObject];
             
-            NSURL *url = [NSURL URLWithString: @"https://graph.facebook.com/me"];
+            NSURL *url = [NSURL URLWithString:@"https://graph.facebook.com/me"];
             
-            SLRequest *request = [SLRequest requestForServiceType: SLServiceTypeFacebook
-                                                    requestMethod: SLRequestMethodGET
-                                                              URL: url
-                                                       parameters: nil];
+            SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeFacebook
+                                                    requestMethod:SLRequestMethodGET
+                                                              URL:url
+                                                       parameters:nil];
             request.account = _facebookAccount;
             
             [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-                NSString *str = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+                //NSString *str = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+                //NSLog(@"%@", str);
                 
-                NSLog(@"%@", str);
-                
-                // NSLog(@"id: %@", [responseData id];
+                NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseData
+                                                                                   options:NSJSONReadingMutableContainers
+                                                                                     error:nil];
+                //NSLog(@"%@", responseDictionary);
+                NSLog(@"id: %@", responseDictionary[@"id"]);
+                NSLog(@"first_name: %@", responseDictionary[@"first_name"]);
+                NSLog(@"last_name: %@", responseDictionary[@"last_name"]);
+                NSLog(@"gender: %@", responseDictionary[@"gender"]);
+                NSLog(@"city: %@", responseDictionary[@"location"][@"name"]);
             }];
         } else {
-            [self showAlert: [error description]];
+            [self showAlert:@"Facebook access for this app has been denied. Please edit Facebook permissions in Settings."];
         }
     }];
 }
 
-- (void) showAlert: (NSString*) msg {
+- (void) showAlert:(NSString*) msg {
     dispatch_async(dispatch_get_main_queue(), ^(void) {
         UIAlertView *alertView = [[UIAlertView alloc]
                                   initWithTitle:@"WARNING"
-                                  message:@"There are no Facebook accounts configured. You can add or create a Facebook account in Settings."
+                                  message:msg
                                   delegate:nil
                                   cancelButtonTitle:@"OK"
                                   otherButtonTitles:nil];
