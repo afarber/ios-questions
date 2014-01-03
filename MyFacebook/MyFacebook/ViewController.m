@@ -17,17 +17,20 @@
 {
     [super viewDidLoad];
     
-    NSLog(@"Facebook is available: %d", [SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]);
+    if (! [SLComposeViewController isAvailableForServiceType: SLServiceTypeFacebook]) {
+        [self showAlert: @"Please login to Facebook in Settings!"];
+        return;
+    }
     
     [self getMyDetails];
 }
 
 - (void) getMyDetails {
-    if (!_accountStore) {
+    if (! _accountStore) {
         _accountStore = [[ACAccountStore alloc] init];
     }
     
-    if (!_facebookAccountType) {
+    if (! _facebookAccountType) {
         _facebookAccountType = [_accountStore accountTypeWithAccountTypeIdentifier: ACAccountTypeIdentifierFacebook];
     }
     
@@ -38,35 +41,44 @@
                                         completion: ^(BOOL granted, NSError *error) {
         if (granted) {
             NSLog(@"Basic access granted");
+            
             NSArray *accounts = [_accountStore accountsWithAccountType: _facebookAccountType];
             _facebookAccount = [accounts lastObject];
             
-            [self printMe];
+            NSURL *url = [NSURL URLWithString: @"https://graph.facebook.com/me"];
+            
+            SLRequest *request = [SLRequest requestForServiceType: SLServiceTypeFacebook
+                                                    requestMethod: SLRequestMethodGET
+                                                              URL: url
+                                                       parameters: nil];
+            request.account = _facebookAccount;
+            
+            [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+                NSString *str = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+                
+                NSLog(@"%@", str);
+                
+                // NSLog(@"id: %@", [responseData id];
+            }];
         } else {
-            NSLog(@"Basic access denied %@", error);
+            [self showAlert: [error description]];
         }
     }];
 }
 
-- (void) printMe {
-    NSURL *url = [NSURL URLWithString: @"https://graph.facebook.com/me"];
-    
-    SLRequest *request = [SLRequest requestForServiceType: SLServiceTypeFacebook
-                                              requestMethod: SLRequestMethodGET
-                                                        URL: url
-                                                 parameters: nil];
-    request.account = _facebookAccount;
-    
-    [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-        NSString *str = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-        
-        NSLog(@"%@", str);
-        
-       // NSLog(@"id: %@", [responseData id];
-    }];
+- (void) showAlert: (NSString*) msg {
+    dispatch_async(dispatch_get_main_queue(), ^(void) {
+        UIAlertView *alertView = [[UIAlertView alloc]
+                                  initWithTitle:@"WARNING"
+                                  message:@"There are no Facebook accounts configured. You can add or create a Facebook account in Settings."
+                                  delegate:nil
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
+        [alertView show];
+    });
 }
 
-- (void)didReceiveMemoryWarning
+- (void) didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
 }
