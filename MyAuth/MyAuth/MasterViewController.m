@@ -4,6 +4,7 @@
 
 @interface MasterViewController () {
     NSMutableArray *_objects;
+    NSMutableArray *_menu;
 }
 @end
 
@@ -12,6 +13,8 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+    
+    	
 }
 
 - (void)viewDidLoad
