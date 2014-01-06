@@ -1,5 +1,11 @@
 #import "DetailViewController.h"
 
+static NSString *kLabel   = @"label";
+static NSString *kAppId   = @"app_id";
+static NSString *kSecret  = @"secret";
+static NSString *kAppUrl  = @"app_url";
+static NSString *kAuthUrl = @"auth_url";
+
 @interface DetailViewController ()
 - (void)configureView;
 @end
@@ -8,10 +14,10 @@
 
 #pragma mark - Managing the detail item
 
-- (void)setDetailItem:(id)newDetailItem
+- (void)setDetailItem:(NSDictionary*)newDict
 {
-    if (_detailItem != newDetailItem) {
-        _detailItem = newDetailItem;
+    if (_dict != newDict) {
+        _dict = newDict;
         
         // Update the view.
         [self configureView];
@@ -22,8 +28,11 @@
 {
     // Update the user interface for the detail item.
 
-    if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem description];
+    if (_dict) {
+        NSURL *url = [NSURL URLWithString:_dict[kAuthUrl]];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        NSLog(@"request: %@", request);
+        [_webView loadRequest:request];
     }
 }
 

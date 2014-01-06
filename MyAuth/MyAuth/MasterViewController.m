@@ -99,8 +99,8 @@ static NSString *kAuthUrl = @"auth_url";
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         NSString *key = _keys[indexPath.row];
-        NSString *label = _menu[key][kLabel];
-        [[segue destinationViewController] setDetailItem:label];
+        NSDictionary *dict = _menu[key];
+        [[segue destinationViewController] setDetailItem:dict];
     }
 }
 
