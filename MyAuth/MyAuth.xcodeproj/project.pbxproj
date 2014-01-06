@@ -56,6 +56,7 @@
 		8475A5831878208800D8A37B /* MyAuthTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MyAuthTests-Info.plist"; sourceTree = "<group>"; };
 		8475A5851878208800D8A37B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8475A5871878208800D8A37B /* MyAuthTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyAuthTests.m; sourceTree = "<group>"; };
+		8475A591187B0F4100D8A37B /* Keys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Keys.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +118,7 @@
 			children = (
 				8475A5681878208800D8A37B /* AppDelegate.h */,
 				8475A5691878208800D8A37B /* AppDelegate.m */,
+				8475A591187B0F4100D8A37B /* Keys.h */,
 				8475A56B1878208800D8A37B /* Main.storyboard */,
 				8475A56E1878208800D8A37B /* MasterViewController.h */,
 				8475A56F1878208800D8A37B /* MasterViewController.m */,

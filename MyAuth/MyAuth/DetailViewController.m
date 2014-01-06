@@ -1,10 +1,5 @@
 #import "DetailViewController.h"
-
-static NSString *kLabel   = @"label";
-static NSString *kAppId   = @"app_id";
-static NSString *kSecret  = @"secret";
-static NSString *kAppUrl  = @"app_url";
-static NSString *kAuthUrl = @"auth_url";
+#import "Keys.h"
 
 @interface DetailViewController ()
 - (void)configureView;
@@ -14,7 +9,7 @@ static NSString *kAuthUrl = @"auth_url";
 
 #pragma mark - Managing the detail item
 
-- (void)setDetailItem:(NSDictionary*)newDict
+- (void)setDict:(NSDictionary*)newDict
 {
     if (_dict != newDict) {
         _dict = newDict;

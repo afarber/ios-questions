@@ -1,12 +1,6 @@
 #import "MasterViewController.h"
-
 #import "DetailViewController.h"
-
-static NSString *kLabel   = @"label";
-static NSString *kAppId   = @"app_id";
-static NSString *kSecret  = @"secret";
-static NSString *kAppUrl  = @"app_url";
-static NSString *kAuthUrl = @"auth_url";
+#import "Keys.h"
 
 @interface MasterViewController () {
     NSDictionary *_menu;
