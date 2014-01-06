@@ -100,7 +100,7 @@ static NSString *kAuthUrl = @"auth_url";
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         NSString *key = _keys[indexPath.row];
         NSDictionary *dict = _menu[key];
-        [[segue destinationViewController] setDetailItem:dict];
+        [[segue destinationViewController] setDict:dict];
     }
 }
 
