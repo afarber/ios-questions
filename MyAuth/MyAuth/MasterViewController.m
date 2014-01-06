@@ -14,38 +14,43 @@
 {
     [super awakeFromNib];
     
-    _keys = @[@"FB", @"GG", @"MR", @"OK", @"VK"];
+    _keys = @[kFB, kGG, kMR, kOK, kVK];
         
     _menu = @{
-              @"FB": @{
+              kFB:  @{
+                      kKey:     kFB,
                       kLabel:   @"Facebook",
                       kAppId:   @"432298283565593",
                       kSecret:  @"c59d4f8cc0a15a0ad4090c3405729d8e",
                       kAppUrl:  @"https://www.facebook.com/connect/login_success.html",
                       kAuthUrl: @"https://graph.facebook.com/oauth/authorize?",
                       },
-              @"GG": @{
+              kGG:  @{
+                      kKey:     kGG,
                       kLabel:   @"Google+",
                       //kAppId:
                       //kSecret:
                       kAppUrl:  @"urn:ietf:wg:oauth:2.0:oob",
                       kAuthUrl: @"https://accounts.google.com/o/oauth2/auth?",
                       },
-              @"MR": @{
+              kMR:   @{
+                      kKey:     kMR,
                       kLabel:   @"Mail.ru",
                       kAppId:   @"715360",
                       kSecret:  @"4260eeea98d7665edbe4baa080af894b",
                       kAppUrl:  @"http://connect.mail.ru/oauth/success.html",
                       kAuthUrl: @"https://connect.mail.ru/oauth/authorize?",
                       },
-              @"OK": @{
+              kOK:   @{
+                      kKey:     kOK,
                       kLabel:   @"Odnoklassniki",
                       //kAppId:
                       //kSecret:
                       kAppUrl:  @"http://connect.mail.ru/oauth/success.html",
                       kAuthUrl: @"http://www.odnoklassniki.ru/oauth/authorize?",
                       },
-              @"VK": @{
+              kVK:   @{
+                      kKey:     kVK,
                       kLabel:   @"VKontakte",
                       //kAppId:
                       //kSecret:
