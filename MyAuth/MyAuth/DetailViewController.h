@@ -6,4 +6,6 @@
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 
+- (void)setDetailItem:(NSDictionary*)newDict;
+
 @end
