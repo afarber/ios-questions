@@ -28,8 +28,8 @@
               kGG:  @{
                       kKey:      kGG,
                       kLabel:    @"Google+",
-                      //kAppId:
-                      //kSecret:
+                      kAppId:    @"441988749325.apps.googleusercontent.com",
+                      kSecret:   @"HiXUUAQVTzIVZ_bvz1GYiYlb",
                       kRedirect: @"urn:ietf:wg:oauth:2.0:oob",
                       kAuthUrl:  @"https://accounts.google.com/o/oauth2/auth?",
                       kScope:    @"https://www.googleapis.com/auth/userinfo.profile",
