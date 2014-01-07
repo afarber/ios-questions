@@ -52,14 +52,10 @@
     NSString *str = _dict[kAuthUrl];
   
     if ([key isEqual: kFB]) {
-        str = [str stringByAppendingString:@"display=touch"];
-        str = [str stringByAppendingString:@"&response_time=token"];
-        str = [str stringByAppendingString:@"&client_id="];
-        str = [str stringByAppendingString:_dict[kAppId]];
-        str = [str stringByAppendingString:@"&redirect_uri="];
-        str = [str stringByAppendingString:_dict[kAppUrl]];
-        //str = [str stringByAppendingString:@"&state="];
-        //str = [str stringByAppendingString:rand(1000)];
+        NSString *escapedURI = [_dict[kAppUrl] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        int state = arc4random_uniform(1000);
+        str = [NSString stringWithFormat:@"%@display=touch&response_time=token&client_id=%@&redirect_uri=%@&state=%d",
+               _dict[kAuthUrl], _dict[kAppId], escapedURI, state];
     } else if ([key isEqual: kGG]) {
     } else if ([key isEqual: kMR]) {
     } else if ([key isEqual: kOK]) {
