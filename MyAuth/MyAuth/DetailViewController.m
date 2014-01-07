@@ -50,13 +50,17 @@
 {
     NSString *key = _dict[kKey];
     NSString *str = _dict[kAuthUrl];
+    int state = arc4random_uniform(1000);
+    NSString *redirect = [_dict[kRedirect] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
   
     if ([key isEqual: kFB]) {
-        NSString *escapedURI = [_dict[kAppUrl] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        int state = arc4random_uniform(1000);
-        str = [NSString stringWithFormat:@"%@display=touch&response_time=token&client_id=%@&redirect_uri=%@&state=%d",
-               _dict[kAuthUrl], _dict[kAppId], escapedURI, state];
+        str = [NSString stringWithFormat:@"%@client_id=%@&display=touch&response_time=token&redirect_uri=%@&state=%d",
+               _dict[kAuthUrl], _dict[kAppId], redirect, state];
     } else if ([key isEqual: kGG]) {
+        NSString *scope = [_dict[kScope] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        
+        str = [NSString stringWithFormat:@"%@client_id=%@&response_type=code&redirect_uri=%@&scope=%@&state=%d",
+               _dict[kAuthUrl], _dict[kAppId], redirect, scope, state];
     } else if ([key isEqual: kMR]) {
     } else if ([key isEqual: kOK]) {
     } else if ([key isEqual: kVK]) {

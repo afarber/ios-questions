@@ -18,44 +18,45 @@
         
     _menu = @{
               kFB:  @{
-                      kKey:     kFB,
-                      kLabel:   @"Facebook",
-                      kAppId:   @"432298283565593",
-                      kSecret:  @"c59d4f8cc0a15a0ad4090c3405729d8e",
-                      kAppUrl:  @"https://www.facebook.com/connect/login_success.html",
-                      kAuthUrl: @"https://graph.facebook.com/oauth/authorize?",
+                      kKey:      kFB,
+                      kLabel:    @"Facebook",
+                      kAppId:    @"432298283565593",
+                      kSecret:   @"c59d4f8cc0a15a0ad4090c3405729d8e",
+                      kRedirect: @"https://www.facebook.com/connect/login_success.html",
+                      kAuthUrl:  @"https://graph.facebook.com/oauth/authorize?",
                       },
               kGG:  @{
-                      kKey:     kGG,
-                      kLabel:   @"Google+",
+                      kKey:      kGG,
+                      kLabel:    @"Google+",
                       //kAppId:
                       //kSecret:
-                      kAppUrl:  @"urn:ietf:wg:oauth:2.0:oob",
-                      kAuthUrl: @"https://accounts.google.com/o/oauth2/auth?",
+                      kRedirect: @"urn:ietf:wg:oauth:2.0:oob",
+                      kAuthUrl:  @"https://accounts.google.com/o/oauth2/auth?",
+                      kScope:    @"https://www.googleapis.com/auth/userinfo.profile",
                       },
               kMR:   @{
-                      kKey:     kMR,
-                      kLabel:   @"Mail.ru",
-                      kAppId:   @"715360",
-                      kSecret:  @"4260eeea98d7665edbe4baa080af894b",
-                      kAppUrl:  @"http://connect.mail.ru/oauth/success.html",
-                      kAuthUrl: @"https://connect.mail.ru/oauth/authorize?",
+                      kKey:      kMR,
+                      kLabel:    @"Mail.ru",
+                      kAppId:    @"715360",
+                      kSecret:   @"4260eeea98d7665edbe4baa080af894b",
+                      kRedirect: @"http://connect.mail.ru/oauth/success.html",
+                      kAuthUrl:  @"https://connect.mail.ru/oauth/authorize?",
                       },
               kOK:   @{
-                      kKey:     kOK,
-                      kLabel:   @"Odnoklassniki",
+                      kKey:      kOK,
+                      kLabel:    @"Odnoklassniki",
                       //kAppId:
                       //kSecret:
-                      kAppUrl:  @"http://connect.mail.ru/oauth/success.html",
-                      kAuthUrl: @"http://www.odnoklassniki.ru/oauth/authorize?",
+                      kRedirect: @"http://connect.mail.ru/oauth/success.html",
+                      kAuthUrl:  @"http://www.odnoklassniki.ru/oauth/authorize?",
                       },
               kVK:   @{
-                      kKey:     kVK,
-                      kLabel:   @"VKontakte",
+                      kKey:      kVK,
+                      kLabel:    @"VKontakte",
                       //kAppId:
                       //kSecret:
-                      kAppUrl:  @"http://oauth.vk.com/blank.html",
-                      kAuthUrl: @"http://oauth.vk.com/authorize?",
+                      kRedirect: @"http://oauth.vk.com/blank.html",
+                      kAuthUrl:  @"http://oauth.vk.com/authorize?",
                       },
             };
     
