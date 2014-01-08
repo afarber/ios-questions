@@ -70,20 +70,16 @@ static const NSString *kRedirect = @"https://www.facebook.com/connect/login_succ
                          NSData *data,
                          NSError *error) {
          
-         if ([data length] > 0  &&
-             error == nil){
-             NSString *html = [[NSString alloc] initWithData:data
-                                                    encoding:NSUTF8StringEncoding];
-             NSLog(@"HTML = %@", html);
+         if (error == nil && [data length] > 0) {
+             //NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+             NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data
+                                                                  options:NSJSONReadingMutableContainers
+                                                                    error:nil];
+
+             NSLog(@"dict = %@", dict);
+         } else {
+             NSLog(@"Download failed: %@", error);
          }
-         else if ([data length] == 0 &&
-                  error == nil){
-             NSLog(@"Nothing was downloaded.");
-         }
-         else if (error != nil){
-             NSLog(@"Error happened = %@", error);
-         }
-         
      }];
 }
 

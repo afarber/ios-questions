@@ -26,10 +26,10 @@
     if (_dict) {
         NSString *str = [self buildUrl];
         NSURL *url = [NSURL URLWithString:str];
-        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-        [request setHTTPMethod:@"GET"];
-        NSLog(@"request: %@", request);
-        [_webView loadRequest:request];
+        NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
+        [req setHTTPMethod:@"GET"];
+        NSLog(@"request: %@", req);
+        [_webView loadRequest:req];
     }
 }
 
@@ -54,7 +54,7 @@
     NSString *redirect = [_dict[kRedirect] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
   
     if ([key isEqual: kFB]) {
-        str = [NSString stringWithFormat:@"%@client_id=%@&display=touch&response_type=token&redirect_uri=%@&state=%d",
+        str = [NSString stringWithFormat:@"%@client_id=%@&response_type=token&redirect_uri=%@&state=%d",
                _dict[kAuthUrl], _dict[kAppId], redirect, state];
     } else if ([key isEqual: kGG]) {
         NSString *scope = [_dict[kScope] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -68,5 +68,13 @@
     
     return str;
 }
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    NSURL *url = [webView.request mainDocumentURL];
+    NSLog(@"%s: %@", __PRETTY_FUNCTION__, url);
+    // TODO extract access token here
+}
+
 
 @end
