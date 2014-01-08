@@ -54,7 +54,7 @@
     NSString *redirect = [_dict[kRedirect] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
   
     if ([key isEqual: kFB]) {
-        str = [NSString stringWithFormat:@"%@client_id=%@&display=touch&response_time=token&redirect_uri=%@&state=%d",
+        str = [NSString stringWithFormat:@"%@client_id=%@&display=touch&response_type=token&redirect_uri=%@&state=%d",
                _dict[kAuthUrl], _dict[kAppId], redirect, state];
     } else if ([key isEqual: kGG]) {
         NSString *scope = [_dict[kScope] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
