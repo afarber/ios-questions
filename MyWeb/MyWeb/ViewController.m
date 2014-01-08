@@ -48,4 +48,24 @@ static const NSString *kAuthUrl =  @"https://graph.facebook.com/oauth/authorize?
     // Dispose of any resources that can be recreated.
 }
 
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    NSURL *url = [request mainDocumentURL];
+    NSLog(@"%s: %@", __PRETTY_FUNCTION__, url);
+    return YES;
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)webView{
+    
+    NSURL *url = [webView.request mainDocumentURL];
+    NSLog(@"%s: %@", __PRETTY_FUNCTION__, url);
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+    
+    NSURL *url = [webView.request mainDocumentURL];
+    NSLog(@"%s: %@", __PRETTY_FUNCTION__, url);
+    // TODO extract access token here
+}
+
 @end
