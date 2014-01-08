@@ -53,30 +53,53 @@ static const NSString *kRedirect = @"https://www.facebook.com/connect/login_succ
     NSURL *url = [webView.request mainDocumentURL];
     NSLog(@"%s: %@", __PRETTY_FUNCTION__, url);
     // TODO extract access token here
-    [self fetchMe];
+    NSString *str = [url absoluteString];
+    NSString *token = [self extractToken:str];
+    [self fetchFacebook:token];
 }
 
-- (void)fetchMe
+- (NSString*)extractToken:(NSString*)str
 {
-    NSString *urlAsString = @"https://graph.facebook.com/me?access_token=";
-    NSURL *url = [NSURL URLWithString:urlAsString];
-    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
+    NSString *token = nil;
+    NSRegularExpression *regex = [[NSRegularExpression alloc] initWithPattern:@"access_token=\\w+"
+                                                                      options:0
+                                                                        error:nil];
+    NSRange searchRange = NSMakeRange(0, [str length]);
+    NSRange resultRange = [regex rangeOfFirstMatchInString:str options:0 range:searchRange];
+    if (!NSEqualRanges(resultRange, NSMakeRange(NSNotFound, 0))) {
+        token = [str substringWithRange:resultRange];
+        NSLog(@"%s: %@", __PRETTY_FUNCTION__, token);
+    }
+    
+    return token;
+}
+
+- (void)fetchFacebook:(NSString*)token
+{
+    NSString *str = [@"https://graph.facebook.com/me?" stringByAppendingString:token];
+    NSURL *url = [NSURL URLWithString:str];
+    NSURLRequest *req = [NSURLRequest requestWithURL:url];
+    NSLog(@"%s: %@", __PRETTY_FUNCTION__, url);
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     
     [NSURLConnection
-     sendAsynchronousRequest:urlRequest
+     sendAsynchronousRequest:req
      queue:queue
      completionHandler:^(NSURLResponse *response,
                          NSData *data,
                          NSError *error) {
          
          if (error == nil && [data length] > 0) {
-             //NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
              NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data
                                                                   options:NSJSONReadingMutableContainers
                                                                     error:nil];
-
-             NSLog(@"dict = %@", dict);
+             //NSLog(@"dict = %@", dict);
+             NSLog(@"id: %@", dict[@"id"]);
+             NSLog(@"first_name: %@", dict[@"first_name"]);
+             NSLog(@"last_name: %@", dict[@"last_name"]);
+             NSLog(@"gender: %@", dict[@"gender"]);
+             NSLog(@"city: %@", dict[@"location"][@"name"]);
+             
          } else {
              NSLog(@"Download failed: %@", error);
          }
