@@ -55,7 +55,10 @@ static NSString* const kAvatar =   @"http://graph.facebook.com/%@/picture?type=l
     NSLog(@"%s: %@", __PRETTY_FUNCTION__, url);
     NSString *str = [url absoluteString];
     NSString *token = [self extractToken:str];
-    [self fetchFacebook:token];
+    
+    if (token) {
+        [self fetchFacebook:token];
+    }
 }
 
 - (NSString*)extractToken:(NSString*)str

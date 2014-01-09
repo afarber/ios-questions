@@ -41,7 +41,9 @@ static NSString* const kMe =       @"https://graph.facebook.com/me?";
     NSLog(@"%s: %@", __PRETTY_FUNCTION__, url);
     NSString *str = [url absoluteString];
     NSString *token = [self extractToken:str];
-    [self fetchFacebook:token];
+    if (token) {
+        [self fetchFacebook:token];
+    }
 }
 
 - (NSString*)extractToken:(NSString*)str
