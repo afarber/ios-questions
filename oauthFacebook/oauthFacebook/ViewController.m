@@ -81,6 +81,9 @@ static NSString* const kMe =       @"https://graph.facebook.com/me?";
              NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data
                                                                   options:NSJSONReadingMutableContainers
                                                                     error:nil];
+             
+             [self performSegueWithIdentifier: @"segue" sender: self];
+
              //NSLog(@"dict = %@", dict);
              NSLog(@"id: %@", dict[@"id"]);
              NSLog(@"first_name: %@", dict[@"first_name"]);

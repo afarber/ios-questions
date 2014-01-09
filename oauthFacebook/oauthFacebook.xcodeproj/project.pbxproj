@@ -21,6 +21,7 @@
 		8405A7C6187ECF59003D9687 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8405A7A8187ECF59003D9687 /* UIKit.framework */; };
 		8405A7CE187ECF59003D9687 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8405A7CC187ECF59003D9687 /* InfoPlist.strings */; };
 		8405A7D0187ECF59003D9687 /* oauthFacebookTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8405A7CF187ECF59003D9687 /* oauthFacebookTests.m */; };
+		8405A7DB187F460F003D9687 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8405A7DA187F460F003D9687 /* DetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		8405A7CB187ECF59003D9687 /* oauthFacebookTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "oauthFacebookTests-Info.plist"; sourceTree = "<group>"; };
 		8405A7CD187ECF59003D9687 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8405A7CF187ECF59003D9687 /* oauthFacebookTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = oauthFacebookTests.m; sourceTree = "<group>"; };
+		8405A7D9187F460F003D9687 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		8405A7DA187F460F003D9687 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +118,8 @@
 				8405A7B3187ECF59003D9687 /* AppDelegate.h */,
 				8405A7B4187ECF59003D9687 /* AppDelegate.m */,
 				8405A7B6187ECF59003D9687 /* Main.storyboard */,
+				8405A7D9187F460F003D9687 /* DetailViewController.h */,
+				8405A7DA187F460F003D9687 /* DetailViewController.m */,
 				8405A7B9187ECF59003D9687 /* ViewController.h */,
 				8405A7BA187ECF59003D9687 /* ViewController.m */,
 				8405A7BC187ECF59003D9687 /* Images.xcassets */,
@@ -252,6 +257,7 @@
 				8405A7BB187ECF59003D9687 /* ViewController.m in Sources */,
 				8405A7B5187ECF59003D9687 /* AppDelegate.m in Sources */,
 				8405A7B1187ECF59003D9687 /* main.m in Sources */,
+				8405A7DB187F460F003D9687 /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
