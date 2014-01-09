@@ -5,6 +5,7 @@ static NSString* const kSecret =   @"c59d4f8cc0a15a0ad4090c3405729d8e";
 static NSString* const kAuthUrl =  @"https://graph.facebook.com/oauth/authorize?";
 static NSString* const kRedirect = @"https://www.facebook.com/connect/login_success.html";
 static NSString* const kAvatar =   @"http://graph.facebook.com/%@/picture?type=large";
+static NSString* const kMe =       @"https://graph.facebook.com/me?";
 
 @interface ViewController ()
 
@@ -61,7 +62,7 @@ static NSString* const kAvatar =   @"http://graph.facebook.com/%@/picture?type=l
 
 - (void)fetchFacebook:(NSString*)token
 {
-    NSString *str = [@"https://graph.facebook.com/me?" stringByAppendingString:token];
+    NSString *str = [kMe stringByAppendingString:token];
     NSURL *url = [NSURL URLWithString:str];
     NSURLRequest *req = [NSURLRequest requestWithURL:url];
     NSLog(@"%s: %@", __PRETTY_FUNCTION__, url);

@@ -1,18 +1,18 @@
 #ifndef MyAuth_Keys_h
 #define MyAuth_Keys_h
 
-static NSString *kKey      = @"key";
-static NSString *kLabel    = @"label";
-static NSString *kAppId    = @"app_id";
-static NSString *kSecret   = @"secret";
-static NSString *kAuthUrl  = @"auth_url";
-static NSString *kRedirect = @"redirect";
-static NSString *kScope    = @"scope";
+static NSString* const kKey      = @"key";
+static NSString* const kLabel    = @"label";
+static NSString* const kAppId    = @"app_id";
+static NSString* const kSecret   = @"secret";
+static NSString* const kAuthUrl  = @"auth_url";
+static NSString* const kRedirect = @"redirect";
+static NSString* const kScope    = @"scope";
 
-static NSString *kFB      = @"FB";
-static NSString *kGG      = @"GG";
-static NSString *kMR      = @"MR";
-static NSString *kOK      = @"OK";
-static NSString *kVK      = @"VK";
+static NSString* const kFB       = @"FB";
+static NSString* const kGG       = @"GG";
+static NSString* const kMR       = @"MR";
+static NSString* const kOK       = @"OK";
+static NSString* const kVK       = @"VK";
 
 #endif
