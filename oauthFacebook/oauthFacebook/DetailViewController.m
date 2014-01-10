@@ -21,30 +21,27 @@ static NSString* const kAvatar =   @"http://graph.facebook.com/%@/picture?type=l
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    NSLog(@"id: %@", _dict[@"id"]);
+    NSLog(@"first_name: %@", _dict[@"first_name"]);
+    NSLog(@"last_name: %@", _dict[@"last_name"]);
+    NSLog(@"gender: %@", _dict[@"gender"]);
+    NSLog(@"city: %@", _dict[@"location"][@"name"]);
+    
+    NSString *avatar = [NSString stringWithFormat:kAvatar, _dict[@"id"]];
+    NSLog(@"avatar: %@", avatar);
+    
+    _userId.text    = _dict[@"id"];
+    _firstName.text = _dict[@"first_name"];
+    _lastName.text  = _dict[@"last_name"];
+    _gender.text    = _dict[@"gender"];
+    _city.text      = _dict[@"location"][@"name"];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)setDict:(NSDictionary *)dict
-{
-    NSLog(@"id: %@", dict[@"id"]);
-    NSLog(@"first_name: %@", dict[@"first_name"]);
-    NSLog(@"last_name: %@", dict[@"last_name"]);
-    NSLog(@"gender: %@", dict[@"gender"]);
-    NSLog(@"city: %@", dict[@"location"][@"name"]);
-    
-    NSString *avatar = [NSString stringWithFormat:kAvatar, dict[@"id"]];
-    NSLog(@"avatar: %@", avatar);
-    
-    [[self userId] setText:dict[@"id"]];
-    [_firstName setText:dict[@"first_name"]];
-    [_lastName setText:dict[@"last_name"]];
-    [_gender setText:dict[@"gender"]];
-    [_city setText:dict[@"location"][@"name"]];
 }
 
 @end
