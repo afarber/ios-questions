@@ -39,6 +39,11 @@ static NSString* const kAvatar =   @"http://graph.facebook.com/%@/picture?type=l
     
     NSString *avatar = [NSString stringWithFormat:kAvatar, dict[@"id"]];
     NSLog(@"avatar: %@", avatar);
+    
+    [_firstName setText:dict[@"first_name"]];
+    [_lastName setText:dict[@"last_name"]];
+    [_gender setText:dict[@"gender"]];
+    [_city setText:dict[@"location"][@"name"]];
 }
 
 @end

@@ -84,12 +84,12 @@ static NSDictionary *_dict;
              _dict = [NSJSONSerialization JSONObjectWithData:data
                                                      options:NSJSONReadingMutableContainers
                                                        error:nil];
+             //NSLog(@"dict = %@", dict);
              
              dispatch_async(dispatch_get_main_queue(), ^(void) {
                  [self performSegueWithIdentifier: @"pushDetailViewController" sender: self];
              });
-                            
-             //NSLog(@"dict = %@", dict);
+             
          } else {
              NSLog(@"Download failed: %@", error);
          }
