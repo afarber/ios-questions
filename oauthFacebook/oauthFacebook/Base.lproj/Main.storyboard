@@ -91,7 +91,6 @@
                         <outlet property="city" destination="DqB-G9-sfn" id="n4r-i8-JYN"/>
                         <outlet property="firstName" destination="rB0-2e-Zon" id="d6K-PP-402"/>
                         <outlet property="gender" destination="hoE-d4-JJO" id="1AY-RC-W1f"/>
-                        <outlet property="id" destination="oHo-QQ-oee" id="tQ5-pM-orn"/>
                         <outlet property="lastName" destination="Isx-Nd-yQP" id="2aa-t3-yNB"/>
                         <outlet property="userId" destination="oHo-QQ-oee" id="Nds-hF-haD"/>
                     </connections>

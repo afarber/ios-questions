@@ -82,8 +82,11 @@ static NSString* const kMe =       @"https://graph.facebook.com/me?";
                                                                   options:NSJSONReadingMutableContainers
                                                                     error:nil];
              
-             [self performSegueWithIdentifier: @"segue" sender: self];
-
+             //assert([NSThread isMainThread]);
+             dispatch_async(dispatch_get_main_queue(), ^(void) {
+                 [self performSegueWithIdentifier: @"segue" sender: self];
+             });
+                            
              //NSLog(@"dict = %@", dict);
              NSLog(@"id: %@", dict[@"id"]);
              NSLog(@"first_name: %@", dict[@"first_name"]);
