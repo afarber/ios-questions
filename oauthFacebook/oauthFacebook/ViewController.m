@@ -1,4 +1,5 @@
 #import "ViewController.h"
+#import "DetailViewController.h"
 
 static NSString* const kAppId =    @"432298283565593";
 static NSString* const kSecret =   @"c59d4f8cc0a15a0ad4090c3405729d8e";
@@ -6,6 +7,8 @@ static NSString* const kAuthUrl =  @"https://graph.facebook.com/oauth/authorize?
 static NSString* const kRedirect = @"https://www.facebook.com/connect/login_success.html";
 static NSString* const kAvatar =   @"http://graph.facebook.com/%@/picture?type=large";
 static NSString* const kMe =       @"https://graph.facebook.com/me?";
+
+static NSDictionary *_dict;
 
 @interface ViewController ()
 
@@ -78,29 +81,27 @@ static NSString* const kMe =       @"https://graph.facebook.com/me?";
                          NSError *error) {
          
          if (error == nil && [data length] > 0) {
-             NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data
-                                                                  options:NSJSONReadingMutableContainers
-                                                                    error:nil];
+             _dict = [NSJSONSerialization JSONObjectWithData:data
+                                                     options:NSJSONReadingMutableContainers
+                                                       error:nil];
              
-             //assert([NSThread isMainThread]);
              dispatch_async(dispatch_get_main_queue(), ^(void) {
-                 [self performSegueWithIdentifier: @"segue" sender: self];
+                 [self performSegueWithIdentifier: @"pushDetailViewController" sender: self];
              });
                             
              //NSLog(@"dict = %@", dict);
-             NSLog(@"id: %@", dict[@"id"]);
-             NSLog(@"first_name: %@", dict[@"first_name"]);
-             NSLog(@"last_name: %@", dict[@"last_name"]);
-             NSLog(@"gender: %@", dict[@"gender"]);
-             NSLog(@"city: %@", dict[@"location"][@"name"]);
-             
-             NSString *avatar = [NSString stringWithFormat:kAvatar, dict[@"id"]];
-             NSLog(@"avatar: %@", avatar);
-             
          } else {
              NSLog(@"Download failed: %@", error);
          }
      }];
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.identifier isEqualToString:@"pushDetailViewController"]) {
+        DetailViewController *dvc = segue.destinationViewController;
+        [dvc setDict:_dict];
+    }
 }
 
 @end

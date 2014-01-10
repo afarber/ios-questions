@@ -1,5 +1,7 @@
 #import "DetailViewController.h"
 
+static NSString* const kAvatar =   @"http://graph.facebook.com/%@/picture?type=large";
+
 @interface DetailViewController ()
 
 @end
@@ -25,6 +27,18 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)setDict:(NSDictionary *)dict
+{
+    NSLog(@"id: %@", dict[@"id"]);
+    NSLog(@"first_name: %@", dict[@"first_name"]);
+    NSLog(@"last_name: %@", dict[@"last_name"]);
+    NSLog(@"gender: %@", dict[@"gender"]);
+    NSLog(@"city: %@", dict[@"location"][@"name"]);
+    
+    NSString *avatar = [NSString stringWithFormat:kAvatar, dict[@"id"]];
+    NSLog(@"avatar: %@", avatar);
 }
 
 @end

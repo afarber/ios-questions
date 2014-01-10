@@ -30,7 +30,7 @@
                     <navigationItem key="navigationItem" title="oauthFacebook" id="EYv-Ir-IyP"/>
                     <connections>
                         <outlet property="webView" destination="ISS-6g-yv7" id="meD-Ue-OIy"/>
-                        <segue destination="ilD-qa-LRb" kind="push" identifier="segue" id="02q-EM-tOa"/>
+                        <segue destination="ilD-qa-LRb" kind="push" identifier="pushDetailViewController" id="02q-EM-tOa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
