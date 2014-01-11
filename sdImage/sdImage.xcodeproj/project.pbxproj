@@ -23,6 +23,7 @@
 		84EB2DD81881BD1300C184E8 /* sdImageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EB2DD71881BD1300C184E8 /* sdImageTests.m */; };
 		84EB2DE31881BEEA00C184E8 /* female.png in Resources */ = {isa = PBXBuildFile; fileRef = 84EB2DE11881BEEA00C184E8 /* female.png */; };
 		84EB2DE41881BEEA00C184E8 /* male.png in Resources */ = {isa = PBXBuildFile; fileRef = 84EB2DE21881BEEA00C184E8 /* male.png */; };
+		84EB2DE61881C21200C184E8 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84EB2DE51881C21200C184E8 /* SDWebImage.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		84EB2DD71881BD1300C184E8 /* sdImageTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = sdImageTests.m; sourceTree = "<group>"; };
 		84EB2DE11881BEEA00C184E8 /* female.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = female.png; sourceTree = "<group>"; };
 		84EB2DE21881BEEA00C184E8 /* male.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = male.png; sourceTree = "<group>"; };
+		84EB2DE51881C21200C184E8 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84EB2DE61881C21200C184E8 /* SDWebImage.framework in Frameworks */,
 				84EB2DAF1881BD1300C184E8 /* CoreGraphics.framework in Frameworks */,
 				84EB2DB11881BD1300C184E8 /* UIKit.framework in Frameworks */,
 				84EB2DAD1881BD1300C184E8 /* Foundation.framework in Frameworks */,
@@ -105,6 +108,7 @@
 		84EB2DAB1881BD1300C184E8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84EB2DE51881C21200C184E8 /* SDWebImage.framework */,
 				84EB2DAC1881BD1300C184E8 /* Foundation.framework */,
 				84EB2DAE1881BD1300C184E8 /* CoreGraphics.framework */,
 				84EB2DB01881BD1300C184E8 /* UIKit.framework */,
@@ -386,6 +390,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/admin/Desktop/ios-newbie/sdImage",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sdImage/sdImage-Prefix.pch";
 				INFOPLIST_FILE = "sdImage/sdImage-Info.plist";
@@ -399,6 +407,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/admin/Desktop/ios-newbie/sdImage",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sdImage/sdImage-Prefix.pch";
 				INFOPLIST_FILE = "sdImage/sdImage-Info.plist";

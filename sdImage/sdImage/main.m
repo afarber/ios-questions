@@ -1,11 +1,3 @@
-//
-//  main.m
-//  sdImage
-//
-//  Created by Admin on 11/01/14.
-//  Copyright (c) 2014 Alexander Farber. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 
 #import "AppDelegate.h"
