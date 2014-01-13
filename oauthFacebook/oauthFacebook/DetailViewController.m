@@ -21,13 +21,14 @@ static NSString* const kAvatar =   @"http://graph.facebook.com/%@/picture?type=l
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
     
     NSLog(@"id: %@", _dict[@"id"]);
     NSLog(@"first_name: %@", _dict[@"first_name"]);
     NSLog(@"last_name: %@", _dict[@"last_name"]);
-    NSLog(@"gender: %@", _dict[@"gender"]);
     NSLog(@"city: %@", _dict[@"location"][@"name"]);
+
+    NSString *gender = _dict[@"gender"];
+    NSLog(@"gender: %@", gender);
     
     NSString *avatar = [NSString stringWithFormat:kAvatar, _dict[@"id"]];
     NSLog(@"avatar: %@", avatar);
@@ -35,16 +36,20 @@ static NSString* const kAvatar =   @"http://graph.facebook.com/%@/picture?type=l
     _userId.text    = _dict[@"id"];
     _firstName.text = _dict[@"first_name"];
     _lastName.text  = _dict[@"last_name"];
-    _gender.text    = _dict[@"gender"];
     _city.text      = _dict[@"location"][@"name"];
+    _gender.text    = gender;
     
-    [_imageView setImageWithURL:[NSURL URLWithString:avatar]];
+    NSString *placeHolder = (gender != nil &&
+                             [gender caseInsensitiveCompare:@"male"] == NSOrderedSame ?
+                             @"male.png" : @"female.png");
+    
+    [_imageView setImageWithURL:[NSURL URLWithString:avatar]
+               placeholderImage:[UIImage imageNamed:placeHolder]];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end
