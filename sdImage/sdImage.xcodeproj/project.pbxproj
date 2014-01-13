@@ -23,7 +23,6 @@
 		84EB2DD81881BD1300C184E8 /* sdImageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EB2DD71881BD1300C184E8 /* sdImageTests.m */; };
 		84EB2DE31881BEEA00C184E8 /* female.png in Resources */ = {isa = PBXBuildFile; fileRef = 84EB2DE11881BEEA00C184E8 /* female.png */; };
 		84EB2DE41881BEEA00C184E8 /* male.png in Resources */ = {isa = PBXBuildFile; fileRef = 84EB2DE21881BEEA00C184E8 /* male.png */; };
-		84EB2DE61881C21200C184E8 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84EB2DE51881C21200C184E8 /* SDWebImage.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,7 +65,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84EB2DE61881C21200C184E8 /* SDWebImage.framework in Frameworks */,
 				84EB2DAF1881BD1300C184E8 /* CoreGraphics.framework in Frameworks */,
 				84EB2DB11881BD1300C184E8 /* UIKit.framework in Frameworks */,
 				84EB2DAD1881BD1300C184E8 /* Foundation.framework in Frameworks */,
@@ -480,6 +478,7 @@
 				84EB2DDD1881BD1300C184E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		84EB2DDE1881BD1300C184E8 /* Build configuration list for PBXNativeTarget "sdImageTests" */ = {
 			isa = XCConfigurationList;
@@ -488,6 +487,7 @@
 				84EB2DE01881BD1300C184E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
