@@ -15,10 +15,7 @@ static NSString* const kAvatar = @"http://gravatar.com/avatar/55b3816622d935e500
     [super viewDidLoad];
     
     [_imageView setImageWithURL:[NSURL URLWithString:kAvatar]
-                            key:nil
-                    placeholder:[UIImage imageNamed:@"male.png"]
-                completionBlock:nil
-                   failureBlock:nil];
+                    placeholder:[UIImage imageNamed:@"male.png"]];
 }
 
 - (void)didReceiveMemoryWarning
