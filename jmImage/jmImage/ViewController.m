@@ -1,5 +1,6 @@
 #import "ViewController.h"
-#import "JMImageCache.h"
+#import <JMImageCache.h>
+#import <UIImageView+JMImageCache.h>
 
 static NSString* const kAvatar = @"http://gravatar.com/avatar/55b3816622d935e50098bb44c17663bc.png";
 

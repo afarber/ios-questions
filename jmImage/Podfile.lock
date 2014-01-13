@@ -1,0 +1,10 @@
+PODS:
+  - JMImageCache (0.4.0)
+
+DEPENDENCIES:
+  - JMImageCache
+
+SPEC CHECKSUMS:
+  JMImageCache: 4d764ca5819ce5b0b3bb1efb85c29977768c54bd
+
+COCOAPODS: 0.29.0
