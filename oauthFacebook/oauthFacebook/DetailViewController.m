@@ -1,4 +1,5 @@
 #import "DetailViewController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 static NSString* const kAvatar =   @"http://graph.facebook.com/%@/picture?type=large";
 
@@ -36,6 +37,8 @@ static NSString* const kAvatar =   @"http://graph.facebook.com/%@/picture?type=l
     _lastName.text  = _dict[@"last_name"];
     _gender.text    = _dict[@"gender"];
     _city.text      = _dict[@"location"][@"name"];
+    
+    [_imageView setImageWithURL:[NSURL URLWithString:avatar]];
 }
 
 - (void)didReceiveMemoryWarning

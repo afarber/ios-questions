@@ -49,7 +49,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="deu-w1-WPo">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="deu-w1-WPo">
                                 <rect key="frame" x="20" y="72" width="280" height="343"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -128,6 +128,7 @@
                         <outlet property="city" destination="V4r-YK-ElW" id="rMX-wA-xRp"/>
                         <outlet property="firstName" destination="zqB-gT-Wva" id="gz9-Q1-Fmf"/>
                         <outlet property="gender" destination="ow7-lu-Ook" id="aXe-m8-jfd"/>
+                        <outlet property="imageView" destination="deu-w1-WPo" id="iwF-zp-3AO"/>
                         <outlet property="lastName" destination="Mjl-MM-EKX" id="U2c-uN-29v"/>
                         <outlet property="userId" destination="y09-4r-JYf" id="QzZ-Bv-f1K"/>
                     </connections>
