@@ -6,9 +6,8 @@ static NSString* const kSecret =   @"YjnMME25A-2qvasUQbjM52vN";
 static NSString* const kAuthUrl =  @"https://accounts.google.com/o/oauth2/auth?";
 static NSString* const kRedirect = @"urn:ietf:wg:oauth:2.0:oob";
 static NSString* const kScope =    @"https://www.googleapis.com/auth/userinfo.profile";
-static NSString* const kAvatar =   @"http://graph.facebook.com/%@/picture?type=large";
-
-static NSString* const kTokenUrl = @"https://accounts.google.com/o/oauth2/token?";
+static NSString* const kAvatar =   @"XXX %@ XXX";
+static NSString* const kTokenUrl = @"https://accounts.google.com/o/oauth2/token";
 static NSString* const kMe =       @"https://www.googleapis.com/oauth2/v1/userinfo?";
 
 static NSDictionary *_dict;
@@ -32,7 +31,7 @@ static NSDictionary *_dict;
     NSURL *url = [NSURL URLWithString:str];
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
     [req setHTTPMethod:@"GET"];
-    NSLog(@"%s: %@", __PRETTY_FUNCTION__, req);
+    NSLog(@"%s: req=%@", __PRETTY_FUNCTION__, req);
     [_webView loadRequest:req];
 }
 
@@ -45,11 +44,10 @@ static NSDictionary *_dict;
 {
     NSURL *url = [webView.request mainDocumentURL];
     NSLog(@"%s: url=%@", __PRETTY_FUNCTION__, url);
-   // NSString *str = [url absoluteString];
-    NSString *str = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
-    NSLog(@"%s: title=%@", __PRETTY_FUNCTION__, str);
+    NSString *title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+    NSLog(@"%s: title=%@", __PRETTY_FUNCTION__, title);
 
-    NSString *token = [self extractTokenFrom:str WithKey:@"code"];
+    NSString *token = [self extractTokenFrom:title WithKey:@"code"];
     if (token) {
         [self fetchGoogle1:token];
     }
@@ -75,10 +73,17 @@ static NSDictionary *_dict;
 
 - (void)fetchGoogle1:(NSString*)token
 {
-    NSString *str = [kTokenUrl stringByAppendingString:token];
-    NSURL *url = [NSURL URLWithString:str];
-    NSURLRequest *req = [NSURLRequest requestWithURL:url];
-    NSLog(@"%s: url=%@", __PRETTY_FUNCTION__, url);
+    NSString *redirect = [kRedirect stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSURL *url = [NSURL URLWithString:kTokenUrl];
+    NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
+    [req setHTTPMethod:@"POST"];
+    
+    NSString *body = [NSString stringWithFormat:@"%@&client_id=%@&grant_type=authorization_code&redirect_uri=%@&client_secret=%@",
+                     token, kAppId, redirect, kSecret];
+    [req setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
+
+    NSLog(@"%s: req=%@", __PRETTY_FUNCTION__, req);
+    
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     
     [NSURLConnection
@@ -89,15 +94,21 @@ static NSDictionary *_dict;
                          NSError *error) {
          
          if (error == nil && [data length] > 0) {
+             /*
+             NSString *html = [[NSString alloc] initWithData:data
+                                                    encoding:NSUTF8StringEncoding];
+             NSLog(@"html=%@", html);
+             */
+             
              _dict = [NSJSONSerialization JSONObjectWithData:data
                                                      options:NSJSONReadingMutableContainers
                                                        error:nil];
-             //NSLog(@"dict = %@", dict);
-             
+             NSLog(@"dict=%@", _dict);
+            /*
              dispatch_async(dispatch_get_main_queue(), ^(void) {
                  [self performSegueWithIdentifier: @"pushDetailViewController" sender: self];
              });
-             
+             */
          } else {
              NSLog(@"Download failed: %@", error);
          }

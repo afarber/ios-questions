@@ -28,7 +28,7 @@ static NSDictionary *_dict;
     NSURL *url = [NSURL URLWithString:str];
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
     [req setHTTPMethod:@"GET"];
-    NSLog(@"%s: %@", __PRETTY_FUNCTION__, req);
+    NSLog(@"%s: req=%@", __PRETTY_FUNCTION__, req);
     [_webView loadRequest:req];
 }
 

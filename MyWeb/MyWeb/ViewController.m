@@ -52,26 +52,28 @@ static NSString* const kAvatar =   @"http://graph.facebook.com/%@/picture?type=l
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     NSURL *url = [webView.request mainDocumentURL];
-    NSLog(@"%s: %@", __PRETTY_FUNCTION__, url);
+    NSLog(@"%s: url=%@", __PRETTY_FUNCTION__, url);
     NSString *str = [url absoluteString];
-    NSString *token = [self extractToken:str];
+    NSString *token = [self extractTokenFrom:str WithKey:@"access_token"];
     
     if (token) {
         [self fetchFacebook:token];
     }
 }
 
-- (NSString*)extractToken:(NSString*)str
+- (NSString*)extractTokenFrom:(NSString*)str WithKey:(NSString*)key
 {
     NSString *token = nil;
-    NSRegularExpression *regex = [[NSRegularExpression alloc] initWithPattern:@"access_token=\\w+"
+    NSString *pattern = [key stringByAppendingString:@"=[^?&=]+"];
+    
+    NSRegularExpression *regex = [[NSRegularExpression alloc] initWithPattern:pattern
                                                                       options:0
                                                                         error:nil];
     NSRange searchRange = NSMakeRange(0, [str length]);
     NSRange resultRange = [regex rangeOfFirstMatchInString:str options:0 range:searchRange];
-    if (!NSEqualRanges(resultRange, NSMakeRange(NSNotFound, 0))) {
+    if (! NSEqualRanges(resultRange, NSMakeRange(NSNotFound, 0))) {
         token = [str substringWithRange:resultRange];
-        NSLog(@"%s: %@", __PRETTY_FUNCTION__, token);
+        NSLog(@"%s: token=%@", __PRETTY_FUNCTION__, token);
     }
     
     return token;
@@ -82,7 +84,7 @@ static NSString* const kAvatar =   @"http://graph.facebook.com/%@/picture?type=l
     NSString *str = [@"https://graph.facebook.com/me?" stringByAppendingString:token];
     NSURL *url = [NSURL URLWithString:str];
     NSURLRequest *req = [NSURLRequest requestWithURL:url];
-    NSLog(@"%s: %@", __PRETTY_FUNCTION__, url);
+    NSLog(@"%s: url=%@", __PRETTY_FUNCTION__, url);
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     
     [NSURLConnection
@@ -117,7 +119,7 @@ static NSString* const kAvatar =   @"http://graph.facebook.com/%@/picture?type=l
     NSString *str = [@"https://graph.facebook.com/me?" stringByAppendingString:token];
     NSURL *url = [NSURL URLWithString:str];
     NSURLRequest *req = [NSURLRequest requestWithURL:url];
-    NSLog(@"%s: %@", __PRETTY_FUNCTION__, url);
+    NSLog(@"%s: url=%@", __PRETTY_FUNCTION__, url);
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     
     [NSURLConnection
