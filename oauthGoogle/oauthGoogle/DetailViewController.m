@@ -23,20 +23,20 @@ static NSString* const kAvatar =   @"http://graph.facebook.com/%@/picture?type=l
     [super viewDidLoad];
     
     NSLog(@"id: %@", _dict[@"id"]);
-    NSLog(@"first_name: %@", _dict[@"first_name"]);
-    NSLog(@"last_name: %@", _dict[@"last_name"]);
-    NSLog(@"city: %@", _dict[@"location"][@"name"]);
+    NSLog(@"first_name: %@", _dict[@"given_name"]);
+    NSLog(@"last_name: %@", _dict[@"family_name"]);
+    NSLog(@"city: %@", _dict[@"city"]);
 
     NSString *gender = _dict[@"gender"];
     NSLog(@"gender: %@", gender);
     
-    NSString *avatar = [NSString stringWithFormat:kAvatar, _dict[@"id"]];
+    NSString *avatar = _dict[@"picture"];
     NSLog(@"avatar: %@", avatar);
     
     _userId.text    = _dict[@"id"];
-    _firstName.text = _dict[@"first_name"];
-    _lastName.text  = _dict[@"last_name"];
-    _city.text      = _dict[@"location"][@"name"];
+    _firstName.text = _dict[@"given_name"];
+    _lastName.text  = _dict[@"family_name"];
+    _city.text      = _dict[@"city"];
     _gender.text    = gender;
     
     NSString *placeHolder = (gender != nil &&

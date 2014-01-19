@@ -8,7 +8,7 @@ static NSString* const kRedirect = @"urn:ietf:wg:oauth:2.0:oob";
 static NSString* const kScope =    @"https://www.googleapis.com/auth/userinfo.profile";
 static NSString* const kAvatar =   @"XXX %@ XXX";
 static NSString* const kTokenUrl = @"https://accounts.google.com/o/oauth2/token";
-static NSString* const kMe =       @"https://www.googleapis.com/oauth2/v1/userinfo?";
+static NSString* const kMe =       @"https://www.googleapis.com/oauth2/v1/userinfo?access_token=";
 
 static NSDictionary *_dict;
 
@@ -103,7 +103,11 @@ static NSDictionary *_dict;
              _dict = [NSJSONSerialization JSONObjectWithData:data
                                                      options:NSJSONReadingMutableContainers
                                                        error:nil];
-             NSLog(@"dict=%@", _dict);
+             //NSLog(@"dict=%@", _dict);
+             NSString *token = _dict[@"access_token"];
+             NSLog(@"token=%@", token);
+             [self fetchGoogle2:token];
+
             /*
              dispatch_async(dispatch_get_main_queue(), ^(void) {
                  [self performSegueWithIdentifier: @"pushDetailViewController" sender: self];
@@ -118,7 +122,7 @@ static NSDictionary *_dict;
 
 - (void)fetchGoogle2:(NSString*)token
 {
-    NSString *str = [kTokenUrl stringByAppendingString:token];
+    NSString *str = [kMe stringByAppendingString:token];
     NSURL *url = [NSURL URLWithString:str];
     NSURLRequest *req = [NSURLRequest requestWithURL:url];
     NSLog(@"%s: %@", __PRETTY_FUNCTION__, url);
@@ -135,7 +139,7 @@ static NSDictionary *_dict;
              _dict = [NSJSONSerialization JSONObjectWithData:data
                                                      options:NSJSONReadingMutableContainers
                                                        error:nil];
-             //NSLog(@"dict = %@", dict);
+             NSLog(@"dict = %@", _dict);
              
              dispatch_async(dispatch_get_main_queue(), ^(void) {
                  [self performSegueWithIdentifier: @"pushDetailViewController" sender: self];
