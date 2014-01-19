@@ -1,8 +1,6 @@
 #import "DetailViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
-static NSString* const kAvatar =   @"http://graph.facebook.com/%@/picture?type=large";
-
 @interface DetailViewController ()
 
 @end

@@ -6,7 +6,6 @@ static NSString* const kSecret =   @"YjnMME25A-2qvasUQbjM52vN";
 static NSString* const kAuthUrl =  @"https://accounts.google.com/o/oauth2/auth?";
 static NSString* const kRedirect = @"urn:ietf:wg:oauth:2.0:oob";
 static NSString* const kScope =    @"https://www.googleapis.com/auth/userinfo.profile";
-static NSString* const kAvatar =   @"XXX %@ XXX";
 static NSString* const kTokenUrl = @"https://accounts.google.com/o/oauth2/token";
 static NSString* const kMe =       @"https://www.googleapis.com/oauth2/v1/userinfo?access_token=";
 
@@ -94,25 +93,14 @@ static NSDictionary *_dict;
                          NSError *error) {
          
          if (error == nil && [data length] > 0) {
-             /*
-             NSString *html = [[NSString alloc] initWithData:data
-                                                    encoding:NSUTF8StringEncoding];
-             NSLog(@"html=%@", html);
-             */
-             
              _dict = [NSJSONSerialization JSONObjectWithData:data
                                                      options:NSJSONReadingMutableContainers
                                                        error:nil];
              //NSLog(@"dict=%@", _dict);
+             
              NSString *token = _dict[@"access_token"];
              NSLog(@"token=%@", token);
              [self fetchGoogle2:token];
-
-            /*
-             dispatch_async(dispatch_get_main_queue(), ^(void) {
-                 [self performSegueWithIdentifier: @"pushDetailViewController" sender: self];
-             });
-             */
          } else {
              NSLog(@"Download failed: %@", error);
          }
