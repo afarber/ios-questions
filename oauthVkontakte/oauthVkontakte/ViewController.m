@@ -1,5 +1,6 @@
 #import "ViewController.h"
 #import "DetailViewController.h"
+#import "User.h"
 
 static NSString* const kAppId =    @"4132525";
 static NSString* const kSecret =   @"ar3IMdDaDzcUDUHj3rsl";
@@ -7,7 +8,7 @@ static NSString* const kAuthUrl =  @"http://oauth.vk.com/authorize?";
 static NSString* const kRedirect = @"http://oauth.vk.com/blank.html";
 static NSString* const kMe =       @"https://api.vk.com/method/getProfiles?fields=sex,city,photo_big&format=JSON&uids=%@&access_token=%@";
 
-static NSDictionary *_dict;
+static User *_user;
 
 @interface ViewController ()
 
@@ -87,14 +88,22 @@ static NSDictionary *_dict;
          if (error == nil && [data length] > 0) {
              NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data
                                                                   options:NSJSONReadingMutableContainers
-                                                                    error:nil];
+                                                                    error:nil][@"response"][0];
              NSLog(@"dict=%@", dict);
-             _dict = dict[@"response"][0];
              
-             dispatch_async(dispatch_get_main_queue(), ^(void) {
-                 [self performSegueWithIdentifier: @"pushDetailViewController" sender: self];
-             });
+             if (dict) {
+                 _user = [[User alloc] init];
+                 _user.userId    = dict[@"uid"];
+                 _user.firstName = dict[@"first_name"];
+                 _user.lastName  = dict[@"last_name"];
+                 _user.city      = dict[@"city"];
+                 _user.avatar    = dict[@"photo_big"];
+                 _user.female    = (2 == (long)dict[@"female"]);
              
+                 dispatch_async(dispatch_get_main_queue(), ^(void) {
+                     [self performSegueWithIdentifier: @"pushDetailViewController" sender: self];
+                 });
+             }
          } else {
              NSLog(@"Download failed: %@", error);
          }
@@ -105,7 +114,7 @@ static NSDictionary *_dict;
     
     if ([segue.identifier isEqualToString:@"pushDetailViewController"]) {
         DetailViewController *dvc = segue.destinationViewController;
-        [dvc setDict:_dict];
+        [dvc setUser:_user];
     }
 }
 

@@ -1,8 +1,9 @@
 #import <UIKit/UIKit.h>
+#import "User.h"
 
 @interface DetailViewController : UIViewController
 
-@property (strong, nonatomic) NSDictionary *dict;
+@property (strong, nonatomic) User *user;
 
 @property (weak, nonatomic) IBOutlet UILabel *userId;
 @property (weak, nonatomic) IBOutlet UILabel *firstName;
