@@ -5,7 +5,6 @@ static NSString* const kAppId =    @"441988749325-h8bsf01r3jnv5nbsb31a8pi99660oe
 static NSString* const kSecret =   @"YjnMME25A-2qvasUQbjM52vN";
 static NSString* const kAuthUrl =  @"https://accounts.google.com/o/oauth2/auth?";
 static NSString* const kRedirect = @"urn:ietf:wg:oauth:2.0:oob";
-static NSString* const kScope =    @"https://www.googleapis.com/auth/userinfo.profile";
 static NSString* const kTokenUrl = @"https://accounts.google.com/o/oauth2/token";
 static NSString* const kMe =       @"https://www.googleapis.com/oauth2/v1/userinfo?access_token=";
 
@@ -24,8 +23,7 @@ static NSDictionary *_dict;
     int state = arc4random_uniform(1000);
     NSString *redirect = [kRedirect stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
-    NSString *scope    = [kScope stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSString *str = [NSString stringWithFormat:@"%@client_id=%@&response_type=code&redirect_uri=%@&scope=%@&state=%d", kAuthUrl, kAppId, redirect, scope, state];
+    NSString *str = [NSString stringWithFormat:@"%@client_id=%@&response_type=code&redirect_uri=%@&scope=profile&state=%d", kAuthUrl, kAppId, redirect, state];
 
     NSURL *url = [NSURL URLWithString:str];
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
