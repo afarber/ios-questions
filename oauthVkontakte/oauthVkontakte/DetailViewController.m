@@ -1,8 +1,6 @@
 #import "DetailViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
-static NSString* const kAvatar =   @"http://graph.facebook.com/%@/picture?type=large";
-
 @interface DetailViewController ()
 
 @end
@@ -22,21 +20,21 @@ static NSString* const kAvatar =   @"http://graph.facebook.com/%@/picture?type=l
 {
     [super viewDidLoad];
     
-    NSLog(@"id: %@", _dict[@"id"]);
+    NSLog(@"id: %@", _dict[@"uid"]);
     NSLog(@"first_name: %@", _dict[@"first_name"]);
     NSLog(@"last_name: %@", _dict[@"last_name"]);
-    NSLog(@"city: %@", _dict[@"location"][@"name"]);
+    NSLog(@"city: %@", _dict[@"city"]);
 
-    NSString *gender = _dict[@"gender"];
+    NSString *gender = (2 == (long)_dict[@"sex"] ? @"male" : @"female");
     NSLog(@"gender: %@", gender);
     
-    NSString *avatar = [NSString stringWithFormat:kAvatar, _dict[@"id"]];
+    NSString *avatar = _dict[@"photo_big"];
     NSLog(@"avatar: %@", avatar);
     
-    _userId.text    = _dict[@"id"];
+    _userId.text    = [NSString stringWithFormat:@"%@", _dict[@"uid"]];
     _firstName.text = _dict[@"first_name"];
     _lastName.text  = _dict[@"last_name"];
-    _city.text      = _dict[@"location"][@"name"];
+    _city.text      = _dict[@"city"];
     _gender.text    = gender;
     
     NSString *placeHolder = (gender != nil &&
