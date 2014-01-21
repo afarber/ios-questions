@@ -2,8 +2,8 @@
 #import "DetailViewController.h"
 #import "User.h"
 
-static NSString* const kAppId =    @"715360";
-static NSString* const kSecret =   @"60648c6d79654e4b1d99abe784ff6f63";
+static NSString* const kAppId =    @"1392384";
+static NSString* const kSecret =   @"BDCB7DC52AAFD28A1774D232";
 static NSString* const kAuthUrl =  @"https://connect.mail.ru/oauth/authorize?response_type=token&display=touch&client_id=%@&redirect_uri=%@";
 static NSString* const kRedirect = @"http://connect.mail.ru/oauth/success.html";
 static NSString* const kMe =       @"http://www.appsmail.ru/platform/api?app_id=%@&method=users.getInfo&session_key=%@&uids=%@";

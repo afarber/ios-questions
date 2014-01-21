@@ -51,10 +51,14 @@
                                                        parameters:nil];
             request.account = _facebookAccount;
             
-            [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-                NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseData
-                                                                                   options:NSJSONReadingMutableContainers
-                                                                                     error:nil];
+            [request performRequestWithHandler:^(NSData *responseData,
+                                                 NSHTTPURLResponse *urlResponse,
+                                                 NSError *error) {
+                
+                NSDictionary *responseDictionary = [NSJSONSerialization
+                                                    JSONObjectWithData:responseData
+                                                    options:0
+                                                    error:nil];
                 //NSLog(@"%@", responseDictionary);
                 NSLog(@"id: %@", responseDictionary[@"id"]);
                 NSLog(@"first_name: %@", responseDictionary[@"first_name"]);
