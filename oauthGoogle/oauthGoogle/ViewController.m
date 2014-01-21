@@ -130,7 +130,6 @@ static User *_user;
                                                                     error:nil];
              NSLog(@"dict = %@", dict);
              
-             
              if (dict) {
                  _user = [[User alloc] init];
                  _user.userId    = dict[@"id"];
