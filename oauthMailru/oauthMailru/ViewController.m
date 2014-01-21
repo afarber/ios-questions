@@ -91,7 +91,7 @@ static User *_user;
          if (error == nil && [data length] > 0) {
              NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data
                                                                   options:NSJSONReadingMutableContainers
-                                                                    error:nil];
+                                                                    error:nil][0];
              NSLog(@"dict=%@", dict);
              
              if (dict) {
