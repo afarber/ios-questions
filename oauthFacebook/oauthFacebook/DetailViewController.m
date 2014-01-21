@@ -1,8 +1,6 @@
 #import "DetailViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
-static NSString* const kAvatar =   @"http://graph.facebook.com/%@/picture?type=large";
-
 @interface DetailViewController ()
 
 @end
@@ -22,28 +20,22 @@ static NSString* const kAvatar =   @"http://graph.facebook.com/%@/picture?type=l
 {
     [super viewDidLoad];
     
-    NSLog(@"id: %@", _dict[@"id"]);
-    NSLog(@"first_name: %@", _dict[@"first_name"]);
-    NSLog(@"last_name: %@", _dict[@"last_name"]);
-    NSLog(@"city: %@", _dict[@"location"][@"name"]);
-
-    NSString *gender = _dict[@"gender"];
-    NSLog(@"gender: %@", gender);
+    NSLog(@"id: %@",         _user.userId);
+    NSLog(@"first_name: %@", _user.firstName);
+    NSLog(@"last_name: %@",  _user.lastName);
+    NSLog(@"city: %@",       _user.city);
+    NSLog(@"gender: %hhd",   _user.female);
+    NSLog(@"avatar: %@",     _user.avatar);
     
-    NSString *avatar = [NSString stringWithFormat:kAvatar, _dict[@"id"]];
-    NSLog(@"avatar: %@", avatar);
+    _userId.text    = [NSString stringWithFormat:@"%@", _user.userId];
+    _firstName.text = _user.firstName;
+    _lastName.text  = _user.lastName;
+    _city.text      = _user.city;
+    _gender.text    = (_user.female ? @"female" : @"male");
     
-    _userId.text    = _dict[@"id"];
-    _firstName.text = _dict[@"first_name"];
-    _lastName.text  = _dict[@"last_name"];
-    _city.text      = _dict[@"location"][@"name"];
-    _gender.text    = gender;
+    NSString *placeHolder = (_user.female ? @"female.png" : @"male.png");
     
-    NSString *placeHolder = (gender != nil &&
-                             [gender caseInsensitiveCompare:@"male"] == NSOrderedSame ?
-                             @"male.png" : @"female.png");
-    
-    [_imageView setImageWithURL:[NSURL URLWithString:avatar]
+    [_imageView setImageWithURL:[NSURL URLWithString:_user.avatar]
                placeholderImage:[UIImage imageNamed:placeHolder]];
 }
 

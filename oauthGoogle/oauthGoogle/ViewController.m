@@ -1,14 +1,16 @@
 #import "ViewController.h"
 #import "DetailViewController.h"
+#import "User.h"
 
 static NSString* const kAppId =    @"441988749325-h8bsf01r3jnv5nbsb31a8pi99660oe0q.apps.googleusercontent.com";
 static NSString* const kSecret =   @"YjnMME25A-2qvasUQbjM52vN";
-static NSString* const kAuthUrl =  @"https://accounts.google.com/o/oauth2/auth?";
+static NSString* const kAuthUrl =  @"https://accounts.google.com/o/oauth2/auth?response_type=code&scope=profile&client_id=%@&redirect_uri=%@&state=%d";
 static NSString* const kRedirect = @"urn:ietf:wg:oauth:2.0:oob";
 static NSString* const kTokenUrl = @"https://accounts.google.com/o/oauth2/token";
+static NSString* const kBody =     @"grant_type=authorization_code&code=%@&client_id=%@&redirect_uri=%@&client_secret=%@";
 static NSString* const kMe =       @"https://www.googleapis.com/oauth2/v1/userinfo?access_token=";
 
-static NSDictionary *_dict;
+static User *_user;
 
 @interface ViewController ()
 
@@ -23,7 +25,7 @@ static NSDictionary *_dict;
     int state = arc4random_uniform(1000);
     NSString *redirect = [kRedirect stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
-    NSString *str = [NSString stringWithFormat:@"%@client_id=%@&response_type=code&redirect_uri=%@&scope=profile&state=%d", kAuthUrl, kAppId, redirect, state];
+    NSString *str = [NSString stringWithFormat:kAuthUrl, kAppId, redirect, state];
 
     NSURL *url = [NSURL URLWithString:str];
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
@@ -44,28 +46,29 @@ static NSDictionary *_dict;
     NSString *title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
     NSLog(@"%s: title=%@", __PRETTY_FUNCTION__, title);
 
-    NSString *token = [self extractTokenFrom:title WithKey:@"code"];
+    NSString *token = [self extractValueFrom:title ForKey:@"code"];
     if (token) {
         [self fetchGoogle1:token];
     }
 }
 
-- (NSString*)extractTokenFrom:(NSString*)str WithKey:(NSString*)key
+- (NSString*)extractValueFrom:(NSString*)str ForKey:(NSString*)key
 {
-    NSString *token = nil;
-    NSString *pattern = [key stringByAppendingString:@"=[^?&=]+"];
-
+    NSString *value = nil;
+    NSString *pattern = [key stringByAppendingString:@"=([^?&=]+)"];
+    
     NSRegularExpression *regex = [[NSRegularExpression alloc] initWithPattern:pattern
                                                                       options:0
                                                                         error:nil];
     NSRange searchRange = NSMakeRange(0, [str length]);
-    NSRange resultRange = [regex rangeOfFirstMatchInString:str options:0 range:searchRange];
-    if (! NSEqualRanges(resultRange, NSMakeRange(NSNotFound, 0))) {
-        token = [str substringWithRange:resultRange];
-        NSLog(@"%s: token=%@", __PRETTY_FUNCTION__, token);
+    NSTextCheckingResult* result = [regex firstMatchInString:str options:0 range:searchRange];
+    
+    if (result) {
+        value = [str substringWithRange:[result rangeAtIndex:1]];
+        NSLog(@"%s: value=%@", __PRETTY_FUNCTION__, value);
     }
     
-    return token;
+    return value;
 }
 
 - (void)fetchGoogle1:(NSString*)token
@@ -75,7 +78,7 @@ static NSDictionary *_dict;
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
     [req setHTTPMethod:@"POST"];
     
-    NSString *body = [NSString stringWithFormat:@"%@&client_id=%@&grant_type=authorization_code&redirect_uri=%@&client_secret=%@",
+    NSString *body = [NSString stringWithFormat:kBody,
                      token, kAppId, redirect, kSecret];
     [req setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
 
@@ -91,12 +94,12 @@ static NSDictionary *_dict;
                          NSError *error) {
          
          if (error == nil && [data length] > 0) {
-             _dict = [NSJSONSerialization JSONObjectWithData:data
-                                                     options:NSJSONReadingMutableContainers
-                                                       error:nil];
-             //NSLog(@"dict=%@", _dict);
+             NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data
+                                                                  options:NSJSONReadingMutableContainers
+                                                                    error:nil];
+             NSLog(@"dict=%@", dict);
              
-             NSString *token = _dict[@"access_token"];
+             NSString *token = dict[@"access_token"];
              NSLog(@"token=%@", token);
              [self fetchGoogle2:token];
          } else {
@@ -122,15 +125,25 @@ static NSDictionary *_dict;
                          NSError *error) {
          
          if (error == nil && [data length] > 0) {
-             _dict = [NSJSONSerialization JSONObjectWithData:data
-                                                     options:NSJSONReadingMutableContainers
-                                                       error:nil];
-             NSLog(@"dict = %@", _dict);
+             NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data
+                                                                  options:NSJSONReadingMutableContainers
+                                                                    error:nil];
+             NSLog(@"dict = %@", dict);
              
-             dispatch_async(dispatch_get_main_queue(), ^(void) {
-                 [self performSegueWithIdentifier: @"pushDetailViewController" sender: self];
-             });
              
+             if (dict) {
+                 _user = [[User alloc] init];
+                 _user.userId    = dict[@"id"];
+                 _user.firstName = dict[@"given_name"];
+                 _user.lastName  = dict[@"family_name"];
+                 //_user.city    = dict[@"PlacesLived"][0][@"value"];
+                 _user.avatar    = dict[@"picture"];
+                 _user.female    = ([@"female" caseInsensitiveCompare:dict[@"gender"]] == NSOrderedSame);
+                 
+                 dispatch_async(dispatch_get_main_queue(), ^(void) {
+                     [self performSegueWithIdentifier: @"pushDetailViewController" sender: self];
+                 });
+             }
          } else {
              NSLog(@"Download failed: %@", error);
          }
@@ -141,7 +154,7 @@ static NSDictionary *_dict;
     
     if ([segue.identifier isEqualToString:@"pushDetailViewController"]) {
         DetailViewController *dvc = segue.destinationViewController;
-        [dvc setDict:_dict];
+        [dvc setUser:_user];
     }
 }
 

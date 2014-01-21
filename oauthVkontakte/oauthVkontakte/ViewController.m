@@ -4,7 +4,7 @@
 
 static NSString* const kAppId =    @"4132525";
 static NSString* const kSecret =   @"ar3IMdDaDzcUDUHj3rsl";
-static NSString* const kAuthUrl =  @"http://oauth.vk.com/authorize?";
+static NSString* const kAuthUrl =  @"http://oauth.vk.com/authorize?response_type=token&display=touch&client_id=%@&redirect_uri=%@";
 static NSString* const kRedirect = @"http://oauth.vk.com/blank.html";
 static NSString* const kMe =       @"https://api.vk.com/method/getProfiles?fields=sex,city,photo_big&format=JSON&uids=%@&access_token=%@";
 
@@ -22,8 +22,7 @@ static User *_user;
     
     NSString *redirect = [kRedirect stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
-    NSString *str = [NSString stringWithFormat:@"%@client_id=%@&response_type=token&display=touch&redirect_uri=%@",
-                     kAuthUrl, kAppId, redirect];
+    NSString *str = [NSString stringWithFormat:kAuthUrl, kAppId, redirect];
     
     NSURL *url = [NSURL URLWithString:str];
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];

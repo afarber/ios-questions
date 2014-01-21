@@ -1,14 +1,15 @@
 #import "ViewController.h"
 #import "DetailViewController.h"
+#import "User.h"
 
 static NSString* const kAppId =    @"432298283565593";
 static NSString* const kSecret =   @"c59d4f8cc0a15a0ad4090c3405729d8e";
-static NSString* const kAuthUrl =  @"https://graph.facebook.com/oauth/authorize?";
+static NSString* const kAuthUrl =  @"https://graph.facebook.com/oauth/authorize?response_type=token&client_id=%@&redirect_uri=%@&state=%d";
 static NSString* const kRedirect = @"https://www.facebook.com/connect/login_success.html";
 static NSString* const kAvatar =   @"http://graph.facebook.com/%@/picture?type=large";
-static NSString* const kMe =       @"https://graph.facebook.com/me?";
+static NSString* const kMe =       @"https://graph.facebook.com/me?access_token=%@";
 
-static NSDictionary *_dict;
+static User *_user;
 
 @interface ViewController ()
 
@@ -23,7 +24,7 @@ static NSDictionary *_dict;
     int state = arc4random_uniform(1000);
     NSString *redirect = [kRedirect stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
-    NSString *str = [NSString stringWithFormat:@"%@client_id=%@&response_type=token&redirect_uri=%@&state=%d", kAuthUrl, kAppId, redirect, state];
+    NSString *str = [NSString stringWithFormat:kAuthUrl, kAppId, redirect, state];
     
     NSURL *url = [NSURL URLWithString:str];
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
@@ -42,33 +43,34 @@ static NSDictionary *_dict;
     NSURL *url = [webView.request mainDocumentURL];
     NSLog(@"%s: url=%@", __PRETTY_FUNCTION__, url);
     NSString *str = [url absoluteString];
-    NSString *token = [self extractTokenFrom:str WithKey:@"access_token"];
+    NSString *token = [self extractValueFrom:str ForKey:@"access_token"];
     if (token) {
-        [self fetchFacebook:token];
+        [self fetchFacebookWithToken:token];
     }
 }
 
-- (NSString*)extractTokenFrom:(NSString*)str WithKey:(NSString*)key
+- (NSString*)extractValueFrom:(NSString*)str ForKey:(NSString*)key
 {
-    NSString *token = nil;
-    NSString *pattern = [key stringByAppendingString:@"=[^?&=]+"];
+    NSString *value = nil;
+    NSString *pattern = [key stringByAppendingString:@"=([^?&=]+)"];
     
     NSRegularExpression *regex = [[NSRegularExpression alloc] initWithPattern:pattern
                                                                       options:0
                                                                         error:nil];
     NSRange searchRange = NSMakeRange(0, [str length]);
-    NSRange resultRange = [regex rangeOfFirstMatchInString:str options:0 range:searchRange];
-    if (! NSEqualRanges(resultRange, NSMakeRange(NSNotFound, 0))) {
-        token = [str substringWithRange:resultRange];
-        NSLog(@"%s: token=%@", __PRETTY_FUNCTION__, token);
+    NSTextCheckingResult* result = [regex firstMatchInString:str options:0 range:searchRange];
+    
+    if (result) {
+        value = [str substringWithRange:[result rangeAtIndex:1]];
+        NSLog(@"%s: value=%@", __PRETTY_FUNCTION__, value);
     }
     
-    return token;
+    return value;
 }
 
-- (void)fetchFacebook:(NSString*)token
+- (void)fetchFacebookWithToken:(NSString*)token
 {
-    NSString *str = [kMe stringByAppendingString:token];
+    NSString *str = [NSString stringWithFormat:kMe, token];
     NSURL *url = [NSURL URLWithString:str];
     NSURLRequest *req = [NSURLRequest requestWithURL:url];
     NSLog(@"%s: url=%@", __PRETTY_FUNCTION__, url);
@@ -82,15 +84,24 @@ static NSDictionary *_dict;
                          NSError *error) {
          
          if (error == nil && [data length] > 0) {
-             _dict = [NSJSONSerialization JSONObjectWithData:data
-                                                     options:NSJSONReadingMutableContainers
-                                                       error:nil];
-             NSLog(@"dict = %@", _dict);
+             NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data
+                                                                  options:NSJSONReadingMutableContainers
+                                                                    error:nil];
+             NSLog(@"dict=%@", dict);
              
-             dispatch_async(dispatch_get_main_queue(), ^(void) {
-                 [self performSegueWithIdentifier: @"pushDetailViewController" sender: self];
-             });
-             
+             if (dict) {
+                 _user = [[User alloc] init];
+                 _user.userId    = dict[@"id"];
+                 _user.firstName = dict[@"first_name"];
+                 _user.lastName  = dict[@"last_name"];
+                 _user.city      = dict[@"location"][@"name"];
+                 _user.avatar    = [NSString stringWithFormat:kAvatar, dict[@"id"]];
+                 _user.female    = ([@"female" caseInsensitiveCompare:dict[@"gender"]] == NSOrderedSame);
+                 
+                 dispatch_async(dispatch_get_main_queue(), ^(void) {
+                     [self performSegueWithIdentifier: @"pushDetailViewController" sender: self];
+                 });
+             }
          } else {
              NSLog(@"Download failed: %@", error);
          }
@@ -101,7 +112,7 @@ static NSDictionary *_dict;
     
     if ([segue.identifier isEqualToString:@"pushDetailViewController"]) {
         DetailViewController *dvc = segue.destinationViewController;
-        [dvc setDict:_dict];
+        [dvc setUser:_user];
     }
 }
 
