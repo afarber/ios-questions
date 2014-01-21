@@ -46,7 +46,7 @@ static User *_user;
     NSLog(@"%s: %@ %@", __PRETTY_FUNCTION__, token, userId);
     
     if (token && userId) {
-        [self fetchMailruWithToken:token ForUser:userId];
+        [self fetchOdnoklassnikiWithToken:token ForUser:userId];
     }
 }
 
@@ -69,7 +69,7 @@ static User *_user;
     return value;
 }
 
-- (void)fetchMailruWithToken:(NSString*)token ForUser:(NSString*)userId
+- (void)fetchOdnoklassnikiWithToken:(NSString*)token ForUser:(NSString*)userId
 {
     NSString *str = [NSString stringWithFormat:kMe, kAppId, token, userId];
     NSURL *url = [NSURL URLWithString:str];
@@ -96,8 +96,8 @@ static User *_user;
                  _user.firstName = dict[@"first_name"];
                  _user.lastName  = dict[@"last_name"];
                  _user.city      = dict[@"city"];
-                 _user.avatar    = dict[@"pic_big"];
-                 _user.female    = (0 != (long)dict[@"sex"]);
+                 _user.avatar    = dict[@"pic_2"];
+                 _user.female    = (0 != (long)dict[@"gender"]);
              
                  dispatch_async(dispatch_get_main_queue(), ^(void) {
                      [self performSegueWithIdentifier: @"pushDetailViewController" sender: self];
