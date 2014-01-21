@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8443480518845D9F00E9522F /* female.png in Resources */ = {isa = PBXBuildFile; fileRef = 8443480418845D9F00E9522F /* female.png */; };
 		8443480718845DA800E9522F /* male.png in Resources */ = {isa = PBXBuildFile; fileRef = 8443480618845DA800E9522F /* male.png */; };
+		84A5B9AC188E8274004714DB /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A5B9AB188E8274004714DB /* User.m */; };
 		84F05E921884539B00C39AB9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F05E911884539B00C39AB9 /* Foundation.framework */; };
 		84F05E941884539B00C39AB9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F05E931884539B00C39AB9 /* CoreGraphics.framework */; };
 		84F05E961884539B00C39AB9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F05E951884539B00C39AB9 /* UIKit.framework */; };
@@ -41,6 +42,8 @@
 		0EE8F252A0034D218416E27F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		8443480418845D9F00E9522F /* female.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = female.png; sourceTree = "<group>"; };
 		8443480618845DA800E9522F /* male.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = male.png; sourceTree = "<group>"; };
+		84A5B9AA188E8274004714DB /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		84A5B9AB188E8274004714DB /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		84F05E8E1884539B00C39AB9 /* oauthGoogle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = oauthGoogle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F05E911884539B00C39AB9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		84F05E931884539B00C39AB9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -129,6 +132,8 @@
 				84F05EA11884539B00C39AB9 /* AppDelegate.m */,
 				84F05EA31884539B00C39AB9 /* Main.storyboard */,
 				84F05EA61884539B00C39AB9 /* ViewController.h */,
+				84A5B9AA188E8274004714DB /* User.h */,
+				84A5B9AB188E8274004714DB /* User.m */,
 				84F05EA71884539B00C39AB9 /* ViewController.m */,
 				84F05EC61884548D00C39AB9 /* DetailViewController.h */,
 				84F05EC71884548D00C39AB9 /* DetailViewController.m */,
@@ -303,6 +308,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84A5B9AC188E8274004714DB /* User.m in Sources */,
 				84F05EA81884539B00C39AB9 /* ViewController.m in Sources */,
 				84F05EA21884539B00C39AB9 /* AppDelegate.m in Sources */,
 				84F05E9E1884539B00C39AB9 /* main.m in Sources */,

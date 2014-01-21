@@ -23,6 +23,7 @@
 		8405A7CE187ECF59003D9687 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8405A7CC187ECF59003D9687 /* InfoPlist.strings */; };
 		8405A7D0187ECF59003D9687 /* oauthFacebookTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8405A7CF187ECF59003D9687 /* oauthFacebookTests.m */; };
 		8405A7DB187F460F003D9687 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8405A7DA187F460F003D9687 /* DetailViewController.m */; };
+		84A5B9A9188E802A004714DB /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A5B9A8188E802A004714DB /* User.m */; };
 		84B4ED591884359800024ED3 /* female.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B4ED581884359800024ED3 /* female.png */; };
 		84B4ED5B1884359F00024ED3 /* male.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B4ED5A1884359F00024ED3 /* male.png */; };
 /* End PBXBuildFile section */
@@ -60,6 +61,8 @@
 		8405A7CF187ECF59003D9687 /* oauthFacebookTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = oauthFacebookTests.m; sourceTree = "<group>"; };
 		8405A7D9187F460F003D9687 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		8405A7DA187F460F003D9687 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		84A5B9A7188E802A004714DB /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		84A5B9A8188E802A004714DB /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		84B4ED581884359800024ED3 /* female.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = female.png; sourceTree = "<group>"; };
 		84B4ED5A1884359F00024ED3 /* male.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = male.png; sourceTree = "<group>"; };
 		84C5E1EB20FC4D82B9B53456 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -132,6 +135,8 @@
 				8405A7DA187F460F003D9687 /* DetailViewController.m */,
 				8405A7B9187ECF59003D9687 /* ViewController.h */,
 				8405A7BA187ECF59003D9687 /* ViewController.m */,
+				84A5B9A7188E802A004714DB /* User.h */,
+				84A5B9A8188E802A004714DB /* User.m */,
 				84B4ED5A1884359F00024ED3 /* male.png */,
 				84B4ED581884359800024ED3 /* female.png */,
 				8405A7BC187ECF59003D9687 /* Images.xcassets */,
@@ -303,6 +308,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84A5B9A9188E802A004714DB /* User.m in Sources */,
 				8405A7BB187ECF59003D9687 /* ViewController.m in Sources */,
 				8405A7B5187ECF59003D9687 /* AppDelegate.m in Sources */,
 				8405A7B1187ECF59003D9687 /* main.m in Sources */,

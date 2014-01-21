@@ -85,7 +85,7 @@ static NSDictionary *_dict;
              _dict = [NSJSONSerialization JSONObjectWithData:data
                                                      options:NSJSONReadingMutableContainers
                                                        error:nil];
-             //NSLog(@"dict = %@", dict);
+             NSLog(@"dict = %@", _dict);
              
              dispatch_async(dispatch_get_main_queue(), ^(void) {
                  [self performSegueWithIdentifier: @"pushDetailViewController" sender: self];
