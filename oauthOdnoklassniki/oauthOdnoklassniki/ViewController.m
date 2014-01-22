@@ -4,13 +4,14 @@
 #import "User.h"
 
 static NSString* const kAppId =    @"217129728";
+static NSString* const kPublic =   @"CBAECCPNABABABABA";
 static NSString* const kSecret =   @"EE9D964651AE21C64F74D094";
 static NSString* const kAuthUrl =  @"http://www.odnoklassniki.ru/oauth/authorize?response_type=code&display=touch&layout=m&client_id=%@&redirect_uri=%@";
 static NSString* const kRedirect = @"http://connect.mail.ru/oauth/success.html";
 static NSString* const kTokenUrl = @"http://api.odnoklassniki.ru/oauth/token.do";
 static NSString* const kBody =     @"grant_type=authorization_code&code=%@&client_id=%@&redirect_uri=%@&client_secret=%@";
-static NSString* const kParams =   @"application_key=%@&format=JSON&method=users.getCurrentUser";
-static NSString* const kMe =       @"http://api.odnoklassniki.ru/fb.do?%@&access_token=%@&sig=%@%@";
+static NSString* const kParams =   @"application_key=%@format=JSONmethod=users.getCurrentUser";
+static NSString* const kMe =       @"http://api.odnoklassniki.ru/fb.do?application_key=%@&format=JSON&method=users.getCurrentUser&access_token=%@&sig=%@";
 
 static User *_user;
 
@@ -119,12 +120,12 @@ static User *_user;
 
 - (void)fetchOdnoklassnikiWithToken:(NSString*)token
 {
-    NSString *params = [NSString stringWithFormat:kParams, kAppId];
- 
-    NSString *sig1 = [self md5:params];
-    NSString *sig2 = [self md5:[NSString stringWithFormat:@"%@%@", token, kSecret]];
-    
-    NSString *str = [NSString stringWithFormat:kMe, params, token, sig1, sig2];
+    NSString *params = [NSString stringWithFormat:kParams, kPublic];
+
+    NSString *sig = [self md5:[NSString stringWithFormat:@"%@%@", token, kSecret]];
+    sig = [self md5:[NSString stringWithFormat:@"%@%@", params, sig]];
+
+    NSString *str = [NSString stringWithFormat:kMe, kPublic, token, sig];
     NSURL *url = [NSURL URLWithString:str];
     NSURLRequest *req = [NSURLRequest requestWithURL:url];
     NSLog(@"%s: url=%@", __PRETTY_FUNCTION__, url);

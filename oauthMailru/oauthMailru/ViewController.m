@@ -7,7 +7,7 @@ static NSString* const kAppId =    @"715360";
 static NSString* const kSecret =   @"60648c6d79654e4b1d99abe784ff6f63";
 static NSString* const kAuthUrl =  @"https://connect.mail.ru/oauth/authorize?response_type=token&display=touch&client_id=%@&redirect_uri=%@";
 static NSString* const kRedirect = @"http://connect.mail.ru/oauth/success.html";
-static NSString* const kSig =      @"%@app_id=%@method=users.getInfosession_key=%@uids=%@%@";
+static NSString* const kParams =   @"%@app_id=%@method=users.getInfosession_key=%@uids=%@%@";
 static NSString* const kMe =       @"http://www.appsmail.ru/platform/api?app_id=%@&method=users.getInfo&session_key=%@&uids=%@&sig=%@";
 
 static User *_user;
@@ -73,7 +73,7 @@ static User *_user;
 
 - (void)fetchMailruWithToken:(NSString*)token ForUser:(NSString*)userId
 {
-    NSString *sig = [self md5:[NSString stringWithFormat:kSig, userId, kAppId, token, userId, kSecret]];
+    NSString *sig = [self md5:[NSString stringWithFormat:kParams, userId, kAppId, token, userId, kSecret]];
     
     NSString *str = [NSString stringWithFormat:kMe, kAppId, token, userId, sig];
     NSURL *url = [NSURL URLWithString:str];
