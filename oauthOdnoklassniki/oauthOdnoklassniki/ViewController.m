@@ -6,8 +6,8 @@
 static NSString* const kAppId =    @"217129728";
 static NSString* const kSecret =   @"EE9D964651AE21C64F74D094";
 static NSString* const kAuthUrl =  @"http://www.odnoklassniki.ru/oauth/authorize?response_type=code&display=touch&layout=m&client_id=%@&redirect_uri=%@";
-static NSString* const kRedirect = @"http://api.odnoklassniki.ru/oauth/token.do";
-static NSString* const kTokenUrl = @"http://connect.mail.ru/oauth/success.html";
+static NSString* const kRedirect = @"http://connect.mail.ru/oauth/success.html";
+static NSString* const kTokenUrl = @"http://api.odnoklassniki.ru/oauth/token.do";
 static NSString* const kMe =       @"http://api.odnoklassniki.ru/fb.do?app_id=%@&method=users.getInfo&session_key=%@&uids=%@";
 
 static User *_user;
@@ -43,12 +43,11 @@ static User *_user;
     NSURL *url = [webView.request mainDocumentURL];
     NSLog(@"%s: url=%@", __PRETTY_FUNCTION__, url);
     NSString *str = [url absoluteString];
-    NSString *token = [self extractValueFrom:str ForKey:@"access_token"];
-    NSString *userId = [self extractValueFrom:str ForKey:@"x_mailru_vid"];
-    NSLog(@"%s: %@ %@", __PRETTY_FUNCTION__, token, userId);
+    NSString *code = [self extractValueFrom:str ForKey:@"code"];
+    NSLog(@"%s: code=%@ %@", __PRETTY_FUNCTION__, code);
     
-    if (token && userId) {
-        [self fetchOdnoklassnikiWithToken:token ForUser:userId];
+    if (code) {
+        [self fetchOdnoklassnikiWithToken:code];
     }
 }
 
@@ -71,9 +70,9 @@ static User *_user;
     return value;
 }
 
-- (void)fetchOdnoklassnikiWithToken:(NSString*)token ForUser:(NSString*)userId
+- (void)fetchOdnoklassnikiWithCode:(NSString*)code
 {
-    NSString *str = [NSString stringWithFormat:kMe, kAppId, token, userId];
+    NSString *str = [NSString stringWithFormat:kTokenUrl, kAppId, code];
     NSURL *url = [NSURL URLWithString:str];
     NSURLRequest *req = [NSURLRequest requestWithURL:url];
     NSLog(@"%s: url=%@", __PRETTY_FUNCTION__, url);

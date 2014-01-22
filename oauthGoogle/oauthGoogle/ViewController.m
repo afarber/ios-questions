@@ -46,9 +46,9 @@ static User *_user;
     NSString *title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
     NSLog(@"%s: title=%@", __PRETTY_FUNCTION__, title);
 
-    NSString *token = [self extractValueFrom:title ForKey:@"code"];
-    if (token) {
-        [self fetchGoogle1:token];
+    NSString *code = [self extractValueFrom:title ForKey:@"code"];
+    if (code) {
+        [self fetchGoogleWithCode:code];
     }
 }
 
@@ -71,7 +71,7 @@ static User *_user;
     return value;
 }
 
-- (void)fetchGoogle1:(NSString*)token
+- (void)fetchGoogleWithCode:(NSString*)code
 {
     NSString *redirect = [kRedirect stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURL *url = [NSURL URLWithString:kTokenUrl];
@@ -79,7 +79,7 @@ static User *_user;
     [req setHTTPMethod:@"POST"];
     
     NSString *body = [NSString stringWithFormat:kBody,
-                     token, kAppId, redirect, kSecret];
+                     code, kAppId, redirect, kSecret];
     [req setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
 
     NSLog(@"%s: req=%@", __PRETTY_FUNCTION__, req);
@@ -108,7 +108,7 @@ static User *_user;
              NSDictionary *dict = json;
              NSString *token = dict[@"access_token"];
              NSLog(@"token=%@", token);
-             [self fetchGoogle2:token];
+             [self fetchGoogleWithToken:token];
          } else {
              NSLog(@"Download failed: %@", error);
          }
@@ -116,7 +116,7 @@ static User *_user;
 }
 
 
-- (void)fetchGoogle2:(NSString*)token
+- (void)fetchGoogleWithToken:(NSString*)token
 {
     NSString *str = [kMe stringByAppendingString:token];
     NSURL *url = [NSURL URLWithString:str];
