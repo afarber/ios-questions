@@ -85,24 +85,29 @@ static User *_user;
                          NSError *error) {
          
          if (error == nil && [data length] > 0) {
-             NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data
-                                                                  options:NSJSONReadingMutableContainers
-                                                                    error:nil][@"response"][0];
-             NSLog(@"dict=%@", dict);
+             id json = [NSJSONSerialization JSONObjectWithData:data
+                                                       options:NSJSONReadingMutableContainers
+                                                         error:nil];
+             NSLog(@"json=%@", json);
              
-             if (dict) {
-                 _user = [[User alloc] init];
-                 _user.userId    = dict[@"uid"];
-                 _user.firstName = dict[@"first_name"];
-                 _user.lastName  = dict[@"last_name"];
-                 _user.city      = dict[@"city"];
-                 _user.avatar    = dict[@"photo_big"];
-                 _user.female    = (2 == (long)dict[@"female"]);
-             
-                 dispatch_async(dispatch_get_main_queue(), ^(void) {
-                     [self performSegueWithIdentifier: @"pushDetailViewController" sender: self];
-                 });
+             if (![json isKindOfClass:[NSDictionary class]]) {
+                 NSLog(@"Parsing response failed");
+                 return;
              }
+             
+             NSDictionary *dict = json[@"response"][0];
+
+             _user = [[User alloc] init];
+             _user.userId    = dict[@"uid"];
+             _user.firstName = dict[@"first_name"];
+             _user.lastName  = dict[@"last_name"];
+             _user.city      = dict[@"city"];
+             _user.avatar    = dict[@"photo_big"];
+             _user.female    = (2 == (long)dict[@"female"]);
+             
+             dispatch_async(dispatch_get_main_queue(), ^(void) {
+                 [self performSegueWithIdentifier: @"pushDetailViewController" sender: self];
+             });
          } else {
              NSLog(@"Download failed: %@", error);
          }

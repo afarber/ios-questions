@@ -49,7 +49,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="deu-w1-WPo">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="154" translatesAutoresizingMaskIntoConstraints="NO" id="deu-w1-WPo">
                                 <rect key="frame" x="20" y="72" width="280" height="343"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -99,12 +99,8 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ow7-lu-Ook" secondAttribute="trailing" constant="20" symbolic="YES" id="1IY-Zm-odf"/>
                             <constraint firstItem="ow7-lu-Ook" firstAttribute="leading" secondItem="CCf-yy-hfa" secondAttribute="leading" constant="20" symbolic="YES" id="65o-K6-bZY"/>
-                            <constraint firstItem="y09-4r-JYf" firstAttribute="top" secondItem="deu-w1-WPo" secondAttribute="bottom" constant="8" symbolic="YES" id="BkJ-Zh-bhS"/>
                             <constraint firstItem="V4r-YK-ElW" firstAttribute="top" secondItem="ow7-lu-Ook" secondAttribute="bottom" constant="8" symbolic="YES" id="Ilm-7N-fDo"/>
                             <constraint firstAttribute="trailing" secondItem="Mjl-MM-EKX" secondAttribute="trailing" constant="20" symbolic="YES" id="KAI-Eh-3SH"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="deu-w1-WPo" secondAttribute="trailing" constant="20" symbolic="YES" id="NOZ-F7-Cp8"/>
-                            <constraint firstItem="deu-w1-WPo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="CCf-yy-hfa" secondAttribute="leading" constant="20" symbolic="YES" id="PJf-gC-G9W"/>
-                            <constraint firstItem="deu-w1-WPo" firstAttribute="leading" relation="lessThanOrEqual" secondItem="CCf-yy-hfa" secondAttribute="leading" constant="20" symbolic="YES" id="Pvl-A0-4Ac"/>
                             <constraint firstItem="V4r-YK-ElW" firstAttribute="leading" secondItem="CCf-yy-hfa" secondAttribute="leading" constant="20" symbolic="YES" id="S2V-fj-uA0"/>
                             <constraint firstAttribute="trailing" secondItem="y09-4r-JYf" secondAttribute="trailing" constant="20" symbolic="YES" id="UKA-Xy-PPZ"/>
                             <constraint firstItem="zqB-gT-Wva" firstAttribute="top" secondItem="y09-4r-JYf" secondAttribute="bottom" constant="8" symbolic="YES" id="UOa-Iv-BP8"/>
@@ -118,7 +114,6 @@
                             <constraint firstAttribute="trailing" secondItem="zqB-gT-Wva" secondAttribute="trailing" constant="20" symbolic="YES" id="p9V-Ti-mgz"/>
                             <constraint firstItem="MCy-R3-WVU" firstAttribute="top" secondItem="V4r-YK-ElW" secondAttribute="bottom" constant="20" symbolic="YES" id="sBN-o7-TNJ"/>
                             <constraint firstItem="deu-w1-WPo" firstAttribute="top" secondItem="b7K-ah-Do3" secondAttribute="bottom" constant="20" symbolic="YES" id="saL-Pf-Cue"/>
-                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="deu-w1-WPo" secondAttribute="trailing" constant="20" symbolic="YES" id="uIU-2R-i6l"/>
                             <constraint firstItem="y09-4r-JYf" firstAttribute="top" secondItem="deu-w1-WPo" secondAttribute="bottom" constant="8" symbolic="YES" id="y8O-cy-U92"/>
                             <constraint firstItem="deu-w1-WPo" firstAttribute="leading" secondItem="CCf-yy-hfa" secondAttribute="leading" constant="20" symbolic="YES" id="yna-qR-IGc"/>
                         </constraints>
