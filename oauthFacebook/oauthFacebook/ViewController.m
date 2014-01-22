@@ -84,24 +84,29 @@ static User *_user;
                          NSError *error) {
          
          if (error == nil && [data length] > 0) {
-             NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data
-                                                                  options:NSJSONReadingMutableContainers
-                                                                    error:nil];
-             NSLog(@"dict=%@", dict);
+             id json = [NSJSONSerialization JSONObjectWithData:data
+                                                       options:NSJSONReadingMutableContainers
+                                                         error:nil];
+             NSLog(@"json=%@", json);
              
-             if (dict) {
-                 _user = [[User alloc] init];
-                 _user.userId    = dict[@"id"];
-                 _user.firstName = dict[@"first_name"];
-                 _user.lastName  = dict[@"last_name"];
-                 _user.city      = dict[@"location"][@"name"];
-                 _user.avatar    = [NSString stringWithFormat:kAvatar, dict[@"id"]];
-                 _user.female    = ([@"female" caseInsensitiveCompare:dict[@"gender"]] == NSOrderedSame);
-                 
-                 dispatch_async(dispatch_get_main_queue(), ^(void) {
-                     [self performSegueWithIdentifier: @"pushDetailViewController" sender: self];
-                 });
+             if (![json isKindOfClass:[NSDictionary class]]) {
+                 NSLog(@"Parsing response failed");
+                 return;
              }
+             
+             NSDictionary *dict = json;
+             
+             _user = [[User alloc] init];
+             _user.userId    = dict[@"id"];
+             _user.firstName = dict[@"first_name"];
+             _user.lastName  = dict[@"last_name"];
+             _user.city      = dict[@"location"][@"name"];
+             _user.avatar    = [NSString stringWithFormat:kAvatar, dict[@"id"]];
+             _user.female    = ([@"female" caseInsensitiveCompare:dict[@"gender"]] == NSOrderedSame);
+             
+             dispatch_async(dispatch_get_main_queue(), ^(void) {
+                 [self performSegueWithIdentifier: @"pushDetailViewController" sender: self];
+             });
          } else {
              NSLog(@"Download failed: %@", error);
          }
