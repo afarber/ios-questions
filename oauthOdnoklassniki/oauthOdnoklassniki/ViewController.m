@@ -8,7 +8,9 @@ static NSString* const kSecret =   @"EE9D964651AE21C64F74D094";
 static NSString* const kAuthUrl =  @"http://www.odnoklassniki.ru/oauth/authorize?response_type=code&display=touch&layout=m&client_id=%@&redirect_uri=%@";
 static NSString* const kRedirect = @"http://connect.mail.ru/oauth/success.html";
 static NSString* const kTokenUrl = @"http://api.odnoklassniki.ru/oauth/token.do";
-static NSString* const kMe =       @"http://api.odnoklassniki.ru/fb.do?app_id=%@&method=users.getInfo&session_key=%@&uids=%@";
+static NSString* const kBody =     @"grant_type=authorization_code&code=%@&client_id=%@&redirect_uri=%@&client_secret=%@";
+static NSString* const kParams =   @"application_key=%@&format=JSON&method=users.getCurrentUser";
+static NSString* const kMe =       @"http://api.odnoklassniki.ru/fb.do?%@&access_token=%@&sig=%@%@";
 
 static User *_user;
 
@@ -44,10 +46,10 @@ static User *_user;
     NSLog(@"%s: url=%@", __PRETTY_FUNCTION__, url);
     NSString *str = [url absoluteString];
     NSString *code = [self extractValueFrom:str ForKey:@"code"];
-    NSLog(@"%s: code=%@ %@", __PRETTY_FUNCTION__, code);
+    NSLog(@"%s: code=%@", __PRETTY_FUNCTION__, code);
     
     if (code) {
-        [self fetchOdnoklassnikiWithToken:code];
+        [self fetchOdnoklassnikiWithCode:code];
     }
 }
 
@@ -72,7 +74,57 @@ static User *_user;
 
 - (void)fetchOdnoklassnikiWithCode:(NSString*)code
 {
-    NSString *str = [NSString stringWithFormat:kTokenUrl, kAppId, code];
+    NSString *redirect = [kRedirect stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSURL *url = [NSURL URLWithString:kTokenUrl];
+    NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
+    [req setHTTPMethod:@"POST"];
+    
+    NSString *body = [NSString stringWithFormat:kBody,
+                      code, kAppId, redirect, kSecret];
+    [req setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSLog(@"%s: req=%@", __PRETTY_FUNCTION__, req);
+    
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    
+    [NSURLConnection
+     sendAsynchronousRequest:req
+     queue:queue
+     completionHandler:^(NSURLResponse *response,
+                         NSData *data,
+                         NSError *error) {
+         
+         if (error == nil && [data length] > 0) {
+             id json = [NSJSONSerialization JSONObjectWithData:data
+                                                       options:NSJSONReadingMutableContainers
+                                                         error:nil];
+             NSLog(@"json=%@", json);
+             
+             
+             if (![json isKindOfClass:[NSDictionary class]]) {
+                 NSLog(@"Parsing response failed");
+                 return;
+             }
+             
+             NSDictionary *dict = json;
+             NSString *token = dict[@"access_token"];
+             NSLog(@"token=%@", token);
+             [self fetchOdnoklassnikiWithToken:token];
+         } else {
+             NSLog(@"Download failed: %@", error);
+         }
+     }];
+}
+
+
+- (void)fetchOdnoklassnikiWithToken:(NSString*)token
+{
+    NSString *params = [NSString stringWithFormat:kParams, kAppId];
+ 
+    NSString *sig1 = [self md5:params];
+    NSString *sig2 = [self md5:[NSString stringWithFormat:@"%@%@", token, kSecret]];
+    
+    NSString *str = [NSString stringWithFormat:kMe, params, token, sig1, sig2];
     NSURL *url = [NSURL URLWithString:str];
     NSURLRequest *req = [NSURLRequest requestWithURL:url];
     NSLog(@"%s: url=%@", __PRETTY_FUNCTION__, url);
@@ -89,23 +141,23 @@ static User *_user;
              id json = [NSJSONSerialization JSONObjectWithData:data
                                                        options:NSJSONReadingMutableContainers
                                                          error:nil];
-             NSLog(@"json=%@", json);
+             NSLog(@"json = %@", json);
              
-             if (![json isKindOfClass:[NSArray class]]) {
+             if (![json isKindOfClass:[NSDictionary class]]) {
                  NSLog(@"Parsing response failed");
                  return;
              }
              
-             NSDictionary *dict = json[0];
+             NSDictionary *dict = json;
              
              _user = [[User alloc] init];
              _user.userId    = dict[@"uid"];
              _user.firstName = dict[@"first_name"];
              _user.lastName  = dict[@"last_name"];
-             _user.city      = dict[@"city"];
+             _user.city      = dict[@"location"][@"city"];
              _user.avatar    = dict[@"pic_2"];
-             _user.female    = (0 != (long)dict[@"gender"]);
-         
+             _user.female    = ([@"female" caseInsensitiveCompare:dict[@"gender"]] == NSOrderedSame);
+             
              dispatch_async(dispatch_get_main_queue(), ^(void) {
                  [self performSegueWithIdentifier: @"pushDetailViewController" sender: self];
              });
