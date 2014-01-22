@@ -24,7 +24,7 @@
     NSLog(@"first_name: %@", _user.firstName);
     NSLog(@"last_name: %@",  _user.lastName);
     NSLog(@"city: %@",       _user.city);
-    NSLog(@"gender: %hhd",   _user.female);
+    NSLog(@"female: %hhd",   _user.female);
     NSLog(@"avatar: %@",     _user.avatar);
     
     _userId.text    = [NSString stringWithFormat:@"%@", _user.userId];

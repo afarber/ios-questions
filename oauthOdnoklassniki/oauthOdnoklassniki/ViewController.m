@@ -1,12 +1,14 @@
+#import <CommonCrypto/CommonDigest.h>
 #import "ViewController.h"
 #import "DetailViewController.h"
 #import "User.h"
 
-static NSString* const kAppId =    @"1392384";
-static NSString* const kSecret =   @"BDCB7DC52AAFD28A1774D232";
-static NSString* const kAuthUrl =  @"https://connect.mail.ru/oauth/authorize?response_type=token&display=touch&client_id=%@&redirect_uri=%@";
-static NSString* const kRedirect = @"http://connect.mail.ru/oauth/success.html";
-static NSString* const kMe =       @"http://www.appsmail.ru/platform/api?app_id=%@&method=users.getInfo&session_key=%@&uids=%@";
+static NSString* const kAppId =    @"217129728";
+static NSString* const kSecret =   @"EE9D964651AE21C64F74D094";
+static NSString* const kAuthUrl =  @"http://www.odnoklassniki.ru/oauth/authorize?response_type=code&display=touch&layout=m&client_id=%@&redirect_uri=%@";
+static NSString* const kRedirect = @"http://api.odnoklassniki.ru/oauth/token.do";
+static NSString* const kTokenUrl = @"http://connect.mail.ru/oauth/success.html";
+static NSString* const kMe =       @"http://api.odnoklassniki.ru/fb.do?app_id=%@&method=users.getInfo&session_key=%@&uids=%@";
 
 static User *_user;
 
@@ -85,24 +87,29 @@ static User *_user;
                          NSError *error) {
          
          if (error == nil && [data length] > 0) {
-             NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data
-                                                                  options:NSJSONReadingMutableContainers
-                                                                    error:nil];
-             NSLog(@"dict=%@", dict);
+             id json = [NSJSONSerialization JSONObjectWithData:data
+                                                       options:NSJSONReadingMutableContainers
+                                                         error:nil];
+             NSLog(@"json=%@", json);
              
-             if (dict) {
-                 _user = [[User alloc] init];
-                 _user.userId    = dict[@"uid"];
-                 _user.firstName = dict[@"first_name"];
-                 _user.lastName  = dict[@"last_name"];
-                 _user.city      = dict[@"city"];
-                 _user.avatar    = dict[@"pic_2"];
-                 _user.female    = (0 != (long)dict[@"gender"]);
-             
-                 dispatch_async(dispatch_get_main_queue(), ^(void) {
-                     [self performSegueWithIdentifier: @"pushDetailViewController" sender: self];
-                 });
+             if (![json isKindOfClass:[NSArray class]]) {
+                 NSLog(@"Parsing response failed");
+                 return;
              }
+             
+             NSDictionary *dict = json[0];
+             
+             _user = [[User alloc] init];
+             _user.userId    = dict[@"uid"];
+             _user.firstName = dict[@"first_name"];
+             _user.lastName  = dict[@"last_name"];
+             _user.city      = dict[@"city"];
+             _user.avatar    = dict[@"pic_2"];
+             _user.female    = (0 != (long)dict[@"gender"]);
+         
+             dispatch_async(dispatch_get_main_queue(), ^(void) {
+                 [self performSegueWithIdentifier: @"pushDetailViewController" sender: self];
+             });
          } else {
              NSLog(@"Download failed: %@", error);
          }
@@ -115,6 +122,20 @@ static User *_user;
         DetailViewController *dvc = segue.destinationViewController;
         [dvc setUser:_user];
     }
+}
+
+- (NSString *) md5:(NSString *)input
+{
+    const char *cStr = [input UTF8String];
+    unsigned char digest[16];
+    CC_MD5(cStr, strlen(cStr), digest);
+    
+    NSMutableString *str = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+    
+    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
+        [str appendFormat:@"%02x", digest[i]];
+    
+    return str;
 }
 
 @end
