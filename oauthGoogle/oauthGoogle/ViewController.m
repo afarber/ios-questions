@@ -94,11 +94,18 @@ static User *_user;
                          NSError *error) {
          
          if (error == nil && [data length] > 0) {
-             NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data
-                                                                  options:NSJSONReadingMutableContainers
-                                                                    error:nil];
-             NSLog(@"dict=%@", dict);
+             id json = [NSJSONSerialization JSONObjectWithData:data
+                                                       options:NSJSONReadingMutableContainers
+                                                         error:nil];
+             NSLog(@"json=%@", json);
              
+             
+             if (![json isKindOfClass:[NSDictionary class]]) {
+                 NSLog(@"Parsing response failed");
+                 return;
+             }
+             
+             NSDictionary *dict = json;
              NSString *token = dict[@"access_token"];
              NSLog(@"token=%@", token);
              [self fetchGoogle2:token];
@@ -125,24 +132,29 @@ static User *_user;
                          NSError *error) {
          
          if (error == nil && [data length] > 0) {
-             NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data
-                                                                  options:NSJSONReadingMutableContainers
-                                                                    error:nil];
-             NSLog(@"dict = %@", dict);
-             
-             if (dict) {
-                 _user = [[User alloc] init];
-                 _user.userId    = dict[@"id"];
-                 _user.firstName = dict[@"given_name"];
-                 _user.lastName  = dict[@"family_name"];
-                 //_user.city    = dict[@"PlacesLived"][0][@"value"];
-                 _user.avatar    = dict[@"picture"];
-                 _user.female    = ([@"female" caseInsensitiveCompare:dict[@"gender"]] == NSOrderedSame);
-                 
-                 dispatch_async(dispatch_get_main_queue(), ^(void) {
-                     [self performSegueWithIdentifier: @"pushDetailViewController" sender: self];
-                 });
+             id json = [NSJSONSerialization JSONObjectWithData:data
+                                                       options:NSJSONReadingMutableContainers
+                                                         error:nil];
+             NSLog(@"json = %@", json);
+
+             if (![json isKindOfClass:[NSDictionary class]]) {
+                 NSLog(@"Parsing response failed");
+                 return;
              }
+             
+             NSDictionary *dict = json;
+
+             _user = [[User alloc] init];
+             _user.userId    = dict[@"id"];
+             _user.firstName = dict[@"given_name"];
+             _user.lastName  = dict[@"family_name"];
+             //_user.city    = dict[@"PlacesLived"][0][@"value"];
+             _user.avatar    = dict[@"picture"];
+             _user.female    = ([@"female" caseInsensitiveCompare:dict[@"gender"]] == NSOrderedSame);
+             
+             dispatch_async(dispatch_get_main_queue(), ^(void) {
+                 [self performSegueWithIdentifier: @"pushDetailViewController" sender: self];
+             });
          } else {
              NSLog(@"Download failed: %@", error);
          }
