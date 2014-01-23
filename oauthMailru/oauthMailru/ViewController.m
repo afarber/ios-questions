@@ -107,7 +107,7 @@ static User *_user;
              _user.lastName  = dict[@"last_name"];
              _user.city      = dict[@"location"][@"city"][@"name"];
              _user.avatar    = dict[@"pic_big"];
-             _user.female    = (0 != dict[@"sex"]);
+             _user.female    = [dict[@"sex"] boolValue];
              
              dispatch_async(dispatch_get_main_queue(), ^(void) {
                  [self performSegueWithIdentifier: @"pushDetailViewController" sender: self];
