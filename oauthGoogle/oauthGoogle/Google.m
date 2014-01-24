@@ -35,7 +35,6 @@ static NSString* const kMe =       @"https://www.googleapis.com/oauth2/v1/userin
     
     if (result) {
         value = [str substringWithRange:[result rangeAtIndex:1]];
-        NSLog(@"%s: value=%@", __PRETTY_FUNCTION__, value);
     }
     
     return value;

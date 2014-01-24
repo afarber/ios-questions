@@ -41,25 +41,6 @@ static User *_user;
     }
 }
 
-- (NSString*)extractValueFrom:(NSString*)str ForKey:(NSString*)key
-{
-    NSString *value = nil;
-    NSString *pattern = [key stringByAppendingString:@"=([^?&=]+)"];
-    
-    NSRegularExpression *regex = [[NSRegularExpression alloc] initWithPattern:pattern
-                                                                      options:0
-                                                                        error:nil];
-    NSRange searchRange = NSMakeRange(0, [str length]);
-    NSTextCheckingResult* result = [regex firstMatchInString:str options:0 range:searchRange];
-    
-    if (result) {
-        value = [str substringWithRange:[result rangeAtIndex:1]];
-        NSLog(@"%s: value=%@", __PRETTY_FUNCTION__, value);
-    }
-    
-    return value;
-}
-
 - (void)fetchWithCode:(NSString*)code
 {
     NSURLRequest *req = [_sn buildTokenUrlWithCode:code];
