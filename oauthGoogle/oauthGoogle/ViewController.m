@@ -35,9 +35,16 @@ static User *_user;
     NSString *title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
     NSLog(@"%s: title=%@", __PRETTY_FUNCTION__, title);
 
-    NSString *code = [_sn extractCodeFromStr:str FromTitle:title];
-    if (code) {
-        [self fetchWithCode:code];
+    if ([_sn shouldFetchToken]) {
+        NSString *code = [_sn extractCodeFromStr:str FromTitle:title];
+        if (code) {
+            [self fetchWithCode:code];
+        }
+    } else {
+        NSString *token = [_sn extractTokenFromStr:str FromTitle:title];
+        if (token) {
+            [self fetchWithToken:token];
+        }
     }
 }
 
@@ -61,7 +68,6 @@ static User *_user;
              NSLog(@"json=%@", json);
              
              NSString *token = [_sn extractTokenFromJson:json];
-             NSLog(@"token=%@", token);
              if (token) {
                  [self fetchWithToken:token];
              }

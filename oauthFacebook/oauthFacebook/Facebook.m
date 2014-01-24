@@ -1,14 +1,13 @@
-#import "Google.h"
+#import "Facebook.h"
 
-static NSString* const kAppId =    @"441988749325-h8bsf01r3jnv5nbsb31a8pi99660oe0q.apps.googleusercontent.com";
-static NSString* const kSecret =   @"YjnMME25A-2qvasUQbjM52vN";
-static NSString* const kAuthUrl =  @"https://accounts.google.com/o/oauth2/auth?response_type=code&scope=profile&client_id=%@&redirect_uri=%@&state=%d";
-static NSString* const kRedirect = @"urn:ietf:wg:oauth:2.0:oob";
-static NSString* const kTokenUrl = @"https://accounts.google.com/o/oauth2/token";
-static NSString* const kBody =     @"grant_type=authorization_code&code=%@&client_id=%@&redirect_uri=%@&client_secret=%@";
-static NSString* const kMe =       @"https://www.googleapis.com/oauth2/v1/userinfo?access_token=%@";
+static NSString* const kAppId =    @"432298283565593";
+static NSString* const kSecret =   @"c59d4f8cc0a15a0ad4090c3405729d8e";
+static NSString* const kAuthUrl =  @"https://graph.facebook.com/oauth/authorize?response_type=token&client_id=%@&redirect_uri=%@&state=%d";
+static NSString* const kRedirect = @"https://www.facebook.com/connect/login_success.html";
+static NSString* const kAvatar =   @"http://graph.facebook.com/%@/picture?type=large";
+static NSString* const kMe =       @"https://graph.facebook.com/me?access_token=%@";
 
-@implementation Google
+@implementation Facebook
 
 - (NSString*)buildLoginStr
 {
@@ -19,17 +18,17 @@ static NSString* const kMe =       @"https://www.googleapis.com/oauth2/v1/userin
 
 - (BOOL)shouldFetchToken
 {
-    return YES;
+    return NO;
 }
 
 - (NSString *)extractCodeFromStr:(NSString*)str FromTitle:(NSString*)title
 {
-    return [self extractValueFrom:title ForKey:@"code"];
+    return nil;
 }
 
 - (NSString *)extractTokenFromStr:(NSString*)str FromTitle:(NSString*)title
 {
-    return nil;
+    return [self extractValueFrom:str ForKey:@"access_token"];
 }
 
 - (NSString*)extractValueFrom:(NSString*)str ForKey:(NSString*)key
@@ -52,16 +51,7 @@ static NSString* const kMe =       @"https://www.googleapis.com/oauth2/v1/userin
 
 - (NSURLRequest*)buildTokenUrlWithCode:(NSString*)code
 {
-    NSString *redirect = [kRedirect stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSURL *url = [NSURL URLWithString:kTokenUrl];
-    NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
-    [req setHTTPMethod:@"POST"];
-    
-    NSString *body = [NSString stringWithFormat:kBody,
-                      code, kAppId, redirect, kSecret];
-    [req setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    return req;
+    return nil;
 }
 
 - (NSString*)extractTokenFromJson:(id)json
@@ -94,10 +84,10 @@ static NSString* const kMe =       @"https://www.googleapis.com/oauth2/v1/userin
     
     User *user = [[User alloc] init];
     user.userId    = dict[@"id"];
-    user.firstName = dict[@"given_name"];
-    user.lastName  = dict[@"family_name"];
-    //user.city    = dict[@"PlacesLived"][0][@"value"];
-    user.avatar    = dict[@"picture"];
+    user.firstName = dict[@"first_name"];
+    user.lastName  = dict[@"last_name"];
+    user.city      = dict[@"location"][@"name"];
+    user.avatar    = [NSString stringWithFormat:kAvatar, dict[@"id"]];
     user.female    = ([@"female" caseInsensitiveCompare:dict[@"gender"]] == NSOrderedSame);
     
     return user;
