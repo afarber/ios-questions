@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ISS-6g-yv7">
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ISS-6g-yv7">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -26,6 +26,12 @@
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ISS-6g-yv7" secondAttribute="trailing" id="3gB-mi-Suq"/>
+                            <constraint firstItem="ISS-6g-yv7" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="PGV-Hb-Oop"/>
+                            <constraint firstItem="fC1-JO-TOr" firstAttribute="top" secondItem="ISS-6g-yv7" secondAttribute="bottom" id="iWL-22-RcG"/>
+                            <constraint firstItem="ISS-6g-yv7" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="m3d-11-4Oz"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="oauthMailru" id="EYv-Ir-IyP"/>
                     <connections>
