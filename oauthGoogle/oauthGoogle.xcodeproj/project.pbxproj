@@ -25,6 +25,7 @@
 		84F05EBB1884539B00C39AB9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84F05EB91884539B00C39AB9 /* InfoPlist.strings */; };
 		84F05EBD1884539B00C39AB9 /* oauthGoogleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F05EBC1884539B00C39AB9 /* oauthGoogleTests.m */; };
 		84F05EC81884548D00C39AB9 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F05EC71884548D00C39AB9 /* DetailViewController.m */; };
+		84F663911892AD9100274932 /* Google.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F663901892AD9100274932 /* Google.m */; };
 		AD8C449206ED4EC7BC671DA4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C6F483C96B4FC2A2D42D6E /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,9 @@
 		84F05EBC1884539B00C39AB9 /* oauthGoogleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = oauthGoogleTests.m; sourceTree = "<group>"; };
 		84F05EC61884548D00C39AB9 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		84F05EC71884548D00C39AB9 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		84F6638E1892AD6300274932 /* SocialNetwork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SocialNetwork.h; sourceTree = "<group>"; };
+		84F6638F1892AD9100274932 /* Google.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Google.h; sourceTree = "<group>"; };
+		84F663901892AD9100274932 /* Google.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Google.m; sourceTree = "<group>"; };
 		F7C6F483C96B4FC2A2D42D6E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -136,6 +140,9 @@
 				84F05EC71884548D00C39AB9 /* DetailViewController.m */,
 				84A5B9AA188E8274004714DB /* User.h */,
 				84A5B9AB188E8274004714DB /* User.m */,
+				84F6638E1892AD6300274932 /* SocialNetwork.h */,
+				84F6638F1892AD9100274932 /* Google.h */,
+				84F663901892AD9100274932 /* Google.m */,
 				84F05EA31884539B00C39AB9 /* Main.storyboard */,
 				8443480618845DA800E9522F /* male.png */,
 				8443480418845D9F00E9522F /* female.png */,
@@ -308,6 +315,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84F663911892AD9100274932 /* Google.m in Sources */,
 				84A5B9AC188E8274004714DB /* User.m in Sources */,
 				84F05EA81884539B00C39AB9 /* ViewController.m in Sources */,
 				84F05EA21884539B00C39AB9 /* AppDelegate.m in Sources */,
