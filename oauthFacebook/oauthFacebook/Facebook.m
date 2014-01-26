@@ -31,24 +31,6 @@ static NSString* const kMe =       @"https://graph.facebook.com/me?access_token=
     return [self extractValueFrom:str ForKey:@"access_token"];
 }
 
-- (NSString*)extractValueFrom:(NSString*)str ForKey:(NSString*)key
-{
-    NSString *value = nil;
-    NSString *pattern = [key stringByAppendingString:@"=([^?&=]+)"];
-    
-    NSRegularExpression *regex = [[NSRegularExpression alloc] initWithPattern:pattern
-                                                                      options:0
-                                                                        error:nil];
-    NSRange searchRange = NSMakeRange(0, [str length]);
-    NSTextCheckingResult* result = [regex firstMatchInString:str options:0 range:searchRange];
-    
-    if (result) {
-        value = [str substringWithRange:[result rangeAtIndex:1]];
-    }
-    
-    return value;
-}
-
 - (NSURLRequest*)buildTokenUrlWithCode:(NSString*)code
 {
     return nil;
@@ -62,8 +44,7 @@ static NSString* const kMe =       @"https://graph.facebook.com/me?access_token=
     }
     
     NSDictionary *dict = json;
-    NSString *token = dict[@"access_token"];
-    return token;
+    return dict[@"access_token"];
 }
 
 - (NSURLRequest*)buildMeUrlWithToken:(NSString*)token
@@ -91,6 +72,24 @@ static NSString* const kMe =       @"https://graph.facebook.com/me?access_token=
     user.female    = ([@"female" caseInsensitiveCompare:dict[@"gender"]] == NSOrderedSame);
     
     return user;
+}
+
+- (NSString*)extractValueFrom:(NSString*)str ForKey:(NSString*)key
+{
+    NSString *value = nil;
+    NSString *pattern = [key stringByAppendingString:@"=([^?&=]+)"];
+    
+    NSRegularExpression *regex = [[NSRegularExpression alloc] initWithPattern:pattern
+                                                                      options:0
+                                                                        error:nil];
+    NSRange searchRange = NSMakeRange(0, [str length]);
+    NSTextCheckingResult* result = [regex firstMatchInString:str options:0 range:searchRange];
+    
+    if (result) {
+        value = [str substringWithRange:[result rangeAtIndex:1]];
+    }
+    
+    return value;
 }
 
 @end
