@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		74856E041893C6D900A0B9D2 /* Vkontakte.m in Sources */ = {isa = PBXBuildFile; fileRef = 74856E031893C6D900A0B9D2 /* Vkontakte.m */; };
 		841D9FAA188D50A400F3F05D /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 841D9FA9188D50A400F3F05D /* DetailViewController.m */; };
 		841D9FAC188D50AF00F3F05D /* male.png in Resources */ = {isa = PBXBuildFile; fileRef = 841D9FAB188D50AF00F3F05D /* male.png */; };
 		841D9FAE188D50B500F3F05D /* female.png in Resources */ = {isa = PBXBuildFile; fileRef = 841D9FAD188D50B500F3F05D /* female.png */; };
@@ -39,6 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		74856E011893C6CA00A0B9D2 /* SocialNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialNetwork.h; sourceTree = "<group>"; };
+		74856E021893C6D900A0B9D2 /* Vkontakte.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vkontakte.h; sourceTree = "<group>"; };
+		74856E031893C6D900A0B9D2 /* Vkontakte.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vkontakte.m; sourceTree = "<group>"; };
 		7B83246A989F49C4B3ECD76B /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		841D9FA8188D50A400F3F05D /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		841D9FA9188D50A400F3F05D /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
@@ -136,6 +140,9 @@
 				84AD7645188D4BD1006F3533 /* ViewController.m */,
 				84A5B9A4188DA31B004714DB /* User.h */,
 				84A5B9A5188DA31B004714DB /* User.m */,
+				74856E011893C6CA00A0B9D2 /* SocialNetwork.h */,
+				74856E021893C6D900A0B9D2 /* Vkontakte.h */,
+				74856E031893C6D900A0B9D2 /* Vkontakte.m */,
 				84AD7641188D4BD1006F3533 /* Main.storyboard */,
 				841D9FAD188D50B500F3F05D /* female.png */,
 				841D9FAB188D50AF00F3F05D /* male.png */,
@@ -313,6 +320,7 @@
 				84AD7640188D4BD1006F3533 /* AppDelegate.m in Sources */,
 				84AD763C188D4BD1006F3533 /* main.m in Sources */,
 				841D9FAA188D50A400F3F05D /* DetailViewController.m in Sources */,
+				74856E041893C6D900A0B9D2 /* Vkontakte.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

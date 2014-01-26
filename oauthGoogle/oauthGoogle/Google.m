@@ -26,13 +26,18 @@ static NSString* const kMe =       @"https://www.googleapis.com/oauth2/v1/userin
 
 - (NSURLRequest*)tokenReqWithStr:(NSString*)str AndTitle:(NSString*)title
 {
+    NSMutableURLRequest *req = nil;
+    
     NSString *code = [self extractValueFrom:title ForKey:@"code"];
-    NSString *redirect = [kRedirect stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSURL *url = [NSURL URLWithString:kTokenUrl];
-    NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
-    [req setHTTPMethod:@"POST"];
-    NSString *body = [NSString stringWithFormat:kBody, code, kAppId, redirect, kSecret];
-    [req setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    if (code) {
+        NSString *redirect = [kRedirect stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSURL *url = [NSURL URLWithString:kTokenUrl];
+        req = [NSMutableURLRequest requestWithURL:url];
+        [req setHTTPMethod:@"POST"];
+        NSString *body = [NSString stringWithFormat:kBody, code, kAppId, redirect, kSecret];
+        [req setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
+    }
     
     return req;
 }
