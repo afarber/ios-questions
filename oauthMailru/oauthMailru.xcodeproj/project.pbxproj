@@ -26,6 +26,7 @@
 		847C844B188EAF5200B7A2E5 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847C844A188EAF5200B7A2E5 /* DetailViewController.m */; };
 		847C844D188EAFB100B7A2E5 /* female.png in Resources */ = {isa = PBXBuildFile; fileRef = 847C844C188EAFB100B7A2E5 /* female.png */; };
 		847C844F188EAFB900B7A2E5 /* male.png in Resources */ = {isa = PBXBuildFile; fileRef = 847C844E188EAFB900B7A2E5 /* male.png */; };
+		84CAFF8F18957F9300A3ABA4 /* Mailru.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CAFF8E18957F9300A3ABA4 /* Mailru.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,9 @@
 		847C844A188EAF5200B7A2E5 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		847C844C188EAFB100B7A2E5 /* female.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = female.png; sourceTree = "<group>"; };
 		847C844E188EAFB900B7A2E5 /* male.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = male.png; sourceTree = "<group>"; };
+		84CAFF8D18957F9300A3ABA4 /* Mailru.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mailru.h; sourceTree = "<group>"; };
+		84CAFF8E18957F9300A3ABA4 /* Mailru.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mailru.m; sourceTree = "<group>"; };
+		84CAFF9018957FA500A3ABA4 /* SocialNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialNetwork.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +140,9 @@
 				847C8427188EAEFE00B7A2E5 /* ViewController.m */,
 				847C8446188EAF4800B7A2E5 /* User.h */,
 				847C8447188EAF4800B7A2E5 /* User.m */,
+				84CAFF9018957FA500A3ABA4 /* SocialNetwork.h */,
+				84CAFF8D18957F9300A3ABA4 /* Mailru.h */,
+				84CAFF8E18957F9300A3ABA4 /* Mailru.m */,
 				847C8423188EAEFE00B7A2E5 /* Main.storyboard */,
 				847C844E188EAFB900B7A2E5 /* male.png */,
 				847C844C188EAFB100B7A2E5 /* female.png */,
@@ -313,6 +320,7 @@
 				847C8428188EAEFE00B7A2E5 /* ViewController.m in Sources */,
 				847C8422188EAEFE00B7A2E5 /* AppDelegate.m in Sources */,
 				847C841E188EAEFE00B7A2E5 /* main.m in Sources */,
+				84CAFF8F18957F9300A3ABA4 /* Mailru.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
