@@ -9,11 +9,13 @@ static NSString* const kMe =       @"https://graph.facebook.com/me?access_token=
 
 @implementation Facebook
 
-- (NSString*)buildLoginStr
+- (NSURLRequest*)loginReq
 {
     int state = arc4random_uniform(1000);
     NSString *redirect = [kRedirect stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    return [NSString stringWithFormat:kAuthUrl, kAppId, redirect, state];
+    NSString *str = [NSString stringWithFormat:kAuthUrl, kAppId, redirect, state];
+    NSURL *url = [NSURL URLWithString:str];
+    return [NSURLRequest requestWithURL:url];
 }
 
 - (BOOL)shouldFetchToken
@@ -21,37 +23,29 @@ static NSString* const kMe =       @"https://graph.facebook.com/me?access_token=
     return NO;
 }
 
-- (NSString *)extractCodeFromStr:(NSString*)str FromTitle:(NSString*)title
+- (NSURLRequest*)tokenReqWithStr:(NSString*)str AndTitle:(NSString*)title
 {
     return nil;
 }
 
-- (NSString *)extractTokenFromStr:(NSString*)str FromTitle:(NSString*)title
+- (NSURLRequest*)userReqWithStr:(NSString*)str AndTitle:(NSString*)title
 {
-    return [self extractValueFrom:str ForKey:@"access_token"];
-}
-
-- (NSURLRequest*)buildTokenUrlWithCode:(NSString*)code
-{
-    return nil;
-}
-
-- (NSString*)extractTokenFromJson:(id)json
-{
-    if (![json isKindOfClass:[NSDictionary class]]) {
-        NSLog(@"Parsing response failed");
-        return nil;
+    NSURLRequest *req = nil;
+    
+    NSString *token = [self extractValueFrom:str ForKey:@"access_token"];
+    
+    if (token) {
+        NSString *me = [NSString stringWithFormat:kMe, token];
+        NSURL *url = [NSURL URLWithString:me];
+        req = [NSURLRequest requestWithURL:url];
     }
     
-    NSDictionary *dict = json;
-    return dict[@"access_token"];
+    return req;
 }
 
-- (NSURLRequest*)buildMeUrlWithToken:(NSString*)token
+- (NSURLRequest*)userReqWithJson:(id)json
 {
-    NSString *str = [NSString stringWithFormat:kMe, token];
-    NSURL *url = [NSURL URLWithString:str];
-    return [NSURLRequest requestWithURL:url];
+    return nil;
 }
 
 - (User*)createUserFromJson:(id)json
