@@ -3,13 +3,11 @@
 
 @protocol SocialNetwork <NSObject>
 
-- (NSString*)buildLoginStr;
+- (NSURLRequest*)loginReq;
 - (BOOL)shouldFetchToken;
-- (NSString*)extractCodeFromStr:(NSString*)str FromTitle:(NSString*)title;
-- (NSString*)extractTokenFromStr:(NSString*)str FromTitle:(NSString*)title;
-- (NSURLRequest*)buildTokenUrlWithCode:(NSString*)code;
-- (NSString*)extractTokenFromJson:(id)json;
-- (NSURLRequest*)buildMeUrlWithToken:(NSString*)token;
+- (NSURLRequest*)tokenReqWithStr:(NSString*)str AndTitle:(NSString*)title;
+- (NSURLRequest*)userReqWithStr:(NSString*)str AndTitle:(NSString*)title;
+- (NSURLRequest*)userReqWithJson:(id)json;
 - (User*)createUserFromJson:(id)json;
 
 @end

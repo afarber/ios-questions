@@ -10,11 +10,13 @@ static NSString* const kMe =       @"https://www.googleapis.com/oauth2/v1/userin
 
 @implementation Google
 
-- (NSString*)buildLoginStr
+- (NSURLRequest*)loginReq
 {
     int state = arc4random_uniform(1000);
     NSString *redirect = [kRedirect stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    return [NSString stringWithFormat:kAuthUrl, kAppId, redirect, state];
+    NSString *str = [NSString stringWithFormat:kAuthUrl, kAppId, redirect, state];
+    NSURL *url = [NSURL URLWithString:str];
+    return [NSURLRequest requestWithURL:url];
 }
 
 - (BOOL)shouldFetchToken
@@ -22,49 +24,25 @@ static NSString* const kMe =       @"https://www.googleapis.com/oauth2/v1/userin
     return YES;
 }
 
-- (NSString *)extractCodeFromStr:(NSString*)str FromTitle:(NSString*)title
+- (NSURLRequest*)tokenReqWithStr:(NSString*)str AndTitle:(NSString*)title
 {
-    return [self extractValueFrom:title ForKey:@"code"];
-}
-
-- (NSString *)extractTokenFromStr:(NSString*)str FromTitle:(NSString*)title
-{
-    return nil;
-}
-
-- (NSString*)extractValueFrom:(NSString*)str ForKey:(NSString*)key
-{
-    NSString *value = nil;
-    NSString *pattern = [key stringByAppendingString:@"=([^?&=]+)"];
-    
-    NSRegularExpression *regex = [[NSRegularExpression alloc] initWithPattern:pattern
-                                                                      options:0
-                                                                        error:nil];
-    NSRange searchRange = NSMakeRange(0, [str length]);
-    NSTextCheckingResult* result = [regex firstMatchInString:str options:0 range:searchRange];
-    
-    if (result) {
-        value = [str substringWithRange:[result rangeAtIndex:1]];
-    }
-    
-    return value;
-}
-
-- (NSURLRequest*)buildTokenUrlWithCode:(NSString*)code
-{
+    NSString *code = [self extractValueFrom:title ForKey:@"code"];
     NSString *redirect = [kRedirect stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURL *url = [NSURL URLWithString:kTokenUrl];
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
     [req setHTTPMethod:@"POST"];
-    
-    NSString *body = [NSString stringWithFormat:kBody,
-                      code, kAppId, redirect, kSecret];
+    NSString *body = [NSString stringWithFormat:kBody, code, kAppId, redirect, kSecret];
     [req setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
     
     return req;
 }
 
-- (NSString*)extractTokenFromJson:(id)json
+- (NSURLRequest*)userReqWithStr:(NSString*)str AndTitle:(NSString*)title
+{
+    return nil;
+}
+
+- (NSURLRequest*)userReqWithJson:(id)json
 {
     if (![json isKindOfClass:[NSDictionary class]]) {
         NSLog(@"Parsing response failed");
@@ -73,11 +51,6 @@ static NSString* const kMe =       @"https://www.googleapis.com/oauth2/v1/userin
     
     NSDictionary *dict = json;
     NSString *token = dict[@"access_token"];
-    return token;
-}
-
-- (NSURLRequest*)buildMeUrlWithToken:(NSString*)token
-{
     NSString *str = [NSString stringWithFormat:kMe, token];
     NSURL *url = [NSURL URLWithString:str];
     return [NSURLRequest requestWithURL:url];
@@ -101,6 +74,24 @@ static NSString* const kMe =       @"https://www.googleapis.com/oauth2/v1/userin
     user.female    = ([@"female" caseInsensitiveCompare:dict[@"gender"]] == NSOrderedSame);
     
     return user;
+}
+
+- (NSString*)extractValueFrom:(NSString*)str ForKey:(NSString*)key
+{
+    NSString *value = nil;
+    NSString *pattern = [key stringByAppendingString:@"=([^?&=]+)"];
+    
+    NSRegularExpression *regex = [[NSRegularExpression alloc] initWithPattern:pattern
+                                                                      options:0
+                                                                        error:nil];
+    NSRange searchRange = NSMakeRange(0, [str length]);
+    NSTextCheckingResult* result = [regex firstMatchInString:str options:0 range:searchRange];
+    
+    if (result) {
+        value = [str substringWithRange:[result rangeAtIndex:1]];
+    }
+    
+    return value;
 }
 
 @end

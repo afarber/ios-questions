@@ -15,42 +15,33 @@ static User *_user;
         _sn = [[Google alloc] init];
     }
     
-    NSURL *url = [NSURL URLWithString:[_sn buildLoginStr]];
-    NSURLRequest *req = [NSURLRequest requestWithURL:url];
+    NSURLRequest *req = [_sn loginReq];
     NSLog(@"%s: req=%@", __PRETTY_FUNCTION__, req);
     [_webView loadRequest:req];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     NSURL *url = [webView.request mainDocumentURL];
-    NSLog(@"%s: url=%@", __PRETTY_FUNCTION__, url);
     NSString *str = [url absoluteString];
-    NSLog(@"%s: str=%@", __PRETTY_FUNCTION__, str);
     NSString *title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
-    NSLog(@"%s: title=%@", __PRETTY_FUNCTION__, title);
+    NSLog(@"%s: url=%@ str=%@ title=%@", __PRETTY_FUNCTION__, url, str, title);
 
     if ([_sn shouldFetchToken]) {
-        NSString *code = [_sn extractCodeFromStr:str FromTitle:title];
-        if (code) {
-            [self fetchWithCode:code];
+        NSURLRequest *req = [_sn tokenReqWithStr:str AndTitle:title];
+        if (req) {
+            [self fetchToken:req];
         }
     } else {
-        NSString *token = [_sn extractTokenFromStr:str FromTitle:title];
-        if (token) {
-            [self fetchWithToken:token];
+        NSURLRequest *req = [_sn userReqWithStr:str AndTitle:title];
+        if (req) {
+            [self fetchUser:req];
         }
     }
 }
 
-- (void)fetchWithCode:(NSString*)code
+- (void)fetchToken:(NSURLRequest*)req
 {
-    NSURLRequest *req = [_sn buildTokenUrlWithCode:code];
     NSLog(@"%s: req=%@", __PRETTY_FUNCTION__, req);
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     
@@ -67,9 +58,9 @@ static User *_user;
                                                          error:nil];
              NSLog(@"json=%@", json);
              
-             NSString *token = [_sn extractTokenFromJson:json];
-             if (token) {
-                 [self fetchWithToken:token];
+             NSURLRequest *req = [_sn userReqWithJson:json];
+             if (req) {
+                 [self fetchUser:req];
              }
          } else {
              NSLog(@"Download failed: %@", error);
@@ -77,10 +68,8 @@ static User *_user;
      }];
 }
 
-
-- (void)fetchWithToken:(NSString*)token
+- (void)fetchUser:(NSURLRequest*)req
 {
-    NSURLRequest *req = [_sn buildMeUrlWithToken:token];
     NSLog(@"%s: req=%@", __PRETTY_FUNCTION__, req);
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     
@@ -108,12 +97,17 @@ static User *_user;
      }];
 }
 
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
     if ([segue.identifier isEqualToString:@"pushDetailViewController"]) {
         DetailViewController *dvc = segue.destinationViewController;
         [dvc setUser:_user];
     }
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
 }
 
 @end
