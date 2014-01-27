@@ -22,6 +22,12 @@
 		8475A57E1878208800D8A37B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8475A55D1878208800D8A37B /* UIKit.framework */; };
 		8475A5861878208800D8A37B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8475A5841878208800D8A37B /* InfoPlist.strings */; };
 		8475A5881878208800D8A37B /* MyAuthTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8475A5871878208800D8A37B /* MyAuthTests.m */; };
+		84F6639D18965EDD00274932 /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F6639418965EDD00274932 /* Facebook.m */; };
+		84F6639E18965EDD00274932 /* Google.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F6639618965EDD00274932 /* Google.m */; };
+		84F6639F18965EDD00274932 /* Mailru.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F6639818965EDD00274932 /* Mailru.m */; };
+		84F663A018965EDD00274932 /* Odnoklassniki.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F6639A18965EDD00274932 /* Odnoklassniki.m */; };
+		84F663A118965EDD00274932 /* Vkontakte.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F6639C18965EDD00274932 /* Vkontakte.m */; };
+		84F663A518965F2B00274932 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F663A418965F2B00274932 /* User.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +63,19 @@
 		8475A5851878208800D8A37B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8475A5871878208800D8A37B /* MyAuthTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyAuthTests.m; sourceTree = "<group>"; };
 		8475A591187B0F4100D8A37B /* Keys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Keys.h; sourceTree = "<group>"; };
+		84F6639318965EDD00274932 /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook.h; sourceTree = "<group>"; };
+		84F6639418965EDD00274932 /* Facebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Facebook.m; sourceTree = "<group>"; };
+		84F6639518965EDD00274932 /* Google.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Google.h; sourceTree = "<group>"; };
+		84F6639618965EDD00274932 /* Google.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Google.m; sourceTree = "<group>"; };
+		84F6639718965EDD00274932 /* Mailru.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mailru.h; sourceTree = "<group>"; };
+		84F6639818965EDD00274932 /* Mailru.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mailru.m; sourceTree = "<group>"; };
+		84F6639918965EDD00274932 /* Odnoklassniki.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Odnoklassniki.h; sourceTree = "<group>"; };
+		84F6639A18965EDD00274932 /* Odnoklassniki.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Odnoklassniki.m; sourceTree = "<group>"; };
+		84F6639B18965EDD00274932 /* Vkontakte.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vkontakte.h; sourceTree = "<group>"; };
+		84F6639C18965EDD00274932 /* Vkontakte.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vkontakte.m; sourceTree = "<group>"; };
+		84F663A218965EEB00274932 /* SocialNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialNetwork.h; sourceTree = "<group>"; };
+		84F663A318965F2B00274932 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		84F663A418965F2B00274932 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,11 +138,15 @@
 				8475A5681878208800D8A37B /* AppDelegate.h */,
 				8475A5691878208800D8A37B /* AppDelegate.m */,
 				8475A591187B0F4100D8A37B /* Keys.h */,
-				8475A56B1878208800D8A37B /* Main.storyboard */,
 				8475A56E1878208800D8A37B /* MasterViewController.h */,
 				8475A56F1878208800D8A37B /* MasterViewController.m */,
 				8475A5711878208800D8A37B /* DetailViewController.h */,
 				8475A5721878208800D8A37B /* DetailViewController.m */,
+				84F663A318965F2B00274932 /* User.h */,
+				84F663A418965F2B00274932 /* User.m */,
+				84F663A218965EEB00274932 /* SocialNetwork.h */,
+				84F6639218965EDD00274932 /* OAuth */,
+				8475A56B1878208800D8A37B /* Main.storyboard */,
 				8475A5741878208800D8A37B /* Images.xcassets */,
 				8475A5601878208800D8A37B /* Supporting Files */,
 			);
@@ -157,6 +180,23 @@
 				8475A5841878208800D8A37B /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		84F6639218965EDD00274932 /* OAuth */ = {
+			isa = PBXGroup;
+			children = (
+				84F6639318965EDD00274932 /* Facebook.h */,
+				84F6639418965EDD00274932 /* Facebook.m */,
+				84F6639518965EDD00274932 /* Google.h */,
+				84F6639618965EDD00274932 /* Google.m */,
+				84F6639718965EDD00274932 /* Mailru.h */,
+				84F6639818965EDD00274932 /* Mailru.m */,
+				84F6639918965EDD00274932 /* Odnoklassniki.h */,
+				84F6639A18965EDD00274932 /* Odnoklassniki.m */,
+				84F6639B18965EDD00274932 /* Vkontakte.h */,
+				84F6639C18965EDD00274932 /* Vkontakte.m */,
+			);
+			path = OAuth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,10 +296,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84F663A518965F2B00274932 /* User.m in Sources */,
+				84F6639F18965EDD00274932 /* Mailru.m in Sources */,
+				84F6639E18965EDD00274932 /* Google.m in Sources */,
 				8475A56A1878208800D8A37B /* AppDelegate.m in Sources */,
+				84F663A018965EDD00274932 /* Odnoklassniki.m in Sources */,
 				8475A5701878208800D8A37B /* MasterViewController.m in Sources */,
+				84F6639D18965EDD00274932 /* Facebook.m in Sources */,
 				8475A5661878208800D8A37B /* main.m in Sources */,
 				8475A5731878208800D8A37B /* DetailViewController.m in Sources */,
+				84F663A118965EDD00274932 /* Vkontakte.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,6 +514,7 @@
 				8475A58D1878208800D8A37B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8475A58E1878208800D8A37B /* Build configuration list for PBXNativeTarget "MyAuthTests" */ = {
 			isa = XCConfigurationList;
@@ -476,6 +523,7 @@
 				8475A5901878208800D8A37B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
