@@ -25,6 +25,7 @@
 		749FEB0E188EE3E5009C1A95 /* female.png in Resources */ = {isa = PBXBuildFile; fileRef = 749FEB0D188EE3E5009C1A95 /* female.png */; };
 		749FEB10188EE3EC009C1A95 /* male.png in Resources */ = {isa = PBXBuildFile; fileRef = 749FEB0F188EE3EC009C1A95 /* male.png */; };
 		749FEB13188EE3FB009C1A95 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 749FEB12188EE3FB009C1A95 /* User.m */; };
+		84CAFF94189585F800A3ABA4 /* Odnoklassniki.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CAFF92189585F800A3ABA4 /* Odnoklassniki.m */; };
 		F3C6CFFD39234434BA24FE1A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CC160B192034A66944E5555 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,9 @@
 		749FEB0F188EE3EC009C1A95 /* male.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = male.png; sourceTree = "<group>"; };
 		749FEB11188EE3FB009C1A95 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		749FEB12188EE3FB009C1A95 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		84CAFF91189585F800A3ABA4 /* Odnoklassniki.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Odnoklassniki.h; sourceTree = "<group>"; };
+		84CAFF92189585F800A3ABA4 /* Odnoklassniki.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Odnoklassniki.m; sourceTree = "<group>"; };
+		84CAFF93189585F800A3ABA4 /* SocialNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialNetwork.h; sourceTree = "<group>"; };
 		CEC3BD4C8A00470B8C55226C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -136,6 +140,9 @@
 				749FEB0B188EE3D6009C1A95 /* DetailViewController.m */,
 				749FEB11188EE3FB009C1A95 /* User.h */,
 				749FEB12188EE3FB009C1A95 /* User.m */,
+				84CAFF93189585F800A3ABA4 /* SocialNetwork.h */,
+				84CAFF91189585F800A3ABA4 /* Odnoklassniki.h */,
+				84CAFF92189585F800A3ABA4 /* Odnoklassniki.m */,
 				749FEAE7188EE366009C1A95 /* Main.storyboard */,
 				749FEB0F188EE3EC009C1A95 /* male.png */,
 				749FEB0D188EE3E5009C1A95 /* female.png */,
@@ -309,6 +316,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				749FEB13188EE3FB009C1A95 /* User.m in Sources */,
+				84CAFF94189585F800A3ABA4 /* Odnoklassniki.m in Sources */,
 				749FEAEC188EE366009C1A95 /* ViewController.m in Sources */,
 				749FEAE6188EE366009C1A95 /* AppDelegate.m in Sources */,
 				749FEAE2188EE366009C1A95 /* main.m in Sources */,
