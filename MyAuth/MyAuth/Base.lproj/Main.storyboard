@@ -158,6 +158,7 @@
                         <constraints>
                             <constraint firstItem="RoT-75-gjQ" firstAttribute="leading" secondItem="WcF-pW-MtU" secondAttribute="leading" constant="20" symbolic="YES" id="1cu-R3-LsZ"/>
                             <constraint firstAttribute="trailing" secondItem="Qfg-2r-729" secondAttribute="trailing" constant="20" symbolic="YES" id="5mn-hh-osZ"/>
+                            <constraint firstItem="sgs-RE-UxN" firstAttribute="trailing" secondItem="RoT-75-gjQ" secondAttribute="trailing" id="8d7-sM-zUP"/>
                             <constraint firstAttribute="trailing" secondItem="RoT-75-gjQ" secondAttribute="trailing" constant="20" symbolic="YES" id="8zm-qO-6Kf"/>
                             <constraint firstItem="gT0-uu-r20" firstAttribute="leading" secondItem="WcF-pW-MtU" secondAttribute="leading" constant="20" symbolic="YES" id="9gt-jm-byI"/>
                             <constraint firstItem="JCJ-yY-Eyc" firstAttribute="leading" secondItem="WcF-pW-MtU" secondAttribute="leading" constant="20" symbolic="YES" id="H4g-Nl-3IN"/>
@@ -166,13 +167,12 @@
                             <constraint firstAttribute="trailing" secondItem="hVB-DY-Kcb" secondAttribute="trailing" constant="20" symbolic="YES" id="O1y-Rs-BT8"/>
                             <constraint firstItem="hVB-DY-Kcb" firstAttribute="top" secondItem="Qfg-2r-729" secondAttribute="bottom" constant="8" symbolic="YES" id="OvZ-rB-YgF"/>
                             <constraint firstItem="Qfg-2r-729" firstAttribute="top" secondItem="gT0-uu-r20" secondAttribute="bottom" constant="8" symbolic="YES" id="SVK-Va-t53"/>
-                            <constraint firstItem="sgs-RE-UxN" firstAttribute="top" secondItem="nVM-tS-yNK" secondAttribute="bottom" constant="20" symbolic="YES" id="Sbg-vk-41A"/>
-                            <constraint firstAttribute="trailing" secondItem="sgs-RE-UxN" secondAttribute="trailing" constant="20" symbolic="YES" id="Y51-wE-zl6"/>
+                            <constraint firstItem="sgs-RE-UxN" firstAttribute="leading" secondItem="RoT-75-gjQ" secondAttribute="leading" id="TMQ-W0-1Bv"/>
                             <constraint firstItem="gT0-uu-r20" firstAttribute="top" secondItem="JCJ-yY-Eyc" secondAttribute="bottom" constant="8" symbolic="YES" id="ZLY-Wd-vc0"/>
                             <constraint firstItem="JlT-88-imy" firstAttribute="top" secondItem="hVB-DY-Kcb" secondAttribute="bottom" constant="20" symbolic="YES" id="gFC-u5-Tma"/>
-                            <constraint firstItem="sgs-RE-UxN" firstAttribute="leading" secondItem="WcF-pW-MtU" secondAttribute="leading" constant="20" symbolic="YES" id="k7A-R5-5RU"/>
+                            <constraint firstItem="RoT-75-gjQ" firstAttribute="top" secondItem="sgs-RE-UxN" secondAttribute="bottom" constant="8" symbolic="YES" id="gNQ-gY-nE2"/>
+                            <constraint firstItem="sgs-RE-UxN" firstAttribute="top" secondItem="nVM-tS-yNK" secondAttribute="bottom" constant="8" id="p8q-9G-jdo"/>
                             <constraint firstItem="hVB-DY-Kcb" firstAttribute="leading" secondItem="WcF-pW-MtU" secondAttribute="leading" constant="20" symbolic="YES" id="sYg-BC-vEH"/>
-                            <constraint firstItem="RoT-75-gjQ" firstAttribute="top" secondItem="sgs-RE-UxN" secondAttribute="bottom" constant="8" symbolic="YES" id="tGr-Be-Aay"/>
                             <constraint firstAttribute="trailing" secondItem="JCJ-yY-Eyc" secondAttribute="trailing" constant="20" symbolic="YES" id="xyi-Hi-vX8"/>
                             <constraint firstItem="Qfg-2r-729" firstAttribute="leading" secondItem="WcF-pW-MtU" secondAttribute="leading" constant="20" symbolic="YES" id="ywf-nd-iuu"/>
                         </constraints>
