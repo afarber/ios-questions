@@ -1,10 +1,10 @@
-#import "DetailViewController.h"
+#import "LoginViewController.h"
 
-@interface DetailViewController ()
+@interface LoginViewController ()
 - (void)configureView;
 @end
 
-@implementation DetailViewController
+@implementation LoginViewController
 
 #pragma mark - Managing the detail item
 

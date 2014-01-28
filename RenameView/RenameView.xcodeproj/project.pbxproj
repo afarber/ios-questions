@@ -15,13 +15,13 @@
 		84F663CA1897BBDA00274932 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F663C91897BBDA00274932 /* AppDelegate.m */; };
 		84F663CD1897BBDA00274932 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F663CB1897BBDA00274932 /* Main.storyboard */; };
 		84F663D01897BBDA00274932 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F663CF1897BBDA00274932 /* MasterViewController.m */; };
-		84F663D31897BBDA00274932 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F663D21897BBDA00274932 /* DetailViewController.m */; };
 		84F663D51897BBDA00274932 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84F663D41897BBDA00274932 /* Images.xcassets */; };
 		84F663DC1897BBDB00274932 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F663DB1897BBDB00274932 /* XCTest.framework */; };
 		84F663DD1897BBDB00274932 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F663B91897BBDA00274932 /* Foundation.framework */; };
 		84F663DE1897BBDB00274932 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F663BD1897BBDA00274932 /* UIKit.framework */; };
 		84F663E61897BBDB00274932 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84F663E41897BBDB00274932 /* InfoPlist.strings */; };
 		84F663E81897BBDB00274932 /* RenameViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F663E71897BBDB00274932 /* RenameViewTests.m */; };
+		84F663F31897BD7D00274932 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F663F21897BD7D00274932 /* LoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,14 +48,14 @@
 		84F663CC1897BBDA00274932 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		84F663CE1897BBDA00274932 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		84F663CF1897BBDA00274932 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
-		84F663D11897BBDA00274932 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		84F663D21897BBDA00274932 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		84F663D41897BBDA00274932 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		84F663DA1897BBDB00274932 /* RenameViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RenameViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F663DB1897BBDB00274932 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		84F663E31897BBDB00274932 /* RenameViewTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RenameViewTests-Info.plist"; sourceTree = "<group>"; };
 		84F663E51897BBDB00274932 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		84F663E71897BBDB00274932 /* RenameViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RenameViewTests.m; sourceTree = "<group>"; };
+		84F663F11897BD7D00274932 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		84F663F21897BD7D00274932 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,8 +120,8 @@
 				84F663CB1897BBDA00274932 /* Main.storyboard */,
 				84F663CE1897BBDA00274932 /* MasterViewController.h */,
 				84F663CF1897BBDA00274932 /* MasterViewController.m */,
-				84F663D11897BBDA00274932 /* DetailViewController.h */,
-				84F663D21897BBDA00274932 /* DetailViewController.m */,
+				84F663F11897BD7D00274932 /* LoginViewController.h */,
+				84F663F21897BD7D00274932 /* LoginViewController.m */,
 				84F663D41897BBDA00274932 /* Images.xcassets */,
 				84F663C01897BBDA00274932 /* Supporting Files */,
 			);
@@ -254,10 +254,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84F663F31897BD7D00274932 /* LoginViewController.m in Sources */,
 				84F663CA1897BBDA00274932 /* AppDelegate.m in Sources */,
 				84F663D01897BBDA00274932 /* MasterViewController.m in Sources */,
 				84F663C61897BBDA00274932 /* main.m in Sources */,
-				84F663D31897BBDA00274932 /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

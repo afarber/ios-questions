@@ -1,6 +1,6 @@
 #import <UIKit/UIKit.h>
 
-@interface DetailViewController : UIViewController
+@interface LoginViewController : UIViewController
 
 @property (strong, nonatomic) id detailItem;
 

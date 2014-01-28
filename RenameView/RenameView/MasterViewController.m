@@ -1,6 +1,6 @@
 #import "MasterViewController.h"
 
-#import "DetailViewController.h"
+#import "LoginViewController.h"
 
 @interface MasterViewController () {
     NSMutableArray *_objects;
