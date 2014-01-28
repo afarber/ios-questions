@@ -1,6 +1,6 @@
 #import <UIKit/UIKit.h>
 
-@interface DetailViewController : UIViewController <UIWebViewDelegate>
+@interface LoginViewController : UIViewController <UIWebViewDelegate>
 
 @property (strong, nonatomic) NSDictionary *dict;
 

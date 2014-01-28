@@ -1,5 +1,5 @@
 #import "MasterViewController.h"
-#import "DetailViewController.h"
+#import "LoginViewController.h"
 #import "Keys.h"
 
 @interface MasterViewController () {
@@ -13,6 +13,9 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+    
+    // prevent from optimizing away
+    [LoginViewController class];
     
     _keys = @[kFB, kGG, kMR, kOK, kVK];
         
@@ -96,7 +99,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"showDetail"]) {
+    if ([[segue identifier] isEqualToString:@"pushLoginViewController"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         NSString *key = _keys[indexPath.row];
         NSDictionary *dict = _menu[key];
