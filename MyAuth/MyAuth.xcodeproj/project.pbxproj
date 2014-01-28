@@ -144,12 +144,12 @@
 		8475A55F1878208800D8A37B /* MyAuth */ = {
 			isa = PBXGroup;
 			children = (
-				84F663F41897D91800274932 /* LoginViewController.h */,
-				84F663F51897D91800274932 /* LoginViewController.m */,
 				8475A5681878208800D8A37B /* AppDelegate.h */,
 				8475A5691878208800D8A37B /* AppDelegate.m */,
 				8475A56E1878208800D8A37B /* MasterViewController.h */,
 				8475A56F1878208800D8A37B /* MasterViewController.m */,
+				84F663F41897D91800274932 /* LoginViewController.h */,
+				84F663F51897D91800274932 /* LoginViewController.m */,
 				84F663A61896883F00274932 /* UserViewController.h */,
 				84F663A71896884000274932 /* UserViewController.m */,
 				8475A591187B0F4100D8A37B /* Keys.h */,

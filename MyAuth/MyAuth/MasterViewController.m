@@ -14,9 +14,6 @@
 {
     [super awakeFromNib];
     
-    // prevent from optimizing away
-    [LoginViewController class];
-    
     _keys = @[kFB, kGG, kMR, kOK, kVK];
         
     _menu = @{
