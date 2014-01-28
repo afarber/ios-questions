@@ -1,6 +1,12 @@
 #import "MasterViewController.h"
 #import "LoginViewController.h"
 #import "Keys.h"
+#import "OAuth/Facebook.h"
+#import "OAuth/Google.h"
+#import "OAuth/Mailru.h"
+#import "OAuth/Odnoklassniki.h"
+#import "OAuth/Vkontakte.h"
+
 
 @interface MasterViewController () {
     NSDictionary *_menu;
@@ -20,43 +26,27 @@
               kFB:  @{
                       kKey:      kFB,
                       kLabel:    @"Facebook",
-                      kAppId:    @"432298283565593",
-                      kSecret:   @"c59d4f8cc0a15a0ad4090c3405729d8e",
-                      kRedirect: @"https://www.facebook.com/connect/login_success.html",
-                      kAuthUrl:  @"https://graph.facebook.com/oauth/authorize?",
+                      kObj:      [[Facebook alloc] init],
                       },
               kGG:  @{
                       kKey:      kGG,
                       kLabel:    @"Google+",
-                      kAppId:    @"441988749325.apps.googleusercontent.com",
-                      kSecret:   @"HiXUUAQVTzIVZ_bvz1GYiYlb",
-                      kRedirect: @"urn:ietf:wg:oauth:2.0:oob",
-                      kAuthUrl:  @"https://accounts.google.com/o/oauth2/auth?",
-                      kScope:    @"https://www.googleapis.com/auth/userinfo.profile",
+                      kObj:      [[Google alloc] init],
                       },
               kMR:   @{
                       kKey:      kMR,
                       kLabel:    @"Mail.ru",
-                      kAppId:    @"715360",
-                      kSecret:   @"4260eeea98d7665edbe4baa080af894b",
-                      kRedirect: @"http://connect.mail.ru/oauth/success.html",
-                      kAuthUrl:  @"https://connect.mail.ru/oauth/authorize?",
+                      kObj:      [[Mailru alloc] init],
                       },
               kOK:   @{
                       kKey:      kOK,
                       kLabel:    @"Odnoklassniki",
-                      //kAppId:
-                      //kSecret:
-                      kRedirect: @"http://connect.mail.ru/oauth/success.html",
-                      kAuthUrl:  @"http://www.odnoklassniki.ru/oauth/authorize?",
+                      kObj:      [[Odnoklassniki alloc] init],
                       },
               kVK:   @{
                       kKey:      kVK,
                       kLabel:    @"VKontakte",
-                      //kAppId:
-                      //kSecret:
-                      kRedirect: @"http://oauth.vk.com/blank.html",
-                      kAuthUrl:  @"http://oauth.vk.com/authorize?",
+                      kObj:      [[Vkontakte alloc] init],
                       },
             };
     
@@ -100,7 +90,8 @@
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         NSString *key = _keys[indexPath.row];
         NSDictionary *dict = _menu[key];
-        [[segue destinationViewController] setDict:dict];
+        [[segue destinationViewController] setTitle:dict[kLabel]];
+        [[segue destinationViewController] setSn:dict[kObj]];
     }
 }
 

@@ -1,80 +1,108 @@
 #import "LoginViewController.h"
-#import "Keys.h"
+#import "UserViewController.h"
+#import "User.h"
 
-@interface LoginViewController ()
-- (void)configureView;
-@end
+static User *_user;
 
 @implementation LoginViewController
-
-#pragma mark - Managing the detail item
-
-- (void)setDict:(NSDictionary*)newDict
-{
-    if (_dict != newDict) {
-        _dict = newDict;
-        
-        // Update the view.
-        [self configureView];
-    }
-}
-
-- (void)configureView
-{
-    // Update the user interface for the detail item.
-
-    if (_dict) {
-        NSString *str = [self buildUrl];
-        NSURL *url = [NSURL URLWithString:str];
-        NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
-        [req setHTTPMethod:@"GET"];
-        NSLog(@"request: %@", req);
-        [_webView loadRequest:req];
-    }
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    [self configureView];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (NSString*)buildUrl
-{
-    NSString *key = _dict[kKey];
-    NSString *str = _dict[kAuthUrl];
-    int state = arc4random_uniform(1000);
-    NSString *redirect = [_dict[kRedirect] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-  
-    if ([key isEqual: kFB]) {
-        str = [NSString stringWithFormat:@"%@client_id=%@&response_type=token&redirect_uri=%@&state=%d",
-               _dict[kAuthUrl], _dict[kAppId], redirect, state];
-    } else if ([key isEqual: kGG]) {
-        NSString *scope = [_dict[kScope] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        
-        str = [NSString stringWithFormat:@"%@client_id=%@&response_type=code&redirect_uri=%@&scope=%@&state=%d",
-               _dict[kAuthUrl], _dict[kAppId], redirect, scope, state];
-    } else if ([key isEqual: kMR]) {
-    } else if ([key isEqual: kOK]) {
-    } else if ([key isEqual: kVK]) {
-    }
     
-    return str;
+    NSURLRequest *req = [_sn loginReq];
+    NSLog(@"%s: req=%@", __PRETTY_FUNCTION__, req);
+    [_webView loadRequest:req];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     NSURL *url = [webView.request mainDocumentURL];
-    NSLog(@"%s: %@", __PRETTY_FUNCTION__, url);
-    // TODO extract access token here
+    NSString *str = [url absoluteString];
+    NSString *title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+    NSLog(@"%s: url=%@ str=%@ title=%@", __PRETTY_FUNCTION__, url, str, title);
+    
+    if ([_sn shouldFetchToken]) {
+        NSURLRequest *req = [_sn tokenReqWithStr:str AndTitle:title];
+        if (req) {
+            [self fetchToken:req];
+        }
+    } else {
+        NSURLRequest *req = [_sn userReqWithStr:str AndTitle:title];
+        if (req) {
+            [self fetchUser:req];
+        }
+    }
 }
 
+- (void)fetchToken:(NSURLRequest*)req
+{
+    NSLog(@"%s: req=%@", __PRETTY_FUNCTION__, req);
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    
+    [NSURLConnection
+     sendAsynchronousRequest:req
+     queue:queue
+     completionHandler:^(NSURLResponse *response,
+                         NSData *data,
+                         NSError *error) {
+         
+         if (error == nil && [data length] > 0) {
+             id json = [NSJSONSerialization JSONObjectWithData:data
+                                                       options:NSJSONReadingMutableContainers
+                                                         error:nil];
+             NSLog(@"json=%@", json);
+             
+             NSURLRequest *req = [_sn userReqWithJson:json];
+             if (req) {
+                 [self fetchUser:req];
+             }
+         } else {
+             NSLog(@"Download failed: %@", error);
+         }
+     }];
+}
+
+- (void)fetchUser:(NSURLRequest*)req
+{
+    NSLog(@"%s: req=%@", __PRETTY_FUNCTION__, req);
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    
+    [NSURLConnection
+     sendAsynchronousRequest:req
+     queue:queue
+     completionHandler:^(NSURLResponse *response,
+                         NSData *data,
+                         NSError *error) {
+         
+         if (error == nil && [data length] > 0) {
+             id json = [NSJSONSerialization JSONObjectWithData:data
+                                                       options:NSJSONReadingMutableContainers
+                                                         error:nil];
+             NSLog(@"json = %@", json);
+             
+             _user = [_sn createUserFromJson:json];
+             
+             dispatch_async(dispatch_get_main_queue(), ^(void) {
+                 [self performSegueWithIdentifier: @"pushUserViewController" sender: self];
+             });
+         } else {
+             NSLog(@"Download failed: %@", error);
+         }
+     }];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"pushUserViewController"]) {
+        UserViewController *uvc = segue.destinationViewController;
+        [uvc setUser:_user];
+    }
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+}
 
 @end
