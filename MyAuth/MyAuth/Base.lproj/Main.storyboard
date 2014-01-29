@@ -89,7 +89,7 @@
                     <navigationItem key="navigationItem" title="Login" id="cra-N8-TIN"/>
                     <connections>
                         <outlet property="webView" destination="jqf-PO-pwK" id="AsR-q3-8dD"/>
-                        <segue destination="moC-7a-jmO" kind="push" identifier="pushUserViewController" id="1lR-u7-SEg"/>
+                        <segue destination="moC-7a-jmO" kind="custom" identifier="pushUserViewController" customClass="ReplaceSegue" id="1lR-u7-SEg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrm-kH-fPn" sceneMemberID="firstResponder"/>

@@ -30,6 +30,7 @@
 		84F663A518965F2B00274932 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F663A418965F2B00274932 /* User.m */; };
 		84F663A81896884000274932 /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F663A71896884000274932 /* UserViewController.m */; };
 		84F663F61897D91800274932 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F663F51897D91800274932 /* LoginViewController.m */; };
+		84F663F91899041100274932 /* ReplaceSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F663F81899041100274932 /* ReplaceSegue.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,8 @@
 		84F663A71896884000274932 /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewController.m; sourceTree = "<group>"; };
 		84F663F41897D91800274932 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		84F663F51897D91800274932 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		84F663F71899041100274932 /* ReplaceSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReplaceSegue.h; sourceTree = "<group>"; };
+		84F663F81899041100274932 /* ReplaceSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReplaceSegue.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +155,8 @@
 				84F663F51897D91800274932 /* LoginViewController.m */,
 				84F663A61896883F00274932 /* UserViewController.h */,
 				84F663A71896884000274932 /* UserViewController.m */,
+				84F663F71899041100274932 /* ReplaceSegue.h */,
+				84F663F81899041100274932 /* ReplaceSegue.m */,
 				8475A591187B0F4100D8A37B /* Keys.h */,
 				84F663A318965F2B00274932 /* User.h */,
 				84F663A418965F2B00274932 /* User.m */,
@@ -352,6 +357,7 @@
 				84F663A81896884000274932 /* UserViewController.m in Sources */,
 				8475A5661878208800D8A37B /* main.m in Sources */,
 				84F663F61897D91800274932 /* LoginViewController.m in Sources */,
+				84F663F91899041100274932 /* ReplaceSegue.m in Sources */,
 				84F663A118965EDD00274932 /* Vkontakte.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
