@@ -7,7 +7,6 @@
 #import "OAuth/Odnoklassniki.h"
 #import "OAuth/Vkontakte.h"
 
-
 @interface MasterViewController () {
     NSDictionary *_menu;
     NSArray *_keys;
