@@ -41,6 +41,11 @@
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
                                                                                  target:self
                                                                                  action:@selector(dismiss:)];
+    [cancelButton setTintColor:[UIColor colorWithRed:255.0/255.0
+                                               green:0.0/255.0
+                                                blue:0.0/255.0
+                                               alpha:1.0]];
+    
     self.navigationItem.rightBarButtonItem = cancelButton;
 }
 
