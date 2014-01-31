@@ -37,6 +37,17 @@
     
     [_imageView setImageWithURL:[NSURL URLWithString:_user.avatar]
                placeholderImage:[UIImage imageNamed:placeHolder]];
+    
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                                                 target:self
+                                                                                 action:@selector(dismiss:)];
+    self.navigationItem.rightBarButtonItem = cancelButton;
+}
+
+- (IBAction)dismiss:(id)sender
+{
+    // your logout code for social media selected
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning
