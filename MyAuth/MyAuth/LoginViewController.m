@@ -10,9 +10,6 @@ static User *_user;
 {
     [super viewDidLoad];
     
-    UINavigationController *nc = self.navigationController;
-    [nc setDelegate:self];
-    
     NSURLRequest *req = [_sn loginReq];
     NSLog(@"%s: req=%@", __PRETTY_FUNCTION__, req);
     [_webView loadRequest:req];
@@ -86,10 +83,11 @@ static User *_user;
              
              _user = [_sn createUserFromJson:json];
              
-             dispatch_async(dispatch_get_main_queue(), ^(void) {
-                 //NSLog(@"XXX before performSegueWithIdentifier");
+             
+             double delayInSeconds = 0.5;
+             dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+             dispatch_after(delay, dispatch_get_main_queue(), ^(void){
                  [self performSegueWithIdentifier: @"pushUserViewController" sender: self];
-                 //NSLog(@"XXX after performSegueWithIdentifier");
              });
          } else {
              NSLog(@"Download failed: %@", error);
@@ -103,13 +101,6 @@ static User *_user;
         UserViewController *uvc = segue.destinationViewController;
         [uvc setUser:_user];
     }
-}
-
-- (void)navigationController:(UINavigationController *)navigationController
-       didShowViewController:(UIViewController *)viewController
-                    animated:(BOOL)animated
-{
-    NSLog(@"XXX %s: viewController=%@", __PRETTY_FUNCTION__, viewController);
 }
 
 - (void)didReceiveMemoryWarning
