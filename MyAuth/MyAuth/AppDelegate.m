@@ -9,9 +9,11 @@
     NSString *key = [defaults objectForKey:@"key"];
     User *user = [User loadForKey:key];
     
-    UINavigationController *nc = (UINavigationController*)self.window.rootViewController;
-    NSLog(@"XXX nc=%@ user=%@", nc, user);
-
+    if (user) {
+        UINavigationController *nc = (UINavigationController*)self.window.rootViewController;
+        NSLog(@"XXX nc=%@ user=%@", nc, user);
+    }
+    
     // Override point for customization after application launch.
     return YES;
 }

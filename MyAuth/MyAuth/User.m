@@ -65,7 +65,6 @@ static NSString* const kFemale    = @"female";
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults removeObjectForKey:key];
-    // TODO: check if key exists
     [defaults removeObjectForKey:kKey];
     [defaults synchronize];
 }
