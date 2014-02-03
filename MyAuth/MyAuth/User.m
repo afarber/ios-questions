@@ -25,7 +25,7 @@ static NSString* const kFemale    = @"female";
     return self;
 }
 
-- (void)encodeWithCoder:(NSCoder*)encoder
+-(void)encodeWithCoder:(NSCoder*)encoder
 {
     [encoder encodeObject:self.key forKey:kKey];
     [encoder encodeObject:self.userId forKey:kUserId];
@@ -42,11 +42,16 @@ static NSString* const kFemale    = @"female";
     
     NSData *archivedObject = [NSKeyedArchiver archivedDataWithRootObject:self.key];
     [defaults setObject:archivedObject forKey:self.key];
+    [defaults setObject:self.key forKey:kKey];
     [defaults synchronize];
 }
 
 +(User*)loadForKey:(NSString*)key
 {
+    if (!key) {
+        return nil;
+    }
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     NSData *archivedObject = [defaults objectForKey:key];

@@ -7,7 +7,6 @@
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *key = [defaults objectForKey:@"key"];
-    
     User *user = [User loadForKey:key];
     
     UINavigationController *nc = (UINavigationController*)self.window.rootViewController;
