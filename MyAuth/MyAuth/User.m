@@ -39,7 +39,6 @@ static NSString* const kFemale    = @"female";
 -(void)save
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
     NSData *archivedObject = [NSKeyedArchiver archivedDataWithRootObject:self];
     [defaults setObject:archivedObject forKey:self.key];
     [defaults setObject:self.key forKey:kKey];
@@ -53,20 +52,34 @@ static NSString* const kFemale    = @"female";
     }
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
     NSData *archivedObject = [defaults objectForKey:key];
     User *user = (User *)[NSKeyedUnarchiver unarchiveObjectWithData:archivedObject];
     return user;
 }
 
++(void)resetForKey:(NSString*)key
+{
+    if (!key) {
+        return;
+    }
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults removeObjectForKey:key];
+    // TODO: check if key exists
+    [defaults removeObjectForKey:kKey];
+    [defaults synchronize];
+}
+
+
 -(NSString *)description
 {
-    return [NSString stringWithFormat:@"%@ %@ %@ %@ %@ %hhd",
+    return [NSString stringWithFormat:@"\n%@\n%@\n%@\n%@\n%@\n%@\n%hhd",
             self.key,
             self.userId,
             self.firstName,
             self.lastName,
             self.city,
+            self.avatar,
             self.female];
 }
 

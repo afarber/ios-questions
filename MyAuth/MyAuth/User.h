@@ -12,5 +12,6 @@
 
 -(void)save;
 +(User*)loadForKey:(NSString*)key;
++(void)resetForKey:(NSString*)key;
 
 @end

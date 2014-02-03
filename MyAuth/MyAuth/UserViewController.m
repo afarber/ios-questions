@@ -20,13 +20,6 @@
 {
     [super viewDidLoad];
     
-    NSLog(@"id: %@",         _user.userId);
-    NSLog(@"first_name: %@", _user.firstName);
-    NSLog(@"last_name: %@",  _user.lastName);
-    NSLog(@"city: %@",       _user.city);
-    NSLog(@"female: %hhd",   _user.female);
-    NSLog(@"avatar: %@",     _user.avatar);
-    
     _userId.text    = [NSString stringWithFormat:@"%@", _user.userId];
     _firstName.text = _user.firstName;
     _lastName.text  = _user.lastName;
@@ -48,7 +41,7 @@
 
 - (IBAction)logout:(id)sender
 {
-    // TODO: add logout code for social network selected
+    [User resetForKey:_user.key];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
