@@ -20,7 +20,7 @@ static NSString* const kFemale    = @"female";
         self.lastName  = [decoder decodeObjectForKey:kLastName];
         self.city      = [decoder decodeObjectForKey:kCity];
         self.avatar    = [decoder decodeObjectForKey:kAvatar];
-        self.female    = [decoder decodeBoolForKey:kUserId];
+        self.female    = [decoder decodeBoolForKey:kFemale];
     }
     return self;
 }
@@ -40,7 +40,7 @@ static NSString* const kFemale    = @"female";
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    NSData *archivedObject = [NSKeyedArchiver archivedDataWithRootObject:self.key];
+    NSData *archivedObject = [NSKeyedArchiver archivedDataWithRootObject:self];
     [defaults setObject:archivedObject forKey:self.key];
     [defaults setObject:self.key forKey:kKey];
     [defaults synchronize];
@@ -57,6 +57,17 @@ static NSString* const kFemale    = @"female";
     NSData *archivedObject = [defaults objectForKey:key];
     User *user = (User *)[NSKeyedUnarchiver unarchiveObjectWithData:archivedObject];
     return user;
+}
+
+-(NSString *)description
+{
+    return [NSString stringWithFormat:@"%@ %@ %@ %@ %@ %hhd",
+            self.key,
+            self.userId,
+            self.firstName,
+            self.lastName,
+            self.city,
+            self.female];
 }
 
 @end
