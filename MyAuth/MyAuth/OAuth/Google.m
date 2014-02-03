@@ -1,3 +1,4 @@
+#import "SocialNetwork.h"
 #import "Google.h"
 
 static NSString* const kAppId =    @"441988749325-h8bsf01r3jnv5nbsb31a8pi99660oe0q.apps.googleusercontent.com";
@@ -71,6 +72,7 @@ static NSString* const kMe =       @"https://www.googleapis.com/oauth2/v1/userin
     NSDictionary *dict = json;
     
     User *user = [[User alloc] init];
+    user.key       = kGG;
     user.userId    = dict[@"id"];
     user.firstName = dict[@"given_name"];
     user.lastName  = dict[@"family_name"];

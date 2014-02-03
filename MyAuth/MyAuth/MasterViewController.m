@@ -1,11 +1,15 @@
 #import "MasterViewController.h"
 #import "LoginViewController.h"
-#import "Keys.h"
+#import "SocialNetwork.h"
 #import "OAuth/Facebook.h"
 #import "OAuth/Google.h"
 #import "OAuth/Mailru.h"
 #import "OAuth/Odnoklassniki.h"
 #import "OAuth/Vkontakte.h"
+
+static NSString* const kKey      = @"key";
+static NSString* const kLabel    = @"label";
+static NSString* const kObj      = @"object";
 
 @interface MasterViewController () {
     NSDictionary *_menu;

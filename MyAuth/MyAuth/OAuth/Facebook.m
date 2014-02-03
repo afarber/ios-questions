@@ -1,3 +1,4 @@
+#import "SocialNetwork.h"
 #import "Facebook.h"
 
 static NSString* const kAppId =    @"432298283565593";
@@ -58,6 +59,7 @@ static NSString* const kMe =       @"https://graph.facebook.com/me?access_token=
     NSDictionary *dict = json;
     
     User *user = [[User alloc] init];
+    user.key       = kFB;
     user.userId    = dict[@"id"];
     user.firstName = dict[@"first_name"];
     user.lastName  = dict[@"last_name"];

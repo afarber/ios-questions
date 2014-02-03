@@ -1,4 +1,5 @@
 #import <CommonCrypto/CommonDigest.h>
+#import "SocialNetwork.h"
 #import "Mailru.h"
 
 static NSString* const kAppId =    @"715360";
@@ -60,6 +61,7 @@ static NSString* const kMe =       @"http://www.appsmail.ru/platform/api?app_id=
     NSDictionary *dict = json[0];
     
     User *user = [[User alloc] init];
+    user.key       = kMR;
     user.userId    = dict[@"uid"];
     user.firstName = dict[@"first_name"];
     user.lastName  = dict[@"last_name"];

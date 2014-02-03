@@ -1,3 +1,4 @@
+#import "SocialNetwork.h"
 #import "Vkontakte.h"
 
 static NSString* const kAppId =    @"4132525";
@@ -57,6 +58,7 @@ static NSString* const kMe =       @"https://api.vk.com/method/getProfiles?field
     NSDictionary *dict = json[@"response"][0];
     
     User *user = [[User alloc] init];
+    user.key       = kVK;
     user.userId    = dict[@"uid"];
     user.firstName = dict[@"first_name"];
     user.lastName  = dict[@"last_name"];

@@ -82,7 +82,7 @@ static User *_user;
              NSLog(@"json = %@", json);
              
              _user = [_sn createUserFromJson:json];
-             
+             [_user save];
              
              double delayInSeconds = 0.5;
              dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);

@@ -1,9 +1,18 @@
 #import "AppDelegate.h"
+#import "User.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *key = [defaults objectForKey:@"key"];
+    
+    User *user = [User loadForKey:key];
+    
+    UINavigationController *nc = (UINavigationController*)self.window.rootViewController;
+    NSLog(@"XXX nc=%@ user=%@", nc, user);
+
     // Override point for customization after application launch.
     return YES;
 }

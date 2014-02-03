@@ -1,4 +1,5 @@
 #import <CommonCrypto/CommonDigest.h>
+#import "SocialNetwork.h"
 #import "Odnoklassniki.h"
 
 static NSString* const kAppId =    @"217129728";
@@ -78,6 +79,7 @@ static NSString* const kMe =       @"http://api.odnoklassniki.ru/fb.do?applicati
     NSDictionary *dict = json;
     
     User *user = [[User alloc] init];
+    user.key       = kOK;
     user.userId    = dict[@"uid"];
     user.firstName = dict[@"first_name"];
     user.lastName  = dict[@"last_name"];

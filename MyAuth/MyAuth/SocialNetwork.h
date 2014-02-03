@@ -1,6 +1,12 @@
 #import <Foundation/Foundation.h>
 #import "User.h"
 
+static NSString* const kFB = @"FB";
+static NSString* const kGG = @"GG";
+static NSString* const kMR = @"MR";
+static NSString* const kOK = @"OK";
+static NSString* const kVK = @"VK";
+
 @protocol SocialNetwork <NSObject>
 
 - (NSURLRequest*)loginReq;
