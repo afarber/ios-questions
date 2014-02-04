@@ -1,6 +1,10 @@
 #import <Foundation/Foundation.h>
 #import "User.h"
 
+static NSString* const kKey   = @"key";
+static NSString* const kLabel = @"label";
+static NSString* const kObj   = @"object";
+
 static NSString* const kFB = @"FB";
 static NSString* const kGG = @"GG";
 static NSString* const kMR = @"MR";

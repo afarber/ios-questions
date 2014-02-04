@@ -99,7 +99,7 @@
         <!--User View Controller - Details-->
         <scene sceneID="npd-E6-dtq">
             <objects>
-                <viewController title="Details" id="moC-7a-jmO" customClass="UserViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Details" title="Details" id="moC-7a-jmO" customClass="UserViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nVM-tS-yNK"/>
                         <viewControllerLayoutGuide type="bottom" id="JlT-88-imy"/>
