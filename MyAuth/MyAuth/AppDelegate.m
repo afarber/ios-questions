@@ -7,17 +7,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *key = [defaults objectForKey:kKey];
-    User *user = [User loadForKey:key];
-    
-    if (user) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        UIViewController *uvc = [storyboard instantiateViewControllerWithIdentifier:@"Details"];
-        NSLog(@"XXX uvc=%@ user=%@", uvc, user);
-        [self.window.rootViewController presentViewController:uvc animated:YES completion:nil];
-    }
-    
     return YES;
 }
 							

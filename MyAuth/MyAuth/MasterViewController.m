@@ -1,5 +1,6 @@
 #import "MasterViewController.h"
 #import "LoginViewController.h"
+#import "UserViewController.h"
 #import "SocialNetwork.h"
 #import "OAuth/Facebook.h"
 #import "OAuth/Google.h"
@@ -59,6 +60,23 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *key = [defaults objectForKey:kKey];
+    User *user = [User loadForKey:key];
+    
+    if (user) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        UserViewController *uvc = [storyboard instantiateViewControllerWithIdentifier:@"Details"];
+        [uvc setUser:user];
+        //[self presentViewController:uvc animated:YES completion:nil];
+        [self.navigationController pushViewController:uvc animated:YES];
+    }
 }
 
 #pragma mark - Table View
