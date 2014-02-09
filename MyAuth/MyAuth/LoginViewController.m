@@ -95,14 +95,6 @@ static User *_user;
      }];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:@"pushUserViewController"]) {
-        UserViewController *uvc = segue.destinationViewController;
-        [uvc setUser:_user];
-    }
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

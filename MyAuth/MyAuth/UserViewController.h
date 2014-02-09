@@ -3,8 +3,6 @@
 
 @interface UserViewController : UIViewController
 
-@property (strong, nonatomic) User *user;
-
 @property (weak, nonatomic) IBOutlet UILabel *userId;
 @property (weak, nonatomic) IBOutlet UILabel *firstName;
 @property (weak, nonatomic) IBOutlet UILabel *lastName;

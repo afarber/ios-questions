@@ -1,4 +1,5 @@
 #import "UserViewController.h"
+#import "SocialNetwork.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface UserViewController ()
@@ -16,20 +17,31 @@
     return self;
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *key = [defaults objectForKey:kKey];
+    User *user = [User loadForKey:key];
+    
+    if (user) {
+        _userId.text    = [NSString stringWithFormat:@"%@", user.userId];
+        _firstName.text = user.firstName;
+        _lastName.text  = user.lastName;
+        _city.text      = user.city;
+        _gender.text    = (user.female ? @"female" : @"male");
+        
+        NSString *placeHolder = (user.female ? @"female.png" : @"male.png");
+        
+        [_imageView setImageWithURL:[NSURL URLWithString:user.avatar]
+                   placeholderImage:[UIImage imageNamed:placeHolder]];
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    _userId.text    = [NSString stringWithFormat:@"%@", _user.userId];
-    _firstName.text = _user.firstName;
-    _lastName.text  = _user.lastName;
-    _city.text      = _user.city;
-    _gender.text    = (_user.female ? @"female" : @"male");
-    
-    NSString *placeHolder = (_user.female ? @"female.png" : @"male.png");
-    
-    [_imageView setImageWithURL:[NSURL URLWithString:_user.avatar]
-               placeholderImage:[UIImage imageNamed:placeHolder]];
     
     UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Logout"
                                                                      style:UIBarButtonItemStylePlain
@@ -41,7 +53,7 @@
 
 - (IBAction)logout:(id)sender
 {
-    [User resetForKey:_user.key];
+    [User reset];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

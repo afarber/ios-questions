@@ -57,14 +57,9 @@ static NSString* const kFemale    = @"female";
     return user;
 }
 
-+(void)resetForKey:(NSString*)key
++(void)reset
 {
-    if (!key) {
-        return;
-    }
-    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults removeObjectForKey:key];
     [defaults removeObjectForKey:kKey];
     [defaults synchronize];
 }
