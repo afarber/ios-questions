@@ -17,9 +17,9 @@
     return self;
 }
 
--(void)viewDidAppear:(BOOL)animated
+- (void)viewDidLoad
 {
-    [super viewDidAppear:animated];
+    [super viewDidLoad];
     
     User *user = [User load];
     if (user) {
@@ -34,17 +34,11 @@
         [_imageView setImageWithURL:[NSURL URLWithString:user.avatar]
                    placeholderImage:[UIImage imageNamed:placeHolder]];
     }
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
     
     UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Logout"
                                                                      style:UIBarButtonItemStylePlain
                                                                     target:self
                                                                     action:@selector(logout:)];
-
     self.navigationItem.rightBarButtonItem = logoutButton;
 }
 

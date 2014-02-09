@@ -22,7 +22,7 @@
         <!--Master View Controller - Master-->
         <scene sceneID="VgW-fR-Quf">
             <objects>
-                <tableViewController title="Master" id="pGg-6v-bdr" customClass="MasterViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Master" title="Master" id="pGg-6v-bdr" customClass="MasterViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="mLL-gJ-YKr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -65,7 +65,7 @@
         <!--Login View Controller - Detail-->
         <scene sceneID="Cn3-H9-jdl">
             <objects>
-                <viewController title="Detail" id="Ah7-4n-0Wa" customClass="LoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Login" title="Detail" id="Ah7-4n-0Wa" customClass="LoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ka8-WD-7T3"/>
                         <viewControllerLayoutGuide type="bottom" id="2Wr-NS-tZo"/>
@@ -99,7 +99,7 @@
         <!--User View Controller - Details-->
         <scene sceneID="npd-E6-dtq">
             <objects>
-                <viewController storyboardIdentifier="Details" title="Details" id="moC-7a-jmO" customClass="UserViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="User" title="Details" id="moC-7a-jmO" customClass="UserViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nVM-tS-yNK"/>
                         <viewControllerLayoutGuide type="bottom" id="JlT-88-imy"/>

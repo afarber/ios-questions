@@ -7,6 +7,17 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *vc1 = [storyboard instantiateViewControllerWithIdentifier:@"Master"];
+    //UIViewController *vc2 = [storyboard instantiateViewControllerWithIdentifier:@"Login"];
+    UIViewController *vc3 = [storyboard instantiateViewControllerWithIdentifier:@"User"];
+
+    User *user = [User load];
+    NSArray *controllers = (user ? @[vc1, vc3] : @[vc1]);
+    
+    UINavigationController *nc = (UINavigationController *)self.window.rootViewController;
+    [nc setViewControllers:controllers];
+    
     return YES;
 }
 							
