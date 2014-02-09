@@ -21,10 +21,7 @@
 {
     [super viewDidAppear:animated];
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *key = [defaults objectForKey:kKey];
-    User *user = [User loadForKey:key];
-    
+    User *user = [User load];
     if (user) {
         _userId.text    = [NSString stringWithFormat:@"%@", user.userId];
         _firstName.text = user.firstName;

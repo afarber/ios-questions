@@ -45,13 +45,13 @@ static NSString* const kFemale    = @"female";
     [defaults synchronize];
 }
 
-+(User*)loadForKey:(NSString*)key
++(User*)load
 {
-    if (!key) {
-        return nil;
-    }
-    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *key = [defaults objectForKey:kKey];
+    if (!key)
+        return nil;
+    
     NSData *archivedObject = [defaults objectForKey:key];
     User *user = (User *)[NSKeyedUnarchiver unarchiveObjectWithData:archivedObject];
     return user;
