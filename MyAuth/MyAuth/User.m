@@ -1,6 +1,6 @@
 #import "User.h"
+#import "SocialNetwork.h"
 
-static NSString* const kKey       = @"key";
 static NSString* const kUserId    = @"userId";
 static NSString* const kFirstName = @"firstName";
 static NSString* const kLastName  = @"lastName";
@@ -52,11 +52,23 @@ static NSString* const kFemale    = @"female";
     [defaults synchronize];
 }
 
++(NSArray*)keys
+{
+    static NSArray *_keys;
+    static dispatch_once_t token;
+    
+    dispatch_once(&token, ^{
+        _keys = @[kFB, kGG, kMR, kOK, kVK];
+    });
+    
+    return _keys;
+}
+
 +(User*)load
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *key = [defaults objectForKey:kKey];
-    if (!key)
+    if ([[User keys] containsObject:key] == NO)
         return nil;
     
     NSData *archived = [defaults objectForKey:key];
@@ -70,7 +82,7 @@ static NSString* const kFemale    = @"female";
 +(User*)loadForKey:(NSString*)key
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if (!key)
+    if ([[User keys] containsObject:key] == NO)
         return nil;
     
     NSData *archived = [defaults objectForKey:key];

@@ -13,6 +13,7 @@
 -(void)save;
 -(void)reset;
 
++(NSArray*)keys;
 +(User*)load;
 +(User*)loadForKey:(NSString*)key;
 +(void)saveDefaultKey:(NSString*)key;

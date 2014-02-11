@@ -10,7 +10,6 @@
 
 @interface MasterViewController () {
     NSDictionary *_menu;
-    NSArray *_keys;
 }
 @end
 
@@ -20,8 +19,6 @@
 {
     [super awakeFromNib];
     
-    _keys = @[kFB, kGG, kMR, kOK, kVK];
-        
     _menu = @{
               kFB:  @{
                       kKey:      kFB,
@@ -71,14 +68,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _keys.count;
+    return [[User keys] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    NSString *key = _keys[indexPath.row];
+    NSString *key = [User keys][indexPath.row];
     NSString *label = _menu[key][kLabel];
     cell.textLabel.text = label;
     return cell;
@@ -87,7 +84,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    NSString *key = _keys[indexPath.row];
+    NSString *key = [User keys][indexPath.row];
     NSLog(@"%s: key=%@", __PRETTY_FUNCTION__, key);
     [User saveDefaultKey:key];
     User* user = [User loadForKey:key];
