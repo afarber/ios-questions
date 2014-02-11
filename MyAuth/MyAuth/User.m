@@ -44,13 +44,6 @@ static NSString* const kFemale    = @"female";
     [defaults synchronize];
 }
 
--(void)saveDefaultKey
-{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:self.key forKey:kKey];
-    [defaults synchronize];
-}
-
 -(void)reset
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -86,6 +79,13 @@ static NSString* const kFemale    = @"female";
     
     User *user = (User *)[NSKeyedUnarchiver unarchiveObjectWithData:archived];
     return user;
+}
+
++(void)saveDefaultKey:(NSString*)key
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:key forKey:kKey];
+    [defaults synchronize];
 }
 
 -(NSString *)description

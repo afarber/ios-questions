@@ -88,10 +88,10 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     NSString *key = _keys[indexPath.row];
-    NSLog(@"XXX key=%@", key);
-    
+    NSLog(@"%s: key=%@", __PRETTY_FUNCTION__, key);
+    [User saveDefaultKey:key];
     User* user = [User loadForKey:key];
-
+    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     //MasterViewController *vc1 = [storyboard instantiateViewControllerWithIdentifier:@"Master"];
     LoginViewController *vc2 = [storyboard instantiateViewControllerWithIdentifier:@"Login"];

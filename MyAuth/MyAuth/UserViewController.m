@@ -24,9 +24,6 @@
     
     _user = [User load];
     if (_user) {
-        // save the last viewed user for the next app start
-        [_user saveDefaultKey];
-        
         _userId.text    = [NSString stringWithFormat:@"%@", _user.userId];
         _firstName.text = _user.firstName;
         _lastName.text  = _user.lastName;
