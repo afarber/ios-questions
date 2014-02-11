@@ -41,7 +41,21 @@ static NSString* const kFemale    = @"female";
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSData *archivedObject = [NSKeyedArchiver archivedDataWithRootObject:self];
     [defaults setObject:archivedObject forKey:self.key];
+    [defaults synchronize];
+}
+
+-(void)saveDefaultKey
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:self.key forKey:kKey];
+    [defaults synchronize];
+}
+
+-(void)reset
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults removeObjectForKey:self.key];
+    [defaults removeObjectForKey:kKey];
     [defaults synchronize];
 }
 
@@ -73,14 +87,6 @@ static NSString* const kFemale    = @"female";
     User *user = (User *)[NSKeyedUnarchiver unarchiveObjectWithData:archived];
     return user;
 }
-
-+(void)reset
-{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults removeObjectForKey:kKey];
-    [defaults synchronize];
-}
-
 
 -(NSString *)description
 {

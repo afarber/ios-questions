@@ -2,8 +2,9 @@
 #import "SocialNetwork.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
-@interface UserViewController ()
-
+@interface UserViewController () {
+    User* _user;
+}
 @end
 
 @implementation UserViewController
@@ -21,17 +22,20 @@
 {
     [super viewDidLoad];
     
-    User *user = [User load];
-    if (user) {
-        _userId.text    = [NSString stringWithFormat:@"%@", user.userId];
-        _firstName.text = user.firstName;
-        _lastName.text  = user.lastName;
-        _city.text      = user.city;
-        _gender.text    = (user.female ? @"female" : @"male");
+    _user = [User load];
+    if (_user) {
+        // save the last viewed user for the next app start
+        [_user saveDefaultKey];
         
-        NSString *placeHolder = (user.female ? @"female.png" : @"male.png");
+        _userId.text    = [NSString stringWithFormat:@"%@", _user.userId];
+        _firstName.text = _user.firstName;
+        _lastName.text  = _user.lastName;
+        _city.text      = _user.city;
+        _gender.text    = (_user.female ? @"female" : @"male");
         
-        [_imageView setImageWithURL:[NSURL URLWithString:user.avatar]
+        NSString *placeHolder = (_user.female ? @"female.png" : @"male.png");
+        
+        [_imageView setImageWithURL:[NSURL URLWithString:_user.avatar]
                    placeholderImage:[UIImage imageNamed:placeHolder]];
     }
     
@@ -44,7 +48,7 @@
 
 - (IBAction)logout:(id)sender
 {
-    [User reset];
+    [_user reset];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

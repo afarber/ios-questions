@@ -11,8 +11,10 @@
 @property (assign, nonatomic) BOOL female;
 
 -(void)save;
+-(void)saveDefaultKey;
+-(void)reset;
+
 +(User*)load;
 +(User*)loadForKey:(NSString*)key;
-+(void)reset;
 
 @end

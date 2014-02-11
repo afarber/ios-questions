@@ -51,7 +51,7 @@ static User *_user;
              id json = [NSJSONSerialization JSONObjectWithData:data
                                                        options:NSJSONReadingMutableContainers
                                                          error:nil];
-             NSLog(@"json=%@", json);
+             //NSLog(@"json=%@", json);
              
              NSURLRequest *req = [_sn userReqWithJson:json];
              if (req) {
@@ -79,7 +79,7 @@ static User *_user;
              id json = [NSJSONSerialization JSONObjectWithData:data
                                                        options:NSJSONReadingMutableContainers
                                                          error:nil];
-             NSLog(@"json = %@", json);
+             //NSLog(@"json = %@", json);
              
              _user = [_sn createUserFromJson:json];
              [_user save];
