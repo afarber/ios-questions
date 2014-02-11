@@ -84,6 +84,17 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    NSString *key = _keys[indexPath.row];
+    NSLog(@"XXX key=%@", key);
+
+    //BATTrailsViewController *trailsController = [[BATTrailsViewController alloc] initWithStyle:UITableViewStylePlain];
+    //trailsController.selectedRegion = [regions objectAtIndex:indexPath.row];
+    //[[self navigationController] pushViewController:trailsController animated:YES];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"pushLoginViewController"]) {
