@@ -45,9 +45,6 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <segue destination="Ah7-4n-0Wa" kind="push" identifier="pushLoginViewController" id="aZq-2G-gFg"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>

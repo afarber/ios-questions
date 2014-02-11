@@ -11,7 +11,7 @@ static User *_user;
     [super viewDidLoad];
     
     NSURLRequest *req = [_sn loginReq];
-    NSLog(@"%s: req=%@", __PRETTY_FUNCTION__, req);
+    //NSLog(@"%s: req=%@", __PRETTY_FUNCTION__, req);
     [_webView loadRequest:req];
 }
 
@@ -20,7 +20,7 @@ static User *_user;
     NSURL *url = [webView.request mainDocumentURL];
     NSString *str = [url absoluteString];
     NSString *title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
-    NSLog(@"%s: url=%@ str=%@ title=%@", __PRETTY_FUNCTION__, url, str, title);
+    //NSLog(@"%s: url=%@ str=%@ title=%@", __PRETTY_FUNCTION__, url, str, title);
     
     if ([_sn shouldFetchToken]) {
         NSURLRequest *req = [_sn tokenReqWithStr:str AndTitle:title];
@@ -37,7 +37,7 @@ static User *_user;
 
 - (void)fetchToken:(NSURLRequest*)req
 {
-    NSLog(@"%s: req=%@", __PRETTY_FUNCTION__, req);
+    //NSLog(@"%s: req=%@", __PRETTY_FUNCTION__, req);
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     
     [NSURLConnection
@@ -65,7 +65,7 @@ static User *_user;
 
 - (void)fetchUser:(NSURLRequest*)req
 {
-    NSLog(@"%s: req=%@", __PRETTY_FUNCTION__, req);
+    //NSLog(@"%s: req=%@", __PRETTY_FUNCTION__, req);
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     
     [NSURLConnection

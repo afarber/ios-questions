@@ -52,8 +52,25 @@ static NSString* const kFemale    = @"female";
     if (!key)
         return nil;
     
-    NSData *archivedObject = [defaults objectForKey:key];
-    User *user = (User *)[NSKeyedUnarchiver unarchiveObjectWithData:archivedObject];
+    NSData *archived = [defaults objectForKey:key];
+    if (!archived)
+        return nil;
+    
+    User *user = (User *)[NSKeyedUnarchiver unarchiveObjectWithData:archived];
+    return user;
+}
+
++(User*)loadForKey:(NSString*)key
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (!key)
+        return nil;
+    
+    NSData *archived = [defaults objectForKey:key];
+    if (!archived)
+        return nil;
+    
+    User *user = (User *)[NSKeyedUnarchiver unarchiveObjectWithData:archived];
     return user;
 }
 

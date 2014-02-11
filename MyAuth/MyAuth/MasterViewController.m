@@ -89,20 +89,23 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     NSString *key = _keys[indexPath.row];
     NSLog(@"XXX key=%@", key);
+    
+    User* user = [User loadForKey:key];
 
-    //BATTrailsViewController *trailsController = [[BATTrailsViewController alloc] initWithStyle:UITableViewStylePlain];
-    //trailsController.selectedRegion = [regions objectAtIndex:indexPath.row];
-    //[[self navigationController] pushViewController:trailsController animated:YES];
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([[segue identifier] isEqualToString:@"pushLoginViewController"]) {
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSString *key = _keys[indexPath.row];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    //MasterViewController *vc1 = [storyboard instantiateViewControllerWithIdentifier:@"Master"];
+    LoginViewController *vc2 = [storyboard instantiateViewControllerWithIdentifier:@"Login"];
+    UserViewController *vc3 = [storyboard instantiateViewControllerWithIdentifier:@"User"];
+    
+    UINavigationController* nc = [self navigationController];
+    
+    if (user) {
+        [nc pushViewController:vc3 animated:YES];
+    } else {
         NSDictionary *dict = _menu[key];
-        [[segue destinationViewController] setTitle:dict[kLabel]];
-        [[segue destinationViewController] setSn:dict[kObj]];
+        [vc2 setTitle:dict[kLabel]];
+        [vc2 setSn:dict[kObj]];
+        [nc pushViewController:vc2 animated:YES];
     }
 }
 

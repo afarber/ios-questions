@@ -1,4 +1,6 @@
 #import "AppDelegate.h"
+#import "MasterViewController.h"
+#import "LoginViewController.h"
 #import "UserViewController.h"
 #import "SocialNetwork.h"
 #import "User.h"
@@ -8,9 +10,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *vc1 = [storyboard instantiateViewControllerWithIdentifier:@"Master"];
-    //UIViewController *vc2 = [storyboard instantiateViewControllerWithIdentifier:@"Login"];
-    UIViewController *vc3 = [storyboard instantiateViewControllerWithIdentifier:@"User"];
+    MasterViewController *vc1 = [storyboard instantiateViewControllerWithIdentifier:@"Master"];
+    //LoginViewController *vc2 = [storyboard instantiateViewControllerWithIdentifier:@"Login"];
+    UserViewController *vc3 = [storyboard instantiateViewControllerWithIdentifier:@"User"];
 
     User *user = [User load];
     NSArray *controllers = (user ? @[vc1, vc3] : @[vc1]);
