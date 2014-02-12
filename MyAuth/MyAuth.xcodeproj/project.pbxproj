@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6243797F4DC240BE835056EF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21FF7BC5B1AB484797B41A19 /* libPods.a */; };
+		8408649118AAC9EF002166D9 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8408649018AAC9EF002166D9 /* Social.framework */; };
 		8475A55A1878208800D8A37B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8475A5591878208800D8A37B /* Foundation.framework */; };
 		8475A55C1878208800D8A37B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8475A55B1878208800D8A37B /* CoreGraphics.framework */; };
 		8475A55E1878208800D8A37B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8475A55D1878208800D8A37B /* UIKit.framework */; };
@@ -46,6 +47,7 @@
 /* Begin PBXFileReference section */
 		21FF7BC5B1AB484797B41A19 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3674BACCA1D74F54A5FF2B05 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		8408649018AAC9EF002166D9 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		8475A5561878208800D8A37B /* MyAuth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyAuth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8475A5591878208800D8A37B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8475A55B1878208800D8A37B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -91,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8408649118AAC9EF002166D9 /* Social.framework in Frameworks */,
 				8475A55C1878208800D8A37B /* CoreGraphics.framework in Frameworks */,
 				8475A55E1878208800D8A37B /* UIKit.framework in Frameworks */,
 				8475A55A1878208800D8A37B /* Foundation.framework in Frameworks */,
@@ -134,6 +137,7 @@
 		8475A5581878208800D8A37B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8408649018AAC9EF002166D9 /* Social.framework */,
 				8475A5591878208800D8A37B /* Foundation.framework */,
 				8475A55B1878208800D8A37B /* CoreGraphics.framework */,
 				8475A55D1878208800D8A37B /* UIKit.framework */,
