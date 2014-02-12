@@ -2,7 +2,10 @@
 #import "UserViewController.h"
 #import "User.h"
 
-static User *_user;
+@interface LoginViewController() {
+    User *_user;
+}
+@end
 
 @implementation LoginViewController
 
