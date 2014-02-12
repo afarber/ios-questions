@@ -1,3 +1,5 @@
+#import <Social/Social.h>
+#import <Accounts/Accounts.h>
 #import "MasterViewController.h"
 #import "LoginViewController.h"
 #import "UserViewController.h"
@@ -68,14 +70,16 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[User keys] count];
+    NSArray *keys = [User keys];
+    return keys.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    NSString *key = [User keys][indexPath.row];
+    NSArray *keys = [User keys];
+    NSString *key = keys[indexPath.row];
     NSString *label = _menu[key][kLabel];
     cell.textLabel.text = label;
     return cell;
@@ -84,7 +88,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    NSString *key = [User keys][indexPath.row];
+    NSArray *keys = [User keys];
+    NSString *key = keys[indexPath.row];
     NSLog(@"%s: key=%@", __PRETTY_FUNCTION__, key);
     [User saveDefaultKey:key];
     User* user = [User loadForKey:key];
@@ -98,12 +103,31 @@
     
     if (user) {
         [nc pushViewController:vc3 animated:YES];
+    } else if (key == kFB) {
+        if (NO == [SLComposeViewController isAvailableForServiceType: SLServiceTypeFacebook]) {
+            [self showAlert:@"There are no Facebook accounts configured. Please add or create a Facebook account in Settings."];
+            return;
+        }
     } else {
         NSDictionary *dict = _menu[key];
         [vc2 setTitle:dict[kLabel]];
         [vc2 setSn:dict[kObj]];
         [nc pushViewController:vc2 animated:YES];
     }
+}
+
+- (void) showAlert:(NSString*) msg {
+    assert([NSThread isMainThread]);
+    
+    dispatch_async(dispatch_get_main_queue(), ^(void) {
+        UIAlertView *alertView = [[UIAlertView alloc]
+                                  initWithTitle:@"WARNING"
+                                  message:msg
+                                  delegate:nil
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
+        [alertView show];
+    });
 }
 
 @end
