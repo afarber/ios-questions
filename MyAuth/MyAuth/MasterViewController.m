@@ -10,7 +10,7 @@
 #import "OAuth/Odnoklassniki.h"
 #import "OAuth/Vkontakte.h"
 
-static NSString* const kFacebookAppId = @"441988749325-h8bsf01r3jnv5nbsb31a8pi99660oe0q.apps.googleusercontent.com";
+static NSString* const kFacebookAppId = @"432298283565593";
 
 @interface MasterViewController() {
     NSDictionary* _menu;
