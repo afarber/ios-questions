@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		6243797F4DC240BE835056EF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21FF7BC5B1AB484797B41A19 /* libPods.a */; };
 		8408649118AAC9EF002166D9 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8408649018AAC9EF002166D9 /* Social.framework */; };
+		8447523E18AE500D00A0399E /* FacebookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8447523D18AE500D00A0399E /* FacebookViewController.m */; };
+		8447524118AE503100A0399E /* GameCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8447524018AE503100A0399E /* GameCenterViewController.m */; };
 		8475A55A1878208800D8A37B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8475A5591878208800D8A37B /* Foundation.framework */; };
 		8475A55C1878208800D8A37B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8475A55B1878208800D8A37B /* CoreGraphics.framework */; };
 		8475A55E1878208800D8A37B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8475A55D1878208800D8A37B /* UIKit.framework */; };
@@ -48,6 +50,10 @@
 		21FF7BC5B1AB484797B41A19 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3674BACCA1D74F54A5FF2B05 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		8408649018AAC9EF002166D9 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		8447523C18AE500D00A0399E /* FacebookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookViewController.h; sourceTree = "<group>"; };
+		8447523D18AE500D00A0399E /* FacebookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookViewController.m; sourceTree = "<group>"; };
+		8447523F18AE503100A0399E /* GameCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenterViewController.h; sourceTree = "<group>"; };
+		8447524018AE503100A0399E /* GameCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCenterViewController.m; sourceTree = "<group>"; };
 		8475A5561878208800D8A37B /* MyAuth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyAuth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8475A5591878208800D8A37B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8475A55B1878208800D8A37B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -154,6 +160,10 @@
 				8475A5691878208800D8A37B /* AppDelegate.m */,
 				8475A56E1878208800D8A37B /* MasterViewController.h */,
 				8475A56F1878208800D8A37B /* MasterViewController.m */,
+				8447523F18AE503100A0399E /* GameCenterViewController.h */,
+				8447524018AE503100A0399E /* GameCenterViewController.m */,
+				8447523C18AE500D00A0399E /* FacebookViewController.h */,
+				8447523D18AE500D00A0399E /* FacebookViewController.m */,
 				84F663F41897D91800274932 /* LoginViewController.h */,
 				84F663F51897D91800274932 /* LoginViewController.m */,
 				84F663A61896883F00274932 /* UserViewController.h */,
@@ -355,6 +365,7 @@
 				84F663A518965F2B00274932 /* User.m in Sources */,
 				84F6639F18965EDD00274932 /* Mailru.m in Sources */,
 				84F6639E18965EDD00274932 /* Google.m in Sources */,
+				8447524118AE503100A0399E /* GameCenterViewController.m in Sources */,
 				8475A56A1878208800D8A37B /* AppDelegate.m in Sources */,
 				84F663A018965EDD00274932 /* Odnoklassniki.m in Sources */,
 				8475A5701878208800D8A37B /* MasterViewController.m in Sources */,
@@ -363,6 +374,7 @@
 				8475A5661878208800D8A37B /* main.m in Sources */,
 				84F663F61897D91800274932 /* LoginViewController.m in Sources */,
 				84F663F91899041100274932 /* ReplaceSegue.m in Sources */,
+				8447523E18AE500D00A0399E /* FacebookViewController.m in Sources */,
 				84F663A118965EDD00274932 /* Vkontakte.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

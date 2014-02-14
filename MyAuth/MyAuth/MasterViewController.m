@@ -1,23 +1,19 @@
 #import <Social/Social.h>
-#import <Accounts/Accounts.h>
+//#import <Accounts/Accounts.h>
 #import "MasterViewController.h"
 #import "LoginViewController.h"
 #import "UserViewController.h"
+#import "GameCenterViewController.h"
+#import "FacebookViewController.h"
 #import "SocialNetwork.h"
-#import "OAuth/Facebook.h"
+//#import "OAuth/Facebook.h"
 #import "OAuth/Google.h"
 #import "OAuth/Mailru.h"
 #import "OAuth/Odnoklassniki.h"
 #import "OAuth/Vkontakte.h"
 
-static NSString* const kFacebookAppId = @"432298283565593";
-
 @interface MasterViewController() {
     NSDictionary* _menu;
-    
-    ACAccount* _facebookAccount;
-    ACAccountType* _facebookAccountType;
-    ACAccountStore* _accountStore;
 }
 @end
 
@@ -28,10 +24,13 @@ static NSString* const kFacebookAppId = @"432298283565593";
     [super awakeFromNib];
     
     _menu = @{
+              kGC:  @{
+                      kKey:      kGC,
+                      kLabel:    @"Game Center",
+                      },
               kFB:  @{
                       kKey:      kFB,
                       kLabel:    @"Facebook",
-                      kObj:      [[Facebook alloc] init],
                       },
               kGG:  @{
                       kKey:      kGG,
@@ -105,72 +104,29 @@ static NSString* const kFacebookAppId = @"432298283565593";
     //MasterViewController *vc1 = [storyboard instantiateViewControllerWithIdentifier:@"Master"];
     LoginViewController *vc2 = [storyboard instantiateViewControllerWithIdentifier:@"Login"];
     UserViewController *vc3 = [storyboard instantiateViewControllerWithIdentifier:@"User"];
+    GameCenterViewController *vc4 = [storyboard instantiateViewControllerWithIdentifier:@"GameCenter"];
+    FacebookViewController *vc5 = [storyboard instantiateViewControllerWithIdentifier:@"Facebook"];
     
     UINavigationController* nc = [self navigationController];
     
     if (user) {
         [nc pushViewController:vc3 animated:YES];
+    } else if (key == kGC) {
+        [nc pushViewController:vc4 animated:YES];
+
     } else if (key == kFB) {
         if (NO == [SLComposeViewController isAvailableForServiceType: SLServiceTypeFacebook]) {
             [self showAlert:@"There are no Facebook accounts configured. Please add or create a Facebook account in Settings."];
             return;
         }
         
-        [self fetchFacebookUser];
+        [nc pushViewController:vc5 animated:YES];
     } else {
         NSDictionary *dict = _menu[key];
         [vc2 setTitle:dict[kLabel]];
         [vc2 setSn:dict[kObj]];
         [nc pushViewController:vc2 animated:YES];
     }
-}
-
--(void)fetchFacebookUser
-{
-    if (!_accountStore) {
-        _accountStore = [[ACAccountStore alloc] init];
-    }
-    
-    if (!_facebookAccountType) {
-        _facebookAccountType = [_accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook];
-    }
-    
-    NSDictionary *options = @{ ACFacebookAppIdKey: kFacebookAppId };
-    
-    [_accountStore requestAccessToAccountsWithType: _facebookAccountType
-                                           options: options
-                                        completion: ^(BOOL granted, NSError *error) {
-        if (granted) {
-            NSArray *accounts = [_accountStore accountsWithAccountType:_facebookAccountType];
-            _facebookAccount = [accounts lastObject];
-            
-            NSURL *url = [NSURL URLWithString:@"https://graph.facebook.com/me"];
-            
-            SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeFacebook
-                                                    requestMethod:SLRequestMethodGET
-                                                              URL:url
-                                                       parameters:nil];
-            request.account = _facebookAccount;
-            
-            [request performRequestWithHandler:^(NSData *responseData,
-                                                 NSHTTPURLResponse *urlResponse,
-                                                 NSError *error) {
-                
-                NSDictionary *responseDictionary = [NSJSONSerialization
-                                                    JSONObjectWithData:responseData
-                                                    options:0
-                                                    error:nil];
-                //NSLog(@"%@", responseDictionary);
-                NSLog(@"id: %@", responseDictionary[@"id"]);
-                NSLog(@"first_name: %@", responseDictionary[@"first_name"]);
-                NSLog(@"last_name: %@", responseDictionary[@"last_name"]);
-                NSLog(@"gender: %@", responseDictionary[@"gender"]);
-                NSLog(@"city: %@", responseDictionary[@"location"][@"name"]);
-            }];
-        } else {
-            [self showAlert:@"Facebook access for this app has been denied. Please edit Facebook permissions in Settings."];
-        }
-    }];
 }
 
 -(void)showAlert:(NSString*)msg

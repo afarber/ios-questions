@@ -58,7 +58,7 @@ static NSString* const kFemale    = @"female";
     static dispatch_once_t token;
     
     dispatch_once(&token, ^{
-        _keys = @[kFB, kGG, kMR, kOK, kVK];
+        _keys = @[kGC, kFB, kGG, kMR, kOK, kVK];
     });
     
     return _keys;
