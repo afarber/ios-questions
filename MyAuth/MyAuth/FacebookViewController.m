@@ -2,7 +2,6 @@
 #import <Accounts/Accounts.h>
 #import "FacebookViewController.h"
 #import "SocialNetwork.h"
-#import "User.h"
 
 static NSString* const kAppId =  @"432298283565593";
 static NSString* const kAvatar = @"http://graph.facebook.com/%@/picture?type=large";
