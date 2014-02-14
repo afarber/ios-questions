@@ -59,10 +59,10 @@
             </objects>
             <point key="canvasLocation" x="459" y="64"/>
         </scene>
-        <!--Game Center View Controller - GameCenter-->
+        <!--Game Center View Controller - Apple Game Center-->
         <scene sceneID="eah-al-lO1">
             <objects>
-                <viewController storyboardIdentifier="GameCenter" title="GameCenter" id="s5N-Ev-uK1" customClass="GameCenterViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameCenter" title="Apple Game Center" id="s5N-Ev-uK1" customClass="GameCenterViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="imH-Rx-EqN"/>
                         <viewControllerLayoutGuide type="bottom" id="aGJ-56-ASU"/>
@@ -78,6 +78,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="moC-7a-jmO" kind="custom" identifier="replaceGameCenter" customClass="ReplaceSegue" id="GAT-Lg-fUT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MOb-oL-6aD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -110,7 +113,7 @@
                     <navigationItem key="navigationItem" title="Login" id="cra-N8-TIN"/>
                     <connections>
                         <outlet property="webView" destination="jqf-PO-pwK" id="AsR-q3-8dD"/>
-                        <segue destination="moC-7a-jmO" kind="custom" identifier="pushUserViewController" customClass="ReplaceSegue" id="1lR-u7-SEg"/>
+                        <segue destination="moC-7a-jmO" kind="custom" identifier="replaceOauth" customClass="ReplaceSegue" id="1lR-u7-SEg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrm-kH-fPn" sceneMemberID="firstResponder"/>
@@ -133,13 +136,12 @@
                                 <rect key="frame" x="150" y="274" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="9AH-WV-b3i">
-                                <rect key="frame" x="150" y="274" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="moC-7a-jmO" kind="custom" identifier="replaceFacebook" customClass="ReplaceSegue" id="lki-xz-AQN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lTl-qO-tna" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -246,4 +248,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="GAT-Lg-fUT"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -87,10 +87,10 @@
              _user = [_sn createUserFromJson:json];
              [_user save];
              
-             double delayInSeconds = 0.5;
+             double delayInSeconds = 1;
              dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
              dispatch_after(delay, dispatch_get_main_queue(), ^(void){
-                 [self performSegueWithIdentifier: @"pushUserViewController" sender: self];
+                 [self performSegueWithIdentifier: @"replaceOauth" sender: self];
              });
          } else {
              NSLog(@"Download failed: %@", error);

@@ -1,6 +1,8 @@
 #import <Social/Social.h>
 #import <Accounts/Accounts.h>
 #import "FacebookViewController.h"
+#import "SocialNetwork.h"
+#import "User.h"
 
 static NSString* const kAppId =  @"432298283565593";
 static NSString* const kAvatar = @"http://graph.facebook.com/%@/picture?type=large";
@@ -28,10 +30,10 @@ static NSString* const kMe =     @"https://graph.facebook.com/me";
 {
     [super viewDidLoad];
 
-    [self fetchFacebookUser];
+    [self fetchUser];
 }
 
--(void)fetchFacebookUser
+-(void)fetchUser
 {
     if (!_accountStore) {
         _accountStore = [[ACAccountStore alloc] init];
@@ -58,25 +60,50 @@ static NSString* const kMe =     @"https://graph.facebook.com/me";
                                                        parameters:nil];
             request.account = _facebookAccount;
             
-            [request performRequestWithHandler:^(NSData *responseData,
-                                                 NSHTTPURLResponse *urlResponse,
+            [request performRequestWithHandler:^(NSData *data,
+                                                 NSHTTPURLResponse *resp,
                                                  NSError *error) {
-                
-                NSDictionary *responseDictionary = [NSJSONSerialization
-                                                    JSONObjectWithData:responseData
-                                                    options:0
-                                                    error:nil];
-                //NSLog(@"%@", responseDictionary);
-                NSLog(@"id: %@", responseDictionary[@"id"]);
-                NSLog(@"first_name: %@", responseDictionary[@"first_name"]);
-                NSLog(@"last_name: %@", responseDictionary[@"last_name"]);
-                NSLog(@"gender: %@", responseDictionary[@"gender"]);
-                NSLog(@"city: %@", responseDictionary[@"location"][@"name"]);
+                if (error == nil && [data length] > 0) {
+                    id json = [NSJSONSerialization JSONObjectWithData:data
+                                                              options:NSJSONReadingMutableContainers
+                                                                error:nil];
+                    //NSLog(@"json = %@", json);
+                    
+                    User *user = [self createUserFromJson:json];
+                    [user save];
+                    
+                    double delayInSeconds = 1;
+                    dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+                    dispatch_after(delay, dispatch_get_main_queue(), ^(void){
+                        [self performSegueWithIdentifier: @"replaceFacebook" sender: self];
+                    });
+                }
             }];
         } else {
             [self showAlert:@"Facebook access for this app has been denied. Please edit Facebook permissions in Settings."];
         }
     }];
+}
+
+- (User*)createUserFromJson:(id)json
+{
+    if (![json isKindOfClass:[NSDictionary class]]) {
+        NSLog(@"Parsing response failed");
+        return nil;
+    }
+    
+    NSDictionary *dict = json;
+    
+    User *user = [[User alloc] init];
+    user.key       = kFB;
+    user.userId    = dict[@"id"];
+    user.firstName = dict[@"first_name"];
+    user.lastName  = dict[@"last_name"];
+    user.city      = dict[@"location"][@"name"];
+    user.avatar    = [NSString stringWithFormat:kAvatar, dict[@"id"]];
+    user.female    = ([@"female" caseInsensitiveCompare:dict[@"gender"]] == NSOrderedSame);
+    
+    return user;
 }
 
 -(void)showAlert:(NSString*)msg
