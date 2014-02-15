@@ -34,15 +34,15 @@
                   [localPlayer alias],
                   [localPlayer playerID]);
             
-            // - (void)loadPhotoForSize:(GKPhotoSize)size withCompletionHandler:(void (^)(UIImage *photo, NSError *error))completionHandler
-            // [NSData base64EncodedDataWithOptions:]
-            
             User *user = [[User alloc] init];
             user.key       = kGC;
             user.userId    = [localPlayer playerID];
             user.firstName = [localPlayer alias];
             //user.avatar  = nil;
             [user save];
+
+            [self loadAvatar:localPlayer];
+            // [NSData base64EncodedDataWithOptions:]
             
             double delayInSeconds = 1;
             dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
@@ -55,6 +55,19 @@
         
         NSLog(@"%s: error=%@", __PRETTY_FUNCTION__, error);
     };
+}
+
+- (void)loadAvatar:(GKPlayer*)player
+{
+    [player loadPhotoForSize:GKPhotoSizeNormal withCompletionHandler:^(UIImage *photo, NSError *error) {
+        if (photo != nil) {
+            NSLog(@"%s: photo=%@", __PRETTY_FUNCTION__, photo);
+        }
+        
+        if (error != nil) {
+            NSLog(@"%s: error=%@", __PRETTY_FUNCTION__, error);
+        }
+    }];
 }
 
 -(void)showAlert:(NSString*)msg
