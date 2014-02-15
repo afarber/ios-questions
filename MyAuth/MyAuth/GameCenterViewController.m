@@ -31,7 +31,7 @@
             
         } else if (localPlayer.isAuthenticated) {
             NSLog(@"%s: displayName=%@ playerID=%@", __PRETTY_FUNCTION__,
-                  [localPlayer displayName],
+                  [localPlayer alias],
                   [localPlayer playerID]);
             
             // - (void)loadPhotoForSize:(GKPhotoSize)size withCompletionHandler:(void (^)(UIImage *photo, NSError *error))completionHandler
@@ -40,7 +40,7 @@
             User *user = [[User alloc] init];
             user.key       = kGC;
             user.userId    = [localPlayer playerID];
-            user.firstName = [localPlayer displayName];
+            user.firstName = [localPlayer alias];
             //user.avatar  = nil;
             [user save];
             
