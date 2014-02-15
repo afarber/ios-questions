@@ -62,7 +62,7 @@ static NSString* const kMe =       @"https://api.vk.com/method/getProfiles?field
     user.userId    = dict[@"uid"];
     user.firstName = dict[@"first_name"];
     user.lastName  = dict[@"last_name"];
-    user.city      = dict[@"city"];
+    user.city      = [NSString stringWithFormat:@"%@", dict[@"city"]];
     user.avatar    = dict[@"photo_big"];
     user.female    = (2 == [dict[@"female"] intValue]);
     

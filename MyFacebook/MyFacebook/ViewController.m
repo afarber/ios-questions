@@ -73,7 +73,7 @@
 }
 
 - (void) showAlert:(NSString*) msg {
-    assert([NSThread isMainThread]);
+    //assert([NSThread isMainThread]);
     
     dispatch_async(dispatch_get_main_queue(), ^(void) {
         UIAlertView *alertView = [[UIAlertView alloc]
