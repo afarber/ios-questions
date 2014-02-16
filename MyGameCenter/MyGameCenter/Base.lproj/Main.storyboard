@@ -16,12 +16,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="789" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VAq-Rb-CaK">
-                                <rect key="frame" x="20" y="28" width="280" height="313"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="789" translatesAutoresizingMaskIntoConstraints="NO" id="VAq-Rb-CaK">
+                                <rect key="frame" x="20" y="28" width="280" height="458"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="playerId" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yL6-xo-f0q">
-                                <rect key="frame" x="20" y="358" width="280" height="70"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="playerId" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yL6-xo-f0q">
+                                <rect key="frame" x="20" y="494" width="280" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -44,8 +44,6 @@
                             <constraint firstAttribute="trailing" secondItem="009-dz-3Zo" secondAttribute="trailing" constant="20" symbolic="YES" id="GH8-fe-Ivd"/>
                             <constraint firstItem="XHK-g8-VlV" firstAttribute="top" secondItem="009-dz-3Zo" secondAttribute="bottom" constant="20" symbolic="YES" id="TdU-oS-aGt"/>
                             <constraint firstItem="VAq-Rb-CaK" firstAttribute="top" secondItem="vAl-u4-Ryc" secondAttribute="bottom" constant="20" symbolic="YES" id="Z1z-m4-NXc"/>
-                            <constraint firstItem="009-dz-3Zo" firstAttribute="top" secondItem="yL6-xo-f0q" secondAttribute="bottom" constant="8" symbolic="YES" id="m8U-b7-V9w"/>
-                            <constraint firstItem="yL6-xo-f0q" firstAttribute="top" secondItem="VAq-Rb-CaK" secondAttribute="bottom" constant="8" symbolic="YES" id="ojw-j6-whR"/>
                             <constraint firstItem="yL6-xo-f0q" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" symbolic="YES" id="qXC-qm-15Q"/>
                             <constraint firstAttribute="trailing" secondItem="VAq-Rb-CaK" secondAttribute="trailing" constant="20" symbolic="YES" id="ugZ-JA-Xlm"/>
                             <constraint firstItem="009-dz-3Zo" firstAttribute="top" secondItem="yL6-xo-f0q" secondAttribute="bottom" constant="8" symbolic="YES" id="xqj-dR-88W"/>
