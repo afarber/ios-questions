@@ -1,8 +1,14 @@
 #import <GameKit/GameKit.h>
 #import "ViewController.h"
 
-static NSString* const kScript = @"http://afarber.de/gc-upload.php";
 static NSString* const kAvatar = @"http://afarber.de/gc/%@.jpg";
+static NSString* const kScript = @"http://afarber.de/gc-upload.php";
+static NSString* const kBody   = @"id=%@&img=%@";
+
+@interface ViewController() {
+    NSString* _playerId;
+}
+@end
 
 @implementation ViewController
 
@@ -16,15 +22,18 @@ static NSString* const kAvatar = @"http://afarber.de/gc/%@.jpg";
 {
     __weak GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
     localPlayer.authenticateHandler = ^(UIViewController *viewController, NSError *error) {
+        
         assert([NSThread isMainThread]);
 
         if (viewController != nil) {
             [self presentViewController:viewController
                                animated:YES
                              completion:nil];
+            
         } else if (localPlayer.isAuthenticated) {
-            _idLabel.text = localPlayer.playerID;
             _aliasLabel.text = localPlayer.alias;
+            _idLabel.text    = localPlayer.playerID;
+            _playerId        = localPlayer.playerID;
             
             [self loadAvatar:localPlayer];
         } else {
@@ -76,7 +85,7 @@ static NSString* const kAvatar = @"http://afarber.de/gc/%@.jpg";
     [req setTimeoutInterval:30.0f];
     [req setHTTPMethod:@"POST"];
 
-    NSString *body = @"bodyParam1=BodyValue1&bodyParam2=BodyValue2";
+    NSString *body = [NSString stringWithFormat:kBody, _playerId, img];
     [req setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
 
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
