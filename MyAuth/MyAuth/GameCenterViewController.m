@@ -2,6 +2,8 @@
 #import "GameCenterViewController.h"
 #import "SocialNetwork.h"
 
+static NSString* const kAvatar = @"http://afarber.de/gc/%@.png";
+
 @implementation GameCenterViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -38,7 +40,7 @@
             user.key       = kGC;
             user.userId    = [localPlayer playerID];
             user.firstName = [localPlayer alias];
-            //user.avatar  = nil;
+            user.avatar    = nil;
             [user save];
 
             [self loadAvatar:localPlayer];
@@ -60,12 +62,14 @@
 - (void)loadAvatar:(GKPlayer*)player
 {
     [player loadPhotoForSize:GKPhotoSizeNormal withCompletionHandler:^(UIImage *photo, NSError *error) {
-        if (photo != nil) {
-            NSLog(@"%s: photo=%@", __PRETTY_FUNCTION__, photo);
-        }
-        
         if (error != nil) {
             NSLog(@"%s: error=%@", __PRETTY_FUNCTION__, error);
+            return;
+        }
+        
+        if (photo != nil) {
+            NSData* data = UIImageJPEGRepresentation(photo, .75);
+            NSLog(@"%s: photo=%@ data=%@", __PRETTY_FUNCTION__, photo, data);
         }
     }];
 }
