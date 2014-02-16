@@ -80,12 +80,13 @@ static NSString* const kBody   = @"id=%@&img=%@";
     NSLog(@"%s: img=%@ data=%@", __PRETTY_FUNCTION__, img, str);
     
     NSURL *url = [NSURL URLWithString:kScript];
-
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
     [req setTimeoutInterval:30.0f];
     [req setHTTPMethod:@"POST"];
 
-    NSString *body = [NSString stringWithFormat:kBody, _playerId, img];
+    NSString *body = [NSString stringWithFormat:kBody,
+                      [_playerId stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
+                      [str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     [req setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
 
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
