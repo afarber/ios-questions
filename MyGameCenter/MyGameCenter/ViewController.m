@@ -1,7 +1,7 @@
 #import <GameKit/GameKit.h>
 #import "ViewController.h"
 
-static NSString* const kScript = @"http://afarber.de/gc-photo.php";
+static NSString* const kScript = @"http://afarber.de/gc-upload.php";
 static NSString* const kAvatar = @"http://afarber.de/gc/%@.jpg";
 
 @implementation ViewController
@@ -9,10 +9,10 @@ static NSString* const kAvatar = @"http://afarber.de/gc/%@.jpg";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self fetchMe];
+    [self fetchUser];
 }
 
-- (void) fetchMe
+- (void)fetchUser
 {
     __weak GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
     localPlayer.authenticateHandler = ^(UIViewController *viewController, NSError *error) {
@@ -47,15 +47,12 @@ static NSString* const kAvatar = @"http://afarber.de/gc/%@.jpg";
         
         if (photo) {
             _imageView.image = photo;
-            
-            NSData* data = UIImageJPEGRepresentation(photo, .75);
-            NSString* str = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-            NSLog(@"%s: photo=%@ data=%@", __PRETTY_FUNCTION__, photo, str);
+            [self uploadImage:photo];
         }
     }];
 }
 
-- (void) showAlert:(NSString*) msg {    
+- (void)showAlert:(NSString*)msg {
     dispatch_async(dispatch_get_main_queue(), ^(void) {
         UIAlertView *alertView = [[UIAlertView alloc]
                                   initWithTitle:@"WARNING"
@@ -65,6 +62,44 @@ static NSString* const kAvatar = @"http://afarber.de/gc/%@.jpg";
                                   otherButtonTitles:nil];
         [alertView show];
     });
+}
+
+- (void)uploadImage:(UIImage*)img
+{
+    NSData* data = UIImageJPEGRepresentation(img, .75);
+    NSString* str = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    NSLog(@"%s: img=%@ data=%@", __PRETTY_FUNCTION__, img, str);
+    
+    NSURL *url = [NSURL URLWithString:kScript];
+
+    NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
+    [req setTimeoutInterval:30.0f];
+    [req setHTTPMethod:@"POST"];
+
+    NSString *body = @"bodyParam1=BodyValue1&bodyParam2=BodyValue2";
+    [req setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
+
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+
+    [NSURLConnection sendAsynchronousRequest:req
+                                       queue:queue
+                           completionHandler:^(NSURLResponse *response,
+                                               NSData *data,
+                                               NSError *error) {
+                               
+        if ([data length] > 0 && error == nil) {
+            NSString *html = [[NSString alloc] initWithData:data
+                                                   encoding:NSUTF8StringEncoding];
+            
+            NSLog(@"HTML = %@", html);
+        }
+        else if ([data length] == 0 && error == nil) {
+            NSLog(@"Nothing was downloaded.");
+        }
+        else if (error != nil) {
+            NSLog(@"Error happened = %@", error);
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning
