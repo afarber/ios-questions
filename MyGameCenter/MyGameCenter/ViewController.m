@@ -1,7 +1,8 @@
 #import <GameKit/GameKit.h>
 #import "ViewController.h"
 
-static NSString* const kAvatar = @"http://afarber.de/gc/%@.png";
+static NSString* const kScript = @"http://afarber.de/gc-photo.php";
+static NSString* const kAvatar = @"http://afarber.de/gc/%@.jpg";
 
 @implementation ViewController
 
@@ -22,37 +23,34 @@ static NSString* const kAvatar = @"http://afarber.de/gc/%@.png";
                                animated:YES
                              completion:nil];
         } else if (localPlayer.isAuthenticated) {
-            NSLog(@"isAuthenticated %@ %@",
-                  [localPlayer alias],
-                  [localPlayer playerID]);
-            
             _idLabel.text = localPlayer.playerID;
             _aliasLabel.text = localPlayer.alias;
             
             [self loadAvatar:localPlayer];
-            
         } else {
             [self showAlert:@"Game Center has been disabled."];
         }
         
-        NSLog(@"%s: error=%@", __PRETTY_FUNCTION__, error);
+        if (error) {
+            [self showAlert:error.description];
+        }
     };
 }
 
 - (void)loadAvatar:(GKPlayer*)player
 {
     [player loadPhotoForSize:GKPhotoSizeNormal withCompletionHandler:^(UIImage *photo, NSError *error) {
-        if (error != nil) {
-            NSLog(@"%s: error=%@", __PRETTY_FUNCTION__, error);
-            return;
+        if (error) {
+            [self showAlert:error.description];
+            //return;
         }
         
-        if (photo != nil) {
+        if (photo) {
             _imageView.image = photo;
             
             NSData* data = UIImageJPEGRepresentation(photo, .75);
-            // [NSData base64EncodedDataWithOptions:]
-            NSLog(@"%s: photo=%@ data=%@", __PRETTY_FUNCTION__, photo, data);
+            NSString* str = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+            NSLog(@"%s: photo=%@ data=%@", __PRETTY_FUNCTION__, photo, str);
         }
     }];
 }
