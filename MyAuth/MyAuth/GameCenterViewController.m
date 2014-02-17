@@ -2,7 +2,14 @@
 #import "GameCenterViewController.h"
 #import "SocialNetwork.h"
 
-static NSString* const kAvatar = @"http://afarber.de/gc/%@.png";
+static NSString* const kAvatar = @"http://afarber.de/gc/%@.jpg";
+static NSString* const kScript = @"http://afarber.de/gc-upload.php";
+static NSString* const kBody   = @"id=%@&img=%@";
+
+@interface GameCenterViewController () {
+    User* _user;
+}
+@end
 
 @implementation GameCenterViewController
 
@@ -36,15 +43,14 @@ static NSString* const kAvatar = @"http://afarber.de/gc/%@.png";
                   [localPlayer alias],
                   [localPlayer playerID]);
             
-            User *user = [[User alloc] init];
-            user.key       = kGC;
-            user.userId    = [localPlayer playerID];
-            user.firstName = [localPlayer alias];
-            user.avatar    = nil;
-            [user save];
+            _user = [[User alloc] init];
+            _user.key       = kGC;
+            _user.userId    = [localPlayer playerID];
+            _user.firstName = [localPlayer alias];
+            _user.avatar    = [NSString stringWithFormat:kAvatar, [self urlencode:_user.userId]];
+            [_user save];
 
             [self loadAvatar:localPlayer];
-            // [NSData base64EncodedDataWithOptions:]
             
             double delayInSeconds = 1;
             dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
@@ -61,17 +67,66 @@ static NSString* const kAvatar = @"http://afarber.de/gc/%@.png";
 
 - (void)loadAvatar:(GKPlayer*)player
 {
-    [player loadPhotoForSize:GKPhotoSizeNormal withCompletionHandler:^(UIImage *photo, NSError *error) {
-        if (error != nil) {
-            NSLog(@"%s: error=%@", __PRETTY_FUNCTION__, error);
-            return;
+    [player loadPhotoForSize:GKPhotoSizeNormal
+       withCompletionHandler:^(UIImage *photo, NSError *error) {
+        if (error) {
+            [self showAlert:error.description];
+            //return;
         }
         
-        if (photo != nil) {
-            NSData* data = UIImageJPEGRepresentation(photo, .75);
-            NSLog(@"%s: photo=%@ data=%@", __PRETTY_FUNCTION__, photo, data);
+        if (photo) {
+            [self uploadImage:photo];
         }
     }];
+}
+
+- (void)uploadImage:(UIImage*)img
+{
+    NSData* data = UIImageJPEGRepresentation(img, .8);
+    NSString* str = [data base64EncodedStringWithOptions:0];
+    //NSLog(@"%s: img=%@ data=%@", __PRETTY_FUNCTION__, img, str);
+    
+    NSURL *url = [NSURL URLWithString:kScript];
+    NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
+    [req setTimeoutInterval:30.0f];
+    [req setHTTPMethod:@"POST"];
+    
+    NSString *body = [NSString stringWithFormat:kBody,
+                      [self urlencode:_user.userId],
+                      [self urlencode:str]];
+    [req setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    
+    [NSURLConnection sendAsynchronousRequest:req
+                                       queue:queue
+                           completionHandler:^(NSURLResponse *response,
+                                               NSData *data,
+                                               NSError *error) {
+                               
+       if ([data length] > 0 && error == nil) {
+           id json = [NSJSONSerialization JSONObjectWithData:data
+                                                     options:NSJSONReadingMutableContainers
+                                                       error:nil];
+           NSLog(@"JSON = %@", json);
+       }
+       else if ([data length] == 0 && error == nil) {
+           NSLog(@"Nothing was downloaded.");
+       }
+       else if (error != nil) {
+           NSLog(@"Error happened = %@", error);
+       }
+   }];
+}
+
+- (NSString*)urlencode:(NSString*)str
+{
+    return (NSString*)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(
+        NULL,
+        (__bridge CFStringRef) str,
+        NULL,
+        CFSTR("+/:"),
+        kCFStringEncodingUTF8));
 }
 
 -(void)showAlert:(NSString*)msg

@@ -85,8 +85,8 @@ static NSString* const kBody   = @"id=%@&img=%@";
     [req setHTTPMethod:@"POST"];
 
     NSString *body = [NSString stringWithFormat:kBody,
-                      [self encode:_playerId],
-                      [self encode:str]];
+                      [self urlencode:_playerId],
+                      [self urlencode:str]];
     [req setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
 
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
@@ -112,13 +112,13 @@ static NSString* const kBody   = @"id=%@&img=%@";
     }];
 }
 
-- (NSString*)encode:(NSString*)str
+- (NSString*)urlencode:(NSString*)str
 {
     return (NSString*)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(
         NULL,
         (__bridge CFStringRef) str,
         NULL,
-        CFSTR("+/"),
+        CFSTR("+/:"),
         kCFStringEncodingUTF8));
 }
 
