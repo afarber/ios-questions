@@ -76,8 +76,8 @@ static NSString* const kBody   = @"id=%@&img=%@";
 - (void)uploadImage:(UIImage*)img
 {
     NSData* data = UIImageJPEGRepresentation(img, .75);
-    NSString* str = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-    NSLog(@"%s: img=%@ data=%@", __PRETTY_FUNCTION__, img, str);
+    NSString* str = [data base64EncodedStringWithOptions:0];
+    //NSLog(@"%s: img=%@ data=%@", __PRETTY_FUNCTION__, img, str);
     
     NSURL *url = [NSURL URLWithString:kScript];
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
@@ -85,8 +85,8 @@ static NSString* const kBody   = @"id=%@&img=%@";
     [req setHTTPMethod:@"POST"];
 
     NSString *body = [NSString stringWithFormat:kBody,
-                      [_playerId stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
-                      [str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+                      [self encode:_playerId],
+                      [self encode:str]];
     [req setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
 
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
@@ -98,10 +98,10 @@ static NSString* const kBody   = @"id=%@&img=%@";
                                                NSError *error) {
                                
         if ([data length] > 0 && error == nil) {
-            NSString *html = [[NSString alloc] initWithData:data
-                                                   encoding:NSUTF8StringEncoding];
-            
-            NSLog(@"HTML = %@", html);
+            id json = [NSJSONSerialization JSONObjectWithData:data
+                                                      options:NSJSONReadingMutableContainers
+                                                        error:nil];
+            NSLog(@"JSON = %@", json);
         }
         else if ([data length] == 0 && error == nil) {
             NSLog(@"Nothing was downloaded.");
@@ -110,6 +110,16 @@ static NSString* const kBody   = @"id=%@&img=%@";
             NSLog(@"Error happened = %@", error);
         }
     }];
+}
+
+- (NSString*)encode:(NSString*)str
+{
+    return (NSString*)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(
+        NULL,
+        (__bridge CFStringRef) str,
+        NULL,
+        CFSTR("+/"),
+        kCFStringEncodingUTF8));
 }
 
 - (void)didReceiveMemoryWarning
