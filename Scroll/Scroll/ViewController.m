@@ -1,15 +1,15 @@
 #import "ViewController.h"
 
-@interface ViewController ()
-
-@end
-
 @implementation ViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    
+    UIImage *img = [UIImage imageNamed:@"board"];
+    NSLog(@"%s: img=%@", __PRETTY_FUNCTION__, img);
+    _imageView.image = img;
+    _scrollView.contentSize = _imageView.bounds.size;
 }
 
 - (void)didReceiveMemoryWarning
