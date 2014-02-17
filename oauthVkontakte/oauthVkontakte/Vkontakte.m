@@ -4,7 +4,7 @@ static NSString* const kAppId =    @"4132525";
 static NSString* const kSecret =   @"ar3IMdDaDzcUDUHj3rsl";
 static NSString* const kAuthUrl =  @"http://oauth.vk.com/authorize?response_type=token&display=touch&client_id=%@&redirect_uri=%@";
 static NSString* const kRedirect = @"http://oauth.vk.com/blank.html";
-static NSString* const kMe =       @"https://api.vk.com/method/getProfiles?fields=sex,city,photo_big&format=JSON&uids=%@&access_token=%@";
+static NSString* const kMe =       @"https://api.vk.com/method/users.get?user_ids=%@&fields=city,photo_big,sex&v=5.10";
 
 @implementation Vkontakte
 
@@ -34,7 +34,7 @@ static NSString* const kMe =       @"https://api.vk.com/method/getProfiles?field
     NSString *userId = [self extractValueFrom:str ForKey:@"user_id"];
 
     if (token && userId) {
-        NSString *me = [NSString stringWithFormat:kMe, userId, token];
+        NSString *me = [NSString stringWithFormat:kMe, userId];
         NSURL *url = [NSURL URLWithString:me];
         req = [NSURLRequest requestWithURL:url];
     }
@@ -57,12 +57,12 @@ static NSString* const kMe =       @"https://api.vk.com/method/getProfiles?field
     NSDictionary *dict = json[@"response"][0];
     
     User *user = [[User alloc] init];
-    user.userId    = dict[@"uid"];
+    user.userId    = dict[@"id"];
     user.firstName = dict[@"first_name"];
     user.lastName  = dict[@"last_name"];
-    user.city      = dict[@"city"];
+    user.city      = dict[@"city"][@"title"];
     user.avatar    = dict[@"photo_big"];
-    user.female    = (2 == [dict[@"female"] intValue]);
+    user.female    = ([dict[@"sex"] intValue] != 2);
     
     return user;
 }
