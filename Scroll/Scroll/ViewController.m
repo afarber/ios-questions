@@ -7,9 +7,9 @@
     [super viewDidLoad];
     
     UIImage *img = [UIImage imageNamed:@"board"];
-    NSLog(@"%s: img=%@", __PRETTY_FUNCTION__, img);
+    NSLog(@"%s: img=%@ (%f x %f)", __PRETTY_FUNCTION__, img, img.size.width, img.size.height);
     _imageView.image = img;
-    _scrollView.contentSize = _imageView.bounds.size;
+    _scrollView.contentSize = img.size;
 }
 
 - (void)didReceiveMemoryWarning
