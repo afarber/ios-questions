@@ -14,6 +14,8 @@
 
 - (void)viewDidLayoutSubviews
 {
+    [super viewDidLayoutSubviews];
+    
     _scrollView.contentSize = _imageView.bounds.size;
 }
 

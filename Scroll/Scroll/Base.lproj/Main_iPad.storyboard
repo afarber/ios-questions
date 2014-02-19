@@ -16,18 +16,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k3N-XY-dYe">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k3N-XY-dYe">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZGE-PW-ZR5">
-                                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                        <rect key="frame" x="20" y="20" width="100" height="100"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
                                 </subviews>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="k3N-XY-dYe" secondAttribute="trailing" id="CLX-wY-IfH"/>
+                            <constraint firstItem="eFm-tC-w8r" firstAttribute="top" secondItem="k3N-XY-dYe" secondAttribute="bottom" id="FxY-NV-PPJ"/>
+                            <constraint firstItem="k3N-XY-dYe" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="cgl-p8-Rdl"/>
+                            <constraint firstItem="k3N-XY-dYe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="fZ4-TW-xTA"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="ZGE-PW-ZR5" id="WZK-XR-3lI"/>
