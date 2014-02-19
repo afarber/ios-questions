@@ -7,7 +7,7 @@
     [super viewDidLoad];
     
     UIImage *img = [UIImage imageNamed:@"board"];
-    NSLog(@"%s: img=%@ (%f x %f)", __PRETTY_FUNCTION__, img, img.size.width, img.size.height);
+    NSLog(@"%s: (%f x %f)", __PRETTY_FUNCTION__, img.size.width, img.size.height);
     _imageView.image = img;
     _imageView.frame = CGRectMake(0, 0, img.size.width, img.size.height);
 }
@@ -15,6 +15,13 @@
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
+    
+    _scrollView.contentSize = _imageView.bounds.size;
+}
+
+- (void) willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
     
     _scrollView.contentSize = _imageView.bounds.size;
 }
