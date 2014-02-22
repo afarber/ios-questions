@@ -7,7 +7,7 @@
     [super viewDidLoad];
     
     UIImage *img = [UIImage imageNamed:@"board"];
-    NSLog(@"%s: (%f x %f)", __PRETTY_FUNCTION__, img.size.width, img.size.height);
+    NSLog(@"%s: %@", __PRETTY_FUNCTION__, NSStringFromCGSize(img.size));
     _imageView.image = img;
 }
 
