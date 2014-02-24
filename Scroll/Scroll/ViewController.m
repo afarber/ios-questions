@@ -6,12 +6,14 @@
 {
     [super viewDidLoad];
     
+    /*
     UIImage *image = [UIImage imageNamed:@"board"];
     _imageView.image = image;
     
     NSLog(@"%s: image %@",
           __PRETTY_FUNCTION__,
           NSStringFromCGSize(image.size));
+     */
 }
 
 - (void)viewDidLayoutSubviews
