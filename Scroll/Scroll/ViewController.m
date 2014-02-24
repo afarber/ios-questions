@@ -6,19 +6,23 @@
 {
     [super viewDidLoad];
     
-    /*
-    UIImage *image = [UIImage imageNamed:@"board"];
-    _imageView.image = image;
-    
     NSLog(@"%s: image %@",
           __PRETTY_FUNCTION__,
-          NSStringFromCGSize(image.size));
-     */
+          NSStringFromCGSize(_imageView.image.size));
+    
 }
 
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
+    
+    /*
+    if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) {
+        _imageView.frame = CGRectMake(_imageView.frame.origin.x,
+                                      _imageView.frame.origin.y,
+                                      800, 800);
+    }
+    */
     
     _scrollView.contentSize = _imageView.bounds.size;
     
