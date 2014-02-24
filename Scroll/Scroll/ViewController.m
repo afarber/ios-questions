@@ -16,6 +16,16 @@
     [super viewDidLayoutSubviews];
     
     _scrollView.contentSize = _imageView.bounds.size;
+    
+    NSLog(@"%s: _scrollView %@ %@",
+          __PRETTY_FUNCTION__,
+          NSStringFromCGPoint(_scrollView.frame.origin),
+          NSStringFromCGSize(_scrollView.frame.size));
+    
+    NSLog(@"%s: _imageView %@ %@",
+          __PRETTY_FUNCTION__,
+          NSStringFromCGPoint(_imageView.frame.origin),
+          NSStringFromCGSize(_imageView.frame.size));
 }
 
 - (void)didReceiveMemoryWarning
