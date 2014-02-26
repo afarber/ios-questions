@@ -16,15 +16,13 @@
 {
     [super viewDidLayoutSubviews];
     
-    /*
     if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) {
-        _imageView.frame = CGRectMake(_imageView.frame.origin.x,
-                                      _imageView.frame.origin.y,
-                                      800, 800);
+        _scrollView.minimumZoomScale = .8;
+        _scrollView.maximumZoomScale = 1.2;
+        _scrollView.zoomScale = .8;
     }
-    */
     
-    _scrollView.contentSize = _imageView.bounds.size;
+    _scrollView.contentSize = _imageView.frame.size;
     
     NSLog(@"%s: _scrollView %@ %@",
           __PRETTY_FUNCTION__,
@@ -35,6 +33,11 @@
           __PRETTY_FUNCTION__,
           NSStringFromCGPoint(_imageView.frame.origin),
           NSStringFromCGSize(_imageView.frame.size));
+}
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+    return _imageView;
 }
 
 - (void)didReceiveMemoryWarning
