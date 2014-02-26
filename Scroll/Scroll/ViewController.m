@@ -10,6 +10,11 @@
           __PRETTY_FUNCTION__,
           NSStringFromCGSize(_imageView.image.size));
     
+    UITapGestureRecognizer *doubleTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollViewDoubleTapped:)];
+    doubleTapRecognizer.numberOfTapsRequired = 2;
+    doubleTapRecognizer.numberOfTouchesRequired = 1;
+    [self.scrollView addGestureRecognizer:doubleTapRecognizer];
+    
 }
 
 - (void)viewDidLayoutSubviews
@@ -21,25 +26,16 @@
                          _scrollView.frame.size.height / _imageView.image.size.height
                          );
     
-    float zoomScale = MIN(
-                         2 * _scrollView.frame.size.width / _imageView.image.size.width,
-                         2 * _scrollView.frame.size.height / _imageView.image.size.height
-                         );
+    float zoomScale = _scrollView.frame.size.width / _imageView.image.size.width;
     
     float maxScale = MAX(
                          2 * _scrollView.frame.size.width / _imageView.image.size.width,
                          2 * _scrollView.frame.size.height / _imageView.image.size.height
                          );
     
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        _scrollView.minimumZoomScale = minScale;
-        _scrollView.maximumZoomScale = maxScale;
-        _scrollView.zoomScale = zoomScale;
-    } else {
-        _scrollView.minimumZoomScale = minScale;
-        _scrollView.maximumZoomScale = maxScale;
-        _scrollView.zoomScale = zoomScale;
-    }
+    _scrollView.minimumZoomScale = minScale;
+    _scrollView.maximumZoomScale = maxScale;
+    _scrollView.zoomScale = zoomScale;
 
     _scrollView.contentSize = _imageView.frame.size;
     
@@ -66,6 +62,25 @@
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
     return _imageView;
+}
+
+- (void)scrollViewDoubleTapped:(UITapGestureRecognizer*)recognizer
+{
+    CGPoint pointInView = [recognizer locationInView:self.imageView];
+    
+    CGFloat newZoomScale = self.scrollView.zoomScale * 1.5f;
+    newZoomScale = MIN(newZoomScale, self.scrollView.maximumZoomScale);
+    
+    CGSize scrollViewSize = self.scrollView.bounds.size;
+    
+    CGFloat w = scrollViewSize.width / newZoomScale;
+    CGFloat h = scrollViewSize.height / newZoomScale;
+    CGFloat x = pointInView.x - (w / 2.0f);
+    CGFloat y = pointInView.y - (h / 2.0f);
+    
+    CGRect rectToZoomTo = CGRectMake(x, y, w, h);
+    
+    [self.scrollView zoomToRect:rectToZoomTo animated:YES];
 }
 
 - (void)didReceiveMemoryWarning

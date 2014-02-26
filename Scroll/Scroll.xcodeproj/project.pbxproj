@@ -482,6 +482,7 @@
 				84D6121F18B2976C0005C538 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		84D6122018B2976C0005C538 /* Build configuration list for PBXNativeTarget "ScrollTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +491,7 @@
 				84D6122218B2976C0005C538 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
