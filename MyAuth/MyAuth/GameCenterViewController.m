@@ -39,7 +39,7 @@ static NSString* const kBody   = @"id=%@&img=%@";
                              completion:nil];
             
         } else if (localPlayer.isAuthenticated) {
-            NSLog(@"%s: displayName=%@ playerID=%@", __PRETTY_FUNCTION__,
+            NSLog(@"%s: alias=%@ playerID=%@", __PRETTY_FUNCTION__,
                   [localPlayer alias],
                   [localPlayer playerID]);
             

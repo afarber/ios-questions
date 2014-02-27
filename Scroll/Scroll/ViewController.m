@@ -58,10 +58,9 @@
     return _imageView;
 }
 
-- (IBAction)scrollViewDoubleTapped:(id)sender
+- (IBAction)scrollViewDoubleTapped:(UITapGestureRecognizer*)sender
 {
-    UIGestureRecognizer *rec = sender;
-    CGPoint pointInView = [rec locationInView:_imageView];
+    CGPoint pointInView = [sender locationInView:_imageView];
     
     float zoomScale = _scrollView.frame.size.width / _imageView.image.size.width;
     if (_scrollView.zoomScale <= zoomScale) {
