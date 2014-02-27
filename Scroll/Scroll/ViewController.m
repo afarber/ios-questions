@@ -73,16 +73,15 @@
         zoomScale *= 2;
     }
     
-    CGSize scrollViewSize = _scrollView.bounds.size;
+    CGSize size = _scrollView.bounds.size;
 
-    CGFloat w = scrollViewSize.width / zoomScale;
-    CGFloat h = scrollViewSize.height / zoomScale;
+    CGFloat w = size.width / zoomScale;
+    CGFloat h = size.height / zoomScale;
     CGFloat x = pointInView.x - (w / 2.0f);
     CGFloat y = pointInView.y - (h / 2.0f);
     
-    CGRect rectToZoomTo = CGRectMake(x, y, w, h);
-    
-    [_scrollView zoomToRect:rectToZoomTo animated:YES];
+    CGRect rect = CGRectMake(x, y, w, h);
+    [_scrollView zoomToRect:rect animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
