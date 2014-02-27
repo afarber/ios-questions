@@ -25,8 +25,10 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
                                 </subviews>
+                                <gestureRecognizers/>
                                 <connections>
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="p0C-Rm-Qm3"/>
+                                    <outletCollection property="gestureRecognizers" destination="wbj-eQ-xCK" appends="YES" id="q7w-IR-QwD"/>
                                 </connections>
                             </scrollView>
                         </subviews>
@@ -44,6 +46,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="wbj-eQ-xCK">
+                    <connections>
+                        <action selector="scrollViewDoubleTapped:" destination="vXZ-lx-hvc" id="3Yv-Ix-36Q"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
         </scene>
     </scenes>

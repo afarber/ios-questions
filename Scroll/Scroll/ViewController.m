@@ -9,12 +9,6 @@
     NSLog(@"%s: image %@",
           __PRETTY_FUNCTION__,
           NSStringFromCGSize(_imageView.image.size));
-    
-    UITapGestureRecognizer *doubleTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollViewDoubleTapped:)];
-    doubleTapRecognizer.numberOfTapsRequired = 2;
-    doubleTapRecognizer.numberOfTouchesRequired = 1;
-    [self.scrollView addGestureRecognizer:doubleTapRecognizer];
-    
 }
 
 - (void)viewDidLayoutSubviews
@@ -64,9 +58,10 @@
     return _imageView;
 }
 
-- (void)scrollViewDoubleTapped:(UITapGestureRecognizer*)recognizer
+- (IBAction)scrollViewDoubleTapped:(id)sender
 {
-    CGPoint pointInView = [recognizer locationInView:_imageView];
+    UIGestureRecognizer *rec = sender;
+    CGPoint pointInView = [rec locationInView:_imageView];
     
     float zoomScale = _scrollView.frame.size.width / _imageView.image.size.width;
     if (_scrollView.zoomScale <= zoomScale) {
