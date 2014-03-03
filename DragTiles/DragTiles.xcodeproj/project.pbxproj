@@ -25,6 +25,7 @@
 		84EADC6518C4AF5B00C28C0F /* dragged@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84EADC6318C4AF5B00C28C0F /* dragged@2x.png */; };
 		84EADC6818C4AF6400C28C0F /* tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 84EADC6618C4AF6400C28C0F /* tile.png */; };
 		84EADC6918C4AF6400C28C0F /* tile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84EADC6718C4AF6400C28C0F /* tile@2x.png */; };
+		84EADC6C18C4B5D500C28C0F /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EADC6B18C4B5D500C28C0F /* Tile.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,8 @@
 		84EADC6318C4AF5B00C28C0F /* dragged@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dragged@2x.png"; sourceTree = "<group>"; };
 		84EADC6618C4AF6400C28C0F /* tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile.png; sourceTree = "<group>"; };
 		84EADC6718C4AF6400C28C0F /* tile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tile@2x.png"; sourceTree = "<group>"; };
+		84EADC6A18C4B5D500C28C0F /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tile.h; sourceTree = "<group>"; };
+		84EADC6B18C4B5D500C28C0F /* Tile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tile.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +127,8 @@
 				84EADC3D18C4A19F00C28C0F /* AppDelegate.m */,
 				84EADC4218C4A19F00C28C0F /* ViewController.h */,
 				84EADC4318C4A19F00C28C0F /* ViewController.m */,
+				84EADC6A18C4B5D500C28C0F /* Tile.h */,
+				84EADC6B18C4B5D500C28C0F /* Tile.m */,
 				84EADC6618C4AF6400C28C0F /* tile.png */,
 				84EADC6718C4AF6400C28C0F /* tile@2x.png */,
 				84EADC6218C4AF5B00C28C0F /* dragged.png */,
@@ -268,6 +273,7 @@
 				84EADC4418C4A19F00C28C0F /* ViewController.m in Sources */,
 				84EADC3E18C4A19F00C28C0F /* AppDelegate.m in Sources */,
 				84EADC3A18C4A19F00C28C0F /* main.m in Sources */,
+				84EADC6C18C4B5D500C28C0F /* Tile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

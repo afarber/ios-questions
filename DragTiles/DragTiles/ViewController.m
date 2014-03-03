@@ -2,18 +2,12 @@
 
 static int const kNumTiles = 5;
 
-@interface ViewController ()
-
-@end
-
 @implementation ViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
-    UIImage* tile = [UIImage imageNamed:@"tile"];
-    UIImage* dragged = [UIImage imageNamed:@"dragged"];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
     for (int i = 0; i < kNumTiles; i++) {
@@ -34,13 +28,9 @@ static int const kNumTiles = 5;
                                     tile.center.y + translation.y)];
         
         [recognizer setTranslation:CGPointZero inView:tile.superview];
+        
+        // TODO: instead of tile.png display dragged.png with shadow
     }
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end
