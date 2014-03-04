@@ -486,6 +486,7 @@
 				84EADC5E18C4A1A000C28C0F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		84EADC5F18C4A1A000C28C0F /* Build configuration list for PBXNativeTarget "DragTilesTests" */ = {
 			isa = XCConfigurationList;
@@ -494,6 +495,7 @@
 				84EADC6118C4A1A000C28C0F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
