@@ -2,6 +2,8 @@
 #import "Tile.h"
 
 static int const kNumTiles = 5;
+static int const kWidth    = 100;
+static int const kHeight   = 100;
 
 @implementation ViewController
 
@@ -13,10 +15,11 @@ static int const kNumTiles = 5;
         Tile *tile = [[[NSBundle mainBundle] loadNibNamed:@"Tile"
                                                     owner:self
                                                   options:nil] firstObject];
-        tile.frame = CGRectMake(10 + (int)arc4random_uniform(200),
-                                10 + (int)arc4random_uniform(200),
-                                100,
-                                100);
+        tile.frame = CGRectMake(
+            (int)arc4random_uniform(self.view.bounds.size.width - kWidth),
+            (int)arc4random_uniform(self.view.bounds.size.height - kHeight),
+            kWidth,
+            kHeight);
         
         UIPanGestureRecognizer *recognizer = [[UIPanGestureRecognizer alloc]
                                               initWithTarget:self
@@ -32,18 +35,25 @@ static int const kNumTiles = 5;
 {
     Tile *tile = (Tile*)recognizer.view;
     
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
+        [self.view bringSubviewToFront:tile];
+        tile.dragged = YES;
+    }
+
     if (recognizer.state == UIGestureRecognizerStateBegan ||
         recognizer.state == UIGestureRecognizerStateChanged) {
         
         CGPoint translation = [recognizer translationInView:[tile superview]];
         
-        tile.dragged = YES;
-        
         [tile setCenter:CGPointMake(tile.center.x + translation.x,
                                     tile.center.y + translation.y)];
         
         [recognizer setTranslation:CGPointZero inView:tile.superview];
-    } else {
+    }
+    
+    if (recognizer.state == UIGestureRecognizerStateEnded ||
+        recognizer.state == UIGestureRecognizerStateCancelled ||
+        recognizer.state == UIGestureRecognizerStateFailed) {
         tile.dragged = NO;
     }
 }
