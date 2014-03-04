@@ -44,4 +44,16 @@ static UIImage* kDragged;
     return self;
 }
 
+- (void) setDragged:(BOOL)dragged
+{
+    _background.image = (dragged ? kDragged : kTile);
+}
+
+-(NSString *)description
+{
+    return [NSString stringWithFormat:@"%@ %@",
+            self.letter.text,
+            self.value.text];
+}
+
 @end
