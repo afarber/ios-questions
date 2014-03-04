@@ -14,3 +14,8 @@ To compile some of the projects you need to install CocoaPods:
 and then run in the project dir:
 
         pod install
+
+DragTiles:
+==========
+
+![](https://raw.github.com/afarber/ios-newbie/master/DragTiles/screenshot.png)
