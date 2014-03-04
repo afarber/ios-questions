@@ -13,13 +13,16 @@ static int const kNumTiles = 5;
         Tile *tile = [[[NSBundle mainBundle] loadNibNamed:@"Tile"
                                                     owner:self
                                                   options:nil] firstObject];
-        tile.frame = CGRectMake(100, 0, 100, 100);
-        [self.view addSubview:tile];
+        tile.frame = CGRectMake(10 + (int)arc4random_uniform(200),
+                                10 + (int)arc4random_uniform(200),
+                                100,
+                                100);
         
         UIPanGestureRecognizer *recognizer = [[UIPanGestureRecognizer alloc]
                                               initWithTarget:self
                                               action:@selector(dragTile:)];
         [tile addGestureRecognizer:recognizer];
+        [self.view addSubview:tile];
     }
 }
 
