@@ -21,6 +21,8 @@ static int const kNumTiles = 5;
         UIPanGestureRecognizer *recognizer = [[UIPanGestureRecognizer alloc]
                                               initWithTarget:self
                                               action:@selector(dragTile:)];
+        recognizer.minimumNumberOfTouches = 1;
+        recognizer.maximumNumberOfTouches = 1;
         [tile addGestureRecognizer:recognizer];
         [self.view addSubview:tile];
     }
