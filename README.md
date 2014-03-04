@@ -59,6 +59,9 @@ and then run in the project dir:
 
 ![screenshot](https://raw.github.com/afarber/ios-newbie/master/Scroll/screenshot.png)
 
+Uses an SVG file by Denelson83, 
+[Wikimedia Commons](http://en.wikipedia.org/wiki/File:Blank_Scrabble_board_with_coordinates.svg)
+
 [SpriteKitTest](https://github.com/afarber/ios-newbie/tree/master/SpriteKitTest):
 
 ![screenshot](https://raw.github.com/afarber/ios-newbie/master/SpriteKitTest/screenshot.png)
