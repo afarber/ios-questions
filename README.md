@@ -15,8 +15,14 @@ and then run in the project dir:
 
         pod install
 
-[DragTiles](https://github.com/afarber/ios-newbie/tree/master/DragTiles)
+[DragTiles](https://github.com/afarber/ios-newbie/tree/master/DragTiles):
+
 ![screenshot](https://raw.github.com/afarber/ios-newbie/master/DragTiles/screenshot.png)
 
-[MyAuth](https://github.com/afarber/ios-newbie/tree/master/MyAuth)
+[MyAuth](https://github.com/afarber/ios-newbie/tree/master/MyAuth):
+
 ![screenshot](https://raw.github.com/afarber/ios-newbie/master/MyAuth/screenshot.png)
+
+[MyCollection](https://github.com/afarber/ios-newbie/tree/master/MyCollection):
+
+![screenshot](https://raw.github.com/afarber/ios-newbie/master/MyCollection/screenshot.png)
