@@ -1,4 +1,5 @@
 #import "ViewController.h"
+#import "Tile.h"
 
 static int const kNumTiles = 5;
 
@@ -8,7 +9,14 @@ static int const kNumTiles = 5;
 {
     [super viewDidLoad];
 
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    Tile *tile = [[[NSBundle mainBundle] loadNibNamed:@"Tile" owner:self options:nil] firstObject];
+    tile.frame = CGRectMake(100, 0, 100, 100);
+    [self.view addSubview:tile];
+    
+    UIPanGestureRecognizer *recognizer = [[UIPanGestureRecognizer alloc]
+                                          initWithTarget:self
+                                          action:@selector(dragTile:)];
+    [tile addGestureRecognizer:recognizer];
     
     for (int i = 0; i < kNumTiles; i++) {
         // TODO: add a Tile to the VC here
