@@ -1,20 +1,8 @@
 #import "Tile.h"
 
 static NSString* const kLetters =  @"ABCDEFGHIJKLMNOPQRSTUWVXYZ";
-static UIImage* kTile;
-static UIImage* kDragged;
 
 @implementation Tile
-
-+ (void)initialize
-{
-    // do not run for derived classes
-    if (self != [Tile class])
-        return;
-    
-    kTile    = [UIImage imageNamed:@"tile"];
-    kDragged = [UIImage imageNamed:@"dragged"];
-}
 
 - (void)awakeFromNib
 {
