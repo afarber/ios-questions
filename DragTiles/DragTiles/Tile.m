@@ -48,13 +48,19 @@ static UIImage* kDragged;
 - (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event
 {
     _background.image = kDragged;
-    
+    [_letter setFont:[UIFont systemFontOfSize:48]];
+    [_value setFont:[UIFont systemFontOfSize:20]];
+
+    [self.superview bringSubviewToFront:self];
+
     [super touchesBegan:touches withEvent:event];
 }
 
 - (void)touchesEnded:(NSSet*)touches withEvent:(UIEvent*)event
 {
     _background.image = kTile;
+    [_letter setFont:[UIFont systemFontOfSize:36]];
+    [_value setFont:[UIFont systemFontOfSize:16]];
     
     [super touchesEnded:touches withEvent:event];
 }
@@ -62,6 +68,8 @@ static UIImage* kDragged;
 - (void)touchesCancelled:(NSSet*)touches withEvent:(UIEvent*)event
 {
     _background.image = kTile;
+    [_letter setFont:[UIFont systemFontOfSize:36]];
+    [_value setFont:[UIFont systemFontOfSize:16]];
     
     [super touchesCancelled:touches withEvent:event];
 }

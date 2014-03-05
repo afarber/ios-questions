@@ -35,10 +35,6 @@ static int const kHeight   = 60;
 {
     Tile *tile = (Tile*)recognizer.view;
     
-    if (recognizer.state == UIGestureRecognizerStateBegan) {
-        [self.view bringSubviewToFront:tile];
-    }
-
     if (recognizer.state == UIGestureRecognizerStateBegan ||
         recognizer.state == UIGestureRecognizerStateChanged) {
         
