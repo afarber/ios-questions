@@ -24,6 +24,7 @@ static int const kHeight   = 60;
         UIPanGestureRecognizer *recognizer = [[UIPanGestureRecognizer alloc]
                                               initWithTarget:self
                                               action:@selector(dragTile:)];
+        recognizer.cancelsTouchesInView = NO;
         recognizer.minimumNumberOfTouches = 1;
         recognizer.maximumNumberOfTouches = 1;
         [tile addGestureRecognizer:recognizer];
