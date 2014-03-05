@@ -33,17 +33,18 @@ static int const kHeight   = 60;
 
 - (IBAction)dragTile:(UIPanGestureRecognizer *)recognizer
 {
-    Tile *tile = (Tile*)recognizer.view;
+    Tile* tile = (Tile*)recognizer.view;
+    UIView* parent = tile.superview;
     
     if (recognizer.state == UIGestureRecognizerStateBegan ||
         recognizer.state == UIGestureRecognizerStateChanged) {
         
-        CGPoint translation = [recognizer translationInView:tile.superview];
+        CGPoint translation = [recognizer translationInView:parent];
         
         [tile setCenter:CGPointMake(tile.center.x + translation.x,
                                     tile.center.y + translation.y)];
         
-        [recognizer setTranslation:CGPointZero inView:tile.superview];
+        [recognizer setTranslation:CGPointZero inView:parent];
     }
 }
 
