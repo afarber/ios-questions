@@ -37,24 +37,17 @@ static int const kHeight   = 100;
     
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         [self.view bringSubviewToFront:tile];
-        tile.dragged = YES;
     }
 
     if (recognizer.state == UIGestureRecognizerStateBegan ||
         recognizer.state == UIGestureRecognizerStateChanged) {
         
-        CGPoint translation = [recognizer translationInView:[tile superview]];
+        CGPoint translation = [recognizer translationInView:tile.superview];
         
         [tile setCenter:CGPointMake(tile.center.x + translation.x,
                                     tile.center.y + translation.y)];
         
         [recognizer setTranslation:CGPointZero inView:tile.superview];
-    }
-    
-    if (recognizer.state == UIGestureRecognizerStateEnded ||
-        recognizer.state == UIGestureRecognizerStateCancelled ||
-        recognizer.state == UIGestureRecognizerStateFailed) {
-        tile.dragged = NO;
     }
 }
 

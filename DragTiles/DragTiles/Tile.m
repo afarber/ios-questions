@@ -35,6 +35,7 @@ static UIImage* kDragged;
     if (self) {
         NSString* randomLetter = [kLetters substringWithRange:[kLetters rangeOfComposedCharacterSequenceAtIndex:random()%[kLetters length]]];
         int randomInteger = (int)arc4random_uniform(10);
+        
         NSLog(@"%s: randomLetter=%@, randomInteger=%d", __PRETTY_FUNCTION__, randomLetter, randomInteger);
         
         _background.image = kTile;
@@ -44,12 +45,28 @@ static UIImage* kDragged;
     return self;
 }
 
-- (void) setDragged:(BOOL)dragged
+- (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event
 {
-    _background.image = (dragged ? kDragged : kTile);
+    _background.image = kDragged;
+    
+    [super touchesBegan:touches withEvent:event];
 }
 
--(NSString *)description
+- (void)touchesEnded:(NSSet*)touches withEvent:(UIEvent*)event
+{
+    _background.image = kTile;
+    
+    [super touchesEnded:touches withEvent:event];
+}
+
+- (void)touchesCancelled:(NSSet*)touches withEvent:(UIEvent*)event
+{
+    _background.image = kTile;
+    
+    [super touchesCancelled:touches withEvent:event];
+}
+
+- (NSString*)description
 {
     return [NSString stringWithFormat:@"%@ %@",
             self.letter.text,
