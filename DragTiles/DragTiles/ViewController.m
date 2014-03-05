@@ -2,8 +2,8 @@
 #import "Tile.h"
 
 static int const kNumTiles = 5;
-static int const kWidth    = 100;
-static int const kHeight   = 100;
+static int const kWidth    = 60;
+static int const kHeight   = 60;
 
 @implementation ViewController
 
