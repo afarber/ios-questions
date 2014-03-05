@@ -30,6 +30,8 @@ static UIImage* kDragged;
 
 - (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event
 {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    
     [_normal setHidden:YES];
     [_dragged setHidden:NO];
     [_letter setFont:[UIFont systemFontOfSize:60]];
@@ -54,6 +56,8 @@ static UIImage* kDragged;
 
 - (void)touchesEnded:(NSSet*)touches withEvent:(UIEvent*)event
 {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+
     [_normal setHidden:NO];
     [_dragged setHidden:YES];
     [_letter setFont:[UIFont systemFontOfSize:36]];
@@ -64,6 +68,8 @@ static UIImage* kDragged;
 
 - (void)touchesCancelled:(NSSet*)touches withEvent:(UIEvent*)event
 {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+
     [_normal setHidden:NO];
     [_dragged setHidden:YES];
     [_letter setFont:[UIFont systemFontOfSize:36]];
