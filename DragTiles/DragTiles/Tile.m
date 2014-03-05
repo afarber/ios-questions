@@ -36,7 +36,10 @@ static UIImage* kDragged;
         NSString* randomLetter = [kLetters substringWithRange:[kLetters rangeOfComposedCharacterSequenceAtIndex:random()%[kLetters length]]];
         int randomInteger = (int)arc4random_uniform(10);
         
-        NSLog(@"%s: randomLetter=%@, randomInteger=%d", __PRETTY_FUNCTION__, randomLetter, randomInteger);
+        NSLog(@"%s: randomLetter=%@, randomInteger=%d",
+              __PRETTY_FUNCTION__,
+              randomLetter,
+              randomInteger);
         
         _background.image = kTile;
         _letter.text = randomLetter;
@@ -54,6 +57,19 @@ static UIImage* kDragged;
     [self.superview bringSubviewToFront:self];
 
     [super touchesBegan:touches withEvent:event];
+}
+
+- (void) touchesMoved:(NSSet*)touches withEvent:(UIEvent*)event
+{
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+
+    UITouch *touch = [touches anyObject];
+    CGPoint location = [touch locationInView:self];
+    CGPoint previous = [touch previousLocationInView:self];
+    self.frame = CGRectOffset(self.frame,
+                              (location.x - previous.x),
+                              (location.y - previous.y));
+
 }
 
 - (void)touchesEnded:(NSSet*)touches withEvent:(UIEvent*)event
