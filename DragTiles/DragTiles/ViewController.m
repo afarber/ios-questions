@@ -16,7 +16,7 @@ static int const kHeight   = 60;
                                                     owner:self
                                                   options:nil] firstObject];
         tile.frame = CGRectMake(
-            (int)arc4random_uniform(self.view.bounds.size.width - kWidth),
+            i * kWidth,
             (int)arc4random_uniform(self.view.bounds.size.height - kHeight),
             kWidth,
             kHeight);
