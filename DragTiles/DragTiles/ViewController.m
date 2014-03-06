@@ -1,9 +1,11 @@
 #import "ViewController.h"
 #import "Tile.h"
 
-static int const kNumTiles = 5;
-static int const kWidth    = 60;
-static int const kHeight   = 60;
+static float const kScale  = 1.0;
+static int const kPadding  = 2;
+static int const kNumTiles = 7;
+static int const kWidth    = 45;
+static int const kHeight   = 45;
 
 @implementation ViewController
 
@@ -16,12 +18,12 @@ static int const kHeight   = 60;
                                                     owner:self
                                                   options:nil] firstObject];
         tile.frame = CGRectMake(
-            i * kWidth,
-            (int)arc4random_uniform(self.view.bounds.size.height - kHeight),
+            kPadding + i * (kWidth * kScale),
+            self.view.bounds.size.height - kHeight - kPadding,
             kWidth,
             kHeight);
         
-        tile.transform = CGAffineTransformMakeScale(1.5, 1.5);
+        //tile.transform = CGAffineTransformMakeScale(kScale, kScale);
 
         [self.view addSubview:tile];
     }

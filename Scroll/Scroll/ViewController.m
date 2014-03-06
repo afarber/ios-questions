@@ -1,7 +1,9 @@
 #import "ViewController.h"
 #import "Tile.h"
 
-static int const kNumTiles = 5;
+static float const kScale  = .7;
+static int const kPadding  = 2;
+static int const kNumTiles = 7;
 static int const kWidth    = 60;
 static int const kHeight   = 60;
 
@@ -20,12 +22,12 @@ static int const kHeight   = 60;
                                                     owner:self
                                                   options:nil] firstObject];
         tile.frame = CGRectMake(
-                                (i + .5) * kWidth,
-                                self.view.bounds.size.height - kHeight,
+                                i * (kWidth * kScale + kPadding),
+                                self.view.bounds.size.height - kHeight - kPadding,
                                 kWidth,
                                 kHeight);
         
-        tile.transform = CGAffineTransformMakeScale(.5, .5);
+        tile.transform = CGAffineTransformMakeScale(kScale, kScale);
         
         [self.view addSubview:tile];
     }
