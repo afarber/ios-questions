@@ -24,6 +24,12 @@
 		84D6121A18B2976C0005C538 /* ScrollTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D6121918B2976C0005C538 /* ScrollTests.m */; };
 		84D6122518B29C2D0005C538 /* board.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D6122318B29C2D0005C538 /* board.png */; };
 		84D6122618B29C2D0005C538 /* board@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D6122418B29C2D0005C538 /* board@2x.png */; };
+		84F81F7218C8704400D8A1C2 /* big.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F81F7018C8704400D8A1C2 /* big.png */; };
+		84F81F7318C8704400D8A1C2 /* big@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F81F7118C8704400D8A1C2 /* big@2x.png */; };
+		84F81F7918C8704F00D8A1C2 /* small.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F81F7418C8704E00D8A1C2 /* small.png */; };
+		84F81F7A18C8704F00D8A1C2 /* small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F81F7518C8704E00D8A1C2 /* small@2x.png */; };
+		84F81F7B18C8704F00D8A1C2 /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F81F7718C8704F00D8A1C2 /* Tile.m */; };
+		84F81F7C18C8704F00D8A1C2 /* Tile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F81F7818C8704F00D8A1C2 /* Tile.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +65,13 @@
 		84D6121918B2976C0005C538 /* ScrollTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScrollTests.m; sourceTree = "<group>"; };
 		84D6122318B29C2D0005C538 /* board.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = board.png; sourceTree = "<group>"; };
 		84D6122418B29C2D0005C538 /* board@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "board@2x.png"; sourceTree = "<group>"; };
+		84F81F7018C8704400D8A1C2 /* big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = big.png; sourceTree = "<group>"; };
+		84F81F7118C8704400D8A1C2 /* big@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "big@2x.png"; sourceTree = "<group>"; };
+		84F81F7418C8704E00D8A1C2 /* small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = small.png; sourceTree = "<group>"; };
+		84F81F7518C8704E00D8A1C2 /* small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "small@2x.png"; sourceTree = "<group>"; };
+		84F81F7618C8704F00D8A1C2 /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tile.h; sourceTree = "<group>"; };
+		84F81F7718C8704F00D8A1C2 /* Tile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tile.m; sourceTree = "<group>"; };
+		84F81F7818C8704F00D8A1C2 /* Tile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Tile.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,10 +133,17 @@
 			children = (
 				84D611FA18B2976B0005C538 /* AppDelegate.h */,
 				84D611FB18B2976B0005C538 /* AppDelegate.m */,
-				84D611FD18B2976B0005C538 /* Main_iPhone.storyboard */,
-				84D6120018B2976B0005C538 /* Main_iPad.storyboard */,
 				84D6120318B2976B0005C538 /* ViewController.h */,
 				84D6120418B2976B0005C538 /* ViewController.m */,
+				84F81F7618C8704F00D8A1C2 /* Tile.h */,
+				84F81F7718C8704F00D8A1C2 /* Tile.m */,
+				84F81F7818C8704F00D8A1C2 /* Tile.xib */,
+				84D611FD18B2976B0005C538 /* Main_iPhone.storyboard */,
+				84D6120018B2976B0005C538 /* Main_iPad.storyboard */,
+				84F81F7018C8704400D8A1C2 /* big.png */,
+				84F81F7118C8704400D8A1C2 /* big@2x.png */,
+				84F81F7418C8704E00D8A1C2 /* small.png */,
+				84F81F7518C8704E00D8A1C2 /* small@2x.png */,
 				84D6122318B29C2D0005C538 /* board.png */,
 				84D6122418B29C2D0005C538 /* board@2x.png */,
 				84D6120618B2976B0005C538 /* Images.xcassets */,
@@ -238,11 +258,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				84D6120218B2976B0005C538 /* Main_iPad.storyboard in Resources */,
+				84F81F7918C8704F00D8A1C2 /* small.png in Resources */,
+				84F81F7318C8704400D8A1C2 /* big@2x.png in Resources */,
 				84D6120718B2976B0005C538 /* Images.xcassets in Resources */,
 				84D611FF18B2976B0005C538 /* Main_iPhone.storyboard in Resources */,
+				84F81F7218C8704400D8A1C2 /* big.png in Resources */,
+				84F81F7A18C8704F00D8A1C2 /* small@2x.png in Resources */,
 				84D6122618B29C2D0005C538 /* board@2x.png in Resources */,
 				84D6122518B29C2D0005C538 /* board.png in Resources */,
 				84D611F618B2976B0005C538 /* InfoPlist.strings in Resources */,
+				84F81F7C18C8704F00D8A1C2 /* Tile.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,6 +289,7 @@
 				84D6120518B2976B0005C538 /* ViewController.m in Sources */,
 				84D611FC18B2976B0005C538 /* AppDelegate.m in Sources */,
 				84D611F818B2976B0005C538 /* main.m in Sources */,
+				84F81F7B18C8704F00D8A1C2 /* Tile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
