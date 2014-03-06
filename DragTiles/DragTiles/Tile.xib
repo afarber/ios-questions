@@ -10,7 +10,7 @@
             <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="big.png" id="M7D-Sh-Ctl" userLabel="Image View - bigImage">
+                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.79999999999999982" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="big.png" id="M7D-Sh-Ctl" userLabel="Image View - bigImage">
                     <rect key="frame" x="-30" y="-30" width="128" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
@@ -28,7 +28,7 @@
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="small.png" id="1YY-hw-hox" userLabel="Image View - smallImage">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.79999999999999982" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="small.png" id="1YY-hw-hox" userLabel="Image View - smallImage">
                     <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>

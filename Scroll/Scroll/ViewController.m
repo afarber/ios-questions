@@ -25,6 +25,8 @@ static int const kHeight   = 60;
                                 kWidth,
                                 kHeight);
         
+        tile.transform = CGAffineTransformMakeScale(.5, .5);
+        
         [self.view addSubview:tile];
     }
 }
