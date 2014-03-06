@@ -12,18 +12,21 @@ static NSString* const kLetters =  @"ABCDEFGHIJKLMNOPQRSTUWVXYZ";
     int randomInteger = 1 + (int)arc4random_uniform(9);
     NSLog(@"%s: randomLetter=%@, randomInteger=%d", __PRETTY_FUNCTION__, randomLetter, randomInteger);
     
-    _letter.text = randomLetter;
-    _value.text = [NSString stringWithFormat:@"%d", randomInteger];
+    _smallLetter.text = _bigLetter.text = randomLetter;
+    _smallValue.text = _bigValue.text = [NSString stringWithFormat:@"%d", randomInteger];
 }
 
 - (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event
 {
     NSLog(@"%s", __PRETTY_FUNCTION__);
     
-    [_normal setHidden:YES];
-    [_dragged setHidden:NO];
-    [_letter setFont:[UIFont systemFontOfSize:60]];
-    [_value setFont:[UIFont systemFontOfSize:20]];
+    [_smallImage setHidden:YES];
+    [_smallLetter setHidden:YES];
+    [_smallValue setHidden:YES];
+    
+    [_bigImage setHidden:NO];
+    [_bigLetter setHidden:NO];
+    [_bigValue setHidden:NO];
 
     [self.superview bringSubviewToFront:self];
 }
@@ -44,27 +47,33 @@ static NSString* const kLetters =  @"ABCDEFGHIJKLMNOPQRSTUWVXYZ";
 {
     NSLog(@"%s", __PRETTY_FUNCTION__);
 
-    [_normal setHidden:NO];
-    [_dragged setHidden:YES];
-    [_letter setFont:[UIFont systemFontOfSize:36]];
-    [_value setFont:[UIFont systemFontOfSize:16]];
+    [_smallImage setHidden:NO];
+    [_smallLetter setHidden:NO];
+    [_smallValue setHidden:NO];
+    
+    [_bigImage setHidden:YES];
+    [_bigLetter setHidden:YES];
+    [_bigValue setHidden:YES];
 }
 
 - (void)touchesCancelled:(NSSet*)touches withEvent:(UIEvent*)event
 {
     NSLog(@"%s", __PRETTY_FUNCTION__);
 
-    [_normal setHidden:NO];
-    [_dragged setHidden:YES];
-    [_letter setFont:[UIFont systemFontOfSize:36]];
-    [_value setFont:[UIFont systemFontOfSize:16]];
+    [_smallImage setHidden:NO];
+    [_smallLetter setHidden:NO];
+    [_smallValue setHidden:NO];
+    
+    [_bigImage setHidden:YES];
+    [_bigLetter setHidden:YES];
+    [_bigValue setHidden:YES];
 }
 
 - (NSString*)description
 {
     return [NSString stringWithFormat:@"%@ %@",
-            self.letter.text,
-            self.value.text];
+            self.smallLetter.text,
+            self.smallValue.text];
 }
 
 @end

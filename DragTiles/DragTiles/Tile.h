@@ -2,9 +2,12 @@
 
 @interface Tile : UIView
 
-@property (weak, nonatomic) IBOutlet UIImageView *dragged;
-@property (weak, nonatomic) IBOutlet UIImageView *normal;
-@property (weak, nonatomic) IBOutlet UILabel *letter;
-@property (weak, nonatomic) IBOutlet UILabel *value;
+@property (weak, nonatomic) IBOutlet UIImageView *bigImage;
+@property (weak, nonatomic) IBOutlet UILabel *bigLetter;
+@property (weak, nonatomic) IBOutlet UILabel *bigValue;
+
+@property (weak, nonatomic) IBOutlet UIImageView *smallImage;
+@property (weak, nonatomic) IBOutlet UILabel *smallLetter;
+@property (weak, nonatomic) IBOutlet UILabel *smallValue;
 
 @end
