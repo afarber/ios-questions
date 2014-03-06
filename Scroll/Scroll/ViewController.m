@@ -28,7 +28,7 @@ static int const kHeight   = 45;
                                 kHeight);
         
         //tile.transform = CGAffineTransformMakeScale(kScale, kScale);
-        
+        tile.exclusiveTouch = YES;
         [self.view addSubview:tile];
     }
 }
