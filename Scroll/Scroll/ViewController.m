@@ -17,6 +17,11 @@ static int const kHeight   = 45;
           __PRETTY_FUNCTION__,
           NSStringFromCGSize(_imageView.image.size));
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleRotation:)
+                                                 name:UIApplicationDidChangeStatusBarOrientationNotification
+                                               object:nil];
+    
     for (int i = 0; i < kNumTiles; i++) {
         Tile *tile = [[[NSBundle mainBundle] loadNibNamed:@"Tile"
                                                     owner:self
@@ -75,7 +80,24 @@ static int const kHeight   = 45;
     
 }
 
-- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+- (void)handleRotation:(NSNotification*)notification
+{
+    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+
+    NSLog(@"%s: orientation %d",
+          __PRETTY_FUNCTION__,
+          orientation);
+
+    if(orientation == UIInterfaceOrientationLandscapeLeft ||
+       orientation == UIInterfaceOrientationLandscapeRight) {
+        //Do your textField animation here
+    }
+    
+    // TODO adjust scroll view zoom
+    // TODO move the tiles to the bottom
+}
+
+- (UIView*)viewForZoomingInScrollView:(UIScrollView*)scrollView
 {
     return _imageView;
 }
