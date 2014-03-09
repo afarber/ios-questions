@@ -17,18 +17,18 @@ static int const kHeight   = 45;
           __PRETTY_FUNCTION__,
           NSStringFromCGSize(_imageView.image.size));
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(handleRotation:)
-                                                 name:UIApplicationDidChangeStatusBarOrientationNotification
-                                               object:nil];
+    _imageView.frame = CGRectMake(0, 0, 1000, 1000);
+    _scrollView.contentSize = _imageView.frame.size;
+    _scrollView.canCancelContentTouches = NO;
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
     for (int i = 0; i < kNumTiles; i++) {
         Tile *tile = [[[NSBundle mainBundle] loadNibNamed:@"Tile"
                                                     owner:self
                                                   options:nil] firstObject];
-        tile.frame = CGRectMake(
-                                kPadding + i * (kWidth * kScale),
-                                self.view.bounds.size.height - kHeight - kPadding,
+        
+        tile.frame = CGRectMake(kPadding + i * (kWidth * kScale),
+                                self.view.bounds.size.height - (kHeight * kScale) - kPadding,
                                 kWidth,
                                 kHeight);
         
@@ -36,29 +36,48 @@ static int const kHeight   = 45;
         tile.exclusiveTouch = YES;
         [self.view addSubview:tile];
     }
+    
+    [self adjustSubViews];
+    [self adjustZoom];
 }
 
-- (void)viewDidLayoutSubviews
+- (void) viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-    
-    float minScale = MIN(
-                         _scrollView.frame.size.width / _imageView.image.size.width,
-                         _scrollView.frame.size.height / _imageView.image.size.height
-                         );
-    
-    float zoomScale = _scrollView.frame.size.width / _imageView.image.size.width;
-    
-    float maxScale = MAX(
-                         2 * _scrollView.frame.size.width / _imageView.image.size.width,
-                         2 * _scrollView.frame.size.height / _imageView.image.size.height
-                         );
+    NSLog(@"%s contentOffset %@", __PRETTY_FUNCTION__, NSStringFromCGPoint(_scrollView.contentOffset));
+    _scrollView.contentSize = _imageView.frame.size;
+}
+
+- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+
+    NSLog(@"%s: orientation %d -> %d",
+          __PRETTY_FUNCTION__,
+          fromInterfaceOrientation,
+          orientation);
+
+    [self adjustSubViews];
+    [self adjustZoom];
+}
+
+- (void) adjustSubViews
+{
+    _scrollView.frame = CGRectMake(0,
+                                   0,
+                                   self.view.bounds.size.width,
+                                   self.view.bounds.size.height - kHeight - 2 * kPadding);
+    // TODO move the tiles to the bottom
+}
+
+- (void) adjustZoom
+{
+    float minScale = _scrollView.frame.size.width / _imageView.image.size.width;
+    float maxScale = 2 * minScale;
     
     _scrollView.minimumZoomScale = minScale;
     _scrollView.maximumZoomScale = maxScale;
-    _scrollView.zoomScale = zoomScale;
-
-    _scrollView.contentSize = _imageView.frame.size;
+    _scrollView.zoomScale = maxScale;
     
     NSLog(@"%s: _scrollView %@ %@",
           __PRETTY_FUNCTION__,
@@ -70,31 +89,10 @@ static int const kHeight   = 45;
           NSStringFromCGPoint(_imageView.frame.origin),
           NSStringFromCGSize(_imageView.frame.size));
     
-    NSLog(@"%s: minScale=%f zoomScale=%f maxScale=%f width=%f height=%f",
+    NSLog(@"%s: minScale=%f maxScale=%f",
           __PRETTY_FUNCTION__,
           minScale,
-          zoomScale,
-          maxScale,
-          (_scrollView.frame.size.width / _imageView.image.size.width),
-          (_scrollView.frame.size.height / _imageView.image.size.height));
-    
-}
-
-- (void)handleRotation:(NSNotification*)notification
-{
-    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
-
-    NSLog(@"%s: orientation %d",
-          __PRETTY_FUNCTION__,
-          orientation);
-
-    if(orientation == UIInterfaceOrientationLandscapeLeft ||
-       orientation == UIInterfaceOrientationLandscapeRight) {
-        //Do your textField animation here
-    }
-    
-    // TODO adjust scroll view zoom
-    // TODO move the tiles to the bottom
+          maxScale);
 }
 
 - (UIView*)viewForZoomingInScrollView:(UIScrollView*)scrollView
@@ -104,28 +102,10 @@ static int const kHeight   = 45;
 
 - (IBAction)scrollViewDoubleTapped:(UITapGestureRecognizer*)sender
 {
-    CGPoint pointInView = [sender locationInView:_imageView];
-    
-    float zoomScale = _scrollView.frame.size.width / _imageView.image.size.width;
-    if (_scrollView.zoomScale <= zoomScale) {
-        zoomScale *= 2;
-    }
-    
-    CGSize size = _scrollView.bounds.size;
-
-    CGFloat w = size.width / zoomScale;
-    CGFloat h = size.height / zoomScale;
-    CGFloat x = pointInView.x - (w / 2.0f);
-    CGFloat y = pointInView.y - (h / 2.0f);
-    
-    CGRect rect = CGRectMake(x, y, w, h);
-    [_scrollView zoomToRect:rect animated:YES];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    if (_scrollView.zoomScale < _scrollView.maximumZoomScale)
+        [_scrollView setZoomScale:_scrollView.maximumZoomScale animated:YES];
+    else
+        [_scrollView setZoomScale:_scrollView.minimumZoomScale animated:YES];
 }
 
 @end
