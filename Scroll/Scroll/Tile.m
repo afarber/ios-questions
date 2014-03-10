@@ -77,9 +77,11 @@ static NSString* const kLetters =  @"ABCDEFGHIJKLMNOPQRSTUWVXYZ";
 
 - (NSString*)description
 {
-    return [NSString stringWithFormat:@"%@ %@",
+    return [NSString stringWithFormat:@"%@ %@ %@ %@",
             self.smallLetter.text,
-            self.smallValue.text];
+            self.smallValue.text,
+            NSStringFromCGPoint(self.frame.origin),
+            NSStringFromCGSize(self.frame.size)];
 }
 
 @end

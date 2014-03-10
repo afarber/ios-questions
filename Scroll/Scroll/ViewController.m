@@ -56,6 +56,14 @@ static int const kHeight   = 45;
           __PRETTY_FUNCTION__,
           fromInterfaceOrientation,
           orientation);
+    
+    for (UIView *subView in self.view.subviews) {
+        if (![subView isKindOfClass:[Tile class]])
+            continue;
+        
+        Tile* tile = (Tile*)subView;
+        NSLog(@"tile: %@", tile);
+    }
 
     [self adjustSubViews];
     [self adjustZoom];
