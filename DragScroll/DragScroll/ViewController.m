@@ -107,16 +107,13 @@ static int const kNumTiles    = 7;
           __PRETTY_FUNCTION__,
           tile);
     
-    if (CGRectIntersectsRect(tile.frame, _scrollView.frame)) {
-        NSLog(@"XXX hit XXX");
-        
-        if (tile.superview == _scrollView) {
-            
-        } else {
-            [tile removeFromSuperview];
-            // TODO adjust tile zoom and position
-            [_scrollView addSubview:tile];
-        }
+    if (tile.superview != _scrollView && CGRectIntersectsRect(tile.frame, _scrollView.frame)) {
+        [tile removeFromSuperview];
+        [_scrollView addSubview:tile];
+    } else if (tile.superview == _scrollView && !CGRectIntersectsRect(tile.frame, _scrollView.frame)) {
+        [tile removeFromSuperview];
+        [self.view addSubview:tile];
+        [self adjustFrames];
     }
 }
 
