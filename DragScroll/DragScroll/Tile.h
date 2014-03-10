@@ -2,6 +2,8 @@
 
 @interface Tile : UIView
 
+@property (assign, nonatomic) BOOL dragged;
+
 @property (weak, nonatomic) IBOutlet UIImageView *bigImage;
 @property (weak, nonatomic) IBOutlet UILabel *bigLetter;
 @property (weak, nonatomic) IBOutlet UILabel *bigValue;

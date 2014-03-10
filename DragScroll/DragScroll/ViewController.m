@@ -27,55 +27,51 @@ static int const kHeight   = 45;
                                                     owner:self
                                                   options:nil] firstObject];
         
-        tile.frame = CGRectMake(kPadding + i * (kWidth * kScale),
-                                self.view.bounds.size.height - (kHeight * kScale) - kPadding,
-                                kWidth,
-                                kHeight);
-        
         //tile.transform = CGAffineTransformMakeScale(kScale, kScale);
         tile.exclusiveTouch = YES;
         [self.view addSubview:tile];
     }
     
-    [self adjustSubViews];
-    [self adjustZoom];
 }
 
 - (void) viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-    NSLog(@"%s contentOffset %@", __PRETTY_FUNCTION__, NSStringFromCGPoint(_scrollView.contentOffset));
-    _scrollView.contentSize = _imageView.frame.size;
-}
-
-- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
-{
-    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
-
-    NSLog(@"%s: orientation %d -> %d",
+    NSLog(@"%s contentOffset %@",
           __PRETTY_FUNCTION__,
-          fromInterfaceOrientation,
-          orientation);
+          NSStringFromCGPoint(_scrollView.contentOffset));
     
-    for (UIView *subView in self.view.subviews) {
-        if (![subView isKindOfClass:[Tile class]])
-            continue;
-        
-        Tile* tile = (Tile*)subView;
-        NSLog(@"tile: %@", tile);
-    }
-
-    [self adjustSubViews];
+    _scrollView.contentSize = _imageView.frame.size;
+    
+    [self adjustFrames];
     [self adjustZoom];
 }
 
-- (void) adjustSubViews
+- (void) adjustFrames
 {
     _scrollView.frame = CGRectMake(0,
                                    0,
                                    self.view.bounds.size.width,
                                    self.view.bounds.size.height - kHeight - 2 * kPadding);
-    // TODO move the tiles to the bottom
+    
+    int i = 0;
+    for (UIView *subView in self.view.subviews) {
+        if (![subView isKindOfClass:[Tile class]])
+            continue;
+        
+        Tile* tile = (Tile*)subView;
+        NSLog(@"tile before: %@", tile);
+        
+        if (tile.dragged)
+            continue;
+        
+        tile.frame = CGRectMake(kPadding + kWidth * kScale * i++,
+                                self.view.bounds.size.height - kHeight * kScale - kPadding,
+                                kWidth,
+                                kHeight);
+        
+        NSLog(@"tile after: %@", tile);
+    }
 }
 
 - (void) adjustZoom

@@ -75,6 +75,11 @@ static NSString* const kLetters =  @"ABCDEFGHIJKLMNOPQRSTUWVXYZ";
     [_bigValue setHidden:YES];
 }
 
+- (BOOL) dragged
+{
+    return _smallImage.hidden;
+}
+
 - (NSString*)description
 {
     return [NSString stringWithFormat:@"%@ %@ %@ %@",
