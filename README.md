@@ -108,4 +108,6 @@ Uses an CC BY-SA 3.0 licensed SVG-file by
 
 ![screenshot](https://raw.github.com/afarber/ios-newbie/master/sdImageCopied/screenshot.png)
 
+![StackOverflow](http://stackoverflow.com/users/flair/165071.png)
 
+[My iOS-related questions at StackOverflow](http://stackoverflow.com/search?q=user:165071+[ios])
