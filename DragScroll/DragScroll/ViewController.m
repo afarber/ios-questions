@@ -102,9 +102,15 @@ static int const kNumTiles    = 7;
 }
 
 - (void) handleTileMoved:(NSNotification*)notification {
+    Tile* tile = (Tile*)notification.object;
     NSLog(@"%s %@",
           __PRETTY_FUNCTION__,
-          notification);
+          tile);
+    
+    if (CGRectIntersectsRect(tile.frame, _scrollView.frame)) {
+        NSLog(@"XXX hit XXX");
+        [tile removeFromSuperview];
+    }
 }
 
 - (UIView*)viewForZoomingInScrollView:(UIScrollView*)scrollView
