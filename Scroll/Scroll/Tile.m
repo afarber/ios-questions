@@ -18,7 +18,7 @@ static NSString* const kLetters =  @"ABCDEFGHIJKLMNOPQRSTUWVXYZ";
 
 - (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event
 {
-    //NSLog(@"%s", __PRETTY_FUNCTION__);
+    NSLog(@"%s %@", __PRETTY_FUNCTION__, NSStringFromCGSize(self.frame.size));
     
     [_smallImage setHidden:YES];
     [_smallLetter setHidden:YES];
