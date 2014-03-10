@@ -10,7 +10,7 @@ static NSString* const kLetters =  @"ABCDEFGHIJKLMNOPQRSTUWVXYZ";
     
     NSString* randomLetter = [kLetters substringWithRange:[kLetters rangeOfComposedCharacterSequenceAtIndex:random()%[kLetters length]]];
     int randomInteger = 1 + (int)arc4random_uniform(9);
-    NSLog(@"%s: randomLetter=%@, randomInteger=%d", __PRETTY_FUNCTION__, randomLetter, randomInteger);
+    //NSLog(@"%s: randomLetter=%@, randomInteger=%d", __PRETTY_FUNCTION__, randomLetter, randomInteger);
     
     _smallLetter.text = _bigLetter.text = randomLetter;
     _smallValue.text = _bigValue.text = [NSString stringWithFormat:@"%d", randomInteger];
@@ -18,7 +18,7 @@ static NSString* const kLetters =  @"ABCDEFGHIJKLMNOPQRSTUWVXYZ";
 
 - (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+    NSLog(@"%s %@", __PRETTY_FUNCTION__, NSStringFromCGSize(self.frame.size));
     
     [_smallImage setHidden:YES];
     [_smallLetter setHidden:YES];
@@ -33,7 +33,7 @@ static NSString* const kLetters =  @"ABCDEFGHIJKLMNOPQRSTUWVXYZ";
 
 - (void) touchesMoved:(NSSet*)touches withEvent:(UIEvent*)event
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+    //NSLog(@"%s", __PRETTY_FUNCTION__);
 
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInView:self];
@@ -51,7 +51,7 @@ static NSString* const kLetters =  @"ABCDEFGHIJKLMNOPQRSTUWVXYZ";
 
 - (void)touchesEnded:(NSSet*)touches withEvent:(UIEvent*)event
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+    //NSLog(@"%s", __PRETTY_FUNCTION__);
 
     [_smallImage setHidden:NO];
     [_smallLetter setHidden:NO];
@@ -64,7 +64,7 @@ static NSString* const kLetters =  @"ABCDEFGHIJKLMNOPQRSTUWVXYZ";
 
 - (void)touchesCancelled:(NSSet*)touches withEvent:(UIEvent*)event
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+    //NSLog(@"%s", __PRETTY_FUNCTION__);
 
     [_smallImage setHidden:NO];
     [_smallLetter setHidden:NO];
@@ -75,11 +75,18 @@ static NSString* const kLetters =  @"ABCDEFGHIJKLMNOPQRSTUWVXYZ";
     [_bigValue setHidden:YES];
 }
 
+- (BOOL) dragged
+{
+    return _smallImage.hidden;
+}
+
 - (NSString*)description
 {
-    return [NSString stringWithFormat:@"%@ %@",
+    return [NSString stringWithFormat:@"%@ %@ %@ %@",
             self.smallLetter.text,
-            self.smallValue.text];
+            self.smallValue.text,
+            NSStringFromCGPoint(self.frame.origin),
+            NSStringFromCGSize(self.frame.size)];
 }
 
 @end

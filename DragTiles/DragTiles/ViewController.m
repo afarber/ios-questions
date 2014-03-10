@@ -17,15 +17,33 @@ static int const kHeight   = 45;
         Tile *tile = [[[NSBundle mainBundle] loadNibNamed:@"Tile"
                                                     owner:self
                                                   options:nil] firstObject];
-        tile.frame = CGRectMake(
-            kPadding + i * (kWidth * kScale),
-            self.view.bounds.size.height - kHeight - kPadding,
-            kWidth,
-            kHeight);
-        
         //tile.transform = CGAffineTransformMakeScale(kScale, kScale);
 
         [self.view addSubview:tile];
+    }
+}
+
+- (void) viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    int i = 0;
+    for (UIView *subView in self.view.subviews) {
+        if (![subView isKindOfClass:[Tile class]])
+            continue;
+        
+        Tile* tile = (Tile*)subView;
+        NSLog(@"tile before: %@", tile);
+        
+        if (tile.dragged)
+            continue;
+        
+        tile.frame = CGRectMake(kPadding + kWidth * kScale * i++,
+                                self.view.bounds.size.height - kHeight * kScale - kPadding,
+                                kWidth,
+                                kHeight);
+        
+        NSLog(@"tile after: %@", tile);
     }
 }
 
