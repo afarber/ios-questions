@@ -20,6 +20,8 @@ static int const kNumTiles    = 7;
     _scrollView.canCancelContentTouches = NO;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    
     for (int i = 0; i < kNumTiles; i++) {
         Tile *tile = [[[NSBundle mainBundle] loadNibNamed:@"Tile"
                                                     owner:self
@@ -28,8 +30,12 @@ static int const kNumTiles    = 7;
         //tile.transform = CGAffineTransformMakeScale(kTileScale, kTileScale);
         tile.exclusiveTouch = YES;
         [self.view addSubview:tile];
+        
+        [center addObserver:self
+                   selector:@selector(handleTileMoved:)
+                       name:kTileMoved
+                     object:tile];
     }
-    
 }
 
 - (void) viewDidLayoutSubviews
@@ -58,8 +64,6 @@ static int const kNumTiles    = 7;
             continue;
         
         Tile* tile = (Tile*)subView;
-        NSLog(@"tile before: %@", tile);
-        
         if (tile.dragged)
             continue;
         
@@ -68,7 +72,7 @@ static int const kNumTiles    = 7;
                                 kTileWidth,
                                 kTileHeight);
         
-        NSLog(@"tile after: %@", tile);
+        NSLog(@"tile: %@", tile);
     }
 }
 
@@ -95,6 +99,12 @@ static int const kNumTiles    = 7;
           __PRETTY_FUNCTION__,
           minScale,
           maxScale);
+}
+
+- (void) handleTileMoved:(NSNotification*)notification {
+    NSLog(@"%s %@",
+          __PRETTY_FUNCTION__,
+          notification);
 }
 
 - (UIView*)viewForZoomingInScrollView:(UIScrollView*)scrollView

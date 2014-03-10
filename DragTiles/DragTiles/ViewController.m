@@ -11,14 +11,21 @@ static int const kNumTiles    = 7;
 {
     [super viewDidLoad];
     
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    
     for (int i = 0; i < kNumTiles; i++) {
         Tile *tile = [[[NSBundle mainBundle] loadNibNamed:@"Tile"
                                                     owner:self
                                                   options:nil] firstObject];
         
         //tile.transform = CGAffineTransformMakeScale(kTileScale, kTileScale);
-
+        tile.exclusiveTouch = YES;
         [self.view addSubview:tile];
+        
+        [center addObserver:self
+                   selector:@selector(handleTileMoved:)
+                       name:kTileMoved
+                     object:tile];
     }
 }
 
@@ -32,8 +39,6 @@ static int const kNumTiles    = 7;
             continue;
         
         Tile* tile = (Tile*)subView;
-        NSLog(@"tile before: %@", tile);
-        
         if (tile.dragged)
             continue;
         
@@ -42,8 +47,14 @@ static int const kNumTiles    = 7;
                                 kTileWidth,
                                 kTileHeight);
         
-        NSLog(@"tile after: %@", tile);
+        NSLog(@"tile: %@", tile);
     }
+}
+
+- (void) handleTileMoved:(NSNotification*)notification {
+    NSLog(@"%s %@",
+          __PRETTY_FUNCTION__,
+          notification);
 }
 
 @end

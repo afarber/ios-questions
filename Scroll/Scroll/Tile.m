@@ -2,8 +2,9 @@
 
 int const kTileWidth  = 45;
 int const kTileHeight = 45;
+NSString* const kTileMoved = @"TILE_MOVED";
 
-static NSString* const kLetters =  @"ABCDEFGHIJKLMNOPQRSTUWVXYZ";
+static NSString* const kLetters = @"ABCDEFGHIJKLMNOPQRSTUWVXYZ";
 
 @implementation Tile
 
@@ -11,7 +12,7 @@ static NSString* const kLetters =  @"ABCDEFGHIJKLMNOPQRSTUWVXYZ";
 {
     [super awakeFromNib];
     
-    NSString* randomLetter = [kLetters substringWithRange:[kLetters rangeOfComposedCharacterSequenceAtIndex:random()%[kLetters length]]];
+    NSString* randomLetter = [kLetters substringWithRange:[kLetters rangeOfComposedCharacterSequenceAtIndex:random() % [kLetters length]]];
     int randomInteger = 1 + (int)arc4random_uniform(9);
     //NSLog(@"%s: randomLetter=%@, randomInteger=%d", __PRETTY_FUNCTION__, randomLetter, randomInteger);
     
@@ -63,6 +64,15 @@ static NSString* const kLetters =  @"ABCDEFGHIJKLMNOPQRSTUWVXYZ";
     [_bigImage setHidden:YES];
     [_bigLetter setHidden:YES];
     [_bigValue setHidden:YES];
+    
+    NSNotification *notification = [NSNotification
+                                    notificationWithName:kTileMoved
+                                    object:self
+                                    userInfo:@{@"Key 1" : @"Value 1",
+                                               @"Key 2" : @2}];
+    
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center postNotification:notification];
 }
 
 - (void)touchesCancelled:(NSSet*)touches withEvent:(UIEvent*)event
