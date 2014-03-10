@@ -109,7 +109,14 @@ static int const kNumTiles    = 7;
     
     if (CGRectIntersectsRect(tile.frame, _scrollView.frame)) {
         NSLog(@"XXX hit XXX");
-        [tile removeFromSuperview];
+        
+        if (tile.superview == _scrollView) {
+            
+        } else {
+            [tile removeFromSuperview];
+            // TODO adjust tile zoom and position
+            [_scrollView addSubview:tile];
+        }
     }
 }
 
