@@ -1,5 +1,8 @@
 #import <UIKit/UIKit.h>
 
+extern int const kTileWidth;
+extern int const kTileHeight;
+
 @interface Tile : UIView
 
 @property (assign, nonatomic) BOOL dragged;

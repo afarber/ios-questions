@@ -1,11 +1,9 @@
 #import "ViewController.h"
 #import "Tile.h"
 
-static float const kScale  = 1.0;
-static int const kPadding  = 2;
-static int const kNumTiles = 7;
-static int const kWidth    = 45;
-static int const kHeight   = 45;
+static float const kTileScale = 1.0;
+static int const kPadding     = 2;
+static int const kNumTiles    = 7;
 
 @implementation ViewController
 
@@ -17,7 +15,8 @@ static int const kHeight   = 45;
         Tile *tile = [[[NSBundle mainBundle] loadNibNamed:@"Tile"
                                                     owner:self
                                                   options:nil] firstObject];
-        //tile.transform = CGAffineTransformMakeScale(kScale, kScale);
+        
+        //tile.transform = CGAffineTransformMakeScale(kTileScale, kTileScale);
 
         [self.view addSubview:tile];
     }
@@ -38,10 +37,10 @@ static int const kHeight   = 45;
         if (tile.dragged)
             continue;
         
-        tile.frame = CGRectMake(kPadding + kWidth * kScale * i++,
-                                self.view.bounds.size.height - kHeight * kScale - kPadding,
-                                kWidth,
-                                kHeight);
+        tile.frame = CGRectMake(kPadding + kTileWidth * kTileScale * i++,
+                                self.view.bounds.size.height - kTileHeight * kTileScale - kPadding,
+                                kTileWidth,
+                                kTileHeight);
         
         NSLog(@"tile after: %@", tile);
     }

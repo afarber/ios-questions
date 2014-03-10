@@ -1,5 +1,8 @@
 #import "Tile.h"
 
+int const kTileWidth  = 45;
+int const kTileHeight = 45;
+
 static NSString* const kLetters =  @"ABCDEFGHIJKLMNOPQRSTUWVXYZ";
 
 @implementation Tile

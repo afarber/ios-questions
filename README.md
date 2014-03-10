@@ -22,6 +22,13 @@ Screenshots
 
 ![screenshot](https://raw.github.com/afarber/ios-newbie/master/DragTiles/screenshot.png)
 
+[DragScroll](https://github.com/afarber/ios-newbie/tree/master/DragScroll):
+
+![screenshot](https://raw.github.com/afarber/ios-newbie/master/DragScroll/screenshot.png)
+
+Uses an CC BY-SA 3.0 licensed SVG-file by 
+[Denelson83, Wikimedia Commons](http://en.wikipedia.org/wiki/File:Blank_Scrabble_board_with_coordinates.svg)
+
 [MyAuth](https://github.com/afarber/ios-newbie/tree/master/MyAuth):
 
 ![screenshot](https://raw.github.com/afarber/ios-newbie/master/MyAuth/screenshot.png)
