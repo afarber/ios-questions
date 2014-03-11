@@ -110,6 +110,11 @@ static int const kNumTiles    = 7;
     if (tile.superview != _scrollView && CGRectIntersectsRect(tile.frame, _scrollView.frame)) {
         [tile removeFromSuperview];
         [_scrollView addSubview:tile];
+        tile.frame = CGRectMake(tile.frame.origin.x + _scrollView.contentOffset.x,
+                                tile.frame.origin.y + _scrollView.contentOffset.y,
+                                kTileWidth * _scrollView.zoomScale,
+                                kTileScale * _scrollView.zoomScale);
+        
     } else if (tile.superview == _scrollView && !CGRectIntersectsRect(tile.frame, _scrollView.frame)) {
         [tile removeFromSuperview];
         [self.view addSubview:tile];
