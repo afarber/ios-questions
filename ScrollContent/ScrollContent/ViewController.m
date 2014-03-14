@@ -12,19 +12,18 @@
     
     _imageView.frame = CGRectMake(0, 0, 1000, 1000);
     _contentView.frame = CGRectMake(0, 0, 1000, 1000);
+    _scrollView.contentSize = CGSizeMake(1000, 1000);
 }
 
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-    
+
     float scale = _scrollView.frame.size.width / 1000;
     
     _scrollView.minimumZoomScale = scale;
     _scrollView.maximumZoomScale = 2 * scale;
     _scrollView.zoomScale = 2 * scale;
-    
-    _scrollView.contentSize = CGSizeMake(1000, 1000);
 }
 
 - (UIView*)viewForZoomingInScrollView:(UIScrollView*)scrollView
