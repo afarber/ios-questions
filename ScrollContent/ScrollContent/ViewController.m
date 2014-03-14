@@ -29,7 +29,7 @@
 
 - (UIView*)viewForZoomingInScrollView:(UIScrollView*)scrollView
 {
-    return _imageView;
+    return _contentView;
 }
 
 - (IBAction)scrollViewDoubleTapped:(UITapGestureRecognizer*)sender
