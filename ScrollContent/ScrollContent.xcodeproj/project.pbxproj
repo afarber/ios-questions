@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		74FFC7F118D612E00009D834 /* GameBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 74FFC7F018D612E00009D834 /* GameBoard.m */; };
 		842B1C8D18D38B88004CBB99 /* big.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B1C8B18D38B88004CBB99 /* big.png */; };
 		842B1C8E18D38B88004CBB99 /* big@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B1C8C18D38B88004CBB99 /* big@2x.png */; };
 		842B1C9418D38B98004CBB99 /* small.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B1C8F18D38B98004CBB99 /* small.png */; };
@@ -42,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		74FFC7EF18D612E00009D834 /* GameBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameBoard.h; sourceTree = "<group>"; };
+		74FFC7F018D612E00009D834 /* GameBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameBoard.m; sourceTree = "<group>"; };
 		842B1C8B18D38B88004CBB99 /* big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = big.png; sourceTree = "<group>"; };
 		842B1C8C18D38B88004CBB99 /* big@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "big@2x.png"; sourceTree = "<group>"; };
 		842B1C8F18D38B98004CBB99 /* small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = small.png; sourceTree = "<group>"; };
@@ -133,6 +136,8 @@
 				84BFFDCA18D1E30B00E09540 /* AppDelegate.m */,
 				84BFFDCF18D1E30B00E09540 /* ViewController.h */,
 				84BFFDD018D1E30B00E09540 /* ViewController.m */,
+				74FFC7EF18D612E00009D834 /* GameBoard.h */,
+				74FFC7F018D612E00009D834 /* GameBoard.m */,
 				842B1C9118D38B98004CBB99 /* Tile.h */,
 				842B1C9218D38B98004CBB99 /* Tile.m */,
 				842B1C9318D38B98004CBB99 /* Tile.xib */,
@@ -287,6 +292,7 @@
 			files = (
 				84BFFDD118D1E30B00E09540 /* ViewController.m in Sources */,
 				84BFFDCB18D1E30B00E09540 /* AppDelegate.m in Sources */,
+				74FFC7F118D612E00009D834 /* GameBoard.m in Sources */,
 				84BFFDC718D1E30B00E09540 /* main.m in Sources */,
 				842B1C9618D38B98004CBB99 /* Tile.m in Sources */,
 			);

@@ -57,15 +57,20 @@ static int const kNumTiles    = 7;
 - (void) handleTileMoved:(NSNotification*)notification {
     Tile* tile = (Tile*)notification.object;
     NSLog(@"%s %@", __PRETTY_FUNCTION__, tile);
+    //return;
     
     if (tile.superview != _scrollView && CGRectIntersectsRect(tile.frame, _scrollView.frame)) {
         [tile removeFromSuperview];
         [_contentView addSubview:tile];
+        [_contentView bringSubviewToFront:tile];
+        /*
         tile.frame = CGRectMake(
             tile.frame.origin.x + _scrollView.contentOffset.x,
             tile.frame.origin.y + _scrollView.contentOffset.y,
             kTileWidth,
             kTileHeight);
+         */
+        
         //tile.transform = CGAffineTransformMakeScale(1.3, 1.3);
 
         
