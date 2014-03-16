@@ -102,7 +102,7 @@ static int const kNumTiles    = 7;
                                 kTileWidth,
                                 kTileHeight);
         
-        NSLog(@"tile: %@", tile);
+        //NSLog(@"tile: %@", tile);
     }
 }
 
