@@ -16,7 +16,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <view autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" id="WsO-qd-vTt" userLabel="Content View">
+                                    <view autoresizesSubviews="NO" contentMode="scaleToFill" id="WsO-qd-vTt" userLabel="Content View" customClass="LNContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <subviews>
