@@ -5,6 +5,21 @@ static float const kTileScale = 1.0;
 static int const kPadding     = 2;
 static int const kNumTiles    = 7;
 
+@interface LNContentView : UIView
+
+@end
+
+@implementation LNContentView
+
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
+{
+    UIView* result = [super hitTest:point withEvent:event];
+
+    return result == self ? nil : result;
+}
+
+@end
+
 @interface ViewController ()
 
 @end
