@@ -5,6 +5,21 @@ static float const kTileScale = 1.0;
 static int const kPadding     = 2;
 static int const kNumTiles    = 7;
 
+@interface LNContentView : UIView
+
+@end
+
+@implementation LNContentView
+
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
+{
+    UIView* result = [super hitTest:point withEvent:event];
+    
+    return result == self ? nil : result;
+}
+
+@end
+
 @interface ViewController ()
 
 @end
@@ -63,13 +78,14 @@ static int const kNumTiles    = 7;
         [tile removeFromSuperview];
         [_contentView addSubview:tile];
         [_contentView bringSubviewToFront:tile];
-        /*
+        
+        CGPoint pt = [self.view convertPoint:tile.frame.origin toView:_contentView];
+        
         tile.frame = CGRectMake(
-            tile.frame.origin.x + _scrollView.contentOffset.x,
-            tile.frame.origin.y + _scrollView.contentOffset.y,
+            pt.x + _scrollView.contentOffset.x * _scrollView.zoomScale,
+            pt.y + _scrollView.contentOffset.y * _scrollView.zoomScale,
             kTileWidth,
             kTileHeight);
-         */
         
         //tile.transform = CGAffineTransformMakeScale(1.3, 1.3);
 
