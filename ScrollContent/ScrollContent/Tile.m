@@ -12,11 +12,40 @@ static NSString* const kLetters = @"ABCDEFGHIJKLMNOPQRSTUWVXYZ";
 {
     [super awakeFromNib];
     
-    NSString* randomLetter = [kLetters substringWithRange:[kLetters rangeOfComposedCharacterSequenceAtIndex:random() % [kLetters length]]];
-    int randomInteger = 1 + (int)arc4random_uniform(9);
+    NSDictionary* const letterValues = @{
+                                         @"A": @1,
+                                         @"B": @4,
+                                         @"C": @4,
+                                         @"D": @2,
+                                         @"E": @1,
+                                         @"F": @4,
+                                         @"G": @3,
+                                         @"H": @3,
+                                         @"I": @1,
+                                         @"J": @10,
+                                         @"K": @5,
+                                         @"L": @2,
+                                         @"M": @4,
+                                         @"N": @2,
+                                         @"O": @1,
+                                         @"P": @4,
+                                         @"Q": @10,
+                                         @"R": @1,
+                                         @"S": @1,
+                                         @"T": @1,
+                                         @"U": @2,
+                                         @"V": @5,
+                                         @"W": @4,
+                                         @"X": @8,
+                                         @"Y": @3,
+                                         @"Z": @10,
+                                         };
+    
+    NSString* randomLetter = [kLetters substringWithRange:[kLetters rangeOfComposedCharacterSequenceAtIndex:arc4random_uniform(kLetters.length)]];
+    int letterValue = [letterValues[randomLetter] integerValue];
     
     _smallLetter.text = _bigLetter.text = randomLetter;
-    _smallValue.text = _bigValue.text = [NSString stringWithFormat:@"%d", randomInteger];
+    _smallValue.text = _bigValue.text = [NSString stringWithFormat:@"%d", letterValue];
 }
 
 - (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event
