@@ -1,5 +1,5 @@
 #import <UIKit/UIKit.h>
 
-@interface GameBoard : UIScrollView
+@interface GameBoard : UIView
 
 @end
