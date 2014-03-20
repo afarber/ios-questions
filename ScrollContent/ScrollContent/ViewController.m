@@ -55,13 +55,12 @@ static int const kNumTiles    = 7;
     NSLog(@"%s %@", __PRETTY_FUNCTION__, tile);
     //return;
     
-    if (tile.superview != _scrollView && CGRectIntersectsRect(tile.frame, _scrollView.frame)) {
+    if (tile.superview != _contentView &&
+        CGRectIntersectsRect(tile.frame, _scrollView.frame)) {
         [tile removeFromSuperview];
         [_contentView addSubview:tile];
-        [_contentView bringSubviewToFront:tile];
         
         CGPoint pt = [self.view convertPoint:tile.frame.origin toView:_contentView];
-        
         tile.frame = CGRectMake(
             pt.x + _scrollView.contentOffset.x * _scrollView.zoomScale,
             pt.y + _scrollView.contentOffset.y * _scrollView.zoomScale,
@@ -71,7 +70,8 @@ static int const kNumTiles    = 7;
         //tile.transform = CGAffineTransformMakeScale(1.3, 1.3);
 
         
-    } else if (tile.superview == _scrollView && !CGRectIntersectsRect(tile.frame, _scrollView.frame)) {
+    } else if (tile.superview == _contentView &&
+               !CGRectIntersectsRect(tile.frame, _scrollView.frame)) {
         [tile removeFromSuperview];
         [self.view addSubview:tile];
         [self adjustFrames];
