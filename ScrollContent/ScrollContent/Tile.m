@@ -14,7 +14,6 @@ static NSString* const kLetters = @"ABCDEFGHIJKLMNOPQRSTUWVXYZ";
     
     NSString* randomLetter = [kLetters substringWithRange:[kLetters rangeOfComposedCharacterSequenceAtIndex:random() % [kLetters length]]];
     int randomInteger = 1 + (int)arc4random_uniform(9);
-    //NSLog(@"%s: randomLetter=%@, randomInteger=%d", __PRETTY_FUNCTION__, randomLetter, randomInteger);
     
     _smallLetter.text = _bigLetter.text = randomLetter;
     _smallValue.text = _bigValue.text = [NSString stringWithFormat:@"%d", randomInteger];
