@@ -22,7 +22,7 @@ static NSString* const kLetters = @"ABCDEFGHIJKLMNOPQRSTUWVXYZ";
 
 - (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event
 {
-    NSLog(@"%s %@", __PRETTY_FUNCTION__, NSStringFromCGSize(self.frame.size));
+    NSLog(@"%s: tile=%@", __PRETTY_FUNCTION__, self);
     
     [_smallImage setHidden:YES];
     [_smallLetter setHidden:YES];
@@ -37,7 +37,7 @@ static NSString* const kLetters = @"ABCDEFGHIJKLMNOPQRSTUWVXYZ";
 
 - (void) touchesMoved:(NSSet*)touches withEvent:(UIEvent*)event
 {
-    //NSLog(@"%s", __PRETTY_FUNCTION__);
+    NSLog(@"%s: tile=%@", __PRETTY_FUNCTION__, self);
 
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInView:self];
@@ -55,7 +55,7 @@ static NSString* const kLetters = @"ABCDEFGHIJKLMNOPQRSTUWVXYZ";
 
 - (void)touchesEnded:(NSSet*)touches withEvent:(UIEvent*)event
 {
-    //NSLog(@"%s", __PRETTY_FUNCTION__);
+    NSLog(@"%s: tile=%@", __PRETTY_FUNCTION__, self);
 
     [_smallImage setHidden:NO];
     [_smallLetter setHidden:NO];
@@ -77,7 +77,7 @@ static NSString* const kLetters = @"ABCDEFGHIJKLMNOPQRSTUWVXYZ";
 
 - (void)touchesCancelled:(NSSet*)touches withEvent:(UIEvent*)event
 {
-    //NSLog(@"%s", __PRETTY_FUNCTION__);
+    NSLog(@"%s: tile=%@", __PRETTY_FUNCTION__, self);
 
     [_smallImage setHidden:NO];
     [_smallLetter setHidden:NO];
