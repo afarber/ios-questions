@@ -46,14 +46,26 @@ static int const kNumTiles    = 7;
 - (void) handleTileTouched:(NSNotification*)notification {
     Tile* tile = (Tile*)notification.object;
     
-    [self.view bringSubviewToFront:tile];
+    if (tile.superview == self.view) {
+        [self.view bringSubviewToFront:tile];
+    } else {
+        CGPoint pt = [tile.superview convertPoint:tile.frame.origin toView:self.view];
+        tile.frame = CGRectMake(
+                                pt.x - _scrollView.contentOffset.x * _scrollView.zoomScale,
+                                pt.y - _scrollView.contentOffset.y * _scrollView.zoomScale,
+                                kTileWidth,
+                                kTileHeight);
+        
+        [tile removeFromSuperview];
+        tile.transform = CGAffineTransformIdentity;
+        [self.view addSubview:tile];
+    }
 }
 
 - (void) handleTileReleased:(NSNotification*)notification {
     Tile* tile = (Tile*)notification.object;
     
-    if (tile.superview != _contentView &&
-        CGRectContainsRect(_scrollView.frame, tile.frame)) {
+    if (CGRectContainsRect(_scrollView.frame, tile.frame)) {
         NSLog(@"%s ADDING %d",
               __PRETTY_FUNCTION__,
               CGRectContainsRect(_scrollView.frame, tile.frame));
@@ -61,26 +73,16 @@ static int const kNumTiles    = 7;
         [tile removeFromSuperview];
         [_contentView addSubview:tile];
         
-        CGPoint pt = [self.view convertPoint:tile.center toView:_contentView];
+        CGPoint pt = [self.view convertPoint:tile.frame.origin toView:_contentView];
         tile.frame = CGRectMake(
             pt.x + _scrollView.contentOffset.x * _scrollView.zoomScale,
             pt.y + _scrollView.contentOffset.y * _scrollView.zoomScale,
             kTileWidth,
             kTileHeight);
         
-        tile.transform = CGAffineTransformMakeScale(2 * _scrollView.zoomScale,
-                                                    2 * _scrollView.zoomScale);
-        
-    } else if (tile.superview == _contentView &&
-               !CGRectContainsRect(_scrollView.frame, tile.frame)) {
-        NSLog(@"%s REMOVING %d",
-              __PRETTY_FUNCTION__,
-              CGRectContainsRect(_scrollView.frame, tile.frame));
-        
-        [tile removeFromSuperview];
-        [self.view addSubview:tile];
-        tile.transform = CGAffineTransformIdentity;
-        
+        //tile.transform = CGAffineTransformMakeScale(2 * _scrollView.zoomScale,
+          //                                          2 * _scrollView.zoomScale);
+    } else {
         [self adjustTiles];
     }
     

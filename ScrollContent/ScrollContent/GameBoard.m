@@ -7,7 +7,7 @@
 {
     UIView* result = [super hitTest:point withEvent:event];
     
-    return result == self ? nil : result;
+    return result;// == self ? nil : result;
 }
 
 @end
