@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -8,34 +8,58 @@
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="r4e-RX-tiE"/>
+                        <viewControllerLayoutGuide type="bottom" id="RSQ-I5-Rsc"/>
+                    </layoutGuides>
                     <view key="view" autoresizesSubviews="NO" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" delaysContentTouches="NO" canCancelContentTouches="NO" id="O9T-Zc-sXv">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <scrollView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" delaysContentTouches="NO" canCancelContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O9T-Zc-sXv">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="518"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <view autoresizesSubviews="NO" contentMode="scaleToFill" id="WsO-qd-vTt" userLabel="Content View" customClass="GameBoard">
+                                    <view autoresizesSubviews="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WsO-qd-vTt" userLabel="Content View" customClass="GameBoard">
                                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="board.png" id="vI8-vO-JPR">
+                                            <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="board.png" translatesAutoresizingMaskIntoConstraints="NO" id="vI8-vO-JPR">
                                                 <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="vI8-vO-JPR" firstAttribute="top" secondItem="WsO-qd-vTt" secondAttribute="top" id="6Gy-11-gu3"/>
+                                            <constraint firstAttribute="trailing" secondItem="vI8-vO-JPR" secondAttribute="trailing" id="E91-Xk-EAl"/>
+                                            <constraint firstItem="vI8-vO-JPR" firstAttribute="leading" secondItem="WsO-qd-vTt" secondAttribute="leading" id="PAC-0X-b2Y"/>
+                                            <constraint firstAttribute="height" constant="1000" id="rHx-7H-wTS"/>
+                                            <constraint firstAttribute="width" constant="1000" id="xaL-Xh-LcC"/>
+                                            <constraint firstAttribute="bottom" secondItem="vI8-vO-JPR" secondAttribute="bottom" id="zqU-Gr-d4y"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="WsO-qd-vTt" secondAttribute="trailing" id="7H6-Yd-Im5"/>
+                                    <constraint firstItem="WsO-qd-vTt" firstAttribute="leading" secondItem="O9T-Zc-sXv" secondAttribute="leading" id="Cqy-if-N4t"/>
+                                    <constraint firstItem="WsO-qd-vTt" firstAttribute="top" secondItem="O9T-Zc-sXv" secondAttribute="top" id="XuS-Ac-eFO"/>
+                                    <constraint firstAttribute="bottom" secondItem="WsO-qd-vTt" secondAttribute="bottom" id="YIz-gZ-ZLn"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="hhK-fV-b1o"/>
                                     <outletCollection property="gestureRecognizers" destination="ap9-HV-PTg" appends="YES" id="FxL-Mq-EuC"/>
                                 </connections>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.80000001192092896" green="0.80000001192092896" blue="0.80000001192092896" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="O9T-Zc-sXv" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="eTQ-r0-mZz"/>
+                            <constraint firstItem="RSQ-I5-Rsc" firstAttribute="top" secondItem="O9T-Zc-sXv" secondAttribute="bottom" constant="50" id="f4M-37-gf6"/>
+                            <constraint firstAttribute="trailing" secondItem="O9T-Zc-sXv" secondAttribute="trailing" id="gqS-xZ-6YR"/>
+                            <constraint firstItem="O9T-Zc-sXv" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="qRd-dR-pED"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="contentView" destination="WsO-qd-vTt" id="JUb-Vq-oyH"/>

@@ -7,14 +7,10 @@ static int const kNumTiles    = 7;
 
 @implementation ViewController
 
-- (void)viewDidLoad
+- (void) viewDidLoad
 {
     [super viewDidLoad];
     
-    _imageView.frame = CGRectMake(0, 0, 1000, 1000);
-    _contentView.frame = CGRectMake(0, 0, 1000, 1000);
-    _scrollView.contentSize = CGSizeMake(1000, 1000);
-
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     
     for (int i = 0; i < kNumTiles; i++) {
@@ -30,30 +26,23 @@ static int const kNumTiles    = 7;
                    selector:@selector(handleTileMoved:)
                        name:kTileMoved
                      object:tile];
+        
+        [self adjustZoom];
+        [self adjustTiles];
     }
 }
 
-- (void)viewDidLayoutSubviews
+- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
-    [super viewDidLayoutSubviews];
-    
+    [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+
     [self adjustZoom];
-    [self adjustFrames];
-}
-
-
-- (void) adjustZoom
-{
-    float scale = _scrollView.frame.size.width / 1000;
-    _scrollView.minimumZoomScale = scale;
-    _scrollView.maximumZoomScale = 2 * scale;
-    _scrollView.zoomScale = 2 * scale;
+    [self adjustTiles];
 }
 
 - (void) handleTileMoved:(NSNotification*)notification {
     Tile* tile = (Tile*)notification.object;
     NSLog(@"%s %@", __PRETTY_FUNCTION__, tile);
-    //return;
     
     if (tile.superview != _contentView &&
         CGRectIntersectsRect(tile.frame, _scrollView.frame)) {
@@ -68,32 +57,31 @@ static int const kNumTiles    = 7;
             kTileHeight);
         
         //tile.transform = CGAffineTransformMakeScale(1.3, 1.3);
-
         
     } else if (tile.superview == _contentView &&
                !CGRectIntersectsRect(tile.frame, _scrollView.frame)) {
         [tile removeFromSuperview];
         [self.view addSubview:tile];
-        [self adjustFrames];
+        [self adjustTiles];
     }
 }
 
-- (void) adjustFrames
+- (void) adjustZoom
 {
-    _scrollView.frame = CGRectMake(0,
-                                   0,
-                                   self.view.bounds.size.width,
-                                   self.view.bounds.size.height - kTileHeight - 2 * kPadding);
-    
+    float scale = _scrollView.frame.size.width / 1000;
+    _scrollView.minimumZoomScale = scale;
+    _scrollView.maximumZoomScale = 2 * scale;
+    _scrollView.zoomScale = 2 * scale;
+}
+
+- (void) adjustTiles
+{
     int i = 0;
     for (UIView *subView in self.view.subviews) {
         if (![subView isKindOfClass:[Tile class]])
             continue;
         
         Tile* tile = (Tile*)subView;
-        if (tile.dragged)
-            continue;
-        
         tile.frame = CGRectMake(kPadding + kTileWidth * kTileScale * i++,
                                 self.view.bounds.size.height - kTileHeight * kTileScale - kPadding,
                                 kTileWidth,
@@ -103,12 +91,12 @@ static int const kNumTiles    = 7;
     }
 }
 
-- (UIView*)viewForZoomingInScrollView:(UIScrollView*)scrollView
+- (UIView*) viewForZoomingInScrollView:(UIScrollView*)scrollView
 {
     return _contentView;
 }
 
-- (IBAction)scrollViewDoubleTapped:(UITapGestureRecognizer*)sender
+- (IBAction) scrollViewDoubleTapped:(UITapGestureRecognizer*)sender
 {
     if (_scrollView.zoomScale < _scrollView.maximumZoomScale)
         [_scrollView setZoomScale:_scrollView.maximumZoomScale animated:YES];
