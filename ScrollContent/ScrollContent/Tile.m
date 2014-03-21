@@ -1,8 +1,11 @@
 #import "Tile.h"
+#import "GameBoard.h"
 
 int const kTileWidth            = 45;
 int const kTileHeight           = 45;
-NSString* const kTileMoved      = @"TILE_MOVED";
+
+NSString* const kTileTouched    = @"TILE_TOUCHED";
+NSString* const kTileReleased   = @"TILE_RELEASED";
 
 static NSString* const kLetters = @"ABCDEFGHIJKLMNOPQRSTUWVXYZ";
 static NSDictionary* letterValues;
@@ -66,8 +69,8 @@ static NSDictionary* letterValues;
     [_bigImage setHidden:NO];
     [_bigLetter setHidden:NO];
     [_bigValue setHidden:NO];
-
-    [self.superview bringSubviewToFront:self];
+    
+    [self postNotification:kTileTouched];
 }
 
 - (void) touchesMoved:(NSSet*)touches withEvent:(UIEvent*)event
@@ -100,14 +103,7 @@ static NSDictionary* letterValues;
     [_bigLetter setHidden:YES];
     [_bigValue setHidden:YES];
     
-    NSNotification *notification = [NSNotification
-                                    notificationWithName:kTileMoved
-                                    object:self
-                                    userInfo:@{@"Key 1" : @"Value 1",
-                                               @"Key 2" : @2}];
-    
-    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-    [center postNotification:notification];
+    [self postNotification:kTileReleased];
 }
 
 - (void)touchesCancelled:(NSSet*)touches withEvent:(UIEvent*)event
@@ -135,6 +131,22 @@ static NSDictionary* letterValues;
             self.smallValue.text,
             NSStringFromCGPoint(self.frame.origin),
             NSStringFromCGSize(self.frame.size)];
+}
+
+- (void) postNotification:(NSString*)str
+{
+    NSAssert([str isEqualToString:kTileTouched] ||
+             [str isEqualToString:kTileReleased],
+             @"Wrong argument for %s",
+             __PRETTY_FUNCTION__);
+    
+    NSNotification *notification = [NSNotification
+                                    notificationWithName:str
+                                    object:self
+                                    userInfo:nil];
+    
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center postNotification:notification];
 }
 
 @end

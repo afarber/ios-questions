@@ -2,7 +2,9 @@
 
 extern int const kTileWidth;
 extern int const kTileHeight;
-extern NSString* const kTileMoved;
+
+extern NSString* const kTileTouched;
+extern NSString* const kTileReleased;
 
 @interface Tile : UIView
 

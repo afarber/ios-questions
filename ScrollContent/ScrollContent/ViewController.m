@@ -17,19 +17,22 @@ static int const kNumTiles    = 7;
         Tile *tile = [[[NSBundle mainBundle] loadNibNamed:@"Tile"
                                                     owner:self
                                                   options:nil] firstObject];
-        
-        //tile.transform = CGAffineTransformMakeScale(kTileScale, kTileScale);
         tile.exclusiveTouch = YES;
         [self.view addSubview:tile];
         
         [center addObserver:self
-                   selector:@selector(handleTileMoved:)
-                       name:kTileMoved
+                   selector:@selector(handleTileTouched:)
+                       name:kTileTouched
                      object:tile];
         
-        [self adjustZoom];
-        [self adjustTiles];
+        [center addObserver:self
+                   selector:@selector(handleTileReleased:)
+                       name:kTileReleased
+                     object:tile];
     }
+    
+    [self adjustZoom];
+    [self adjustTiles];
 }
 
 - (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
@@ -40,7 +43,13 @@ static int const kNumTiles    = 7;
     [self adjustTiles];
 }
 
-- (void) handleTileMoved:(NSNotification*)notification {
+- (void) handleTileTouched:(NSNotification*)notification {
+    Tile* tile = (Tile*)notification.object;
+    
+    [self.view bringSubviewToFront:tile];
+}
+
+- (void) handleTileReleased:(NSNotification*)notification {
     Tile* tile = (Tile*)notification.object;
     
     if (tile.superview != _contentView &&
@@ -59,7 +68,8 @@ static int const kNumTiles    = 7;
             kTileWidth,
             kTileHeight);
         
-        tile.transform = CGAffineTransformMakeScale(1.3, 1.3);
+        tile.transform = CGAffineTransformMakeScale(2 * _scrollView.zoomScale,
+                                                    2 * _scrollView.zoomScale);
         
     } else if (tile.superview == _contentView &&
                !CGRectContainsRect(_scrollView.frame, tile.frame)) {
@@ -70,6 +80,7 @@ static int const kNumTiles    = 7;
         [tile removeFromSuperview];
         [self.view addSubview:tile];
         tile.transform = CGAffineTransformIdentity;
+        
         [self adjustTiles];
     }
     
