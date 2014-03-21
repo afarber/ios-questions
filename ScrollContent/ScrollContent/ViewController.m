@@ -117,12 +117,23 @@ static int const kNumTiles    = 7;
     return _contentView;
 }
 
-- (IBAction) scrollViewDoubleTapped:(UITapGestureRecognizer*)sender
+- (IBAction) scrollViewDoubleTapped:(UITapGestureRecognizer*)recognizer
 {
-    if (_scrollView.zoomScale < _scrollView.maximumZoomScale)
-        [_scrollView setZoomScale:_scrollView.maximumZoomScale animated:YES];
-    else
-        [_scrollView setZoomScale:_scrollView.minimumZoomScale animated:YES];
+    CGPoint pt = [recognizer locationInView:_contentView];
+    CGFloat scale = (_scrollView.zoomScale < _scrollView.maximumZoomScale ?
+                     _scrollView.maximumZoomScale :
+                     _scrollView.minimumZoomScale);
+    
+    CGSize size = _scrollView.bounds.size;
+    
+    CGFloat w = size.width / scale;
+    CGFloat h = size.height / scale;
+    CGFloat x = pt.x - (w / 2.0f);
+    CGFloat y = pt.y - (h / 2.0f);
+    
+    CGRect rect = CGRectMake(x, y, w, h);
+    
+    [self.scrollView zoomToRect:rect animated:YES];
     
     NSLog(@"%s offset=%@ size=%@ min=%f zoom=%f max=%f",
           __PRETTY_FUNCTION__,
