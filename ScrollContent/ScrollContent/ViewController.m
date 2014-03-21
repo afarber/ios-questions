@@ -42,28 +42,38 @@ static int const kNumTiles    = 7;
 
 - (void) handleTileMoved:(NSNotification*)notification {
     Tile* tile = (Tile*)notification.object;
-    NSLog(@"%s %@", __PRETTY_FUNCTION__, tile);
     
     if (tile.superview != _contentView &&
-        CGRectIntersectsRect(tile.frame, _scrollView.frame)) {
+        CGRectContainsRect(_scrollView.frame, tile.frame)) {
+        NSLog(@"%s ADDING %d",
+              __PRETTY_FUNCTION__,
+              CGRectContainsRect(_scrollView.frame, tile.frame));
+
         [tile removeFromSuperview];
         [_contentView addSubview:tile];
         
-        CGPoint pt = [self.view convertPoint:tile.frame.origin toView:_contentView];
+        CGPoint pt = [self.view convertPoint:tile.center toView:_contentView];
         tile.frame = CGRectMake(
             pt.x + _scrollView.contentOffset.x * _scrollView.zoomScale,
             pt.y + _scrollView.contentOffset.y * _scrollView.zoomScale,
             kTileWidth,
             kTileHeight);
         
-        //tile.transform = CGAffineTransformMakeScale(1.3, 1.3);
+        tile.transform = CGAffineTransformMakeScale(1.3, 1.3);
         
     } else if (tile.superview == _contentView &&
-               !CGRectIntersectsRect(tile.frame, _scrollView.frame)) {
+               !CGRectContainsRect(_scrollView.frame, tile.frame)) {
+        NSLog(@"%s REMOVING %d",
+              __PRETTY_FUNCTION__,
+              CGRectContainsRect(_scrollView.frame, tile.frame));
+        
         [tile removeFromSuperview];
         [self.view addSubview:tile];
+        tile.transform = CGAffineTransformIdentity;
         [self adjustTiles];
     }
+    
+    NSLog(@"%s %@", __PRETTY_FUNCTION__, tile);
 }
 
 - (void) adjustZoom
