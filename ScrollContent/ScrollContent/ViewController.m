@@ -145,6 +145,8 @@ static int const kNumTiles    = 7;
           _scrollView.zoomScale,
           _scrollView.maximumZoomScale
     );
+    
+    [self adjustTiles];
 }
 
 @end
