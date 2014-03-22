@@ -80,8 +80,8 @@ static int const kNumTiles    = 7;
             kTileWidth,
             kTileHeight);
         
-        //tile.transform = CGAffineTransformMakeScale(2 * _scrollView.zoomScale,
-          //                                          2 * _scrollView.zoomScale);
+        tile.transform = CGAffineTransformMakeScale(2 * _scrollView.zoomScale,
+                                                    2 * _scrollView.zoomScale);
     } else {
         [self adjustTiles];
     }

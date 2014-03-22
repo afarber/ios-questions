@@ -117,6 +117,8 @@ static NSDictionary* letterValues;
     [_bigImage setHidden:YES];
     [_bigLetter setHidden:YES];
     [_bigValue setHidden:YES];
+    
+    [self postNotification:kTileReleased];
 }
 
 - (BOOL) dragged
