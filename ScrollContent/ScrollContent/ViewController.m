@@ -45,6 +45,7 @@ static int const kNumTiles    = 7;
 
 - (void) handleTileTouched:(NSNotification*)notification {
     Tile* tile = (Tile*)notification.object;
+    //_scrollView.userInteractionEnabled = NO;
     
     if (tile.superview == self.view) {
         [self.view bringSubviewToFront:tile];
@@ -64,6 +65,7 @@ static int const kNumTiles    = 7;
 
 - (void) handleTileReleased:(NSNotification*)notification {
     Tile* tile = (Tile*)notification.object;
+    //_scrollView.userInteractionEnabled = YES;
     
     if (CGRectContainsRect(_scrollView.frame, tile.frame)) {
         NSLog(@"%s ADDING %d",
