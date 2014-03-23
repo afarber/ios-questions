@@ -45,7 +45,9 @@ static int const kNumTiles    = 7;
 
 - (void) handleTileTouched:(NSNotification*)notification {
     Tile* tile = (Tile*)notification.object;
+    //_contentView.userInteractionEnabled = NO;
     //_scrollView.userInteractionEnabled = NO;
+    //_scrollView.scrollEnabled = NO;
     
     if (tile.superview == self.view) {
         [self.view bringSubviewToFront:tile];
@@ -65,7 +67,9 @@ static int const kNumTiles    = 7;
 
 - (void) handleTileReleased:(NSNotification*)notification {
     Tile* tile = (Tile*)notification.object;
+    //_contentView.userInteractionEnabled = YES;
     //_scrollView.userInteractionEnabled = YES;
+    //_scrollView.scrollEnabled = YES;
     
     if (CGRectContainsRect(_scrollView.frame, tile.frame)) {
         NSLog(@"%s ADDING %d",
@@ -82,8 +86,8 @@ static int const kNumTiles    = 7;
             kTileWidth,
             kTileHeight);
         
-        tile.transform = CGAffineTransformMakeScale(2 * _scrollView.zoomScale,
-                                                    2 * _scrollView.zoomScale);
+        tile.transform = CGAffineTransformMakeScale(2.0f * _scrollView.zoomScale,
+                                                    2.0f * _scrollView.zoomScale);
     } else {
         [self adjustTiles];
     }
