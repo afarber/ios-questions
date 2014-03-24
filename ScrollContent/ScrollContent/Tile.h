@@ -5,6 +5,7 @@ extern int const kTileHeight;
 
 extern NSString* const kTileTouched;
 extern NSString* const kTileReleased;
+extern NSString* const kTileMoved;
 
 @interface Tile : UIView
 
@@ -17,5 +18,7 @@ extern NSString* const kTileReleased;
 @property (weak, nonatomic) IBOutlet UIImageView *smallImage;
 @property (weak, nonatomic) IBOutlet UILabel *smallLetter;
 @property (weak, nonatomic) IBOutlet UILabel *smallValue;
+
+- (Tile*)cloneTile;
 
 @end
