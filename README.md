@@ -5,6 +5,9 @@ Small projects created on my way to iOS nirvana
 
 The files are public domain - unless there is a different note (by their respective authors) on the top of some files.
 
+For example few projects use an CC BY-SA 3.0 licensed SVG-file by 
+[Denelson83, Wikimedia Commons](http://en.wikipedia.org/wiki/File:Blank_Scrabble_board_with_coordinates.svg)
+
 To compile some of the projects you need to install CocoaPods:
 
         sudo gem update --system
@@ -25,9 +28,6 @@ Screenshots
 [DragScroll](https://github.com/afarber/ios-newbie/tree/master/DragScroll):
 
 ![screenshot](https://raw.github.com/afarber/ios-newbie/master/DragScroll/screenshot.png)
-
-Uses an CC BY-SA 3.0 licensed SVG-file by 
-[Denelson83, Wikimedia Commons](http://en.wikipedia.org/wiki/File:Blank_Scrabble_board_with_coordinates.svg)
 
 [MyAuth](https://github.com/afarber/ios-newbie/tree/master/MyAuth):
 
@@ -61,6 +61,11 @@ Uses an CC BY-SA 3.0 licensed SVG-file by
 
 ![screenshot](https://raw.github.com/afarber/ios-newbie/master/MyWeb/screenshot.png)
 
+[Recognizer](https://github.com/afarber/ios-newbie/tree/master/Recognizer)
+by [TomSwift](http://stackoverflow.com/users/291788/tomswift):
+
+![screenshot](https://raw.github.com/afarber/ios-newbie/master/Recognizer/screenshot.png)
+
 [RenameView](https://github.com/afarber/ios-newbie/tree/master/RenameView):
 
 ![screenshot](https://raw.github.com/afarber/ios-newbie/master/RenameView/screenshot.png)
@@ -69,8 +74,9 @@ Uses an CC BY-SA 3.0 licensed SVG-file by
 
 ![screenshot](https://raw.github.com/afarber/ios-newbie/master/Scroll/screenshot.png)
 
-Uses an CC BY-SA 3.0 licensed SVG-file by 
-[Denelson83, Wikimedia Commons](http://en.wikipedia.org/wiki/File:Blank_Scrabble_board_with_coordinates.svg)
+[ScrollContent](https://github.com/afarber/ios-newbie/tree/master/ScrollContent):
+
+![screenshot](https://raw.github.com/afarber/ios-newbie/master/ScrollContent/screenshot.png)
 
 [SpriteKitTest](https://github.com/afarber/ios-newbie/tree/master/SpriteKitTest):
 
@@ -111,3 +117,4 @@ Uses an CC BY-SA 3.0 licensed SVG-file by
 ![StackOverflow](http://stackoverflow.com/users/flair/165071.png)
 
 [My iOS-related questions at StackOverflow](http://stackoverflow.com/search?q=user:165071+[ios])
+
