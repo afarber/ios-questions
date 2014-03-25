@@ -49,6 +49,10 @@
                                 <state key="normal" title="Button" image="big.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <outlet property="heightConstraint" destination="JKx-OH-1Zc" id="Wq0-xa-hvp"/>
+                                    <outlet property="widthConstraint" destination="ij4-vg-EBS" id="Ix1-MM-1Ph"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

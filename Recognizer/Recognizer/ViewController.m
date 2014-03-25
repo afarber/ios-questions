@@ -9,7 +9,7 @@
 @synthesize widthConstraint, heightConstraint;
 @end
 
-@interface ViewController () <UIScrollViewDelegate, UIGestureRecognizerDelegate>
+@interface ViewController() <UIScrollViewDelegate, UIGestureRecognizerDelegate>
 @end
 
 @implementation ViewController
@@ -24,7 +24,7 @@
     
     UIPanGestureRecognizer* pgr = [[UIPanGestureRecognizer alloc]
                                    initWithTarget: self
-                                           action: @selector( pan: )];
+                                           action: @selector(pan:)];
     pgr.delegate = self;
     
     [self.view addGestureRecognizer: pgr];
