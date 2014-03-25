@@ -14,8 +14,8 @@
 
 @implementation ViewController
 {
-    UIImageView* _imageView;
-    Tile*        _dragTile;
+    IBOutlet UIImageView* _imageView;
+    Tile*                 _dragTile;
 }
 
 - (void)viewDidLoad

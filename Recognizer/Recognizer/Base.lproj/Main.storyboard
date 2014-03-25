@@ -59,6 +59,9 @@
                             <constraint firstItem="SjF-5z-gV6" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="wh5-kn-cmV"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="_imageView" destination="1UK-RF-wo6" id="rBd-cG-xpz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
