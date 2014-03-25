@@ -1,13 +1,12 @@
 #import "ViewController.h"
 
 @interface Tile : UIButton
-//$hook these up to width/height constraints in your storyboard!
 @property (nonatomic, readonly) IBOutlet NSLayoutConstraint* widthConstraint;
 @property (nonatomic, readonly) IBOutlet NSLayoutConstraint* heightConstraint;
 @end
 
 @implementation Tile
-@synthesize widthConstraint,heightConstraint;
+@synthesize widthConstraint, heightConstraint;
 @end
 
 @interface ViewController () <UIScrollViewDelegate, UIGestureRecognizerDelegate>
@@ -15,8 +14,8 @@
 
 @implementation ViewController
 {
-    IBOutlet UIImageView* _imageView;
-    Tile*                 _dragTile;
+    UIImageView* _imageView;
+    Tile*        _dragTile;
 }
 
 - (void)viewDidLoad
