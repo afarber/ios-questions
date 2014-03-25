@@ -36,14 +36,17 @@
                                     <constraint firstAttribute="bottom" secondItem="1UK-RF-wo6" secondAttribute="bottom" id="kxF-Qh-8Sd"/>
                                 </constraints>
                             </scrollView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="big.png" translatesAutoresizingMaskIntoConstraints="NO" id="5Xu-hO-xuC">
-                                <rect key="frame" x="20" y="451" width="128" height="128"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gpc-ge-qWW" customClass="Tile">
+                                <rect key="frame" x="20" y="420" width="128" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="128" id="LB6-X9-tC4"/>
-                                    <constraint firstAttribute="height" constant="128" id="gGj-0g-Ulb"/>
+                                    <constraint firstAttribute="height" constant="128" id="JKx-OH-1Zc"/>
+                                    <constraint firstAttribute="width" constant="128" id="ij4-vg-EBS"/>
                                 </constraints>
-                            </imageView>
+                                <state key="normal" title="Button" image="big.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -53,9 +56,6 @@
                             <constraint firstItem="SjF-5z-gV6" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="wh5-kn-cmV"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="_imageView" destination="5Xu-hO-xuC" id="eQg-Wo-W0a"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
