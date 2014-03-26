@@ -80,31 +80,22 @@ static int const kNumTiles    = 7;
 	CGPoint ptTransform = CGPointApplyAffineTransform(pt, _contentView.transform);
 	CGPoint ptView = [touch locationInView:self.view];
 	
+    // Tile is not on the board - put it on the board
     if (tile.superview != _contentView &&
         CGRectContainsPoint(_scrollView.frame, ptView) &&
-        CGRectContainsPoint(_contentView.frame, ptTransform))
-	{
-		//Tile is not on the board - put it on the board.
-        NSLog(@"%s ADDING %d",
-              __PRETTY_FUNCTION__,
-              CGRectContainsRect(_scrollView.frame, tile.frame));
+        CGRectContainsPoint(_contentView.frame, ptTransform)) {
 		
         tile.center = pt;
-		
 		[tile removeFromSuperview];
         [_contentView addSubview:tile];
-    }
-	else
-	{
-		//Tile is on the board - check if it was dragged out.
-		if(!CGRectContainsPoint(_scrollView.frame, ptView) ||
-           !CGRectContainsPoint(_contentView.frame, ptTransform))
-		{
-			[tile removeFromSuperview];
-			[self.view addSubview:tile];
-
-			[self adjustTiles];
-		}
+        
+	// Tile is on the board - check if it was dragged out
+    } else if(!CGRectContainsPoint(_scrollView.frame, ptView) ||
+           !CGRectContainsPoint(_contentView.frame, ptTransform)) {
+        
+        [tile removeFromSuperview];
+        [self.view addSubview:tile];
+        [self adjustTiles];
 	}
     
     NSLog(@"%s %@", __PRETTY_FUNCTION__, tile);
