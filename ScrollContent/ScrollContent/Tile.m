@@ -1,6 +1,4 @@
 #import "Tile.h"
-#import "DraggedTile.h"
-#import "GameBoard.h"
 
 int const kTileWidth            = 45;
 int const kTileHeight           = 45;
