@@ -57,7 +57,8 @@ static int const kNumTiles    = 7;
 	tile.alpha = 0;
     
 	_draggedTile = [tile cloneTile];
-	_draggedTile.frame = [self.view convertRect:tile.frame fromView:tile.superview];
+    _draggedTile.center = [self.view convertPoint:tile.center fromView:tile.superview];
+
 	[self.view addSubview:_draggedTile];
 }
 
@@ -65,7 +66,7 @@ static int const kNumTiles    = 7;
 {
 	Tile* tile = (Tile*)notification.object;
 	
-	_draggedTile.frame = [self.view convertRect:tile.frame fromView:tile.superview];
+    _draggedTile.center = [self.view convertPoint:tile.center fromView:tile.superview];
 }
 
 - (void) handleTileReleased:(NSNotification*)notification {
@@ -80,19 +81,21 @@ static int const kNumTiles    = 7;
 	CGPoint ptTransform = CGPointApplyAffineTransform(pt, _contentView.transform);
 	CGPoint ptView = [touch locationInView:self.view];
 	
-    // Tile is not on the board - put it on the board
     if (tile.superview != _contentView &&
+        // Is the tile over the scoll view?
         CGRectContainsPoint(_scrollView.frame, ptView) &&
+        // Is the tile still over the game board - when it is zoomed out?
         CGRectContainsPoint(_contentView.frame, ptTransform)) {
 		
+        // Put the tile at the game board
         tile.center = pt;
 		[tile removeFromSuperview];
         [_contentView addSubview:tile];
         
-	// Tile is on the board - check if it was dragged out
     } else if(!CGRectContainsPoint(_scrollView.frame, ptView) ||
            !CGRectContainsPoint(_contentView.frame, ptTransform)) {
         
+        // Put the tile back to the stack
         [tile removeFromSuperview];
         [self.view addSubview:tile];
         [self adjustTiles];

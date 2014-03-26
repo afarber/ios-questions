@@ -14,14 +14,14 @@
                     <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="clip" adjustsFontSizeToFit="NO" id="0pC-49-kuy" userLabel="Label - letter">
-                    <rect key="frame" x="-2" y="0.0" width="45" height="45"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="W" textAlignment="center" lineBreakMode="clip" adjustsFontSizeToFit="NO" id="0pC-49-kuy" userLabel="Label - letter">
+                    <rect key="frame" x="-2" y="-2" width="45" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="clip" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" id="Sbf-he-fLX" userLabel="Label - value">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" lineBreakMode="clip" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" id="Sbf-he-fLX" userLabel="Label - value">
                     <rect key="frame" x="30" y="26" width="25" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
