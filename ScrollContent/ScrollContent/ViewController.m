@@ -1,11 +1,15 @@
 #import "ViewController.h"
 #import "Tile.h"
+#import "DraggedTile.h"
 
 static float const kTileScale = 1.0;
 static int const kPadding     = 2;
 static int const kNumTiles    = 7;
 
 @implementation ViewController
+{
+	DraggedTile* _draggedTile;
+}
 
 - (void) viewDidLoad
 {
@@ -23,6 +27,11 @@ static int const kNumTiles    = 7;
         [center addObserver:self
                    selector:@selector(handleTileTouched:)
                        name:kTileTouched
+                     object:tile];
+        
+        [center addObserver:self
+                   selector:@selector(handleTileMoved:)
+                       name:kTileMoved
                      object:tile];
         
         [center addObserver:self
@@ -45,52 +54,58 @@ static int const kNumTiles    = 7;
 
 - (void) handleTileTouched:(NSNotification*)notification {
     Tile* tile = (Tile*)notification.object;
-    //_contentView.userInteractionEnabled = NO;
-    //_scrollView.userInteractionEnabled = NO;
-    //_scrollView.scrollEnabled = NO;
+	tile.alpha = 0;
     
-    if (tile.superview == self.view) {
-        [self.view bringSubviewToFront:tile];
-    } else {
-        CGPoint pt = [tile.superview convertPoint:tile.frame.origin toView:self.view];
-        tile.frame = CGRectMake(
-                                pt.x - _scrollView.contentOffset.x * _scrollView.zoomScale,
-                                pt.y - _scrollView.contentOffset.y * _scrollView.zoomScale,
-                                kTileWidth,
-                                kTileHeight);
-        
-        [tile removeFromSuperview];
-        tile.transform = CGAffineTransformIdentity;
-        [self.view addSubview:tile];
-    }
+	_draggedTile = [tile cloneTile];
+	_draggedTile.frame = [self.view convertRect:tile.frame fromView:tile.superview];
+	[self.view addSubview:_draggedTile];
+}
+
+- (void)handleTileMoved:(NSNotification*)notification
+{
+	Tile* tile = (Tile*)notification.object;
+	
+	_draggedTile.frame = [self.view convertRect:tile.frame fromView:tile.superview];
 }
 
 - (void) handleTileReleased:(NSNotification*)notification {
     Tile* tile = (Tile*)notification.object;
-    //_contentView.userInteractionEnabled = YES;
-    //_scrollView.userInteractionEnabled = YES;
-    //_scrollView.scrollEnabled = YES;
+	tile.alpha = 1;
+	
+	[_draggedTile removeFromSuperview];
+	_draggedTile = nil;
     
-    if (CGRectContainsRect(_scrollView.frame, tile.frame)) {
+	UITouch* touch = notification.userInfo[@"touch"];
+	CGPoint pt = [touch locationInView:_contentView];
+	CGPoint ptTransform = CGPointApplyAffineTransform(pt, _contentView.transform);
+	CGPoint ptView = [touch locationInView:self.view];
+	
+    if (tile.superview != _contentView &&
+        CGRectContainsPoint(_scrollView.frame, ptView) &&
+        CGRectContainsPoint(_contentView.frame, ptTransform))
+	{
+		//Tile is not on the board - put it on the board.
         NSLog(@"%s ADDING %d",
               __PRETTY_FUNCTION__,
               CGRectContainsRect(_scrollView.frame, tile.frame));
-
-        [tile removeFromSuperview];
+		
+        tile.center = pt;
+		
+		[tile removeFromSuperview];
         [_contentView addSubview:tile];
-        
-        CGPoint pt = [self.view convertPoint:tile.frame.origin toView:_contentView];
-        tile.frame = CGRectMake(
-            pt.x + _scrollView.contentOffset.x * _scrollView.zoomScale,
-            pt.y + _scrollView.contentOffset.y * _scrollView.zoomScale,
-            kTileWidth,
-            kTileHeight);
-        
-        tile.transform = CGAffineTransformMakeScale(2.0f * _scrollView.zoomScale,
-                                                    2.0f * _scrollView.zoomScale);
-    } else {
-        [self adjustTiles];
     }
+	else
+	{
+		//Tile is on the board - check if it was dragged out.
+		if(!CGRectContainsPoint(_scrollView.frame, ptView) ||
+           !CGRectContainsPoint(_contentView.frame, ptTransform))
+		{
+			[tile removeFromSuperview];
+			[self.view addSubview:tile];
+
+			[self adjustTiles];
+		}
+	}
     
     NSLog(@"%s %@", __PRETTY_FUNCTION__, tile);
 }

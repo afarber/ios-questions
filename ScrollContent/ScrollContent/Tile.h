@@ -1,21 +1,19 @@
 #import <UIKit/UIKit.h>
+#import "DraggedTile.h"
 
 extern int const kTileWidth;
 extern int const kTileHeight;
 
 extern NSString* const kTileTouched;
 extern NSString* const kTileReleased;
+extern NSString* const kTileMoved;
 
-@interface Tile : UIView
+@interface Tile: UIView
 
-@property (assign, nonatomic) BOOL dragged;
+@property (weak, nonatomic) IBOutlet UIImageView *image;
+@property (weak, nonatomic) IBOutlet UILabel *letter;
+@property (weak, nonatomic) IBOutlet UILabel *value;
 
-@property (weak, nonatomic) IBOutlet UIImageView *bigImage;
-@property (weak, nonatomic) IBOutlet UILabel *bigLetter;
-@property (weak, nonatomic) IBOutlet UILabel *bigValue;
-
-@property (weak, nonatomic) IBOutlet UIImageView *smallImage;
-@property (weak, nonatomic) IBOutlet UILabel *smallLetter;
-@property (weak, nonatomic) IBOutlet UILabel *smallValue;
+- (DraggedTile*)cloneTile;
 
 @end

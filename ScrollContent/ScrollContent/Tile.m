@@ -1,4 +1,5 @@
 #import "Tile.h"
+#import "DraggedTile.h"
 #import "GameBoard.h"
 
 int const kTileWidth            = 45;
@@ -6,6 +7,7 @@ int const kTileHeight           = 45;
 
 NSString* const kTileTouched    = @"TILE_TOUCHED";
 NSString* const kTileReleased   = @"TILE_RELEASED";
+NSString* const kTileMoved      = @"TILE_MOVED";
 
 static NSString* const kLetters = @"ABCDEFGHIJKLMNOPQRSTUWVXYZ";
 static NSDictionary* letterValues;
@@ -54,23 +56,15 @@ static NSDictionary* letterValues;
     NSString* randomLetter = [kLetters substringWithRange:[kLetters rangeOfComposedCharacterSequenceAtIndex:arc4random_uniform(kLetters.length)]];
     int letterValue = [letterValues[randomLetter] integerValue];
     
-    _smallLetter.text = _bigLetter.text = randomLetter;
-    _smallValue.text = _bigValue.text = [NSString stringWithFormat:@"%d", letterValue];
+    _letter.text = randomLetter;
+    _value.text = [NSString stringWithFormat:@"%d", letterValue];
 }
 
 - (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event
 {
     NSLog(@"%s: %@", __PRETTY_FUNCTION__, self);
     
-    [_smallImage setHidden:YES];
-    [_smallLetter setHidden:YES];
-    [_smallValue setHidden:YES];
-    
-    [_bigImage setHidden:NO];
-    [_bigLetter setHidden:NO];
-    [_bigValue setHidden:NO];
-    
-    [self postNotification:kTileTouched];
+    [self postNotification:kTileTouched userInfo:nil];
 }
 
 - (void) touchesMoved:(NSSet*)touches withEvent:(UIEvent*)event
@@ -81,74 +75,68 @@ static NSDictionary* letterValues;
     CGPoint location = [touch locationInView:self];
     CGPoint previous = [touch previousLocationInView:self];
     
-    if (!CGAffineTransformIsIdentity(self.transform)) {
-        location = CGPointApplyAffineTransform(location, self.transform);
-        previous = CGPointApplyAffineTransform(previous, self.transform);
-    }
-    
     self.frame = CGRectOffset(self.frame,
                               (location.x - previous.x),
                               (location.y - previous.y));
+	
+	[self postNotification:kTileMoved userInfo:@{@"touch": touch}];
 }
 
 - (void)touchesEnded:(NSSet*)touches withEvent:(UIEvent*)event
 {
     NSLog(@"%s: %@", __PRETTY_FUNCTION__, self);
 
-    [_smallImage setHidden:NO];
-    [_smallLetter setHidden:NO];
-    [_smallValue setHidden:NO];
-    
-    [_bigImage setHidden:YES];
-    [_bigLetter setHidden:YES];
-    [_bigValue setHidden:YES];
-    
-    [self postNotification:kTileReleased];
+	UITouch *touch = [touches anyObject];
+	
+	[self postNotification:kTileReleased userInfo:@{@"touch": touch}];
 }
 
 - (void)touchesCancelled:(NSSet*)touches withEvent:(UIEvent*)event
 {
     NSLog(@"%s: %@", __PRETTY_FUNCTION__, self);
 
-    [_smallImage setHidden:NO];
-    [_smallLetter setHidden:NO];
-    [_smallValue setHidden:NO];
-    
-    [_bigImage setHidden:YES];
-    [_bigLetter setHidden:YES];
-    [_bigValue setHidden:YES];
-    
-    [self postNotification:kTileReleased];
-}
-
-- (BOOL) dragged
-{
-    return _smallImage.hidden;
+	UITouch *touch = [touches anyObject];
+	
+	[self postNotification:kTileReleased userInfo:@{@"touch": touch}];
 }
 
 - (NSString*)description
 {
     return [NSString stringWithFormat:@"Tile %@ %@ %@ %@",
-            self.smallLetter.text,
-            self.smallValue.text,
+            _letter.text,
+            _value.text,
             NSStringFromCGPoint(self.frame.origin),
             NSStringFromCGSize(self.frame.size)];
 }
 
-- (void) postNotification:(NSString*)str
+- (void) postNotification:(NSString*)str userInfo:(NSDictionary*)userInfo
 {
     NSAssert([str isEqualToString:kTileTouched] ||
-             [str isEqualToString:kTileReleased],
+             [str isEqualToString:kTileReleased] ||
+			 [str isEqualToString:kTileMoved],
              @"Wrong argument for %s",
              __PRETTY_FUNCTION__);
     
     NSNotification *notification = [NSNotification
                                     notificationWithName:str
                                     object:self
-                                    userInfo:nil];
+                                    userInfo:userInfo];
     
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center postNotification:notification];
+}
+
+- (DraggedTile*)cloneTile
+{
+	DraggedTile *tile = [[[NSBundle mainBundle] loadNibNamed:@"DraggedTile"
+												owner:self
+											  options:nil] firstObject];
+	tile.exclusiveTouch = YES;
+	
+	tile.letter.text = _letter.text;
+    tile.value.text = _value.text;
+
+	return tile;
 }
 
 @end
