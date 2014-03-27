@@ -82,6 +82,10 @@ by [TomSwift](http://stackoverflow.com/users/291788/tomswift):
 
 ![screenshot](https://raw.github.com/afarber/ios-newbie/master/SpriteKitTest/screenshot.png)
 
+[Tile](https://github.com/afarber/ios-newbie/tree/master/Tile):
+
+![screenshot](https://raw.github.com/afarber/ios-newbie/master/Tile/screenshot.png)
+
 [jmImage](https://github.com/afarber/ios-newbie/tree/master/jmImage):
 
 ![screenshot](https://raw.github.com/afarber/ios-newbie/master/jmImage/screenshot.png)
