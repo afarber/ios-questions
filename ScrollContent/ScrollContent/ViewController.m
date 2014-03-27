@@ -90,6 +90,7 @@ static int const kNumTiles    = 7;
         // Put the tile at the game board
         tile.center = pt;
 		[tile removeFromSuperview];
+        tile.transform = CGAffineTransformMakeScale(1.25f, 1.25f);
         [_contentView addSubview:tile];
         
     } else if(!CGRectContainsPoint(_scrollView.frame, ptView) ||

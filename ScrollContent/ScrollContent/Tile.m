@@ -73,6 +73,11 @@ static NSDictionary* letterValues;
     CGPoint location = [touch locationInView:self];
     CGPoint previous = [touch previousLocationInView:self];
     
+    if (!CGAffineTransformIsIdentity(self.transform)) {
+        location = CGPointApplyAffineTransform(location, self.transform);
+        previous = CGPointApplyAffineTransform(previous, self.transform);
+    }
+    
     self.frame = CGRectOffset(self.frame,
                               (location.x - previous.x),
                               (location.y - previous.y));
