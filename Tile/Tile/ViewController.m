@@ -11,8 +11,8 @@
                                                      options:nil] firstObject];
     tile.frame = CGRectMake(10 + arc4random_uniform(100),
                             10 + arc4random_uniform(100),
-                            kWidth,
-                            kHeight);
+                            2 * kWidth,
+                            2 * kHeight);
     [self.view addSubview:tile];
 
 }

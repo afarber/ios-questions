@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -10,19 +10,19 @@
             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.89999999999999991" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DraggedTile.png" id="M7D-Sh-Ctl" userLabel="Image View - image">
+                <imageView autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.89999999999999991" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DraggedTile.png" translatesAutoresizingMaskIntoConstraints="NO" id="M7D-Sh-Ctl" userLabel="Image View - image">
                     <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="W" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Jy4-1n-CXp" userLabel="Label - letter">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="W" textAlignment="center" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="128" translatesAutoresizingMaskIntoConstraints="NO" id="Jy4-1n-CXp" userLabel="Label - letter">
                     <rect key="frame" x="-10" y="-10" width="128" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="72"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" id="Kjx-Wg-7F6" userLabel="Label - value">
-                    <rect key="frame" x="78" y="76" width="25" height="25"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="22" translatesAutoresizingMaskIntoConstraints="NO" id="Kjx-Wg-7F6" userLabel="Label - value">
+                    <rect key="frame" x="81" y="79" width="22" height="24"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -30,6 +30,16 @@
                 </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="M7D-Sh-Ctl" firstAttribute="top" secondItem="1" secondAttribute="top" id="CO4-Uy-cKO"/>
+                <constraint firstAttribute="trailing" secondItem="Jy4-1n-CXp" secondAttribute="trailing" constant="10" id="E43-Wq-1cR"/>
+                <constraint firstItem="Jy4-1n-CXp" firstAttribute="top" secondItem="1" secondAttribute="top" constant="-10" id="HRa-JK-0QH"/>
+                <constraint firstAttribute="bottom" secondItem="M7D-Sh-Ctl" secondAttribute="bottom" id="SOV-2B-bXB"/>
+                <constraint firstItem="M7D-Sh-Ctl" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="Sip-hh-eqS"/>
+                <constraint firstAttribute="trailing" secondItem="M7D-Sh-Ctl" secondAttribute="trailing" id="VdS-BY-MkI"/>
+                <constraint firstItem="Jy4-1n-CXp" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="-10" id="aij-aw-h22"/>
+                <constraint firstAttribute="bottom" secondItem="Jy4-1n-CXp" secondAttribute="bottom" constant="10" id="nxq-yw-6wI"/>
+            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="image" destination="M7D-Sh-Ctl" id="acR-3t-oYI"/>
