@@ -1,6 +1,4 @@
 #import "ViewController.h"
-#import "Tile.h"
-#import "DraggedTile.h"
 
 static float const kTileScale = 1.0;
 static int const kPadding     = 2;
@@ -106,7 +104,7 @@ static int const kNumTiles    = 7;
 
 - (void) adjustZoom
 {
-    float scale = _scrollView.frame.size.width / 775;
+    float scale = _scrollView.frame.size.width / kBoardWidth;
     _scrollView.minimumZoomScale = scale;
     _scrollView.maximumZoomScale = 2 * scale;
     _scrollView.zoomScale = 2 * scale;

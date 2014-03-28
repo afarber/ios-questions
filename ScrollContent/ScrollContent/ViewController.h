@@ -1,4 +1,7 @@
 #import <UIKit/UIKit.h>
+#import "Tile.h"
+#import "DraggedTile.h"
+#import "GameBoard.h"
 
 @interface ViewController : UIViewController <UIScrollViewDelegate>
 
