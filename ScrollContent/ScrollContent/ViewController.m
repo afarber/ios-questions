@@ -90,7 +90,6 @@ static int const kNumTiles    = 7;
         // Put the tile at the game board
         tile.center = pt;
 		[tile removeFromSuperview];
-        tile.transform = CGAffineTransformMakeScale(1.25f, 1.25f);
         [_contentView addSubview:tile];
         
     } else if(!CGRectContainsPoint(_scrollView.frame, ptView) ||
@@ -107,7 +106,7 @@ static int const kNumTiles    = 7;
 
 - (void) adjustZoom
 {
-    float scale = _scrollView.frame.size.width / 1000;
+    float scale = _scrollView.frame.size.width / 775;
     _scrollView.minimumZoomScale = scale;
     _scrollView.maximumZoomScale = 2 * scale;
     _scrollView.zoomScale = 2 * scale;
