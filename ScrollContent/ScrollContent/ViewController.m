@@ -86,7 +86,7 @@ static int const kNumTiles    = 7;
         CGRectContainsPoint(_contentView.frame, ptTransform)) {
 		
         // Put the tile at the game board
-        tile.center = [self snapToGrid:pt];
+        tile.center = [GameBoard snapToGrid:pt];
 		[tile removeFromSuperview];
         [_contentView addSubview:tile];
         
@@ -105,11 +105,6 @@ static int const kNumTiles    = 7;
     }
     
     NSLog(@"%s %@", __PRETTY_FUNCTION__, tile);
-}
-
-- (CGPoint) snapToGrid:(CGPoint)pt
-{
-    return pt;
 }
 
 - (void) adjustZoom
