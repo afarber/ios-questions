@@ -99,6 +99,11 @@ static int const kNumTiles    = 7;
         [self adjustTiles];
 	}
     
+    if (tile.superview == _contentView &&
+        _scrollView.zoomScale == _scrollView.minimumZoomScale) {
+        [self zoomTo:pt];
+    }
+    
     NSLog(@"%s %@", __PRETTY_FUNCTION__, tile);
 }
 
@@ -134,11 +139,19 @@ static int const kNumTiles    = 7;
 
 - (IBAction) scrollViewDoubleTapped:(UITapGestureRecognizer*)recognizer
 {
-    CGPoint pt = [recognizer locationInView:_contentView];
-    CGFloat scale = (_scrollView.zoomScale < _scrollView.maximumZoomScale ?
-                     _scrollView.maximumZoomScale :
-                     _scrollView.minimumZoomScale);
+    if (_scrollView.zoomScale > _scrollView.minimumZoomScale) {
+        [_scrollView setZoomScale:_scrollView.minimumZoomScale animated:YES];
+    } else {
+        CGPoint pt = [recognizer locationInView:_contentView];
+        [self zoomTo:pt];
+    }
     
+    [self adjustTiles];
+}
+
+- (void) zoomTo:(CGPoint)pt
+{
+    CGFloat scale = _scrollView.maximumZoomScale;
     CGSize size = _scrollView.bounds.size;
     
     CGFloat w = size.width / scale;
@@ -148,18 +161,7 @@ static int const kNumTiles    = 7;
     
     CGRect rect = CGRectMake(x, y, w, h);
     
-    [self.scrollView zoomToRect:rect animated:YES];
-    
-    NSLog(@"%s offset=%@ size=%@ min=%f zoom=%f max=%f",
-          __PRETTY_FUNCTION__,
-          NSStringFromCGPoint(_scrollView.contentOffset),
-          NSStringFromCGSize(_scrollView.contentSize),
-          _scrollView.minimumZoomScale,
-          _scrollView.zoomScale,
-          _scrollView.maximumZoomScale
-    );
-    
-    [self adjustTiles];
+    [_scrollView zoomToRect:rect animated:YES];
 }
 
 @end
