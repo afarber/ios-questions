@@ -14,10 +14,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="W" textAlignment="center" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="128" translatesAutoresizingMaskIntoConstraints="NO" id="Jy4-1n-CXp" userLabel="Label - letter">
-                    <rect key="frame" x="-10" y="-10" width="128" height="128"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="W" textAlignment="center" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="78" translatesAutoresizingMaskIntoConstraints="NO" id="Jy4-1n-CXp" userLabel="Label - letter">
+                    <rect key="frame" x="10" y="10" width="78" height="78"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="72"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="200"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -32,13 +32,13 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="M7D-Sh-Ctl" firstAttribute="top" secondItem="1" secondAttribute="top" id="CO4-Uy-cKO"/>
-                <constraint firstAttribute="trailing" secondItem="Jy4-1n-CXp" secondAttribute="trailing" constant="10" id="E43-Wq-1cR"/>
-                <constraint firstItem="Jy4-1n-CXp" firstAttribute="top" secondItem="1" secondAttribute="top" constant="-10" id="HRa-JK-0QH"/>
+                <constraint firstAttribute="trailing" secondItem="Jy4-1n-CXp" secondAttribute="trailing" constant="40" id="E43-Wq-1cR"/>
+                <constraint firstItem="Jy4-1n-CXp" firstAttribute="top" secondItem="1" secondAttribute="top" constant="10" id="HRa-JK-0QH"/>
                 <constraint firstAttribute="bottom" secondItem="M7D-Sh-Ctl" secondAttribute="bottom" id="SOV-2B-bXB"/>
                 <constraint firstItem="M7D-Sh-Ctl" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="Sip-hh-eqS"/>
                 <constraint firstAttribute="trailing" secondItem="M7D-Sh-Ctl" secondAttribute="trailing" id="VdS-BY-MkI"/>
-                <constraint firstItem="Jy4-1n-CXp" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="-10" id="aij-aw-h22"/>
-                <constraint firstAttribute="bottom" secondItem="Jy4-1n-CXp" secondAttribute="bottom" constant="10" id="nxq-yw-6wI"/>
+                <constraint firstItem="Jy4-1n-CXp" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="10" id="aij-aw-h22"/>
+                <constraint firstAttribute="bottom" secondItem="Jy4-1n-CXp" secondAttribute="bottom" constant="40" id="nxq-yw-6wI"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>

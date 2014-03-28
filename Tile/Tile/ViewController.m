@@ -14,9 +14,7 @@
                             10 + arc4random_uniform(100),
                             2 * kWidth,
                             2 * kHeight);
-    [tile.letter sizeToFit];
     [self.view addSubview:tile];
-
 }
 
 @end
