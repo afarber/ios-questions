@@ -117,6 +117,18 @@ static int const kNumTiles    = 7;
     _scrollView.zoomScale = 2 * scale;
 }
 
+- (void) removeTiles
+{
+    for (UIView *subView in _contentView.subviews) {
+        if (![subView isKindOfClass:[Tile class]])
+            continue;
+        
+        Tile* tile = (Tile*)subView;
+        [tile removeFromSuperview];
+        [self.view addSubview:tile];
+    }
+}
+
 - (void) adjustTiles
 {
     int i = 0;
@@ -148,6 +160,12 @@ static int const kNumTiles    = 7;
         [self zoomTo:pt];
     }
     
+    [self adjustTiles];
+}
+
+- (IBAction) mainViewDoubleTapped:(UITapGestureRecognizer*)recognizer
+{
+    [self removeTiles];
     [self adjustTiles];
 }
 

@@ -12,7 +12,7 @@
                         <viewControllerLayoutGuide type="top" id="r4e-RX-tiE"/>
                         <viewControllerLayoutGuide type="bottom" id="RSQ-I5-Rsc"/>
                     </layoutGuides>
-                    <view key="view" autoresizesSubviews="NO" contentMode="scaleToFill" id="kh9-bI-dsS">
+                    <view key="view" autoresizesSubviews="NO" contentMode="scaleToFill" id="kh9-bI-dsS" userLabel="Main View">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -54,12 +54,16 @@
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.80000001192092896" green="0.80000001192092896" blue="0.80000001192092896" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="O9T-Zc-sXv" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="eTQ-r0-mZz"/>
                             <constraint firstItem="RSQ-I5-Rsc" firstAttribute="top" secondItem="O9T-Zc-sXv" secondAttribute="bottom" constant="50" id="f4M-37-gf6"/>
                             <constraint firstAttribute="trailing" secondItem="O9T-Zc-sXv" secondAttribute="trailing" id="gqS-xZ-6YR"/>
                             <constraint firstItem="O9T-Zc-sXv" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="qRd-dR-pED"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Nm4-O5-E1X" appends="YES" id="bht-rA-OeU"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="contentView" destination="WsO-qd-vTt" id="JUb-Vq-oyH"/>
@@ -68,9 +72,14 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer numberOfTapsRequired="2" id="ap9-HV-PTg">
+                <tapGestureRecognizer numberOfTapsRequired="2" id="ap9-HV-PTg" userLabel="Tap Recognizer for Scroll View">
                     <connections>
                         <action selector="scrollViewDoubleTapped:" destination="vXZ-lx-hvc" id="hYM-fz-c9O"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="Nm4-O5-E1X" userLabel="Tap Recognizer for Main View">
+                    <connections>
+                        <action selector="mainViewDoubleTapped:" destination="vXZ-lx-hvc" id="9B6-oA-IQZ"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
