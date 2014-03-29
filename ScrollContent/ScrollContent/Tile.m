@@ -60,14 +60,14 @@ static NSDictionary* letterValues;
 
 - (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event
 {
-    NSLog(@"%s: %@", __PRETTY_FUNCTION__, self);
+    //NSLog(@"%s: %@", __PRETTY_FUNCTION__, self);
     
     [self postNotification:kTileTouched userInfo:nil];
 }
 
 - (void) touchesMoved:(NSSet*)touches withEvent:(UIEvent*)event
 {
-    NSLog(@"%s: %@", __PRETTY_FUNCTION__, self);
+    //NSLog(@"%s: %@", __PRETTY_FUNCTION__, self);
 
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInView:self];

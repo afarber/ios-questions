@@ -16,8 +16,26 @@ CGFloat const kBoardLeft   = 52.0f;
 
 + (CGPoint) snapToGrid:(CGPoint)pt
 {
-    CGFloat x = kBoardLeft - 1.0 + (.5 + floorf((pt.x - kBoardLeft) / kTileWidth)) * kTileWidth;
-    CGFloat y = kBoardTop  - 1.0 + (.5 + floorf((pt.y - kBoardTop) / kTileHeight)) * kTileHeight;
+    CGFloat i = floorf((pt.x - kBoardLeft) / kTileWidth);
+    CGFloat j = floorf((pt.y - kBoardTop) / kTileHeight);
+    
+    if (i < 0.0) {
+        i = 0.0;
+    } else if (i > 14.0) {
+        i = 14.0;
+    }
+    
+    if (j < 0.0) {
+        j = 0.0;
+    } else if (j > 14.0) {
+        j = 14.0;
+    }
+    
+    NSLog(@"i=%f", i);
+    NSLog(@"j=%f", j);
+
+    CGFloat x = kBoardLeft + (.5 + i) * kTileWidth;
+    CGFloat y = kBoardTop  + (.5 + j) * kTileHeight;
     
     return CGPointMake(x, y);
 }
