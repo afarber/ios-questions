@@ -1,9 +1,9 @@
 #import "GameBoard.h"
 
-CGFloat const kBoardWidth  = 775.0f;
-CGFloat const kBoardHeight = 775.0f;
-CGFloat const kBoardTop    = 52.0f;
-CGFloat const kBoardLeft   = 52.0f;
+CGFloat const kBoardWidth  = 780.0f;
+CGFloat const kBoardHeight = 780.0f;
+CGFloat const kBoardTop    = 53.0f;
+CGFloat const kBoardLeft   = 53.0f;
 
 @implementation GameBoard
 
