@@ -13,29 +13,12 @@ static int const kNumTiles    = 7;
 {
     [super viewDidLoad];
     
-    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-    
     for (int i = 0; i < kNumTiles; i++) {
         Tile *tile = [[[NSBundle mainBundle] loadNibNamed:@"Tile"
                                                     owner:self
                                                   options:nil] firstObject];
         tile.exclusiveTouch = YES;
         [self.view addSubview:tile];
-        
-        [center addObserver:self
-                   selector:@selector(handleTileTouched:)
-                       name:kTileTouched
-                     object:tile];
-        
-        [center addObserver:self
-                   selector:@selector(handleTileMoved:)
-                       name:kTileMoved
-                     object:tile];
-        
-        [center addObserver:self
-                   selector:@selector(handleTileReleased:)
-                       name:kTileReleased
-                     object:tile];
     }
     
     [self adjustZoom];
@@ -48,65 +31,6 @@ static int const kNumTiles    = 7;
 
     [self adjustZoom];
     [self adjustTiles];
-}
-
-- (void) handleTileTouched:(NSNotification*)notification {
-    Tile* tile = (Tile*)notification.object;
-	tile.alpha = 0;
-    
-	_draggedTile = [tile cloneTile];
-    _draggedTile.center = [self.view convertPoint:tile.center fromView:tile.superview];
-
-	[self.view addSubview:_draggedTile];
-}
-
-- (void)handleTileMoved:(NSNotification*)notification
-{
-	Tile* tile = (Tile*)notification.object;
-	
-    _draggedTile.center = [self.view convertPoint:tile.center fromView:tile.superview];
-}
-
-- (void) handleTileReleased:(NSNotification*)notification {
-    Tile* tile = (Tile*)notification.object;
-	tile.alpha = 1;
-	
-	[_draggedTile removeFromSuperview];
-	_draggedTile = nil;
-    
-	UITouch* touch = notification.userInfo[@"touch"];
-	CGPoint pt = [touch locationInView:_contentView];
-	CGPoint ptTransform = CGPointApplyAffineTransform(pt, _contentView.transform);
-	CGPoint ptView = [touch locationInView:self.view];
-	
-    if (tile.superview != _contentView &&
-        // Is the tile over the scoll view?
-        CGRectContainsPoint(_scrollView.frame, ptView) &&
-        // Is the tile still over the game board - when it is zoomed out?
-        CGRectContainsPoint(_contentView.frame, ptTransform)) {
-		
-        // Put the tile at the game board
-		[tile removeFromSuperview];
-        [_contentView addSubview:tile];
-        
-    } else if(!CGRectContainsPoint(_scrollView.frame, ptView) ||
-           !CGRectContainsPoint(_contentView.frame, ptTransform)) {
-        
-        // Put the tile back to the stack
-        [tile removeFromSuperview];
-        [self.view addSubview:tile];
-        [self adjustTiles];
-	}
-    
-    if (tile.superview == _contentView) {
-        tile.center = [GameBoard snapToGrid:pt];
-    
-        if (_scrollView.zoomScale == _scrollView.minimumZoomScale) {
-            [self zoomTo:tile.center];
-        }
-    }
-    
-    NSLog(@"%s %@", __PRETTY_FUNCTION__, tile);
 }
 
 - (void) adjustZoom
@@ -183,5 +107,98 @@ static int const kNumTiles    = 7;
     
     [_scrollView zoomToRect:rect animated:YES];
 }
+
+- (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event
+{
+    UITouch* touch = [touches anyObject];
+    if (![touch.view isKindOfClass:[Tile class]])
+        return;
+    
+    Tile* tile = (Tile*)touch.view;
+    NSLog(@"%s: %@", __PRETTY_FUNCTION__, tile);
+	tile.alpha = 0;
+    
+	_draggedTile = [tile cloneTile];
+    _draggedTile.center = [self.view convertPoint:tile.center fromView:tile.superview];
+    
+	[self.view addSubview:_draggedTile];
+}
+
+- (void) touchesMoved:(NSSet*)touches withEvent:(UIEvent*)event
+{
+    UITouch* touch = [touches anyObject];
+    if (![touch.view isKindOfClass:[Tile class]])
+        return;
+    
+    Tile* tile = (Tile*)touch.view;
+    NSLog(@"%s: %@", __PRETTY_FUNCTION__, tile);
+
+    CGPoint location = [touch locationInView:self.view];
+    CGPoint previous = [touch previousLocationInView:self.view];
+    
+    tile.frame = CGRectOffset(tile.frame,
+                              (location.x - previous.x),
+                              (location.y - previous.y));
+
+    _draggedTile.center = [self.view convertPoint:tile.center fromView:tile.superview];
+}
+
+- (void)touchesEnded:(NSSet*)touches withEvent:(UIEvent*)event
+{
+    [self handleTileReleased:touches];
+}
+
+- (void)touchesCancelled:(NSSet*)touches withEvent:(UIEvent*)event
+{
+    [self handleTileReleased:touches];
+}
+
+- (void) handleTileReleased:(NSSet*)touches {
+    UITouch* touch = [touches anyObject];
+    if (![touch.view isKindOfClass:[Tile class]])
+        return;
+    
+    Tile* tile = (Tile*)touch.view;
+    NSLog(@"%s: %@", __PRETTY_FUNCTION__, tile);
+	tile.alpha = 1;
+	
+	[_draggedTile removeFromSuperview];
+	_draggedTile = nil;
+    
+	//UITouch* touch = notification.userInfo[@"touch"];
+	CGPoint pt = [touch locationInView:_contentView];
+	CGPoint ptTransform = CGPointApplyAffineTransform(pt, _contentView.transform);
+	CGPoint ptView = [touch locationInView:self.view];
+	
+    if (tile.superview != _contentView &&
+        // Is the tile over the scoll view?
+        CGRectContainsPoint(_scrollView.frame, ptView) &&
+        // Is the tile still over the game board - when it is zoomed out?
+        CGRectContainsPoint(_contentView.frame, ptTransform)) {
+		
+        // Put the tile at the game board
+		[tile removeFromSuperview];
+        [_contentView addSubview:tile];
+        
+    } else if(!CGRectContainsPoint(_scrollView.frame, ptView) ||
+              !CGRectContainsPoint(_contentView.frame, ptTransform)) {
+        
+        // Put the tile back to the stack
+        [tile removeFromSuperview];
+        [self.view addSubview:tile];
+        [self adjustTiles];
+	}
+    
+    if (tile.superview == _contentView) {
+        tile.center = [GameBoard snapToGrid:pt];
+        
+        if (_scrollView.zoomScale == _scrollView.minimumZoomScale) {
+            [self zoomTo:tile.center];
+        }
+    }
+    
+    NSLog(@"%s %@", __PRETTY_FUNCTION__, tile);
+}
+
 
 @end

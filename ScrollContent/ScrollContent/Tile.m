@@ -3,10 +3,6 @@
 int const kTileWidth            = 45;
 int const kTileHeight           = 45;
 
-NSString* const kTileTouched    = @"TILE_TOUCHED";
-NSString* const kTileReleased   = @"TILE_RELEASED";
-NSString* const kTileMoved      = @"TILE_MOVED";
-
 static NSString* const kLetters = @"ABCDEFGHIJKLMNOPQRSTUWVXYZ";
 static NSDictionary* letterValues;
 
@@ -58,51 +54,6 @@ static NSDictionary* letterValues;
     _value.text = [NSString stringWithFormat:@"%d", letterValue];
 }
 
-- (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event
-{
-    //NSLog(@"%s: %@", __PRETTY_FUNCTION__, self);
-    
-    [self postNotification:kTileTouched userInfo:nil];
-}
-
-- (void) touchesMoved:(NSSet*)touches withEvent:(UIEvent*)event
-{
-    //NSLog(@"%s: %@", __PRETTY_FUNCTION__, self);
-
-    UITouch *touch = [touches anyObject];
-    CGPoint location = [touch locationInView:self];
-    CGPoint previous = [touch previousLocationInView:self];
-/*
-    if (!CGAffineTransformIsIdentity(self.transform)) {
-        location = CGPointApplyAffineTransform(location, self.transform);
-        previous = CGPointApplyAffineTransform(previous, self.transform);
-    }
-*/    
-    self.frame = CGRectOffset(self.frame,
-                              (location.x - previous.x),
-                              (location.y - previous.y));
-	
-	[self postNotification:kTileMoved userInfo:@{@"touch": touch}];
-}
-
-- (void)touchesEnded:(NSSet*)touches withEvent:(UIEvent*)event
-{
-    NSLog(@"%s: %@", __PRETTY_FUNCTION__, self);
-
-	UITouch *touch = [touches anyObject];
-	
-	[self postNotification:kTileReleased userInfo:@{@"touch": touch}];
-}
-
-- (void)touchesCancelled:(NSSet*)touches withEvent:(UIEvent*)event
-{
-    NSLog(@"%s: %@", __PRETTY_FUNCTION__, self);
-
-	UITouch *touch = [touches anyObject];
-	
-	[self postNotification:kTileReleased userInfo:@{@"touch": touch}];
-}
-
 - (NSString*)description
 {
     return [NSString stringWithFormat:@"Tile %@ %@ %@ %@",
@@ -110,23 +61,6 @@ static NSDictionary* letterValues;
             _value.text,
             NSStringFromCGPoint(self.frame.origin),
             NSStringFromCGSize(self.frame.size)];
-}
-
-- (void) postNotification:(NSString*)str userInfo:(NSDictionary*)userInfo
-{
-    NSAssert([str isEqualToString:kTileTouched] ||
-             [str isEqualToString:kTileReleased] ||
-			 [str isEqualToString:kTileMoved],
-             @"Wrong argument for %s",
-             __PRETTY_FUNCTION__);
-    
-    NSNotification *notification = [NSNotification
-                                    notificationWithName:str
-                                    object:self
-                                    userInfo:userInfo];
-    
-    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-    [center postNotification:notification];
 }
 
 - (DraggedTile*)cloneTile
