@@ -61,11 +61,14 @@ static int const kNumTiles    = 7;
             continue;
         
         Tile* tile = (Tile*)subView;
-        tile.frame = CGRectMake(kPadding + kTileWidth * kTileScale * i++,
+        CGRect rect = CGRectMake(kPadding + kTileWidth * kTileScale * i++,
                                 self.view.bounds.size.height - kTileHeight * kTileScale - kPadding,
                                 kTileWidth,
                                 kTileHeight);
-        
+        tile.frame = CGRectOffset(tile.frame, 0, -8);
+        [UIView beginAnimations:@"moveDown" context:nil];
+        [tile setFrame:rect];
+        [UIView commitAnimations];
         //NSLog(@"tile: %@", tile);
     }
 }
@@ -111,10 +114,22 @@ static int const kNumTiles    = 7;
 - (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event
 {
     UITouch* touch = [touches anyObject];
+    CGPoint location = [touch locationInView:self.view];
+    UIView* result = [self.view hitTest:location withEvent:nil];
+    
+    NSLog(@"%s: result=%@ touch.view=%@", __PRETTY_FUNCTION__, result, touch.view);
+
+    
+    if (![result isKindOfClass:[Tile class]])
+        return;
+    Tile* tile = (Tile*)result;
+
+    /*
     if (![touch.view isKindOfClass:[Tile class]])
         return;
-    
     Tile* tile = (Tile*)touch.view;
+    */
+    
     NSLog(@"%s: %@", __PRETTY_FUNCTION__, tile);
 	tile.alpha = 0;
     

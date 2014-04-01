@@ -11,7 +11,8 @@ CGFloat const kBoardLeft   = 53.0f;
 {
     UIView* result = [super hitTest:point withEvent:event];
     
-    return result == self ? nil : result;
+    //return result == self ? nil : result;
+    return result == self ? nil : self.window.rootViewController.view;
 }
 
 + (CGPoint) snapToGrid:(CGPoint)pt
@@ -31,8 +32,8 @@ CGFloat const kBoardLeft   = 53.0f;
         j = 14.0;
     }
     
-    NSLog(@"i=%f", i);
-    NSLog(@"j=%f", j);
+    //NSLog(@"i=%f", i);
+    //NSLog(@"j=%f", j);
 
     CGFloat x = kBoardLeft + (.5 + i) * kTileWidth;
     CGFloat y = kBoardTop  + (.5 + j) * kTileHeight;
