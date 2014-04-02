@@ -111,76 +111,82 @@ static int const kNumTiles    = 7;
     [_scrollView zoomToRect:rect animated:YES];
 }
 
+- (Tile*) findTileAtPoint:(CGPoint)point withEvent:(UIEvent*)event
+{
+    NSArray* children = [self.view.subviews arrayByAddingObjectsFromArray:_contentView.subviews];
+    
+    for (UIView* child in children) {
+        CGPoint localPoint = [child convertPoint:point fromView:self.view];
+        
+        //NSLog(@"%s: child=%@", __PRETTY_FUNCTION__, child);
+        if ([child isKindOfClass:[Tile class]] &&
+            [child pointInside:localPoint withEvent:event]) {
+            NSLog(@"%s: FOUND=%@", __PRETTY_FUNCTION__, child);
+            return (Tile*)child;
+        }
+    }
+    
+    return nil;
+}
+
 - (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event
 {
     UITouch* touch = [touches anyObject];
-    CGPoint location = [touch locationInView:self.view];
-    UIView* result = [self.view hitTest:location withEvent:nil];
-    
-    NSLog(@"%s: result=%@ touch.view=%@", __PRETTY_FUNCTION__, result, touch.view);
-
-    
-    if (![result isKindOfClass:[Tile class]])
+    CGPoint point = [touch locationInView:self.view];
+    Tile *tile = [self findTileAtPoint:point withEvent:event];
+    if (!tile)
         return;
-    Tile* tile = (Tile*)result;
-
-    /*
-    if (![touch.view isKindOfClass:[Tile class]])
-        return;
-    Tile* tile = (Tile*)touch.view;
-    */
     
     NSLog(@"%s: %@", __PRETTY_FUNCTION__, tile);
-	tile.alpha = 0;
+    tile.alpha = 0;
     
-	_draggedTile = [tile cloneTile];
+    _draggedTile = [tile cloneTile];
     _draggedTile.center = [self.view convertPoint:tile.center fromView:tile.superview];
-    
-	[self.view addSubview:_draggedTile];
+    [self.view addSubview:_draggedTile];
 }
 
 - (void) touchesMoved:(NSSet*)touches withEvent:(UIEvent*)event
 {
     UITouch* touch = [touches anyObject];
-    if (![touch.view isKindOfClass:[Tile class]])
+    CGPoint point = [touch locationInView:self.view];
+    Tile *tile = [self findTileAtPoint:point withEvent:event];
+    if (!tile)
         return;
     
-    Tile* tile = (Tile*)touch.view;
     NSLog(@"%s: %@", __PRETTY_FUNCTION__, tile);
 
-    CGPoint location = [touch locationInView:self.view];
     CGPoint previous = [touch previousLocationInView:self.view];
     
     tile.frame = CGRectOffset(tile.frame,
-                              (location.x - previous.x),
-                              (location.y - previous.y));
+                              (point.x - previous.x),
+                              (point.y - previous.y));
 
     _draggedTile.center = [self.view convertPoint:tile.center fromView:tile.superview];
 }
 
 - (void)touchesEnded:(NSSet*)touches withEvent:(UIEvent*)event
 {
-    [self handleTileReleased:touches];
+    [self handleTileReleased:touches withEvent:event];
 }
 
 - (void)touchesCancelled:(NSSet*)touches withEvent:(UIEvent*)event
 {
-    [self handleTileReleased:touches];
+    [self handleTileReleased:touches withEvent:event];
 }
 
-- (void) handleTileReleased:(NSSet*)touches {
+- (void) handleTileReleased:(NSSet*)touches withEvent:(UIEvent*)event{
     UITouch* touch = [touches anyObject];
-    if (![touch.view isKindOfClass:[Tile class]])
+    CGPoint point = [touch locationInView:self.view];
+    Tile *tile = [self findTileAtPoint:point withEvent:event];
+    if (!tile)
         return;
     
-    Tile* tile = (Tile*)touch.view;
     NSLog(@"%s: %@", __PRETTY_FUNCTION__, tile);
 	tile.alpha = 1;
 	
 	[_draggedTile removeFromSuperview];
 	_draggedTile = nil;
     
-	//UITouch* touch = notification.userInfo[@"touch"];
 	CGPoint pt = [touch locationInView:_contentView];
 	CGPoint ptTransform = CGPointApplyAffineTransform(pt, _contentView.transform);
 	CGPoint ptView = [touch locationInView:self.view];
