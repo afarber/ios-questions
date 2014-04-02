@@ -6,11 +6,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" id="1" customClass="DraggedTile">
+        <view autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" id="1" customClass="BigTile">
             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.89999999999999991" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="big.png" id="M7D-Sh-Ctl" userLabel="Image View - image">
+                <imageView autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.89999999999999991" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BigTile.png" id="M7D-Sh-Ctl" userLabel="Image View - image">
                     <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
@@ -39,6 +39,6 @@
         </view>
     </objects>
     <resources>
-        <image name="big.png" width="128" height="128"/>
+        <image name="BigTile.png" width="128" height="128"/>
     </resources>
 </document>

@@ -6,11 +6,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" id="1" customClass="Tile">
+        <view autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" id="1" customClass="SmallTile">
             <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.89999999999999991" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="small.png" id="1YY-hw-hox" userLabel="Image View - image">
+                <imageView autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.89999999999999991" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SmallTile.png" id="1YY-hw-hox" userLabel="Image View - image">
                     <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
@@ -39,6 +39,6 @@
         </view>
     </objects>
     <resources>
-        <image name="small.png" width="45" height="45"/>
+        <image name="SmallTile.png" width="45" height="45"/>
     </resources>
 </document>

@@ -1,9 +1,9 @@
 #import <UIKit/UIKit.h>
 
-extern int const kDraggedTileWidth;
-extern int const kDraggedTileHeight;
+extern int const kBigTileWidth;
+extern int const kBigTileHeight;
 
-@interface DraggedTile: UIView
+@interface BigTile : UIView
 
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 @property (weak, nonatomic) IBOutlet UILabel *letter;

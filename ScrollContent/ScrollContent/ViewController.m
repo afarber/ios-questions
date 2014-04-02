@@ -6,7 +6,7 @@ static int const kNumTiles    = 7;
 
 @implementation ViewController
 {
-	DraggedTile* _draggedTile;
+	BigTile* _bigTile;
 }
 
 - (void) viewDidLoad
@@ -14,9 +14,9 @@ static int const kNumTiles    = 7;
     [super viewDidLoad];
     
     for (int i = 0; i < kNumTiles; i++) {
-        Tile *tile = [[[NSBundle mainBundle] loadNibNamed:@"Tile"
-                                                    owner:self
-                                                  options:nil] firstObject];
+        SmallTile *tile = [[[NSBundle mainBundle] loadNibNamed:@"SmallTile"
+                                                         owner:self
+                                                       options:nil] firstObject];
         tile.exclusiveTouch = YES;
         [self.view addSubview:tile];
     }
@@ -44,10 +44,10 @@ static int const kNumTiles    = 7;
 - (void) removeTiles
 {
     for (UIView *subView in _contentView.subviews) {
-        if (![subView isKindOfClass:[Tile class]])
+        if (![subView isKindOfClass:[SmallTile class]])
             continue;
         
-        Tile* tile = (Tile*)subView;
+        SmallTile* tile = (SmallTile*)subView;
         [tile removeFromSuperview];
         [self.view addSubview:tile];
     }
@@ -57,14 +57,14 @@ static int const kNumTiles    = 7;
 {
     int i = 0;
     for (UIView *subView in self.view.subviews) {
-        if (![subView isKindOfClass:[Tile class]])
+        if (![subView isKindOfClass:[SmallTile class]])
             continue;
         
-        Tile* tile = (Tile*)subView;
-        CGRect rect = CGRectMake(kPadding + kTileWidth * kTileScale * i++,
-                                self.view.bounds.size.height - kTileHeight * kTileScale - kPadding,
-                                kTileWidth,
-                                kTileHeight);
+        SmallTile* tile = (SmallTile*)subView;
+        CGRect rect = CGRectMake(kPadding + kSmallTileWidth * kTileScale * i++,
+                                self.view.bounds.size.height - kSmallTileHeight * kTileScale - kPadding,
+                                kSmallTileWidth,
+                                kSmallTileHeight);
         tile.frame = CGRectOffset(tile.frame, 0, -8);
         [UIView beginAnimations:@"moveDown" context:nil];
         [tile setFrame:rect];
@@ -111,7 +111,7 @@ static int const kNumTiles    = 7;
     [_scrollView zoomToRect:rect animated:YES];
 }
 
-- (Tile*) findTileAtPoint:(CGPoint)point withEvent:(UIEvent*)event
+- (SmallTile*) findTileAtPoint:(CGPoint)point withEvent:(UIEvent*)event
 {
     NSArray* children = [self.view.subviews arrayByAddingObjectsFromArray:_contentView.subviews];
     
@@ -119,10 +119,10 @@ static int const kNumTiles    = 7;
         CGPoint localPoint = [child convertPoint:point fromView:self.view];
         
         //NSLog(@"%s: child=%@", __PRETTY_FUNCTION__, child);
-        if ([child isKindOfClass:[Tile class]] &&
+        if ([child isKindOfClass:[SmallTile class]] &&
             [child pointInside:localPoint withEvent:event]) {
             NSLog(@"%s: FOUND=%@", __PRETTY_FUNCTION__, child);
-            return (Tile*)child;
+            return (SmallTile*)child;
         }
     }
     
@@ -133,23 +133,23 @@ static int const kNumTiles    = 7;
 {
     UITouch* touch = [touches anyObject];
     CGPoint point = [touch locationInView:self.view];
-    Tile *tile = [self findTileAtPoint:point withEvent:event];
+    SmallTile *tile = [self findTileAtPoint:point withEvent:event];
     if (!tile)
         return;
     
     NSLog(@"%s: %@", __PRETTY_FUNCTION__, tile);
     tile.alpha = 0;
     
-    _draggedTile = [tile cloneTile];
-    _draggedTile.center = [self.view convertPoint:tile.center fromView:tile.superview];
-    [self.view addSubview:_draggedTile];
+    _bigTile = [tile cloneTile];
+    _bigTile.center = [self.view convertPoint:tile.center fromView:tile.superview];
+    [self.view addSubview:_bigTile];
 }
 
 - (void) touchesMoved:(NSSet*)touches withEvent:(UIEvent*)event
 {
     UITouch* touch = [touches anyObject];
     CGPoint point = [touch locationInView:self.view];
-    Tile *tile = [self findTileAtPoint:point withEvent:event];
+    SmallTile *tile = [self findTileAtPoint:point withEvent:event];
     if (!tile)
         return;
     
@@ -161,7 +161,7 @@ static int const kNumTiles    = 7;
                               (point.x - previous.x),
                               (point.y - previous.y));
 
-    _draggedTile.center = [self.view convertPoint:tile.center fromView:tile.superview];
+    _bigTile.center = [self.view convertPoint:tile.center fromView:tile.superview];
 }
 
 - (void)touchesEnded:(NSSet*)touches withEvent:(UIEvent*)event
@@ -176,18 +176,18 @@ static int const kNumTiles    = 7;
 
 - (void) handleTileReleased:(NSSet*)touches withEvent:(UIEvent*)event{
     UITouch* touch = [touches anyObject];
+	[_bigTile removeFromSuperview];
+	_bigTile = nil;
+    
     CGPoint point = [touch locationInView:self.view];
-    Tile *tile = [self findTileAtPoint:point withEvent:event];
+    SmallTile *tile = [self findTileAtPoint:point withEvent:event];
     if (!tile)
         return;
     
     NSLog(@"%s: %@", __PRETTY_FUNCTION__, tile);
 	tile.alpha = 1;
 	
-	[_draggedTile removeFromSuperview];
-	_draggedTile = nil;
-    
-	CGPoint pt = [touch locationInView:_contentView];
+	CGPoint pt = [touch locationInView:_contentView]; // XXX remove
 	CGPoint ptTransform = CGPointApplyAffineTransform(pt, _contentView.transform);
 	CGPoint ptView = [touch locationInView:self.view];
 	

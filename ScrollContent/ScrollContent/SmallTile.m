@@ -1,16 +1,16 @@
-#import "Tile.h"
+#import "SmallTile.h"
 
-int const kTileWidth            = 45;
-int const kTileHeight           = 45;
+int const kSmallTileWidth       = 45;
+int const kSmallTileHeight      = 45;
 
 static NSString* const kLetters = @"ABCDEFGHIJKLMNOPQRSTUWVXYZ";
 static NSDictionary* letterValues;
 
-@implementation Tile
+@implementation SmallTile
 
 + (void)initialize
 {
-    if (self != [Tile class])
+    if (self != [SmallTile class])
         return;
     
     letterValues = @{
@@ -56,18 +56,18 @@ static NSDictionary* letterValues;
 
 - (NSString*)description
 {
-    return [NSString stringWithFormat:@"Tile %@ %@ %@ %@",
+    return [NSString stringWithFormat:@"SmallTile %@ %@ %@ %@",
             _letter.text,
             _value.text,
             NSStringFromCGPoint(self.frame.origin),
             NSStringFromCGSize(self.frame.size)];
 }
 
-- (DraggedTile*)cloneTile
+- (BigTile*)cloneTile
 {
-	DraggedTile *tile = [[[NSBundle mainBundle] loadNibNamed:@"DraggedTile"
-												owner:self
-											  options:nil] firstObject];
+	BigTile *tile = [[[NSBundle mainBundle] loadNibNamed:@"BigTile"
+												   owner:self
+											     options:nil] firstObject];
 	tile.exclusiveTouch = YES;
 	
 	tile.letter.text = _letter.text;

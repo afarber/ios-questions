@@ -24,7 +24,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="775" height="775"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="board.png" translatesAutoresizingMaskIntoConstraints="NO" id="vI8-vO-JPR">
+                                            <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GameBoard.png" translatesAutoresizingMaskIntoConstraints="NO" id="vI8-vO-JPR">
                                                 <rect key="frame" x="0.0" y="0.0" width="775" height="775"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             </imageView>
@@ -86,7 +86,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="board.png" width="775" height="775"/>
+        <image name="GameBoard.png" width="780" height="780"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

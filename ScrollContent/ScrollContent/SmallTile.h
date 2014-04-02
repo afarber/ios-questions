@@ -1,15 +1,15 @@
 #import <UIKit/UIKit.h>
-#import "DraggedTile.h"
+#import "BigTile.h"
 
-extern int const kTileWidth;
-extern int const kTileHeight;
+extern int const kSmallTileWidth;
+extern int const kSmallTileHeight;
 
-@interface Tile: UIView
+@interface SmallTile : UIView
 
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 @property (weak, nonatomic) IBOutlet UILabel *letter;
 @property (weak, nonatomic) IBOutlet UILabel *value;
 
-- (DraggedTile*)cloneTile;
+- (BigTile*)cloneTile;
 
 @end

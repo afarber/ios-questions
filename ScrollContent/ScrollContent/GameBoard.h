@@ -1,5 +1,5 @@
 #import <UIKit/UIKit.h>
-#import "Tile.h"
+#import "SmallTile.h"
 
 extern CGFloat const kBoardWidth;
 extern CGFloat const kBoardHeight;
