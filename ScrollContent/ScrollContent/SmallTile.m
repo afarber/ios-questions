@@ -68,8 +68,6 @@ static NSDictionary* letterValues;
 	BigTile *tile = [[[NSBundle mainBundle] loadNibNamed:@"BigTile"
 												   owner:self
 											     options:nil] firstObject];
-	tile.exclusiveTouch = YES;
-	
 	tile.letter.text = _letter.text;
     tile.value.text = _value.text;
 

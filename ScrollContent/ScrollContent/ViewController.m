@@ -18,7 +18,6 @@ static int const kNumTiles    = 7;
         SmallTile *tile = [[[NSBundle mainBundle] loadNibNamed:@"SmallTile"
                                                          owner:self
                                                        options:nil] firstObject];
-        tile.exclusiveTouch = YES;
         [self.view addSubview:tile];
     }
     
@@ -114,15 +113,14 @@ static int const kNumTiles    = 7;
 
 - (SmallTile*) findTileAtPoint:(CGPoint)point withEvent:(UIEvent*)event
 {
+    // iterate through the children of main view and content view
     NSArray* children = [self.view.subviews arrayByAddingObjectsFromArray:_contentView.subviews];
     
     for (UIView* child in children) {
         CGPoint localPoint = [child convertPoint:point fromView:self.view];
         
-        //NSLog(@"%s: child=%@", __PRETTY_FUNCTION__, child);
         if ([child isKindOfClass:[SmallTile class]] &&
             [child pointInside:localPoint withEvent:event]) {
-            //NSLog(@"%s: FOUND=%@", __PRETTY_FUNCTION__, child);
             return (SmallTile*)child;
         }
     }
@@ -134,24 +132,23 @@ static int const kNumTiles    = 7;
 {
     UITouch* touch = [touches anyObject];
     CGPoint point = [touch locationInView:self.view];
-    SmallTile *tile = [self findTileAtPoint:point withEvent:event];
-    if (!tile)
+    _draggedTile = [self findTileAtPoint:point withEvent:event];
+    if (!_draggedTile)
         return;
     
-    NSLog(@"%s: %@", __PRETTY_FUNCTION__, tile);
-    tile.alpha = 0;
+    NSLog(@"%s: %@", __PRETTY_FUNCTION__, _draggedTile);
+    _draggedTile.alpha = 0;
     
-    _draggedTile = tile;
-    
-    _bigTile = [tile cloneTile];
-    _bigTile.center = [self.view convertPoint:tile.center fromView:tile.superview];
+    _bigTile = [_draggedTile cloneTile];
+    _bigTile.center = [self.view convertPoint:_draggedTile.center
+                                     fromView:_draggedTile.superview];
     [self.view addSubview:_bigTile];
 }
 
 - (void) touchesMoved:(NSSet*)touches withEvent:(UIEvent*)event
 {
     // nothing is being dragged
-    if (!_draggedTile && !_bigTile)
+    if (!_draggedTile || !_bigTile)
         return;
     
     NSLog(@"%s: %@", __PRETTY_FUNCTION__, _draggedTile);
@@ -181,47 +178,46 @@ static int const kNumTiles    = 7;
 - (void) handleTileReleased:(NSSet*)touches withEvent:(UIEvent*)event
 {
     // nothing is being dragged
-    if (!_draggedTile && !_bigTile)
+    if (!_draggedTile || !_bigTile)
         return;
     
-	[_bigTile removeFromSuperview];
-	_bigTile = nil;
-    
-	_draggedTile.alpha = 1;
-	
     UITouch* touch = [touches anyObject];
-	CGPoint point = [touch locationInView:_contentView];
-    CGPoint ptTransform = CGPointApplyAffineTransform(point, _contentView.transform);
-	CGPoint ptView = [touch locationInView:self.view];
+	CGPoint point  = [touch locationInView:self.view];
+	CGPoint pointInContent = [touch locationInView:_contentView];
+    CGPoint pointTransformed = CGPointApplyAffineTransform(pointInContent, _contentView.transform);
 	
     if (_draggedTile.superview != _contentView &&
-        // Is the tile over the scoll view?
-        CGRectContainsPoint(_scrollView.frame, ptView) &&
-        // Is the tile still over the game board - when it is zoomed out?
-        CGRectContainsPoint(_contentView.frame, ptTransform)) {
+        // is the tile over the scoll view?
+        CGRectContainsPoint(_scrollView.frame, point) &&
+        // is the tile still over the game board - when it is zoomed out?
+        CGRectContainsPoint(_contentView.frame, pointTransformed)) {
 		
-        // Put the tile at the game board
+        // put the tile at the game board
 		[_draggedTile removeFromSuperview];
         [_contentView addSubview:_draggedTile];
         
-    } else if(!CGRectContainsPoint(_scrollView.frame, ptView) ||
-              !CGRectContainsPoint(_contentView.frame, ptTransform)) {
+    } else if(!CGRectContainsPoint(_scrollView.frame, point) ||
+              !CGRectContainsPoint(_contentView.frame, pointTransformed)) {
         
-        // Put the tile back to the stack
+        // put the tile back to the stack
         [_draggedTile removeFromSuperview];
         [self.view addSubview:_draggedTile];
         [self adjustTiles];
 	}
     
     if (_draggedTile.superview == _contentView) {
-        _draggedTile.center = [GameBoard snapToGrid:point];
+        _draggedTile.center = [GameBoard snapToGrid:pointInContent];
         
         if (_scrollView.zoomScale == _scrollView.minimumZoomScale) {
             [self zoomTo:_draggedTile.center];
         }
     }
     
+	[_bigTile removeFromSuperview];
+	_bigTile = nil;
+    
     NSLog(@"%s: %@", __PRETTY_FUNCTION__, _draggedTile);
+	_draggedTile.alpha = 1;
     _draggedTile = nil;
 }
 
