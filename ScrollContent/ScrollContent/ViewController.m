@@ -37,8 +37,8 @@ static int const kNumTiles    = 7;
 {
     float scale = _scrollView.frame.size.width / kBoardWidth;
     _scrollView.minimumZoomScale = scale;
-    _scrollView.maximumZoomScale = 2 * scale;
-    _scrollView.zoomScale = 2 * scale;
+    _scrollView.maximumZoomScale = 2.0 * scale;
+    [self zoomTo:CGPointMake(kBoardWidth / 2.0, kBoardHeight / 2.0)];
 }
 
 - (void) removeTiles

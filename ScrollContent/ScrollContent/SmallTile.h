@@ -4,6 +4,14 @@
 extern int const kSmallTileWidth;
 extern int const kSmallTileHeight;
 
+typedef NS_OPTIONS(NSUInteger, Dir) {
+    None      = 0,
+    NorthWest = 1 << 0,
+    North     = 1 << 1,
+    NorthEast = 1 << 2,
+    East      = 1 << 3
+};
+
 @interface SmallTile : UIView
 
 @property (weak, nonatomic) IBOutlet UIImageView *image;
