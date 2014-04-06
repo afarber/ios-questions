@@ -8,11 +8,30 @@ static int const kNumTiles    = 7;
 {
 	BigTile* _bigTile;
     SmallTile* _draggedTile;
+    NSMutableArray* _grid;
 }
 
 - (void) viewDidLoad
 {
     [super viewDidLoad];
+    
+    _grid = [@[
+              @[@NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO],
+              @[@NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO],
+              @[@NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO],
+              @[@NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO],
+              @[@NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO],
+              @[@NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO],
+              @[@NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO],
+              @[@NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO],
+              @[@NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO],
+              @[@NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO],
+              @[@NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO],
+              @[@NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO],
+              @[@NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO],
+              @[@NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO],
+              @[@NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO]
+    ] mutableCopy];
     
     for (int i = 0; i < kNumTiles; i++) {
         SmallTile *tile = [[[NSBundle mainBundle] loadNibNamed:@"SmallTile"
@@ -38,7 +57,9 @@ static int const kNumTiles    = 7;
     float scale = _scrollView.frame.size.width / kBoardWidth;
     _scrollView.minimumZoomScale = scale;
     _scrollView.maximumZoomScale = 2.0 * scale;
-    [self zoomTo:CGPointMake(kBoardWidth / 2.0, kBoardHeight / 2.0)];
+    
+    CGPoint center = CGPointMake(kBoardWidth / 2.0, kBoardHeight / 2.0);
+    [self zoomTo:center];
 }
 
 - (void) removeTiles

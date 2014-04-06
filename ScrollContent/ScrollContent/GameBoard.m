@@ -14,28 +14,15 @@ CGFloat const kBoardLeft   = 53.0f;
     return result == self ? nil : self.window.rootViewController.view;
 }
 
-+ (CGPoint) snapToGrid:(CGPoint)pt
++ (CGPoint) snapToGrid:(CGPoint)point
 {
-    CGFloat i = floorf((pt.x - kBoardLeft) / kSmallTileWidth);
-    CGFloat j = floorf((pt.y - kBoardTop) / kSmallTileHeight);
+    Pos pos = PosFromXY(point.x, point.y);
     
-    if (i < 0.0) {
-        i = 0.0;
-    } else if (i > 14.0) {
-        i = 14.0;
-    }
-    
-    if (j < 0.0) {
-        j = 0.0;
-    } else if (j > 14.0) {
-        j = 14.0;
-    }
-    
-    //NSLog(@"i=%f", i);
-    //NSLog(@"j=%f", j);
+    //NSLog(@"i=%f", pos.i);
+    //NSLog(@"j=%f", pos.j);
 
-    CGFloat x = kBoardLeft + (.5 + i) * kSmallTileWidth;
-    CGFloat y = kBoardTop  + (.5 + j) * kSmallTileHeight;
+    CGFloat x = kBoardLeft + (.5 + pos.i) * kSmallTileWidth;
+    CGFloat y = kBoardTop  + (.5 + pos.j) * kSmallTileHeight;
     
     return CGPointMake(x, y);
 }
