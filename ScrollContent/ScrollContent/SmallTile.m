@@ -74,4 +74,27 @@ static NSDictionary* letterValues;
 	return tile;
 }
 
+- (void)snapToGrid
+{
+    _col = floorf((self.center.x - kBoardLeft) / kSmallTileWidth);
+    _row = floorf((self.center.y - kBoardTop) / kSmallTileHeight);
+    
+    if (_col < 0) {
+        _col = 0;
+    } else if (_col > 14) {
+        _col = 14;
+    }
+    
+    if (_row < 0.0) {
+        _row = 0.0;
+    } else if (_row > 14.0) {
+        _row = 14.0;
+    }
+    
+    CGFloat x = kBoardLeft + (.5 + _col) * kSmallTileWidth;
+    CGFloat y = kBoardTop  + (.5 + _row) * kSmallTileHeight;
+        
+    self.center = CGPointMake(x, y);
+}
+
 @end

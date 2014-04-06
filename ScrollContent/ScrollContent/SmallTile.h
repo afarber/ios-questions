@@ -1,5 +1,6 @@
 #import <UIKit/UIKit.h>
 #import "BigTile.h"
+#include "GameBoard.h"
 
 extern int const kSmallTileWidth;
 extern int const kSmallTileHeight;
@@ -18,6 +19,10 @@ typedef NS_OPTIONS(NSUInteger, Dir) {
 @property (weak, nonatomic) IBOutlet UILabel *letter;
 @property (weak, nonatomic) IBOutlet UILabel *value;
 
+@property (nonatomic) NSInteger col;
+@property (nonatomic) NSInteger row;
+
 - (BigTile*)cloneTile;
+- (void)snapToGrid;
 
 @end

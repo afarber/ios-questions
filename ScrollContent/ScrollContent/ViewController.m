@@ -227,7 +227,8 @@ static int const kNumTiles    = 7;
 	}
     
     if (_draggedTile.superview == _contentView) {
-        _draggedTile.center = [GameBoard snapToGrid:pointInContent];
+        _draggedTile.center = pointInContent;
+        [_draggedTile snapToGrid];
         
         if (_scrollView.zoomScale == _scrollView.minimumZoomScale) {
             [self zoomTo:_draggedTile.center];
