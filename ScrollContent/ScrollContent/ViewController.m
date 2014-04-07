@@ -15,23 +15,14 @@ static int const kNumTiles    = 7;
 {
     [super viewDidLoad];
     
-    _grid = [@[
-              @[@NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO],
-              @[@NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO],
-              @[@NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO],
-              @[@NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO],
-              @[@NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO],
-              @[@NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO],
-              @[@NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO],
-              @[@NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO],
-              @[@NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO],
-              @[@NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO],
-              @[@NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO],
-              @[@NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO],
-              @[@NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO],
-              @[@NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO],
-              @[@NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO]
-    ] mutableCopy];
+    _grid = [[NSMutableArray alloc] init];
+    for (int i = 0; i < 15; i++) {
+        NSMutableArray *row = [[NSMutableArray alloc] init];
+        for (int j = 0; j < 15; j++) {
+            [row addObject:[NSNull null]];
+        }
+        [_grid addObject:row];
+    }
     
     for (int i = 0; i < kNumTiles; i++) {
         SmallTile *tile = [[[NSBundle mainBundle] loadNibNamed:@"SmallTile"
@@ -229,6 +220,9 @@ static int const kNumTiles    = 7;
     if (_draggedTile.superview == _contentView) {
         _draggedTile.center = pointInContent;
         [_draggedTile snapToGrid];
+        _grid[_draggedTile.col][_draggedTile.row] = _draggedTile;
+        
+        NSLog(@"_grid=%@", _grid);
         
         if (_scrollView.zoomScale == _scrollView.minimumZoomScale) {
             [self zoomTo:_draggedTile.center];
