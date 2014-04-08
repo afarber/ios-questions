@@ -1,5 +1,7 @@
 #import "ViewController.h"
 
+#define RADIANS(degrees) ((degrees * M_PI) / 180.0)
+
 static float const kTileScale = 1.0;
 static int const kPadding     = 2;
 static int const kNumTiles    = 7;
@@ -67,20 +69,36 @@ static int const kNumTiles    = 7;
 
 - (void) adjustTiles
 {
+    //CGAffineTransform leftWobble = CGAffineTransformRotate(CGAffineTransformIdentity, RADIANS(-15.0));
+    //CGAffineTransform rightWobble = CGAffineTransformRotate(CGAffineTransformIdentity, RADIANS(15.0));
+    
     int i = 0;
     for (UIView *subView in self.view.subviews) {
         if (![subView isKindOfClass:[SmallTile class]])
             continue;
         
         SmallTile* tile = (SmallTile*)subView;
-        CGRect rect = CGRectMake(kPadding + kSmallTileWidth * kTileScale * i++,
+        tile.frame = CGRectMake(kPadding + kSmallTileWidth * kTileScale * i++,
                                 self.view.bounds.size.height - kSmallTileHeight * kTileScale - kPadding,
                                 kSmallTileWidth,
                                 kSmallTileHeight);
-        tile.frame = CGRectOffset(tile.frame, 0, -8);
-        [UIView beginAnimations:@"moveDown" context:nil];
-        [tile setFrame:rect];
+        
+        CABasicAnimation* anim = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+        [anim setToValue:[NSNumber numberWithFloat:1.0f]];
+        [anim setFromValue:[NSNumber numberWithDouble:1.2f]];
+        //[anim setDuration:0.1];
+        //[anim setRepeatCount:2];
+        //[anim setAutoreverses:YES];
+        [tile.layer addAnimation:anim forKey:@"wooble"];
+        
+        /*
+        tile.transform = CGAffineTransformMakeScale(0.8, 0.8);
+        [UIView beginAnimations:@"wobble" context:nil];
+        //[UIView setAnimationDuration:0.25];
+        [UIView setAnimationRepeatCount:3];
+        tile.transform = CGAffineTransformIdentity;
         [UIView commitAnimations];
+         */
         //NSLog(@"tile: %@", tile);
     }
 }
@@ -222,7 +240,7 @@ static int const kNumTiles    = 7;
         [_draggedTile snapToGrid];
         _grid[_draggedTile.col][_draggedTile.row] = _draggedTile;
         
-        NSLog(@"_grid=%@", _grid);
+        //NSLog(@"_grid=%@", _grid);
         
         if (_scrollView.zoomScale == _scrollView.minimumZoomScale) {
             [self zoomTo:_draggedTile.center];
