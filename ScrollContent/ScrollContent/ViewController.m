@@ -62,7 +62,10 @@ static int const kNumTiles    = 7;
             continue;
         
         SmallTile* tile = (SmallTile*)subView;
+        CGRect rect = tile.frame;
         [tile removeFromSuperview];
+        
+        tile.frame = [self.view convertRect:rect fromView:_contentView];
         [self.view addSubview:tile];
     }
 }
@@ -75,30 +78,17 @@ static int const kNumTiles    = 7;
             continue;
         
         SmallTile* tile = (SmallTile*)subView;
-        tile.frame = CGRectMake(kPadding + kSmallTileWidth * kTileScale * i++,
-                                self.view.bounds.size.height - kSmallTileHeight * kTileScale - kPadding,
-                                kSmallTileWidth,
-                                kSmallTileHeight);
-        
-        /*
-        CABasicAnimation* anim = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-        [anim setToValue:[NSNumber numberWithFloat:1.0f]];
-        [anim setFromValue:[NSNumber numberWithDouble:1.2f]];
-        //[anim setDuration:0.1];
-        //[anim setRepeatCount:2];
-        //[anim setAutoreverses:YES];
-        [tile.layer addAnimation:anim forKey:@"wooble"];
-        */
+        CGRect rect = CGRectMake(kPadding + kSmallTileWidth * kTileScale * i++,
+                                 self.view.bounds.size.height - kSmallTileHeight * kTileScale - kPadding,
+                                 kSmallTileWidth,
+                                 kSmallTileHeight);
         
         
-        tile.transform = CGAffineTransformMakeScale(1.5, 1.5);
-        [UIView beginAnimations:@"zoom" context:nil];
-        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-        [UIView setAnimationDuration:0.1];
-        [UIView setAnimationRepeatCount:1];
-        tile.transform = CGAffineTransformIdentity;
+        [UIView beginAnimations:@"fly" context:nil];
+        tile.frame = rect;
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
+        [UIView setAnimationDuration:2];
         [UIView commitAnimations];
-        
         //NSLog(@"tile: %@", tile);
     }
 }
