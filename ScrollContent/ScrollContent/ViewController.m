@@ -69,9 +69,6 @@ static int const kNumTiles    = 7;
 
 - (void) adjustTiles
 {
-    //CGAffineTransform leftWobble = CGAffineTransformRotate(CGAffineTransformIdentity, RADIANS(-15.0));
-    //CGAffineTransform rightWobble = CGAffineTransformRotate(CGAffineTransformIdentity, RADIANS(15.0));
-    
     int i = 0;
     for (UIView *subView in self.view.subviews) {
         if (![subView isKindOfClass:[SmallTile class]])
@@ -83,6 +80,7 @@ static int const kNumTiles    = 7;
                                 kSmallTileWidth,
                                 kSmallTileHeight);
         
+        /*
         CABasicAnimation* anim = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
         [anim setToValue:[NSNumber numberWithFloat:1.0f]];
         [anim setFromValue:[NSNumber numberWithDouble:1.2f]];
@@ -90,15 +88,17 @@ static int const kNumTiles    = 7;
         //[anim setRepeatCount:2];
         //[anim setAutoreverses:YES];
         [tile.layer addAnimation:anim forKey:@"wooble"];
+        */
         
-        /*
-        tile.transform = CGAffineTransformMakeScale(0.8, 0.8);
-        [UIView beginAnimations:@"wobble" context:nil];
-        //[UIView setAnimationDuration:0.25];
-        [UIView setAnimationRepeatCount:3];
+        
+        tile.transform = CGAffineTransformMakeScale(1.5, 1.5);
+        [UIView beginAnimations:@"zoom" context:nil];
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+        [UIView setAnimationDuration:0.1];
+        [UIView setAnimationRepeatCount:1];
         tile.transform = CGAffineTransformIdentity;
         [UIView commitAnimations];
-         */
+        
         //NSLog(@"tile: %@", tile);
     }
 }
