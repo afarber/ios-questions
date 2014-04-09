@@ -83,12 +83,15 @@ static int const kNumTiles    = 7;
                                  kSmallTileWidth,
                                  kSmallTileHeight);
         
+        [UIView animateWithDuration:.5
+                              delay:0
+                            options:UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             tile.frame = rect;
+                         }
+                         completion:nil
+         ];
         
-        [UIView beginAnimations:@"fly" context:nil];
-        tile.frame = rect;
-        [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
-        [UIView setAnimationDuration:2];
-        [UIView commitAnimations];
         //NSLog(@"tile: %@", tile);
     }
 }
