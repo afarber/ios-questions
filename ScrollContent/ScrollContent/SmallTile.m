@@ -95,26 +95,23 @@ static NSArray* spiral;
 	return tile;
 }
 
+- (NSInteger)limit:(NSInteger)n
+{
+    if (n < 0)
+        return 0;
+    if (n > 14)
+        return 14;
+    return n;
+}
+
 - (BOOL)addToGrid
 {
     NSInteger i = floorf((self.center.x - kBoardLeft) / kSmallTileWidth);
     NSInteger j = floorf((self.center.y - kBoardTop) / kSmallTileHeight);
     
-    if (i < 0) {
-        i = 0;
-    } else if (i > 14) {
-        i = 14;
-    }
-    
-    if (j < 0) {
-        j = 0;
-    } else if (j > 14) {
-        j = 14;
-    }
-    
     for (NSArray* arr in spiral) {
-        NSInteger col = i + [arr[0] integerValue];
-        NSInteger row = j + [arr[1] integerValue];
+        NSInteger col = [self limit:i + [arr[0] integerValue]];
+        NSInteger row = [self limit:j + [arr[1] integerValue]];
         
         // if found a free cell
         if (grid[col][row] == [NSNull null]) {
