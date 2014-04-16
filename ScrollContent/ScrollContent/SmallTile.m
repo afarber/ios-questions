@@ -45,10 +45,11 @@ static NSArray* spiral;
     };
     
     spiral = @[
+               @[@0, @0],
                @[@1, @0],
                @[@0, @1],
                @[@-1, @0],
-               @[@-1, @-1],
+               @[@0, @-1],
     ];
     
     grid = [[NSMutableArray alloc] init];
@@ -111,19 +112,25 @@ static NSArray* spiral;
         j = 14;
     }
     
-    if (grid[i][j] != [NSNull null]) {
-        return NO;
+    for (NSArray* arr in spiral) {
+        NSInteger col = i + [arr[0] integerValue];
+        NSInteger row = j + [arr[1] integerValue];
+        
+        // if found a free cell
+        if (grid[col][row] == [NSNull null]) {
+            _col = col;
+            _row = row;
+            grid[_col][_row] = self;
+            
+            CGFloat x = kBoardLeft + (.5 + _col) * kSmallTileWidth;
+            CGFloat y = kBoardTop  + (.5 + _row) * kSmallTileHeight;
+            self.center = CGPointMake(x, y);
+            
+            return YES;
+        }
     }
     
-    _col = i;
-    _row = j;
-    grid[_col][_row] = self;
-
-    CGFloat x = kBoardLeft + (.5 + _col) * kSmallTileWidth;
-    CGFloat y = kBoardTop  + (.5 + _row) * kSmallTileHeight;
-    self.center = CGPointMake(x, y);
-    
-    return YES;
+    return NO;
 }
 
 - (void)removeFromGrid
