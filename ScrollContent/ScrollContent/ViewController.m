@@ -1,7 +1,5 @@
 #import "ViewController.h"
 
-#define RADIANS(degrees) ((degrees * M_PI) / 180.0)
-
 static float const kTileScale = 1.0;
 static int const kPadding     = 2;
 static int const kNumTiles    = 7;
@@ -10,21 +8,11 @@ static int const kNumTiles    = 7;
 {
 	BigTile* _bigTile;
     SmallTile* _draggedTile;
-    NSMutableArray* _grid;
 }
 
 - (void) viewDidLoad
 {
     [super viewDidLoad];
-    
-    _grid = [[NSMutableArray alloc] init];
-    for (int i = 0; i < 15; i++) {
-        NSMutableArray *row = [[NSMutableArray alloc] init];
-        for (int j = 0; j < 15; j++) {
-            [row addObject:[NSNull null]];
-        }
-        [_grid addObject:row];
-    }
     
     for (int i = 0; i < kNumTiles; i++) {
         SmallTile *tile = [[[NSBundle mainBundle] loadNibNamed:@"SmallTile"
@@ -62,11 +50,7 @@ static int const kNumTiles    = 7;
             continue;
         
         SmallTile* tile = (SmallTile*)subView;
-        CGRect rect = tile.frame;
-        [tile removeFromSuperview];
-        
-        tile.frame = [self.view convertRect:rect fromView:_contentView];
-        [self.view addSubview:tile];
+        [self backToStack:tile];
     }
 }
 
@@ -160,6 +144,7 @@ static int const kNumTiles    = 7;
         return;
     
     NSLog(@"%s: %@", __PRETTY_FUNCTION__, _draggedTile);
+    [_draggedTile removeFromGrid];
     _draggedTile.alpha = 0;
     
     _bigTile = [_draggedTile cloneTile];
@@ -222,18 +207,16 @@ static int const kNumTiles    = 7;
     } else if(!CGRectContainsPoint(_scrollView.frame, point) ||
               !CGRectContainsPoint(_contentView.frame, pointTransformed)) {
         
-        // put the tile back to the stack
-        [_draggedTile removeFromSuperview];
-        [self.view addSubview:_draggedTile];
+        [self backToStack:_draggedTile];
         [self adjustTiles];
 	}
     
     if (_draggedTile.superview == _contentView) {
         _draggedTile.center = pointInContent;
-        [_draggedTile snapToGrid];
-        _grid[_draggedTile.col][_draggedTile.row] = _draggedTile;
-        
-        //NSLog(@"_grid=%@", _grid);
+        if (NO == [_draggedTile addToGrid]) {
+            [self backToStack:_draggedTile];
+            [self adjustTiles];
+        }
         
         if (_scrollView.zoomScale == _scrollView.minimumZoomScale) {
             [self zoomTo:_draggedTile.center];
@@ -248,5 +231,14 @@ static int const kNumTiles    = 7;
     _draggedTile = nil;
 }
 
+- (void) backToStack:(SmallTile*)tile
+{
+    if (tile.superview != _contentView)
+        return;
+    
+    tile.frame = [self.view convertRect:tile.frame fromView:_contentView];
+    [tile removeFromSuperview];
+    [self.view addSubview:_draggedTile];
+}
 
 @end

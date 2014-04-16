@@ -23,6 +23,7 @@ typedef NS_OPTIONS(NSUInteger, Dir) {
 @property (nonatomic) NSInteger row;
 
 - (BigTile*)cloneTile;
-- (void)snapToGrid;
+- (BOOL)addToGrid;
+- (void)removeFromGrid;
 
 @end

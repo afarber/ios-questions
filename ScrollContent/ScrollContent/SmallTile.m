@@ -5,6 +5,7 @@ int const kSmallTileHeight      = 45;
 
 static NSString* const kLetters = @"ABCDEFGHIJKLMNOPQRSTUWVXYZ";
 static NSDictionary* letterValues;
+static NSMutableArray* grid;
 
 @implementation SmallTile
 
@@ -41,17 +42,28 @@ static NSDictionary* letterValues;
          @"Y": @3,
          @"Z": @10,
     };
+    
+    grid = [[NSMutableArray alloc] init];
+    for (int i = 0; i < 15; i++) {
+        NSMutableArray *row = [[NSMutableArray alloc] init];
+        for (int j = 0; j < 15; j++) {
+            [row addObject:[NSNull null]];
+        }
+        [grid addObject:row];
+    }
 }
 
 - (void)awakeFromNib
 {
     [super awakeFromNib];
     
-    NSString* randomLetter = [kLetters substringWithRange:[kLetters rangeOfComposedCharacterSequenceAtIndex:arc4random_uniform(kLetters.length)]];
+    NSString* randomLetter = [kLetters substringWithRange:
+                              [kLetters rangeOfComposedCharacterSequenceAtIndex:arc4random_uniform(kLetters.length)]];
     int letterValue = [letterValues[randomLetter] integerValue];
-    
     _letter.text = randomLetter;
     _value.text = [NSString stringWithFormat:@"%d", letterValue];
+    _col = -1;
+    _row = -1;
 }
 
 - (NSString*)description
@@ -74,7 +86,7 @@ static NSDictionary* letterValues;
 	return tile;
 }
 
-- (void)snapToGrid
+- (BOOL)addToGrid
 {
     _col = floorf((self.center.x - kBoardLeft) / kSmallTileWidth);
     _row = floorf((self.center.y - kBoardTop) / kSmallTileHeight);
@@ -85,16 +97,35 @@ static NSDictionary* letterValues;
         _col = 14;
     }
     
-    if (_row < 0.0) {
-        _row = 0.0;
-    } else if (_row > 14.0) {
-        _row = 14.0;
+    if (_row < 0) {
+        _row = 0;
+    } else if (_row > 14) {
+        _row = 14;
     }
     
+    if (grid[_col][_row] != [NSNull null])
+        return NO;
+    
+    grid[_col][_row] = self;
+
     CGFloat x = kBoardLeft + (.5 + _col) * kSmallTileWidth;
     CGFloat y = kBoardTop  + (.5 + _row) * kSmallTileHeight;
-        
     self.center = CGPointMake(x, y);
+    
+    return YES;
+}
+
+- (void)removeFromGrid
+{
+    if (_col >= 0 &&
+        _col <= 14 &&
+        _row >= 0 &&
+        _row <= 14) {
+        grid[_col][_row] = [NSNull null];
+    }
+    
+    _col = -1;
+    _row = -1;
 }
 
 @end
