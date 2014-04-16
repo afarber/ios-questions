@@ -236,9 +236,9 @@ static int const kNumTiles    = 7;
     if (tile.superview != _contentView)
         return;
     
-    tile.frame = [self.view convertRect:tile.frame fromView:_contentView];
     [tile removeFromSuperview];
-    [self.view addSubview:_draggedTile];
+    tile.frame = [self.view convertRect:tile.frame fromView:_contentView];
+    [self.view addSubview:tile];
 }
 
 @end
