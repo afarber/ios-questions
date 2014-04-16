@@ -6,6 +6,7 @@ int const kSmallTileHeight      = 45;
 static NSString* const kLetters = @"ABCDEFGHIJKLMNOPQRSTUWVXYZ";
 static NSDictionary* letterValues;
 static NSMutableArray* grid;
+static NSArray* spiral;
 
 @implementation SmallTile
 
@@ -42,6 +43,13 @@ static NSMutableArray* grid;
          @"Y": @3,
          @"Z": @10,
     };
+    
+    spiral = @[
+               @[@1, @0],
+               @[@0, @1],
+               @[@-1, @0],
+               @[@-1, @-1],
+    ];
     
     grid = [[NSMutableArray alloc] init];
     for (int i = 0; i < 15; i++) {
@@ -88,24 +96,27 @@ static NSMutableArray* grid;
 
 - (BOOL)addToGrid
 {
-    _col = floorf((self.center.x - kBoardLeft) / kSmallTileWidth);
-    _row = floorf((self.center.y - kBoardTop) / kSmallTileHeight);
+    NSInteger i = floorf((self.center.x - kBoardLeft) / kSmallTileWidth);
+    NSInteger j = floorf((self.center.y - kBoardTop) / kSmallTileHeight);
     
-    if (_col < 0) {
-        _col = 0;
-    } else if (_col > 14) {
-        _col = 14;
+    if (i < 0) {
+        i = 0;
+    } else if (i > 14) {
+        i = 14;
     }
     
-    if (_row < 0) {
-        _row = 0;
-    } else if (_row > 14) {
-        _row = 14;
+    if (j < 0) {
+        j = 0;
+    } else if (j > 14) {
+        j = 14;
     }
     
-    if (grid[_col][_row] != [NSNull null])
+    if (grid[i][j] != [NSNull null]) {
         return NO;
+    }
     
+    _col = i;
+    _row = j;
     grid[_col][_row] = self;
 
     CGFloat x = kBoardLeft + (.5 + _col) * kSmallTileWidth;

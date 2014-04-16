@@ -143,7 +143,7 @@ static int const kNumTiles    = 7;
     if (!_draggedTile)
         return;
     
-    NSLog(@"%s: %@", __PRETTY_FUNCTION__, _draggedTile);
+    //NSLog(@"%s: %@", __PRETTY_FUNCTION__, _draggedTile);
     [_draggedTile removeFromGrid];
     _draggedTile.alpha = 0;
     
@@ -159,7 +159,7 @@ static int const kNumTiles    = 7;
     if (!_draggedTile || !_bigTile)
         return;
     
-    NSLog(@"%s: %@", __PRETTY_FUNCTION__, _draggedTile);
+    //NSLog(@"%s: %@", __PRETTY_FUNCTION__, _draggedTile);
     
     UITouch* touch   = [touches anyObject];
     CGPoint point    = [touch locationInView:self.view];
