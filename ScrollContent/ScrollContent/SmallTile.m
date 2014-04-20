@@ -127,11 +127,29 @@ static NSArray* spiral;
             CGFloat y = kBoardTop  + (.5 + _row) * kSmallTileHeight;
             self.center = CGPointMake(x, y);
             
+            [self adaptTile];
+            
             return YES;
         }
     }
     
     return NO;
+}
+
+- (void)adaptTile
+{
+    if (_col - 1 < 0 || grid[_col - 1][_row] == [NSNull null]) {
+        _imgW.image = [UIImage imageNamed:@"8.png"];
+    } else {
+        _imgW.image = [UIImage imageNamed:@"0.png"];
+    }
+    
+    if (_col + 1 > 14 || grid[_col + 1][_row] == [NSNull null]) {
+        _imgW.image = [UIImage imageNamed:@"4.png"];
+    } else {
+        _imgW.image = [UIImage imageNamed:@"0.png"];
+    }
+
 }
 
 - (void)removeFromGrid

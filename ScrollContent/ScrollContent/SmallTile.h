@@ -16,6 +16,17 @@ typedef NS_OPTIONS(NSUInteger, Dir) {
 @interface SmallTile : UIView
 
 @property (weak, nonatomic) IBOutlet UIImageView *image;
+
+@property (weak, nonatomic) IBOutlet UIImageView *imgNW;
+@property (weak, nonatomic) IBOutlet UIImageView *imgN;
+@property (weak, nonatomic) IBOutlet UIImageView *imgNE;
+@property (weak, nonatomic) IBOutlet UIImageView *imgW;
+@property (weak, nonatomic) IBOutlet UIImageView *imgM;
+@property (weak, nonatomic) IBOutlet UIImageView *imgE;
+@property (weak, nonatomic) IBOutlet UIImageView *imgSW;
+@property (weak, nonatomic) IBOutlet UIImageView *imgS;
+@property (weak, nonatomic) IBOutlet UIImageView *imgSE;
+
 @property (weak, nonatomic) IBOutlet UILabel *letter;
 @property (weak, nonatomic) IBOutlet UILabel *value;
 
@@ -25,5 +36,6 @@ typedef NS_OPTIONS(NSUInteger, Dir) {
 - (BigTile*)cloneTile;
 - (BOOL)addToGrid;
 - (void)removeFromGrid;
+- (void)adaptTile;
 
 @end

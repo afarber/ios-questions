@@ -10,39 +10,39 @@
             <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1.png" id="jIS-XI-wf6" userLabel="Image View 1">
+                <imageView userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1.png" id="jIS-XI-wf6" userLabel="Image View NW">
                     <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2.png" id="pjq-RN-AVz" userLabel="Image View 2">
+                <imageView userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2.png" id="pjq-RN-AVz" userLabel="Image View N">
                     <rect key="frame" x="15" y="0.0" width="15" height="15"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3.png" id="sgh-i1-TkF" userLabel="Image View 3">
+                <imageView userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3.png" id="sgh-i1-TkF" userLabel="Image View NE">
                     <rect key="frame" x="30" y="0.0" width="15" height="15"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="8.png" id="7Ma-mx-A9g" userLabel="Image View 4">
+                <imageView userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="8.png" id="7Ma-mx-A9g" userLabel="Image View W">
                     <rect key="frame" x="0.0" y="15" width="15" height="15"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0.png" id="qcr-1m-v0y" userLabel="Image View 5">
+                <imageView userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0.png" id="qcr-1m-v0y" userLabel="Image View M">
                     <rect key="frame" x="15" y="15" width="15" height="15"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="4.png" id="EiX-1C-CLO" userLabel="Image View 6">
+                <imageView userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="4.png" id="EiX-1C-CLO" userLabel="Image View E">
                     <rect key="frame" x="30" y="15" width="15" height="15"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="7.png" id="7H1-k5-s1p" userLabel="Image View 7">
+                <imageView userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="7.png" id="7H1-k5-s1p" userLabel="Image View SW">
                     <rect key="frame" x="0.0" y="30" width="15" height="15"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="6.png" id="mCt-Le-Myz" userLabel="Image View 8">
+                <imageView userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="6.png" id="mCt-Le-Myz" userLabel="Image View S">
                     <rect key="frame" x="15" y="30" width="15" height="15"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="5.png" id="6gX-VT-JkX" userLabel="Image View 9">
+                <imageView userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="5.png" id="6gX-VT-JkX" userLabel="Image View SE">
                     <rect key="frame" x="30" y="30" width="15" height="15"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
@@ -64,6 +64,15 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="imgE" destination="EiX-1C-CLO" id="67E-1c-OvV"/>
+                <outlet property="imgM" destination="qcr-1m-v0y" id="7Kb-V3-XNi"/>
+                <outlet property="imgN" destination="pjq-RN-AVz" id="EHH-II-RCI"/>
+                <outlet property="imgNE" destination="sgh-i1-TkF" id="o2l-W2-39r"/>
+                <outlet property="imgNW" destination="jIS-XI-wf6" id="enp-rp-rWj"/>
+                <outlet property="imgS" destination="mCt-Le-Myz" id="v9B-cZ-5gD"/>
+                <outlet property="imgSE" destination="6gX-VT-JkX" id="ydK-Ts-KSC"/>
+                <outlet property="imgSW" destination="7H1-k5-s1p" id="n2S-9a-FJt"/>
+                <outlet property="imgW" destination="7Ma-mx-A9g" id="cFn-V2-bRx"/>
                 <outlet property="letter" destination="0pC-49-kuy" id="7FV-t3-hPY"/>
                 <outlet property="value" destination="Sbf-he-fLX" id="u83-kb-hXK"/>
             </connections>
