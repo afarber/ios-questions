@@ -156,32 +156,24 @@ static UIImage *IMG_SE;
     return NO;
 }
 
+- (BOOL)occupiedCol:(NSInteger)i Row:(NSInteger)j
+{
+    if (i < 0 ||
+        i > 14 ||
+        j < 0 ||
+        j > 14)
+        return YES;
+    
+    return grid[i][j] == [NSNull null];
+}
+
 - (void)adaptTile
 {
-    if (_col - 1 < 0 || grid[_col - 1][_row] == [NSNull null]) {
-        _imgW.image = IMG_W;
-    } else {
-        _imgW.image = IMG_M;
-    }
-    
-    if (_col + 1 > 14 || grid[_col + 1][_row] == [NSNull null]) {
-        _imgE.image = IMG_E;
-    } else {
-        _imgE.image = IMG_M;
-    }
+    _imgW.image = [self occupiedCol:_col - 1 Row:_row] ? IMG_W : IMG_M;
+    _imgE.image = [self occupiedCol:_col + 1 Row:_row] ? IMG_E : IMG_M;
 
-    if (_row - 1 < 0 || grid[_col][_row - 1] == [NSNull null]) {
-        _imgN.image = IMG_N;
-    } else {
-        _imgN.image = IMG_M;
-    }
-    
-    if (_row + 1 > 14 || grid[_col][_row + 1] == [NSNull null]) {
-        _imgS.image = IMG_S;
-    } else {
-        _imgS.image = IMG_M;
-    }
-    
+    _imgN.image = [self occupiedCol:_col Row:_row - 1] ? IMG_N : IMG_M;
+    _imgS.image = [self occupiedCol:_col Row:_row + 1] ? IMG_S : IMG_M;
 }
 
 - (void)removeFromGrid
