@@ -8,6 +8,16 @@ static NSDictionary* letterValues;
 static NSMutableArray* grid;
 static NSArray* spiral;
 
+static UIImage *IMG_NW;
+static UIImage *IMG_N;
+static UIImage *IMG_NE;
+static UIImage *IMG_W;
+static UIImage *IMG_M;
+static UIImage *IMG_E;
+static UIImage *IMG_SW;
+static UIImage *IMG_S;
+static UIImage *IMG_SE;
+
 @implementation SmallTile
 
 + (void)initialize
@@ -43,6 +53,16 @@ static NSArray* spiral;
          @"Y": @3,
          @"Z": @10,
     };
+    
+    IMG_NW = [UIImage imageNamed:@"0.png"];
+    IMG_N  = [UIImage imageNamed:@"2.png"];
+    IMG_NE = [UIImage imageNamed:@"0.png"];
+    IMG_W  = [UIImage imageNamed:@"8.png"];
+    IMG_M  = [UIImage imageNamed:@"0.png"];
+    IMG_E  = [UIImage imageNamed:@"4.png"];
+    IMG_SW = [UIImage imageNamed:@"0.png"];
+    IMG_S  = [UIImage imageNamed:@"6.png"];
+    IMG_SE = [UIImage imageNamed:@"0.png"];
     
     spiral = @[
                @[@0, @0],
@@ -139,17 +159,29 @@ static NSArray* spiral;
 - (void)adaptTile
 {
     if (_col - 1 < 0 || grid[_col - 1][_row] == [NSNull null]) {
-        _imgW.image = [UIImage imageNamed:@"8.png"];
+        _imgW.image = IMG_W;
     } else {
-        _imgW.image = [UIImage imageNamed:@"0.png"];
+        _imgW.image = IMG_M;
     }
     
     if (_col + 1 > 14 || grid[_col + 1][_row] == [NSNull null]) {
-        _imgW.image = [UIImage imageNamed:@"4.png"];
+        _imgE.image = IMG_E;
     } else {
-        _imgW.image = [UIImage imageNamed:@"0.png"];
+        _imgE.image = IMG_M;
     }
 
+    if (_row - 1 < 0 || grid[_col][_row - 1] == [NSNull null]) {
+        _imgN.image = IMG_N;
+    } else {
+        _imgN.image = IMG_M;
+    }
+    
+    if (_row + 1 > 14 || grid[_col][_row + 1] == [NSNull null]) {
+        _imgS.image = IMG_S;
+    } else {
+        _imgS.image = IMG_M;
+    }
+    
 }
 
 - (void)removeFromGrid
