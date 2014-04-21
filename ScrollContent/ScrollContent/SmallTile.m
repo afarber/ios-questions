@@ -244,13 +244,13 @@ static UIImage *IMG_SW23;
                ![self occupiedCol:_col + 1 Row:_row - 1] &&
                [self occupiedCol:_col Row:_row - 1]) {
         _imgNE.image = IMG_NE13;
-    } else if ([self occupiedCol:_col + 1 Row:_row] &&
-               [self occupiedCol:_col + 1 Row:_row - 1] &&
-               ![self occupiedCol:_col Row:_row - 1]) {
-        _imgNE.image = IMG_NE12;
     } else if (![self occupiedCol:_col + 1 Row:_row] &&
                [self occupiedCol:_col + 1 Row:_row - 1] &&
                [self occupiedCol:_col Row:_row - 1]) {
+        _imgNE.image = IMG_NE12;
+    } else if ([self occupiedCol:_col + 1 Row:_row] &&
+               [self occupiedCol:_col + 1 Row:_row - 1] &&
+               ![self occupiedCol:_col Row:_row - 1]) {
         _imgNE.image = IMG_NE23;
     } else {
         _imgNE.image = IMG_NE;
@@ -272,13 +272,13 @@ static UIImage *IMG_SW23;
                ![self occupiedCol:_col - 1 Row:_row + 1] &&
                [self occupiedCol:_col Row:_row + 1]) {
         _imgSW.image = IMG_SW13;
-    } else if ([self occupiedCol:_col - 1 Row:_row] &&
-               [self occupiedCol:_col - 1 Row:_row + 1] &&
-               ![self occupiedCol:_col Row:_row + 1]) {
-        _imgSW.image = IMG_SW12;
     } else if (![self occupiedCol:_col - 1 Row:_row] &&
                [self occupiedCol:_col - 1 Row:_row + 1] &&
                [self occupiedCol:_col Row:_row + 1]) {
+        _imgSW.image = IMG_SW12;
+    } else if ([self occupiedCol:_col - 1 Row:_row] &&
+               [self occupiedCol:_col - 1 Row:_row + 1] &&
+               ![self occupiedCol:_col Row:_row + 1]) {
         _imgSW.image = IMG_SW23;
     } else {
         _imgSW.image = IMG_SW;
