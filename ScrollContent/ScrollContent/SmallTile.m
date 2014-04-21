@@ -54,15 +54,15 @@ static UIImage *IMG_SE;
          @"Z": @10,
     };
     
-    IMG_NW = [UIImage imageNamed:@"1.png"];
-    IMG_N  = [UIImage imageNamed:@"2.png"];
-    IMG_NE = [UIImage imageNamed:@"3.png"];
-    IMG_W  = [UIImage imageNamed:@"8.png"];
-    IMG_M  = [UIImage imageNamed:@"0.png"];
-    IMG_E  = [UIImage imageNamed:@"4.png"];
-    IMG_SW = [UIImage imageNamed:@"7.png"];
-    IMG_S  = [UIImage imageNamed:@"6.png"];
-    IMG_SE = [UIImage imageNamed:@"5.png"];
+    IMG_NW = [UIImage imageNamed:@"nw.png"];
+    IMG_N  = [UIImage imageNamed:@"n.png"];
+    IMG_NE = [UIImage imageNamed:@"ne.png"];
+    IMG_W  = [UIImage imageNamed:@"w.png"];
+    IMG_M  = [UIImage imageNamed:@"m.png"];
+    IMG_E  = [UIImage imageNamed:@"e.png"];
+    IMG_SW = [UIImage imageNamed:@"sw.png"];
+    IMG_S  = [UIImage imageNamed:@"s.png"];
+    IMG_SE = [UIImage imageNamed:@"se.png"];
     
     spiral = @[
                @[@0, @0],
