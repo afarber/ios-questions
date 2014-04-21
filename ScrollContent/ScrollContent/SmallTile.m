@@ -18,6 +18,19 @@ static UIImage *IMG_SW;
 static UIImage *IMG_S;
 static UIImage *IMG_SE;
 
+static UIImage *IMG_NE12;
+static UIImage *IMG_NE13;
+static UIImage *IMG_NE23;
+static UIImage *IMG_NW12;
+static UIImage *IMG_NW13;
+static UIImage *IMG_NW23;
+static UIImage *IMG_SE12;
+static UIImage *IMG_SE13;
+static UIImage *IMG_SE23;
+static UIImage *IMG_SW12;
+static UIImage *IMG_SW13;
+static UIImage *IMG_SW23;
+
 @implementation SmallTile
 
 + (void)initialize
@@ -63,6 +76,19 @@ static UIImage *IMG_SE;
     IMG_SW = [UIImage imageNamed:@"sw.png"];
     IMG_S  = [UIImage imageNamed:@"s.png"];
     IMG_SE = [UIImage imageNamed:@"se.png"];
+    
+    IMG_NE12 = [UIImage imageNamed:@"ne12.png"];
+    IMG_NE13 = [UIImage imageNamed:@"ne13.png"];
+    IMG_NE23 = [UIImage imageNamed:@"ne23.png"];
+    IMG_NW12 = [UIImage imageNamed:@"nw12.png"];
+    IMG_NW13 = [UIImage imageNamed:@"nw13.png"];
+    IMG_NW23 = [UIImage imageNamed:@"nw23.png"];
+    IMG_SE12 = [UIImage imageNamed:@"se12.png"];
+    IMG_SE13 = [UIImage imageNamed:@"se13.png"];
+    IMG_SE23 = [UIImage imageNamed:@"se23.png"];
+    IMG_SW12 = [UIImage imageNamed:@"sw12.png"];
+    IMG_SW13 = [UIImage imageNamed:@"sw13.png"];
+    IMG_SW23 = [UIImage imageNamed:@"sw23.png"];
     
     spiral = @[
                @[@0, @0],
@@ -186,6 +212,18 @@ static UIImage *IMG_SE;
                ![self occupiedCol:_col - 1 Row:_row - 1] &&
                ![self occupiedCol:_col Row:_row - 1]) {
         _imgNW.image = IMG_N;
+    } else if ([self occupiedCol:_col - 1 Row:_row] &&
+               ![self occupiedCol:_col - 1 Row:_row - 1] &&
+               [self occupiedCol:_col Row:_row - 1]) {
+        _imgNW.image = IMG_NW13;
+    } else if ([self occupiedCol:_col - 1 Row:_row] &&
+               [self occupiedCol:_col - 1 Row:_row - 1] &&
+               ![self occupiedCol:_col Row:_row - 1]) {
+        _imgNW.image = IMG_NW12;
+    } else if (![self occupiedCol:_col - 1 Row:_row] &&
+               [self occupiedCol:_col - 1 Row:_row - 1] &&
+               [self occupiedCol:_col Row:_row - 1]) {
+        _imgNW.image = IMG_NW23;
     } else {
         _imgNW.image = IMG_NW;
     }
@@ -202,6 +240,18 @@ static UIImage *IMG_SE;
                ![self occupiedCol:_col + 1 Row:_row - 1] &&
                ![self occupiedCol:_col Row:_row - 1]) {
         _imgNE.image = IMG_N;
+    } else if ([self occupiedCol:_col + 1 Row:_row] &&
+               ![self occupiedCol:_col + 1 Row:_row - 1] &&
+               [self occupiedCol:_col Row:_row - 1]) {
+        _imgNE.image = IMG_NE13;
+    } else if ([self occupiedCol:_col + 1 Row:_row] &&
+               [self occupiedCol:_col + 1 Row:_row - 1] &&
+               ![self occupiedCol:_col Row:_row - 1]) {
+        _imgNE.image = IMG_NE12;
+    } else if (![self occupiedCol:_col + 1 Row:_row] &&
+               [self occupiedCol:_col + 1 Row:_row - 1] &&
+               [self occupiedCol:_col Row:_row - 1]) {
+        _imgNE.image = IMG_NE23;
     } else {
         _imgNE.image = IMG_NE;
     }
@@ -218,6 +268,18 @@ static UIImage *IMG_SE;
                ![self occupiedCol:_col - 1 Row:_row + 1] &&
                ![self occupiedCol:_col Row:_row + 1]) {
         _imgSW.image = IMG_S;
+    } else if ([self occupiedCol:_col - 1 Row:_row] &&
+               ![self occupiedCol:_col - 1 Row:_row + 1] &&
+               [self occupiedCol:_col Row:_row + 1]) {
+        _imgSW.image = IMG_SW13;
+    } else if ([self occupiedCol:_col - 1 Row:_row] &&
+               [self occupiedCol:_col - 1 Row:_row + 1] &&
+               ![self occupiedCol:_col Row:_row + 1]) {
+        _imgSW.image = IMG_SW12;
+    } else if (![self occupiedCol:_col - 1 Row:_row] &&
+               [self occupiedCol:_col - 1 Row:_row + 1] &&
+               [self occupiedCol:_col Row:_row + 1]) {
+        _imgSW.image = IMG_SW23;
     } else {
         _imgSW.image = IMG_SW;
     }
@@ -234,6 +296,18 @@ static UIImage *IMG_SE;
                ![self occupiedCol:_col + 1 Row:_row + 1] &&
                ![self occupiedCol:_col Row:_row + 1]) {
         _imgSE.image = IMG_S;
+    } else if ([self occupiedCol:_col + 1 Row:_row] &&
+               ![self occupiedCol:_col + 1 Row:_row + 1] &&
+               [self occupiedCol:_col Row:_row + 1]) {
+        _imgSE.image = IMG_SE13;
+    } else if ([self occupiedCol:_col + 1 Row:_row] &&
+               [self occupiedCol:_col + 1 Row:_row + 1] &&
+               ![self occupiedCol:_col Row:_row + 1]) {
+        _imgSE.image = IMG_SE12;
+    } else if (![self occupiedCol:_col + 1 Row:_row] &&
+               [self occupiedCol:_col + 1 Row:_row + 1] &&
+               [self occupiedCol:_col Row:_row + 1]) {
+        _imgSE.image = IMG_SE23;
     } else {
         _imgSE.image = IMG_SE;
     }
