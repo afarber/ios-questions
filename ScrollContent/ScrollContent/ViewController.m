@@ -239,6 +239,9 @@ static int const kNumTiles    = 7;
     [tile removeFromSuperview];
     tile.frame = [self.view convertRect:tile.frame fromView:_contentView];
     [self.view addSubview:tile];
+    
+    [tile removeFromGrid];
+    [tile adaptTile];
 }
 
 @end

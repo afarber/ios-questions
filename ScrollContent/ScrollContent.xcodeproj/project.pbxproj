@@ -223,7 +223,6 @@
 		84BFFDC018D1E30B00E09540 /* ScrollContent */ = {
 			isa = PBXGroup;
 			children = (
-				84FCB9D7190317BC0035D88C /* images */,
 				84BFFDC918D1E30B00E09540 /* AppDelegate.h */,
 				84BFFDCA18D1E30B00E09540 /* AppDelegate.m */,
 				74FFC7EF18D612E00009D834 /* GameBoard.h */,
@@ -244,6 +243,7 @@
 				84A2108618EC31180075D931 /* GameBoard.svg */,
 				84A2108718EC31180075D931 /* GameBoard@2x.png */,
 				84BFFDCC18D1E30B00E09540 /* Main.storyboard */,
+				84FCB9D7190317BC0035D88C /* images */,
 				84BFFDD218D1E30B00E09540 /* Images.xcassets */,
 				84BFFDC118D1E30B00E09540 /* Supporting Files */,
 			);

@@ -195,6 +195,34 @@ static UIImage *IMG_SW23;
 
 - (void)adaptTile
 {
+    if (_col == -1 || _row == -1) {
+        _image.hidden = NO;
+        
+        _imgNW.hidden = YES;
+        _imgN.hidden  = YES;
+        _imgNE.hidden = YES;
+        _imgW.hidden  = YES;
+        _imgM.hidden  = YES;
+        _imgE.hidden  = YES;
+        _imgSW.hidden = YES;
+        _imgS.hidden  = YES;
+        _imgSE.hidden = YES;
+        
+        return;
+    }
+    
+    _image.hidden = YES;
+    
+    _imgNW.hidden = NO;
+    _imgN.hidden  = NO;
+    _imgNE.hidden = NO;
+    _imgW.hidden  = NO;
+    _imgM.hidden  = NO;
+    _imgE.hidden  = NO;
+    _imgSW.hidden = NO;
+    _imgS.hidden  = NO;
+    _imgSE.hidden = NO;
+    
     _imgW.image = [self occupiedCol:_col - 1 Row:_row] ? IMG_M : IMG_W;
     _imgE.image = [self occupiedCol:_col + 1 Row:_row] ? IMG_M : IMG_E;
     _imgN.image = [self occupiedCol:_col Row:_row - 1] ? IMG_M : IMG_N;
