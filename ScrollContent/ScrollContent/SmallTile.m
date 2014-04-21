@@ -54,15 +54,15 @@ static UIImage *IMG_SE;
          @"Z": @10,
     };
     
-    IMG_NW = [UIImage imageNamed:@"0.png"];
+    IMG_NW = [UIImage imageNamed:@"1.png"];
     IMG_N  = [UIImage imageNamed:@"2.png"];
-    IMG_NE = [UIImage imageNamed:@"0.png"];
+    IMG_NE = [UIImage imageNamed:@"3.png"];
     IMG_W  = [UIImage imageNamed:@"8.png"];
     IMG_M  = [UIImage imageNamed:@"0.png"];
     IMG_E  = [UIImage imageNamed:@"4.png"];
-    IMG_SW = [UIImage imageNamed:@"0.png"];
+    IMG_SW = [UIImage imageNamed:@"7.png"];
     IMG_S  = [UIImage imageNamed:@"6.png"];
-    IMG_SE = [UIImage imageNamed:@"0.png"];
+    IMG_SE = [UIImage imageNamed:@"5.png"];
     
     spiral = @[
                @[@0, @0],
@@ -162,18 +162,81 @@ static UIImage *IMG_SE;
         i > 14 ||
         j < 0 ||
         j > 14)
-        return YES;
+        return NO;
     
-    return grid[i][j] == [NSNull null];
+    return grid[i][j] != [NSNull null];
 }
 
 - (void)adaptTile
 {
-    _imgW.image = [self occupiedCol:_col - 1 Row:_row] ? IMG_W : IMG_M;
-    _imgE.image = [self occupiedCol:_col + 1 Row:_row] ? IMG_E : IMG_M;
-
-    _imgN.image = [self occupiedCol:_col Row:_row - 1] ? IMG_N : IMG_M;
-    _imgS.image = [self occupiedCol:_col Row:_row + 1] ? IMG_S : IMG_M;
+    _imgW.image = [self occupiedCol:_col - 1 Row:_row] ? IMG_M : IMG_W;
+    _imgE.image = [self occupiedCol:_col + 1 Row:_row] ? IMG_M : IMG_E;
+    _imgN.image = [self occupiedCol:_col Row:_row - 1] ? IMG_M : IMG_N;
+    _imgS.image = [self occupiedCol:_col Row:_row + 1] ? IMG_M : IMG_S;
+    
+    if ([self occupiedCol:_col - 1 Row:_row] &&
+        [self occupiedCol:_col - 1 Row:_row - 1] &&
+        [self occupiedCol:_col Row:_row - 1]) {
+        _imgNW.image = IMG_M;
+    } else if (![self occupiedCol:_col - 1 Row:_row] &&
+               ![self occupiedCol:_col - 1 Row:_row - 1] &&
+               [self occupiedCol:_col Row:_row - 1]) {
+        _imgNW.image = IMG_W;
+    } else if ([self occupiedCol:_col - 1 Row:_row] &&
+               ![self occupiedCol:_col - 1 Row:_row - 1] &&
+               ![self occupiedCol:_col Row:_row - 1]) {
+        _imgNW.image = IMG_N;
+    } else {
+        _imgNW.image = IMG_NW;
+    }
+    
+    if ([self occupiedCol:_col + 1 Row:_row] &&
+        [self occupiedCol:_col + 1 Row:_row - 1] &&
+        [self occupiedCol:_col Row:_row - 1]) {
+        _imgNE.image = IMG_M;
+    } else if (![self occupiedCol:_col + 1 Row:_row] &&
+               ![self occupiedCol:_col + 1 Row:_row - 1] &&
+               [self occupiedCol:_col Row:_row - 1]) {
+        _imgNE.image = IMG_E;
+    } else if ([self occupiedCol:_col + 1 Row:_row] &&
+               ![self occupiedCol:_col + 1 Row:_row - 1] &&
+               ![self occupiedCol:_col Row:_row - 1]) {
+        _imgNE.image = IMG_N;
+    } else {
+        _imgNE.image = IMG_NE;
+    }
+    
+    if ([self occupiedCol:_col - 1 Row:_row] &&
+        [self occupiedCol:_col - 1 Row:_row + 1] &&
+        [self occupiedCol:_col Row:_row + 1]) {
+        _imgSW.image = IMG_M;
+    } else if (![self occupiedCol:_col - 1 Row:_row] &&
+               ![self occupiedCol:_col - 1 Row:_row + 1] &&
+               [self occupiedCol:_col Row:_row + 1]) {
+        _imgSW.image = IMG_W;
+    } else if ([self occupiedCol:_col - 1 Row:_row] &&
+               ![self occupiedCol:_col - 1 Row:_row + 1] &&
+               ![self occupiedCol:_col Row:_row + 1]) {
+        _imgSW.image = IMG_S;
+    } else {
+        _imgSW.image = IMG_SW;
+    }
+    
+    if ([self occupiedCol:_col + 1 Row:_row] &&
+        [self occupiedCol:_col + 1 Row:_row + 1] &&
+        [self occupiedCol:_col Row:_row + 1]) {
+        _imgSE.image = IMG_M;
+    } else if (![self occupiedCol:_col + 1 Row:_row] &&
+               ![self occupiedCol:_col + 1 Row:_row + 1] &&
+               [self occupiedCol:_col Row:_row + 1]) {
+        _imgSE.image = IMG_E;
+    } else if ([self occupiedCol:_col + 1 Row:_row] &&
+               ![self occupiedCol:_col + 1 Row:_row + 1] &&
+               ![self occupiedCol:_col Row:_row + 1]) {
+        _imgSE.image = IMG_S;
+    } else {
+        _imgSE.image = IMG_SE;
+    }
 }
 
 - (void)removeFromGrid
