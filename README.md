@@ -57,6 +57,10 @@ Screenshots
 
 ![screenshot](https://raw.github.com/afarber/ios-newbie/master/MyGames/screenshot.png)
 
+[MyPhone](https://github.com/afarber/ios-newbie/tree/master/MyPhone):
+
+![screenshot](https://raw.github.com/afarber/ios-newbie/master/MyPhone/screenshot.png)
+
 [MyWeb](https://github.com/afarber/ios-newbie/tree/master/MyWeb):
 
 ![screenshot](https://raw.github.com/afarber/ios-newbie/master/MyWeb/screenshot.png)
