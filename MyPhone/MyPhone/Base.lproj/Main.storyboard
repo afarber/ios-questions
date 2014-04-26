@@ -16,13 +16,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="5Bz-f7-RTl">
-                                <rect key="frame" x="20" y="40" width="280" height="396"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="5Bz-f7-RTl" customClass="NZCircularImageView">
+                                <rect key="frame" x="20" y="40" width="280" height="280"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="KH1-dl-IxN"/>
+                                    <constraint firstAttribute="height" constant="280" id="Ytj-kA-J6D"/>
+                                </constraints>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="firstName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0j-DA-jMH" userLabel="Label - Name">
-                                <rect key="frame" x="20" y="456" width="280" height="21"/>
+                                <rect key="frame" x="20" y="436" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -30,7 +34,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="city" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4d9-xY-Y9A" userLabel="Label - City">
-                                <rect key="frame" x="20" y="487" width="280" height="21"/>
+                                <rect key="frame" x="20" y="477" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -53,12 +57,11 @@
                             <constraint firstItem="a0j-DA-jMH" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="6zr-Io-Wwh"/>
                             <constraint firstItem="eGD-O3-tNa" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="Kob-Kp-3jr"/>
                             <constraint firstAttribute="trailing" secondItem="eGD-O3-tNa" secondAttribute="trailing" constant="20" id="Nby-UL-Qm8"/>
-                            <constraint firstItem="4d9-xY-Y9A" firstAttribute="top" secondItem="a0j-DA-jMH" secondAttribute="bottom" constant="10" id="P3U-xE-nOF"/>
+                            <constraint firstItem="4d9-xY-Y9A" firstAttribute="top" secondItem="a0j-DA-jMH" secondAttribute="bottom" constant="20" id="P3U-xE-nOF"/>
                             <constraint firstItem="4d9-xY-Y9A" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="PiF-Ce-w6f"/>
-                            <constraint firstItem="eGD-O3-tNa" firstAttribute="top" secondItem="4d9-xY-Y9A" secondAttribute="bottom" constant="10" id="Pri-Le-czI"/>
+                            <constraint firstItem="eGD-O3-tNa" firstAttribute="top" secondItem="4d9-xY-Y9A" secondAttribute="bottom" constant="20" id="Pri-Le-czI"/>
                             <constraint firstAttribute="trailing" secondItem="a0j-DA-jMH" secondAttribute="trailing" constant="20" id="STw-QO-VAy"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="eGD-O3-tNa" secondAttribute="bottom" constant="20" id="ayl-cr-kD1"/>
-                            <constraint firstItem="a0j-DA-jMH" firstAttribute="top" secondItem="5Bz-f7-RTl" secondAttribute="bottom" constant="20" id="dUV-zI-uuE"/>
                             <constraint firstAttribute="trailing" secondItem="4d9-xY-Y9A" secondAttribute="trailing" constant="20" id="uQX-9a-Fut"/>
                             <constraint firstItem="5Bz-f7-RTl" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="zq7-bS-E0Z"/>
                         </constraints>
