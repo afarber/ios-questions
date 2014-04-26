@@ -17,12 +17,12 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="5Bz-f7-RTl" customClass="NZCircularImageView">
-                                <rect key="frame" x="20" y="40" width="280" height="280"/>
+                                <rect key="frame" x="35" y="40" width="250" height="250"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="280" id="KH1-dl-IxN"/>
-                                    <constraint firstAttribute="height" constant="280" id="Ytj-kA-J6D"/>
+                                    <constraint firstAttribute="width" constant="250" id="KH1-dl-IxN"/>
+                                    <constraint firstAttribute="height" constant="250" id="Ytj-kA-J6D"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="firstName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0j-DA-jMH" userLabel="Label - Name">
@@ -52,7 +52,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="5Bz-f7-RTl" secondAttribute="trailing" constant="20" id="0MH-QF-Giy"/>
                             <constraint firstItem="5Bz-f7-RTl" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="20" id="68O-Wr-vUS"/>
                             <constraint firstItem="a0j-DA-jMH" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="6zr-Io-Wwh"/>
                             <constraint firstItem="eGD-O3-tNa" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="Kob-Kp-3jr"/>
@@ -62,8 +61,8 @@
                             <constraint firstItem="eGD-O3-tNa" firstAttribute="top" secondItem="4d9-xY-Y9A" secondAttribute="bottom" constant="20" id="Pri-Le-czI"/>
                             <constraint firstAttribute="trailing" secondItem="a0j-DA-jMH" secondAttribute="trailing" constant="20" id="STw-QO-VAy"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="eGD-O3-tNa" secondAttribute="bottom" constant="20" id="ayl-cr-kD1"/>
+                            <constraint firstAttribute="centerX" secondItem="5Bz-f7-RTl" secondAttribute="centerX" id="q3n-fp-4m2"/>
                             <constraint firstAttribute="trailing" secondItem="4d9-xY-Y9A" secondAttribute="trailing" constant="20" id="uQX-9a-Fut"/>
-                            <constraint firstItem="5Bz-f7-RTl" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="zq7-bS-E0Z"/>
                         </constraints>
                     </view>
                     <connections>
