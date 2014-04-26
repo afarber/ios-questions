@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,13 +17,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="5Bz-f7-RTl" customClass="NZCircularImageView">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Bz-f7-RTl" customClass="NZCircularImageView">
                                 <rect key="frame" x="35" y="40" width="250" height="250"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="KH1-dl-IxN"/>
-                                    <constraint firstAttribute="height" constant="250" id="Ytj-kA-J6D"/>
+                                    <constraint firstAttribute="width" secondItem="5Bz-f7-RTl" secondAttribute="height" multiplier="1:1" id="eEz-XZ-efV"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="firstName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0j-DA-jMH" userLabel="Label - Name">
@@ -54,6 +54,7 @@
                         <constraints>
                             <constraint firstItem="5Bz-f7-RTl" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="20" id="68O-Wr-vUS"/>
                             <constraint firstItem="a0j-DA-jMH" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="6zr-Io-Wwh"/>
+                            <constraint firstItem="a0j-DA-jMH" firstAttribute="top" secondItem="5Bz-f7-RTl" secondAttribute="bottom" constant="20" id="AhV-Oh-pTI"/>
                             <constraint firstItem="eGD-O3-tNa" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="Kob-Kp-3jr"/>
                             <constraint firstAttribute="trailing" secondItem="eGD-O3-tNa" secondAttribute="trailing" constant="20" id="Nby-UL-Qm8"/>
                             <constraint firstItem="4d9-xY-Y9A" firstAttribute="top" secondItem="a0j-DA-jMH" secondAttribute="bottom" constant="20" id="P3U-xE-nOF"/>
