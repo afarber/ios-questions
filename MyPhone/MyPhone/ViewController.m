@@ -18,4 +18,13 @@ static NSString* const kAvatar = @"https://lh6.googleusercontent.com/-6Uce9r3S9D
                placeholderImage:[UIImage imageNamed:@"Male.png"]];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+/*
+    [_imageView setImageWithURL:[NSURL URLWithString:kAvatar]
+               placeholderImage:[UIImage imageNamed:@"Male.png"]];
+ */
+}
+
 @end
