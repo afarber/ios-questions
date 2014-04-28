@@ -1,7 +1,8 @@
 #import "ViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
-static NSString* const kMaps = @"https://maps.google.com/?q=%@";
+static NSString* const kAppleMaps = @"https://maps.apple.com/?q=%@";
+static NSString* const kGoogleMaps = @"comgooglemaps-x-callback://?q=%@&x-success=myphone://?resume=true&x-source=MyPhone";
 static NSString* const kAvatar = @"https://lh6.googleusercontent.com/-6Uce9r3S9D8/AAAAAAAAAAI/AAAAAAAAC5I/ZZo0yzCajig/photo.jpg";
 
 @implementation ViewController
@@ -22,8 +23,11 @@ static NSString* const kAvatar = @"https://lh6.googleusercontent.com/-6Uce9r3S9D
 
 - (IBAction)cityPressed:(id)sender
 {
-    NSString* str = [NSString stringWithFormat:kMaps, [self urlencode:_cityBtn.currentTitle]];
-    NSLog(@"%s: url=%@", __PRETTY_FUNCTION__, str);
+    NSURL* testURL = [NSURL URLWithString:@"comgooglemaps-x-callback://"];
+    NSString* fmt = ([[UIApplication sharedApplication] canOpenURL:testURL] ? kGoogleMaps : kAppleMaps);
+    NSString* city = [self urlencode:_cityBtn.currentTitle];
+    NSString* str = [NSString stringWithFormat:fmt, city];
+    NSLog(@"%s: city=%@ str=%@", __PRETTY_FUNCTION__, city, str);
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
 }
 
