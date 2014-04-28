@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="OyV-TI-Np7">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="5Bz-f7-RTl" customClass="NZCircularImageView">
-                                <rect key="frame" x="60" y="40" width="200" height="200"/>
+                                <rect key="frame" x="60" y="84" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <gestureRecognizers/>
@@ -76,6 +76,7 @@
                             <constraint firstItem="RGP-1q-ZU8" firstAttribute="top" secondItem="a0j-DA-jMH" secondAttribute="bottom" constant="20" id="ru6-jf-5Fi"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="oe4-Np-NpF"/>
                     <connections>
                         <outlet property="cityBtn" destination="RGP-1q-ZU8" id="m2h-HP-pGx"/>
                         <outlet property="firstName" destination="a0j-DA-jMH" id="5el-dy-eUl"/>
@@ -91,6 +92,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
+            <point key="canvasLocation" x="735" y="110"/>
         </scene>
         <!--View Controller - Zoom-->
         <scene sceneID="vPz-3t-yS0">
@@ -121,7 +123,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="brS-uF-hSW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="659" y="110"/>
+            <point key="canvasLocation" x="1185" y="110"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="B9o-pY-pIM">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OyV-TI-Np7" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="24A-Xl-jBo">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="CzX-S6-JSb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9wN-6q-ruM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="279" y="110"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
