@@ -78,9 +78,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="oe4-Np-NpF"/>
                     <connections>
+                        <outlet property="avatar" destination="5Bz-f7-RTl" id="5be-TK-O2Z"/>
                         <outlet property="cityBtn" destination="RGP-1q-ZU8" id="m2h-HP-pGx"/>
                         <outlet property="firstName" destination="a0j-DA-jMH" id="5el-dy-eUl"/>
-                        <outlet property="imageView" destination="5Bz-f7-RTl" id="vUE-OH-YbW"/>
                         <outlet property="playBtn" destination="eGD-O3-tNa" id="PTj-Il-0Vu"/>
                         <segue destination="jv8-mO-H93" kind="push" identifier="pushZoom" id="602-jE-p5d"/>
                     </connections>

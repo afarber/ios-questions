@@ -17,7 +17,7 @@ static NSString* const kAvatar = @"https://lh6.googleusercontent.com/-6Uce9r3S9D
     
     [_cityBtn setTitle:@"Bochum" forState:UIControlStateNormal];
     
-    [_imageView setImageWithURL:[NSURL URLWithString:kAvatar]
+    [_avatar setImageWithURL:[NSURL URLWithString:kAvatar]
                placeholderImage:[UIImage imageNamed:@"Male.png"]];
 }
 
@@ -31,7 +31,7 @@ static NSString* const kAvatar = @"https://lh6.googleusercontent.com/-6Uce9r3S9D
     NSString* fmt = ([[UIApplication sharedApplication] canOpenURL:testURL] ? kGoogleMaps : kAppleMaps);
     NSString* city = [self urlencode:_cityBtn.currentTitle];
     NSString* str = [NSString stringWithFormat:fmt, city];
-    NSLog(@"%s: city=%@ str=%@", __PRETTY_FUNCTION__, city, str);
+    NSLog(@"%s: str=%@", __PRETTY_FUNCTION__, str);
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
 }
 
