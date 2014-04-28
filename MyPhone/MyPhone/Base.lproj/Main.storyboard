@@ -97,7 +97,7 @@
         <!--View Controller - Zoom-->
         <scene sceneID="vPz-3t-yS0">
             <objects>
-                <viewController id="jv8-mO-H93" userLabel="View Controller - Zoom" sceneMemberID="viewController">
+                <viewController id="jv8-mO-H93" userLabel="View Controller - Zoom" customClass="ZoomViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZBo-xN-YVk"/>
                         <viewControllerLayoutGuide type="bottom" id="9j0-ko-Xhg"/>
@@ -106,7 +106,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nlL-hN-oZt">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nlL-hN-oZt" customClass="NZCircularImageView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
@@ -120,6 +120,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KEs-H4-bjJ"/>
+                    <connections>
+                        <outlet property="avatar" destination="nlL-hN-oZt" id="E0j-Iq-f0t"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="brS-uF-hSW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

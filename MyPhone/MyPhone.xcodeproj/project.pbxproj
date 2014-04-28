@@ -23,6 +23,7 @@
 		84323E3D190AE03500D6CCAC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84323E3B190AE03500D6CCAC /* InfoPlist.strings */; };
 		84323E3F190AE03500D6CCAC /* MyPhoneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84323E3E190AE03500D6CCAC /* MyPhoneTests.m */; };
 		84323E49190AE97600D6CCAC /* Male.png in Resources */ = {isa = PBXBuildFile; fileRef = 84323E48190AE97600D6CCAC /* Male.png */; };
+		849A61F6190EDB26003A3497 /* ZoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849A61F5190EDB26003A3497 /* ZoomViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,8 @@
 		84323E3C190AE03500D6CCAC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		84323E3E190AE03500D6CCAC /* MyPhoneTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyPhoneTests.m; sourceTree = "<group>"; };
 		84323E48190AE97600D6CCAC /* Male.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Male.png; sourceTree = "<group>"; };
+		849A61F4190EDB26003A3497 /* ZoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomViewController.h; sourceTree = "<group>"; };
+		849A61F5190EDB26003A3497 /* ZoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoomViewController.m; sourceTree = "<group>"; };
 		B959CA016DAC4BF8A50B57A0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -125,6 +128,8 @@
 				84323E25190AE03500D6CCAC /* Main.storyboard */,
 				84323E28190AE03500D6CCAC /* ViewController.h */,
 				84323E29190AE03500D6CCAC /* ViewController.m */,
+				849A61F4190EDB26003A3497 /* ZoomViewController.h */,
+				849A61F5190EDB26003A3497 /* ZoomViewController.m */,
 				84323E48190AE97600D6CCAC /* Male.png */,
 				84323E2B190AE03500D6CCAC /* Images.xcassets */,
 				84323E1A190AE03400D6CCAC /* Supporting Files */,
@@ -297,6 +302,7 @@
 				84323E2A190AE03500D6CCAC /* ViewController.m in Sources */,
 				84323E24190AE03500D6CCAC /* AppDelegate.m in Sources */,
 				84323E20190AE03500D6CCAC /* main.m in Sources */,
+				849A61F6190EDB26003A3497 /* ZoomViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
