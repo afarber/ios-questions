@@ -5,10 +5,10 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--View Controller - Profile-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" userLabel="View Controller - Profile" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -17,14 +17,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="5Bz-f7-RTl" customClass="NZCircularImageView">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="5Bz-f7-RTl" customClass="NZCircularImageView">
                                 <rect key="frame" x="60" y="40" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="5Bz-f7-RTl" secondAttribute="height" multiplier="1:1" id="eEz-XZ-efV"/>
                                     <constraint firstAttribute="width" constant="200" placeholder="YES" id="yCH-Jb-JiG"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="HRw-nh-Gg1" appends="YES" id="j4D-c1-cRZ"/>
+                                </connections>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="firstName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0j-DA-jMH" userLabel="Label - Name">
                                 <rect key="frame" x="20" y="427" width="280" height="21"/>
@@ -77,10 +81,47 @@
                         <outlet property="firstName" destination="a0j-DA-jMH" id="5el-dy-eUl"/>
                         <outlet property="imageView" destination="5Bz-f7-RTl" id="vUE-OH-YbW"/>
                         <outlet property="playBtn" destination="eGD-O3-tNa" id="PTj-Il-0Vu"/>
+                        <segue destination="jv8-mO-H93" kind="push" identifier="pushZoom" id="602-jE-p5d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="HRw-nh-Gg1">
+                    <connections>
+                        <action selector="avatarTapped:" destination="vXZ-lx-hvc" id="5wz-wM-3Ww"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
+        </scene>
+        <!--View Controller - Zoom-->
+        <scene sceneID="vPz-3t-yS0">
+            <objects>
+                <viewController id="jv8-mO-H93" userLabel="View Controller - Zoom" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZBo-xN-YVk"/>
+                        <viewControllerLayoutGuide type="bottom" id="9j0-ko-Xhg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3Sf-z7-z9w">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nlL-hN-oZt">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="nlL-hN-oZt" secondAttribute="trailing" id="3Pr-UU-RJV"/>
+                            <constraint firstItem="9j0-ko-Xhg" firstAttribute="top" secondItem="nlL-hN-oZt" secondAttribute="bottom" id="LqQ-g5-abd"/>
+                            <constraint firstItem="nlL-hN-oZt" firstAttribute="top" secondItem="3Sf-z7-z9w" secondAttribute="top" id="YIP-Yu-hLr"/>
+                            <constraint firstItem="nlL-hN-oZt" firstAttribute="leading" secondItem="3Sf-z7-z9w" secondAttribute="leading" id="iKa-vd-O3h"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="KEs-H4-bjJ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="brS-uF-hSW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="659" y="110"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

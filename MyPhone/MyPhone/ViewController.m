@@ -21,6 +21,10 @@ static NSString* const kAvatar = @"https://lh6.googleusercontent.com/-6Uce9r3S9D
                placeholderImage:[UIImage imageNamed:@"Male.png"]];
 }
 
+- (IBAction)avatarTapped:(id)sender {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+}
+
 - (IBAction)cityPressed:(id)sender
 {
     NSURL* testURL = [NSURL URLWithString:@"comgooglemaps-x-callback://"];
