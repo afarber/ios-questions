@@ -27,21 +27,24 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="firstName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0j-DA-jMH" userLabel="Label - Name">
-                                <rect key="frame" x="20" y="436" width="280" height="21"/>
+                                <rect key="frame" x="20" y="427" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="city" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4d9-xY-Y9A" userLabel="Label - City">
-                                <rect key="frame" x="20" y="477" width="280" height="21"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RGP-1q-ZU8">
+                                <rect key="frame" x="20" y="468" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <state key="normal" title="City">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cityPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="m90-CK-ynC"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eGD-O3-tNa" userLabel="Button - Play">
                                 <rect key="frame" x="20" y="518" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -53,24 +56,24 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="eGD-O3-tNa" firstAttribute="top" secondItem="RGP-1q-ZU8" secondAttribute="bottom" constant="20" id="1g2-O2-vnf"/>
                             <constraint firstItem="5Bz-f7-RTl" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="20" id="68O-Wr-vUS"/>
                             <constraint firstItem="a0j-DA-jMH" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="6zr-Io-Wwh"/>
                             <constraint firstItem="a0j-DA-jMH" firstAttribute="top" relation="greaterThanOrEqual" secondItem="5Bz-f7-RTl" secondAttribute="bottom" constant="20" id="AhV-Oh-pTI"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5Bz-f7-RTl" secondAttribute="trailing" constant="20" id="IhF-Oh-20a"/>
                             <constraint firstItem="eGD-O3-tNa" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="Kob-Kp-3jr"/>
                             <constraint firstAttribute="trailing" secondItem="eGD-O3-tNa" secondAttribute="trailing" constant="20" id="Nby-UL-Qm8"/>
-                            <constraint firstItem="4d9-xY-Y9A" firstAttribute="top" secondItem="a0j-DA-jMH" secondAttribute="bottom" constant="20" id="P3U-xE-nOF"/>
                             <constraint firstItem="5Bz-f7-RTl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="PL2-h7-7kn"/>
-                            <constraint firstItem="4d9-xY-Y9A" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="PiF-Ce-w6f"/>
-                            <constraint firstItem="eGD-O3-tNa" firstAttribute="top" secondItem="4d9-xY-Y9A" secondAttribute="bottom" constant="20" id="Pri-Le-czI"/>
                             <constraint firstAttribute="trailing" secondItem="a0j-DA-jMH" secondAttribute="trailing" constant="20" id="STw-QO-VAy"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="eGD-O3-tNa" secondAttribute="bottom" constant="20" id="ayl-cr-kD1"/>
+                            <constraint firstItem="RGP-1q-ZU8" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="frI-aO-FaR"/>
+                            <constraint firstAttribute="trailing" secondItem="RGP-1q-ZU8" secondAttribute="trailing" constant="20" id="gKJ-GW-Sqk"/>
                             <constraint firstAttribute="centerX" secondItem="5Bz-f7-RTl" secondAttribute="centerX" id="q3n-fp-4m2"/>
-                            <constraint firstAttribute="trailing" secondItem="4d9-xY-Y9A" secondAttribute="trailing" constant="20" id="uQX-9a-Fut"/>
+                            <constraint firstItem="RGP-1q-ZU8" firstAttribute="top" secondItem="a0j-DA-jMH" secondAttribute="bottom" constant="20" id="ru6-jf-5Fi"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="city" destination="4d9-xY-Y9A" id="xlq-rI-hPm"/>
+                        <outlet property="cityBtn" destination="RGP-1q-ZU8" id="m2h-HP-pGx"/>
                         <outlet property="firstName" destination="a0j-DA-jMH" id="5el-dy-eUl"/>
                         <outlet property="imageView" destination="5Bz-f7-RTl" id="vUE-OH-YbW"/>
                         <outlet property="playBtn" destination="eGD-O3-tNa" id="PTj-Il-0Vu"/>
