@@ -22,14 +22,12 @@
     
     NSLog(@"%s avatar=%@", __PRETTY_FUNCTION__, _url);
     [_avatar setImageWithURL:_url
-            placeholderImage:[UIImage imageNamed:@"Male.png"]];
-
+ usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
 }
 
 - (IBAction)avatarTapped:(id)sender {
     [self.navigationController popViewControllerAnimated: YES];
 }
-
 
 - (void)didReceiveMemoryWarning
 {

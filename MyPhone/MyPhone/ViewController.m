@@ -17,7 +17,7 @@ static NSString* const kAvatar = @"https://lh6.googleusercontent.com/-6Uce9r3S9D
     [_cityBtn setTitle:@"Bochum" forState:UIControlStateNormal];
     
     [_avatar setImageWithURL:[NSURL URLWithString:kAvatar]
-               placeholderImage:[UIImage imageNamed:@"Male.png"]];
+ usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
 }
 
 - (IBAction)avatarTapped:(id)sender {
