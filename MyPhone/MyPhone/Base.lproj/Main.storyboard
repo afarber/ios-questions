@@ -104,7 +104,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nlL-hN-oZt">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -116,7 +116,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="nlL-hN-oZt" secondAttribute="trailing" id="3Pr-UU-RJV"/>
                             <constraint firstItem="9j0-ko-Xhg" firstAttribute="top" secondItem="nlL-hN-oZt" secondAttribute="bottom" id="LqQ-g5-abd"/>
-                            <constraint firstItem="nlL-hN-oZt" firstAttribute="top" secondItem="3Sf-z7-z9w" secondAttribute="top" id="YIP-Yu-hLr"/>
+                            <constraint firstItem="nlL-hN-oZt" firstAttribute="top" secondItem="ZBo-xN-YVk" secondAttribute="bottom" id="b69-T8-JWW"/>
                             <constraint firstItem="nlL-hN-oZt" firstAttribute="leading" secondItem="3Sf-z7-z9w" secondAttribute="leading" id="iKa-vd-O3h"/>
                         </constraints>
                     </view>
