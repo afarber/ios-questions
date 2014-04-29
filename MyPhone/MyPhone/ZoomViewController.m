@@ -26,6 +26,11 @@
 
 }
 
+- (IBAction)avatarTapped:(id)sender {
+    [self.navigationController popViewControllerAnimated: YES];
+}
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
