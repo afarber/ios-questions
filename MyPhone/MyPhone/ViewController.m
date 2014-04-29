@@ -1,6 +1,4 @@
 #import "ViewController.h"
-#import "ZoomViewController.h"
-#import <SDWebImage/UIImageView+WebCache.h>
 
 static NSString* const kAppleMaps = @"https://maps.apple.com/?q=%@";
 static NSString* const kGoogleMaps = @"comgooglemaps-x-callback://?q=%@&x-success=myphone://?resume=true&x-source=MyPhone";
@@ -23,23 +21,16 @@ static NSString* const kAvatar = @"https://lh6.googleusercontent.com/-6Uce9r3S9D
 }
 
 - (IBAction)avatarTapped:(id)sender {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
-    
-    double delayInSeconds = .2;
-    dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-    dispatch_after(delay, dispatch_get_main_queue(), ^(void){
-        [self performSegueWithIdentifier: @"pushZoom" sender: self];
-    });
+    //NSLog(@"%s: sender=%@", __PRETTY_FUNCTION__, sender);
+    [self performSegueWithIdentifier: @"pushZoom" sender: self];
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
     if ([segue.identifier isEqualToString:@"pushZoom"]){
-        ZoomViewController *nextController = segue.destinationViewController;
-        [nextController setTitle:@"Alex"];
-        //[nextController.avatar setImageWithURL:[NSURL URLWithString:kAvatar]
-          //                    placeholderImage:[UIImage imageNamed:@"Male.png"]];
-        [nextController.avatar setImage:[UIImage imageNamed:@"Male.png"]];
+        ZoomViewController *dest = segue.destinationViewController;
+        [dest setTitle:@"Alex"];
+        [dest setUrl:[NSURL URLWithString:kAvatar]];
     }
 }
 

@@ -20,7 +20,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    NSLog(@"%s avatar=%@", __PRETTY_FUNCTION__, _avatar.image);
+    NSLog(@"%s avatar=%@", __PRETTY_FUNCTION__, _url);
+    [_avatar setImageWithURL:_url
+            placeholderImage:[UIImage imageNamed:@"Male.png"]];
+
 }
 
 - (void)didReceiveMemoryWarning
