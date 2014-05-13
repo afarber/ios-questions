@@ -18,6 +18,9 @@ static NSString* const kAvatar = @"https://lh6.googleusercontent.com/-6Uce9r3S9D
     
     [_avatar setImageWithURL:[NSURL URLWithString:kAvatar]
  usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    
+    NSString* const str = @"\"hello, world\" , oh my, parapappa12";
+    [self splitCommas:str];
 }
 
 - (IBAction)avatarTapped:(id)sender {
@@ -53,5 +56,25 @@ static NSString* const kAvatar = @"https://lh6.googleusercontent.com/-6Uce9r3S9D
         CFSTR(":/?@!$&'()*+,;="),
         kCFStringEncodingUTF8));
 }
+
+- (void)splitCommas:(NSString*)str
+{
+    NSString* const pattern = @"(\"[^\"]*\"|[^, ]+)";
+    
+    NSRegularExpression *regex = [[NSRegularExpression alloc] initWithPattern:pattern
+                                                                      options:0
+                                                                        error:nil];
+    NSRange searchRange = NSMakeRange(0, [str length]);
+    NSArray *matches = [regex matchesInString:str
+                                      options:0
+                                        range:searchRange];
+    
+    for (NSTextCheckingResult *match in matches) {
+        NSRange matchRange = [match range];
+        NSLog(@"%@", [str substringWithRange:matchRange]);
+    }
+}
+
+
 
 @end

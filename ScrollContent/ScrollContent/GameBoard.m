@@ -11,6 +11,8 @@ CGFloat const kBoardLeft   = 53.0f;
 {
     UIView* result = [super hitTest:point withEvent:event];
     
+    NSLog(@"%s: result=%@ root=%@", __PRETTY_FUNCTION__, result, self.window.rootViewController.view);
+
     return result == self ? nil : self.window.rootViewController.view;
 }
 
