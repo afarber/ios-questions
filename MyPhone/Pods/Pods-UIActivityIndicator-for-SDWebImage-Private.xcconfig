@@ -1,0 +1,5 @@
+#include "Pods-UIActivityIndicator-for-SDWebImage.xcconfig"
+GCC_PREPROCESSOR_DEFINITIONS = COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/UIActivityIndicator-for-SDWebImage" "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/NZCircularImageView" "${PODS_ROOT}/Headers/SDWebImage" "${PODS_ROOT}/Headers/UIActivityIndicator-for-SDWebImage"
+OTHER_LDFLAGS = -ObjC
+PODS_ROOT = ${SRCROOT}
