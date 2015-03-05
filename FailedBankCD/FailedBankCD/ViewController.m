@@ -23,6 +23,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+        self.tableView.contentInset = UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
+    }
+    
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription
                                    entityForName:@"FailedBankInfo"
@@ -51,7 +55,6 @@
     UITableViewCell *cell =
     [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    // Set up the cell...
     FailedBankInfo *info = [failedBankInfos objectAtIndex:indexPath.row];
     cell.textLabel.text = info.name;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@",
