@@ -171,6 +171,7 @@
 				TargetAttributes = {
 					749D9C181AA767DC001EDACF = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = BYB7MA6EFG;
 					};
 					749D9C341AA767DC001EDACF = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -416,6 +417,7 @@
 				749D9C411AA767DC001EDACF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		749D9C421AA767DC001EDACF /* Build configuration list for PBXNativeTarget "FailedBankCDTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +426,7 @@
 				749D9C441AA767DC001EDACF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
