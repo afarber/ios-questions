@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UITableViewController
 
+@property (nonatomic,strong) NSManagedObjectContext* managedObjectContext;
+@property (nonatomic,strong) NSArray *failedBankInfos;
 
 @end
 
