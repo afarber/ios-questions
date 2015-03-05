@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "ViewController.h"
 #import "FailedBankInfo.h"
 #import "FailedBankDetails.h"
 
@@ -15,7 +16,6 @@
 @end
 
 @implementation AppDelegate
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
@@ -32,7 +32,7 @@
                                             inManagedObjectContext:context];
     failedBankDetails.closeDate = [NSDate date];
     failedBankDetails.updateDate = [NSDate date];
-    failedBankDetails.zip = [NSNumber numberWithInt:12345];
+    failedBankDetails.zip = [NSNumber numberWithInt:(rand() % 100)];
     failedBankDetails.info = failedBankInfo;
     failedBankInfo.details = failedBankDetails;
     NSError *error;
@@ -51,6 +51,14 @@
         FailedBankDetails *details = info.details;
         NSLog(@"Zip: %@", details.zip);
     }
+    
+/*
+    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+    ViewController *controller = (ViewController *)navigationController.topViewController;
+*/
+    
+    ViewController *controller = (ViewController *)self.window.rootViewController;
+    controller.managedObjectContext = self.managedObjectContext;
     
     return YES;
 }
