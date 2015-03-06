@@ -1,0 +1,268 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7460DF261AA8F86800531318 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7460DF251AA8F86800531318 /* main.m */; };
+		7460DF321AA8F93600531318 /* FailedBankCD.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7460DF2C1AA8F93600531318 /* FailedBankCD.xcdatamodeld */; };
+		7460DF331AA8F93600531318 /* FailedBankDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 7460DF2F1AA8F93600531318 /* FailedBankDetails.m */; };
+		7460DF341AA8F93600531318 /* FailedBankInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7460DF311AA8F93600531318 /* FailedBankInfo.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7460DF201AA8F86800531318 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		7460DF221AA8F86800531318 /* CoreDataTutorial2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CoreDataTutorial2; sourceTree = BUILT_PRODUCTS_DIR; };
+		7460DF251AA8F86800531318 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7460DF2D1AA8F93600531318 /* FailedBankCD.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FailedBankCD.xcdatamodel; sourceTree = "<group>"; };
+		7460DF2E1AA8F93600531318 /* FailedBankDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FailedBankDetails.h; sourceTree = "<group>"; };
+		7460DF2F1AA8F93600531318 /* FailedBankDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FailedBankDetails.m; sourceTree = "<group>"; };
+		7460DF301AA8F93600531318 /* FailedBankInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FailedBankInfo.h; sourceTree = "<group>"; };
+		7460DF311AA8F93600531318 /* FailedBankInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FailedBankInfo.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7460DF1F1AA8F86800531318 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7460DF191AA8F86800531318 = {
+			isa = PBXGroup;
+			children = (
+				7460DF241AA8F86800531318 /* CoreDataTutorial2 */,
+				7460DF231AA8F86800531318 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7460DF231AA8F86800531318 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7460DF221AA8F86800531318 /* CoreDataTutorial2 */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7460DF241AA8F86800531318 /* CoreDataTutorial2 */ = {
+			isa = PBXGroup;
+			children = (
+				7460DF251AA8F86800531318 /* main.m */,
+				7460DF2C1AA8F93600531318 /* FailedBankCD.xcdatamodeld */,
+				7460DF2E1AA8F93600531318 /* FailedBankDetails.h */,
+				7460DF2F1AA8F93600531318 /* FailedBankDetails.m */,
+				7460DF301AA8F93600531318 /* FailedBankInfo.h */,
+				7460DF311AA8F93600531318 /* FailedBankInfo.m */,
+			);
+			path = CoreDataTutorial2;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7460DF211AA8F86800531318 /* CoreDataTutorial2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7460DF291AA8F86800531318 /* Build configuration list for PBXNativeTarget "CoreDataTutorial2" */;
+			buildPhases = (
+				7460DF1E1AA8F86800531318 /* Sources */,
+				7460DF1F1AA8F86800531318 /* Frameworks */,
+				7460DF201AA8F86800531318 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CoreDataTutorial2;
+			productName = CoreDataTutorial2;
+			productReference = 7460DF221AA8F86800531318 /* CoreDataTutorial2 */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7460DF1A1AA8F86800531318 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Alexander Farber";
+				TargetAttributes = {
+					7460DF211AA8F86800531318 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
+			};
+			buildConfigurationList = 7460DF1D1AA8F86800531318 /* Build configuration list for PBXProject "CoreDataTutorial2" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7460DF191AA8F86800531318;
+			productRefGroup = 7460DF231AA8F86800531318 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7460DF211AA8F86800531318 /* CoreDataTutorial2 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7460DF1E1AA8F86800531318 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7460DF341AA8F93600531318 /* FailedBankInfo.m in Sources */,
+				7460DF261AA8F86800531318 /* main.m in Sources */,
+				7460DF331AA8F93600531318 /* FailedBankDetails.m in Sources */,
+				7460DF321AA8F93600531318 /* FailedBankCD.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		7460DF271AA8F86800531318 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		7460DF281AA8F86800531318 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		7460DF2A1AA8F86800531318 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		7460DF2B1AA8F86800531318 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7460DF1D1AA8F86800531318 /* Build configuration list for PBXProject "CoreDataTutorial2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7460DF271AA8F86800531318 /* Debug */,
+				7460DF281AA8F86800531318 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7460DF291AA8F86800531318 /* Build configuration list for PBXNativeTarget "CoreDataTutorial2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7460DF2A1AA8F86800531318 /* Debug */,
+				7460DF2B1AA8F86800531318 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		7460DF2C1AA8F93600531318 /* FailedBankCD.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7460DF2D1AA8F93600531318 /* FailedBankCD.xcdatamodel */,
+			);
+			currentVersion = 7460DF2D1AA8F93600531318 /* FailedBankCD.xcdatamodel */;
+			path = FailedBankCD.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 7460DF1A1AA8F86800531318 /* Project object */;
+}

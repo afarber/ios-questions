@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="13F34" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="FailedBankDetails" representedClassName="FailedBankDetails" syncable="YES">
+        <attribute name="closeDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="updateDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="zip" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="info" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FailedBankInfo" inverseName="details" inverseEntity="FailedBankInfo" syncable="YES"/>
+    </entity>
+    <entity name="FailedBankInfo" representedClassName="FailedBankInfo" syncable="YES">
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="details" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="FailedBankDetails" inverseName="info" inverseEntity="FailedBankDetails" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="FailedBankDetails" positionX="-189" positionY="122" width="128" height="103"/>
+        <element name="FailedBankInfo" positionX="-171" positionY="-153" width="128" height="105"/>
+    </elements>
+</model>
