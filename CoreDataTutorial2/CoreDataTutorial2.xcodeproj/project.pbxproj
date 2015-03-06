@@ -11,17 +11,19 @@
 		7460DF321AA8F93600531318 /* FailedBankCD.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7460DF2C1AA8F93600531318 /* FailedBankCD.xcdatamodeld */; };
 		7460DF331AA8F93600531318 /* FailedBankDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 7460DF2F1AA8F93600531318 /* FailedBankDetails.m */; };
 		7460DF341AA8F93600531318 /* FailedBankInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7460DF311AA8F93600531318 /* FailedBankInfo.m */; };
+		74F239EF1AA9DA5F00BA225A /* Banks.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = 74F239EC1AA9D75A00BA225A /* Banks.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		7460DF201AA8F86800531318 /* CopyFiles */ = {
+		74F239EE1AA9DA5800BA225A /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			dstPath = "";
+			dstSubfolderSpec = 16;
 			files = (
+				74F239EF1AA9DA5F00BA225A /* Banks.json in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -33,6 +35,7 @@
 		7460DF2F1AA8F93600531318 /* FailedBankDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FailedBankDetails.m; sourceTree = "<group>"; };
 		7460DF301AA8F93600531318 /* FailedBankInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FailedBankInfo.h; sourceTree = "<group>"; };
 		7460DF311AA8F93600531318 /* FailedBankInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FailedBankInfo.m; sourceTree = "<group>"; };
+		74F239EC1AA9D75A00BA225A /* Banks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Banks.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +74,7 @@
 				7460DF2F1AA8F93600531318 /* FailedBankDetails.m */,
 				7460DF301AA8F93600531318 /* FailedBankInfo.h */,
 				7460DF311AA8F93600531318 /* FailedBankInfo.m */,
+				74F239EC1AA9D75A00BA225A /* Banks.json */,
 			);
 			path = CoreDataTutorial2;
 			sourceTree = "<group>";
@@ -84,7 +88,7 @@
 			buildPhases = (
 				7460DF1E1AA8F86800531318 /* Sources */,
 				7460DF1F1AA8F86800531318 /* Frameworks */,
-				7460DF201AA8F86800531318 /* CopyFiles */,
+				74F239EE1AA9DA5800BA225A /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -218,6 +222,7 @@
 		7460DF2A1AA8F86800531318 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -225,6 +230,7 @@
 		7460DF2B1AA8F86800531318 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -248,6 +254,7 @@
 				7460DF2B1AA8F86800531318 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

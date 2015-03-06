@@ -2,8 +2,7 @@
 //  AppDelegate.m
 //  FailedBankCD
 //
-//  Created by Alexander Farber on 04.03.15.
-//  Copyright (c) 2015 Alexander Farber. All rights reserved.
+// Tutorial by Adam Burkepile
 //
 
 #import "AppDelegate.h"
