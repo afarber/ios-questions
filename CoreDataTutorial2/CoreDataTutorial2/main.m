@@ -5,9 +5,6 @@
 //  Tutorial by Adam Burkepile
 //
 
-//#import <Foundation/Foundation.h>
-//#import <CoreData/CoreData.h>
-
 #import "FailedBankInfo.h"
 #import "FailedBankDetails.h"
 
@@ -18,7 +15,7 @@ static NSManagedObjectModel *managedObjectModel()
         return model;
     }
     
-    NSString *path = @"FailedBankCD";
+    static NSString const *path = @"FailedBankCD";
     path = [path stringByDeletingPathExtension];
     NSURL *modelURL = [NSURL fileURLWithPath:[path stringByAppendingPathExtension:@"momd"]];
     model = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
@@ -49,6 +46,7 @@ static NSManagedObjectContext *managedObjectContext()
         
         // set options: to use single .sqlite file
         // https://developer.apple.com/library/ios/releasenotes/DataManagement/WhatsNew_CoreData_iOS/#//apple_ref/doc/uid/TP40013394-CH1-SW1
+        
         NSPersistentStore *newStore = [coordinator
                                        addPersistentStoreWithType:STORE_TYPE
                                        configuration:nil
@@ -57,7 +55,10 @@ static NSManagedObjectContext *managedObjectContext()
                                        error:&error];
         
         if (newStore == nil) {
-            NSLog(@"Store Configuration Failure %@", ([error localizedDescription] != nil) ? [error localizedDescription] : @"Unknown Error");
+            NSLog(@"Store Configuration Failure %@", (
+                [error localizedDescription] != nil) ?
+                  [error localizedDescription] :
+                  @"Unknown Error");
         }
     }
     return context;

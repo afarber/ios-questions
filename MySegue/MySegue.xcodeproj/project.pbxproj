@@ -9,11 +9,14 @@
 /* Begin PBXBuildFile section */
 		74B85CC21ABE0B66006D8EFD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B85CC11ABE0B66006D8EFD /* main.m */; };
 		74B85CC51ABE0B66006D8EFD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B85CC41ABE0B66006D8EFD /* AppDelegate.m */; };
-		74B85CC81ABE0B66006D8EFD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B85CC71ABE0B66006D8EFD /* ViewController.m */; };
+		74B85CC81ABE0B66006D8EFD /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B85CC71ABE0B66006D8EFD /* HomeViewController.m */; };
 		74B85CCB1ABE0B66006D8EFD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74B85CC91ABE0B66006D8EFD /* Main.storyboard */; };
 		74B85CCD1ABE0B66006D8EFD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74B85CCC1ABE0B66006D8EFD /* Images.xcassets */; };
 		74B85CD01ABE0B66006D8EFD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74B85CCE1ABE0B66006D8EFD /* LaunchScreen.xib */; };
 		74B85CDC1ABE0B67006D8EFD /* MySegueTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B85CDB1ABE0B67006D8EFD /* MySegueTests.m */; };
+		74B85CE71ABE1855006D8EFD /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B85CE61ABE1855006D8EFD /* SettingsViewController.m */; };
+		74B85CEA1ABE1991006D8EFD /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 74B85CE81ABE1991006D8EFD /* settings.png */; };
+		74B85CEB1ABE1991006D8EFD /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 74B85CE91ABE1991006D8EFD /* settings@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,14 +35,18 @@
 		74B85CC11ABE0B66006D8EFD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		74B85CC31ABE0B66006D8EFD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		74B85CC41ABE0B66006D8EFD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		74B85CC61ABE0B66006D8EFD /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		74B85CC71ABE0B66006D8EFD /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		74B85CC61ABE0B66006D8EFD /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		74B85CC71ABE0B66006D8EFD /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		74B85CCA1ABE0B66006D8EFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		74B85CCC1ABE0B66006D8EFD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		74B85CCF1ABE0B66006D8EFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		74B85CD51ABE0B67006D8EFD /* MySegueTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MySegueTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		74B85CDA1ABE0B67006D8EFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		74B85CDB1ABE0B67006D8EFD /* MySegueTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MySegueTests.m; sourceTree = "<group>"; };
+		74B85CE51ABE1855006D8EFD /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		74B85CE61ABE1855006D8EFD /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		74B85CE81ABE1991006D8EFD /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		74B85CE91ABE1991006D8EFD /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,11 +88,15 @@
 		74B85CBE1ABE0B66006D8EFD /* MySegue */ = {
 			isa = PBXGroup;
 			children = (
+				74B85CE81ABE1991006D8EFD /* settings.png */,
+				74B85CE91ABE1991006D8EFD /* settings@2x.png */,
 				74B85CC31ABE0B66006D8EFD /* AppDelegate.h */,
 				74B85CC41ABE0B66006D8EFD /* AppDelegate.m */,
-				74B85CC61ABE0B66006D8EFD /* ViewController.h */,
-				74B85CC71ABE0B66006D8EFD /* ViewController.m */,
+				74B85CC61ABE0B66006D8EFD /* HomeViewController.h */,
+				74B85CC71ABE0B66006D8EFD /* HomeViewController.m */,
 				74B85CC91ABE0B66006D8EFD /* Main.storyboard */,
+				74B85CE51ABE1855006D8EFD /* SettingsViewController.h */,
+				74B85CE61ABE1855006D8EFD /* SettingsViewController.m */,
 				74B85CCC1ABE0B66006D8EFD /* Images.xcassets */,
 				74B85CCE1ABE0B66006D8EFD /* LaunchScreen.xib */,
 				74B85CBF1ABE0B66006D8EFD /* Supporting Files */,
@@ -199,6 +210,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74B85CEB1ABE1991006D8EFD /* settings@2x.png in Resources */,
+				74B85CEA1ABE1991006D8EFD /* settings.png in Resources */,
 				74B85CCB1ABE0B66006D8EFD /* Main.storyboard in Resources */,
 				74B85CD01ABE0B66006D8EFD /* LaunchScreen.xib in Resources */,
 				74B85CCD1ABE0B66006D8EFD /* Images.xcassets in Resources */,
@@ -219,9 +232,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				74B85CC81ABE0B66006D8EFD /* ViewController.m in Sources */,
+				74B85CC81ABE0B66006D8EFD /* HomeViewController.m in Sources */,
 				74B85CC51ABE0B66006D8EFD /* AppDelegate.m in Sources */,
 				74B85CC21ABE0B66006D8EFD /* main.m in Sources */,
+				74B85CE71ABE1855006D8EFD /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

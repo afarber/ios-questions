@@ -6,17 +6,21 @@
 //  Copyright (c) 2015 Alexander Farber. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "HomeViewController.h"
 
-@interface ViewController ()
+@interface HomeViewController ()
 
 @end
 
-@implementation ViewController
+@implementation HomeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    NSLog(@"HomeViewController viewDidLoad");
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    NSLog(@"HomeViewController prepareForSegue");
 }
 
 - (void)didReceiveMemoryWarning {
