@@ -7,6 +7,8 @@
 //
 
 #import "HomeViewController.h"
+#import "SettingsViewController.h"
+#import "PackageViewController.h"
 
 @interface HomeViewController ()
 
@@ -24,7 +26,18 @@
 }
 
 - (IBAction) unwindToHome:(UIStoryboardSegue *)segue {
-    NSLog(@"HomeViewController prepareForUnwind");
+    NSLog(@"HomeViewController unwindToHome");
+    
+    UIViewController* sourceViewController = segue.sourceViewController;
+    
+    if ([sourceViewController isKindOfClass:[SettingsViewController class]])
+    {
+        NSLog(@"Coming from SettingsViewController");
+    }
+    else if ([sourceViewController isKindOfClass:[PackageViewController class]])
+    {
+        NSLog(@"Coming from PackageViewController");
+    }
 }
 
 - (void)didReceiveMemoryWarning {

@@ -247,6 +247,7 @@
 		740629E41ABF15BC00F4199F /* yellow_star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 740628F41ABF15BB00F4199F /* yellow_star@2x.png */; };
 		740629E51ABF15BC00F4199F /* no-ads.png in Resources */ = {isa = PBXBuildFile; fileRef = 740628F51ABF15BB00F4199F /* no-ads.png */; };
 		740629E61ABF15BC00F4199F /* popup_line~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 740628F61ABF15BB00F4199F /* popup_line~ipad.png */; };
+		74AF7EF71ABF73F800880B5F /* PackageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AF7EF61ABF73F800880B5F /* PackageViewController.m */; };
 		74B85CC21ABE0B66006D8EFD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B85CC11ABE0B66006D8EFD /* main.m */; };
 		74B85CC51ABE0B66006D8EFD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B85CC41ABE0B66006D8EFD /* AppDelegate.m */; };
 		74B85CC81ABE0B66006D8EFD /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B85CC71ABE0B66006D8EFD /* HomeViewController.m */; };
@@ -508,6 +509,8 @@
 		740628F41ABF15BB00F4199F /* yellow_star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yellow_star@2x.png"; sourceTree = "<group>"; };
 		740628F51ABF15BB00F4199F /* no-ads.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no-ads.png"; sourceTree = "<group>"; };
 		740628F61ABF15BB00F4199F /* popup_line~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popup_line~ipad.png"; sourceTree = "<group>"; };
+		74AF7EF51ABF73F800880B5F /* PackageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PackageViewController.h; sourceTree = "<group>"; };
+		74AF7EF61ABF73F800880B5F /* PackageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PackageViewController.m; sourceTree = "<group>"; };
 		74B85CBC1ABE0B66006D8EFD /* MySegue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySegue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74B85CC01ABE0B66006D8EFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		74B85CC11ABE0B66006D8EFD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -843,6 +846,8 @@
 				74B85CC91ABE0B66006D8EFD /* Main.storyboard */,
 				74B85CE51ABE1855006D8EFD /* SettingsViewController.h */,
 				74B85CE61ABE1855006D8EFD /* SettingsViewController.m */,
+				74AF7EF51ABF73F800880B5F /* PackageViewController.h */,
+				74AF7EF61ABF73F800880B5F /* PackageViewController.m */,
 				74B85CCC1ABE0B66006D8EFD /* Images.xcassets */,
 				74B85CCE1ABE0B66006D8EFD /* LaunchScreen.xib */,
 				74B85CBF1ABE0B66006D8EFD /* Supporting Files */,
@@ -1219,6 +1224,7 @@
 			files = (
 				74B85CC81ABE0B66006D8EFD /* HomeViewController.m in Sources */,
 				74B85CC51ABE0B66006D8EFD /* AppDelegate.m in Sources */,
+				74AF7EF71ABF73F800880B5F /* PackageViewController.m in Sources */,
 				74B85CC21ABE0B66006D8EFD /* main.m in Sources */,
 				74B85CE71ABE1855006D8EFD /* SettingsViewController.m in Sources */,
 			);
