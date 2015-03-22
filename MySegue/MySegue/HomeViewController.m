@@ -23,7 +23,7 @@
     NSLog(@"HomeViewController prepareForSegue");
 }
 
-- (IBAction) prepareForUnwind:(UIStoryboardSegue *)segue {
+- (IBAction) unwindToHome:(UIStoryboardSegue *)segue {
     NSLog(@"HomeViewController prepareForUnwind");
 }
 
