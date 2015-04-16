@@ -61,7 +61,7 @@
         <scene sceneID="Lu9-mN-eWZ">
             <objects>
                 <tableViewController storyboardIdentifier="SettingsVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="J0M-bU-EcZ" customClass="SettingsViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="static" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" id="zgP-Bs-9gp">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="static" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="120" sectionHeaderHeight="22" sectionFooterHeight="22" id="zgP-Bs-9gp">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -74,7 +74,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahq-55-Y6W" userLabel="Close button">
-                                                    <rect key="frame" x="561" y="27" width="23" height="23"/>
+                                                    <rect key="frame" x="561" y="48" width="23" height="23"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     <state key="normal" image="close.png">
@@ -90,21 +90,22 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Settings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QY2-RF-WZ2" userLabel="Settings title">
-                                                    <rect key="frame" x="269" y="27" width="63" height="21"/>
+                                                    <rect key="frame" x="269" y="49" width="63" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="settings_pause.png" translatesAutoresizingMaskIntoConstraints="NO" id="54z-va-8YE">
-                                                    <rect key="frame" x="16" y="15" width="46" height="46"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="settings_nav_bar.png" translatesAutoresizingMaskIntoConstraints="NO" id="54z-va-8YE">
+                                                    <rect key="frame" x="16" y="37" width="46" height="46"/>
                                                 </imageView>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.070588235289999995" green="0.66666666669999997" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="centerY" secondItem="QY2-RF-WZ2" secondAttribute="centerY" constant="12" id="AuE-3u-zzH"/>
+                                                <constraint firstAttribute="centerY" secondItem="QY2-RF-WZ2" secondAttribute="centerY" id="AuE-3u-zzH"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="ahq-55-Y6W" secondAttribute="trailing" constant="8" id="Fb0-pJ-cav"/>
-                                                <constraint firstAttribute="centerY" secondItem="54z-va-8YE" secondAttribute="centerY" constant="11.5" id="I1z-bw-JzA"/>
-                                                <constraint firstAttribute="centerX" secondItem="QY2-RF-WZ2" secondAttribute="centerX" constant="-0.5" id="kCU-BW-ocb"/>
-                                                <constraint firstAttribute="centerY" secondItem="ahq-55-Y6W" secondAttribute="centerY" constant="11.5" id="kmE-5J-vkd"/>
+                                                <constraint firstAttribute="centerY" secondItem="54z-va-8YE" secondAttribute="centerY" id="I1z-bw-JzA"/>
+                                                <constraint firstAttribute="centerX" secondItem="QY2-RF-WZ2" secondAttribute="centerX" id="kCU-BW-ocb"/>
+                                                <constraint firstAttribute="centerY" secondItem="ahq-55-Y6W" secondAttribute="centerY" id="kmE-5J-vkd"/>
                                                 <constraint firstItem="54z-va-8YE" firstAttribute="leading" secondItem="rbq-Ik-ATB" secondAttribute="leadingMargin" constant="8" id="z2I-p4-0hV"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -115,16 +116,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="sound.png" translatesAutoresizingMaskIntoConstraints="NO" id="fKO-g4-O3O">
-                                                    <rect key="frame" x="16" y="40" width="19" height="19"/>
+                                                    <rect key="frame" x="16" y="50" width="19" height="19"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Sounds" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="moY-sB-bSe" userLabel="Sounds label">
-                                                    <rect key="frame" x="43" y="39" width="59" height="21"/>
+                                                    <rect key="frame" x="43" y="49" width="59" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Off" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozX-oW-EtS" userLabel="Sounds on-off">
-                                                    <rect key="frame" x="561" y="39" width="23" height="21"/>
+                                                    <rect key="frame" x="561" y="50" width="23" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -152,10 +153,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="mail.png" translatesAutoresizingMaskIntoConstraints="NO" id="Nlj-W5-1Ug">
-                                                    <rect key="frame" x="16" y="40" width="19" height="19"/>
+                                                    <rect key="frame" x="16" y="50" width="19" height="19"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Email Support" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKn-lk-5rn" userLabel="Email support label">
-                                                    <rect key="frame" x="43" y="39" width="109" height="21"/>
+                                                    <rect key="frame" x="43" y="49" width="109" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -183,7 +184,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Restore Purchases" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ey9-Ni-wDP" userLabel="Restore purchases label">
-                                                    <rect key="frame" x="40" y="39" width="145" height="21"/>
+                                                    <rect key="frame" x="40" y="49" width="145" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -203,6 +204,7 @@
                             <outlet property="delegate" destination="J0M-bU-EcZ" id="AO9-6c-SSY"/>
                         </connections>
                     </tableView>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="cellRestore" destination="0Zl-ru-aaj" id="Yke-Q1-qEi"/>
                         <outlet property="cellSounds" destination="Tca-89-5SD" id="yv5-eP-6RA"/>
@@ -223,7 +225,6 @@
         <image name="close.png" width="23" height="23"/>
         <image name="mail.png" width="19" height="19"/>
         <image name="settings_nav_bar.png" width="46" height="46"/>
-        <image name="settings_pause.png" width="46" height="46"/>
         <image name="sound.png" width="19" height="19"/>
     </resources>
 </document>

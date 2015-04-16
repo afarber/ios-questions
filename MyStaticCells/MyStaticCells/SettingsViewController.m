@@ -43,7 +43,7 @@
     }
     
     self.view.backgroundColor = THEME_COLOR_GRAY;
-    self.labelTitle.textColor = THEME_COLOR_BLUE;
+    //self.labelTitle.textColor = THEME_COLOR_BLUE;
     self.labelButtonSounds.textColor = THEME_COLOR_GRAY_TEXT;
     self.labelButtonEmail.textColor = THEME_COLOR_GRAY_TEXT;
     self.labelButtonRestore.textColor = THEME_COLOR_GRAY_TEXT;
@@ -178,13 +178,20 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *clickedCell = [self.tableView cellForRowAtIndexPath:indexPath];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (clickedCell == self.cellSounds)
+    if (clickedCell == self.cellSounds) {
         [self clickedSound];
-    else if (clickedCell == self.cellSupport)
+    } else if (clickedCell == self.cellSupport) {
         [self clickedSupport];
-    else if (clickedCell == self.cellRestore)
+    } else if (clickedCell == self.cellRestore) {
         [self clickedRestore];
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return ([indexPath row] == 0 ? 70 : 120);
 }
 
 @end
