@@ -18,6 +18,8 @@
 {
     [super viewDidLoad];
     
+    //self.tableView.contentInset = UIEdgeInsetsMake(70, 0, 0, 0);
+
     [self refreshView];
     
     self.labelTitle.text = @"Settings";
