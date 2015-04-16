@@ -175,7 +175,7 @@
 
 #pragma mark -
 #pragma mark Table View delegate
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *clickedCell = [self.tableView cellForRowAtIndexPath:indexPath];
     
