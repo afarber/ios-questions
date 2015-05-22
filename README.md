@@ -71,7 +71,7 @@ Screenshots
 ![screenshot](https://raw.github.com/afarber/ios-newbie/master/MyFetch/screenshot.png)
 
 
-[MyFruits](https://github.com/afarber/ios-newbie/tree/master/MyFruits):
+[MyFruits](https://github.com/afarber/ios-newbie/tree/master/MyFruits) with images by [Gerald_G @ openclipart.org](https://openclipart.org/user-detail/Gerald_G):
 
 ![screenshot](https://raw.github.com/afarber/ios-newbie/master/MyFruits/screenshot.png)
 
@@ -91,9 +91,14 @@ Screenshots
 ![screenshot](https://raw.github.com/afarber/ios-newbie/master/MyPhone/screenshot.png)
 
 
-[MyStaticCells](https://github.com/afarber/ios-newbie/tree/master/MyStaticCells) with fruits images by Gerald_G @ openclipart.org:
+[MyStaticCells](https://github.com/afarber/ios-newbie/tree/master/MyStaticCells):
 
-![screenshot](https://raw.github.com/afarber/ios-newbie/master/MyStaticCells/screenshot.png)
+![screenshot](https://raw.githubusercontent.com/afarber/ios-newbie/master/MyStaticCells/screenshot.png)
+
+
+[MySubtitle](https://github.com/afarber/ios-newbie/tree/master/MySubtitle):
+
+![screenshot](https://raw.githubusercontent.com/afarber/ios-newbie/master/MySubtitle/screenshot.png)
 
 
 [MyWeb](https://github.com/afarber/ios-newbie/tree/master/MyWeb):
