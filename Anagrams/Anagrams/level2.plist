@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>anagrams</key>
+	<array>
+		<array>
+			<string>truth is</string>
+			<string>it hurts</string>
+		</array>
+		<array>
+			<string>western union</string>
+			<string>no wire unsent</string>
+		</array>
+		<array>
+			<string>a telescope</string>
+			<string>to see place</string>
+		</array>
+		<array>
+			<string>astronomers</string>
+			<string>moonstarers</string>
+		</array>
+		<array>
+			<string>this ear</string>
+			<string>it hears</string>
+		</array>
+		<array>
+			<string>schoolmaster</string>
+			<string>the classroom</string>
+		</array>
+	</array>
+	<key>timeToSolve</key>
+	<integer>360</integer>
+	<key>pointsPerTile</key>
+	<integer>30</integer>
+</dict>
+</plist>

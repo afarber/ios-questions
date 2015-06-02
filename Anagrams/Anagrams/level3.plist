@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>anagrams</key>
+	<array>
+		<array>
+			<string>debit card</string>
+			<string>bad credit</string>
+		</array>
+		<array>
+			<string>tired nerves</string>
+			<string>tense driver</string>
+		</array>
+		<array>
+			<string>stormy weather</string>
+			<string>showery matter</string>
+		</array>
+		<array>
+			<string>western union</string>
+			<string>no wire unsent</string>
+		</array>
+		<array>
+			<string>schoolmaster</string>
+			<string>the classroom</string>
+		</array>
+	</array>
+	<key>timeToSolve</key>
+	<integer>180</integer>
+	<key>pointsPerTile</key>
+	<integer>80</integer>
+</dict>
+</plist>

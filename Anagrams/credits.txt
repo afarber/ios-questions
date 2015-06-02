@@ -1,0 +1,20 @@
+Asset Credits
+-------------------------------------------------
+
+Birch board background:
+http://www.guide-3d.com/texture/birch-white/
+
+Dark wood used for the tiles:
+http://webtreats.mysitemyway.com/8-tileable-dark-wood-texture-patterns/
+
+Ding sound:
+http://www.freesound.org/people/lmr9/sounds/178178/
+
+Error sound:
+http://www.freesound.org/people/ItsFunnyInc/sounds/145613/
+
+Win sound:
+http://www.freesound.org/people/fins/sounds/171671/
+
+comic andy font:
+http://www.dafont.com/andrew-polhill.d2132

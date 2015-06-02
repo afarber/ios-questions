@@ -26,6 +26,11 @@ Screenshots
 ![screenshot](https://raw.github.com/afarber/ios-newbie/master/AdaptiveWeather/screenshot.png)
 
 
+[Anagrams](https://github.com/afarber/ios-newbie/tree/master/Anagrams) from the tutorial [How To Make a Letter / Word Game with UIKit](http://www.raywenderlich.com/33804/how-to-make-a-letterword-game-with-uikit-part-1):
+
+![screenshot](https://raw.github.com/afarber/ios-newbie/master/Anagrams/screenshot.png)
+
+
 [CoreDataTutorial2](https://github.com/afarber/ios-newbie/tree/master/CoreDataTutorial2) from the tutorial [Core Data Tutorial for iOS: Getting Started](http://www.raywenderlich.com/934/core-data-tutorial-for-ios-getting-started):
 
 ![screenshot](https://raw.github.com/afarber/ios-newbie/master/CoreDataTutorial2/screenshot.png)

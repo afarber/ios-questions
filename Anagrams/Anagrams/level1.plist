@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>anagrams</key>
+	<array>
+		<array>
+			<string>a gentleman</string>
+			<string>elegant man</string>
+		</array>
+		<array>
+			<string>admirer</string>
+			<string>married</string>
+		</array>
+		<array>
+			<string>debit card</string>
+			<string>bad credit</string>
+		</array>
+		<array>
+			<string>elvis</string>
+			<string>lives</string>
+		</array>
+		<array>
+			<string>listen</string>
+			<string>silent</string>
+		</array>
+		<array>
+			<string>the eyes</string>
+			<string>they see</string>
+		</array>
+	</array>
+	<key>timeToSolve</key>
+	<integer>600</integer>
+	<key>pointsPerTile</key>
+	<integer>10</integer>
+</dict>
+</plist>
