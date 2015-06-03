@@ -9,8 +9,8 @@
 #ifndef configed
 
 //UI defines
-#define kScreenWidth [UIScreen mainScreen].bounds.size.height
-#define kScreenHeight [UIScreen mainScreen].bounds.size.width
+#define kScreenWidth ([UIScreen mainScreen].bounds.size.width)
+#define kScreenHeight ([UIScreen mainScreen].bounds.size.height)
 
 //add more definitions here
 #define kTileMargin 20

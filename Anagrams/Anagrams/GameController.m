@@ -69,12 +69,12 @@
   _targets = [NSMutableArray arrayWithCapacity: ana2len];
   
   // create targets
-  for (int i=0;i<ana2len;i++) {
+  for (int i = 0; i < ana2len; i++) {
     NSString* letter = [anagram2 substringWithRange:NSMakeRange(i, 1)];
     
     if (![letter isEqualToString:@" "]) {
       TargetView* target = [[TargetView alloc] initWithLetter:letter andSideLength:tileSide];
-      target.center = CGPointMake(xOffset + i*(tileSide + kTileMargin), kScreenHeight/4);
+      target.center = CGPointMake(xOffset + i * (tileSide + kTileMargin), kScreenHeight / 4);
       
       [self.gameView addSubview:target];
       [_targets addObject: target];
