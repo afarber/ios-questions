@@ -4,6 +4,7 @@
 //
 //  Created by Alexander Farber on 04.11.15.
 //  Copyright © 2015 Gabriel Theodoropoulos. All rights reserved.
+//  Tutorial: http://www.appcoda.com/qr-code-ios-programming-tutorial/
 //
 
 #import "ViewController.h"
@@ -103,7 +104,10 @@
     [_videoPreviewLayer removeFromSuperlayer];
 }
 
--(void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection{
+-(void)captureOutput:(AVCaptureOutput *)captureOutput
+    didOutputMetadataObjects:(NSArray *)metadataObjects
+      fromConnection:(AVCaptureConnection *)connection {
+    
     if (metadataObjects != nil && [metadataObjects count] > 0) {
         AVMetadataMachineReadableCodeObject *metadataObj = [metadataObjects objectAtIndex:0];
         if ([[metadataObj type] isEqualToString:AVMetadataObjectTypeQRCode]) {
