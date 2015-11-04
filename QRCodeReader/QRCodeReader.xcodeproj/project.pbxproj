@@ -13,6 +13,8 @@
 		74538A471BEA0C7A00EAF912 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74538A451BEA0C7A00EAF912 /* Main.storyboard */; };
 		74538A491BEA0C7A00EAF912 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74538A481BEA0C7A00EAF912 /* Assets.xcassets */; };
 		74538A4C1BEA0C7A00EAF912 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74538A4A1BEA0C7A00EAF912 /* LaunchScreen.storyboard */; };
+		74538A541BEA34AB00EAF912 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74538A531BEA34AB00EAF912 /* AVFoundation.framework */; };
+		74538A561BEA455200EAF912 /* beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 74538A551BEA455200EAF912 /* beep.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		74538A481BEA0C7A00EAF912 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		74538A4B1BEA0C7A00EAF912 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		74538A4D1BEA0C7A00EAF912 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		74538A531BEA34AB00EAF912 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		74538A551BEA455200EAF912 /* beep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beep.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74538A541BEA34AB00EAF912 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +47,7 @@
 		74538A301BEA0C7A00EAF912 = {
 			isa = PBXGroup;
 			children = (
+				74538A531BEA34AB00EAF912 /* AVFoundation.framework */,
 				74538A3B1BEA0C7A00EAF912 /* QRCodeReader */,
 				74538A3A1BEA0C7A00EAF912 /* Products */,
 			);
@@ -58,6 +64,7 @@
 		74538A3B1BEA0C7A00EAF912 /* QRCodeReader */ = {
 			isa = PBXGroup;
 			children = (
+				74538A551BEA455200EAF912 /* beep.mp3 */,
 				74538A3F1BEA0C7A00EAF912 /* AppDelegate.h */,
 				74538A401BEA0C7A00EAF912 /* AppDelegate.m */,
 				74538A421BEA0C7A00EAF912 /* ViewController.h */,
@@ -138,6 +145,7 @@
 			files = (
 				74538A4C1BEA0C7A00EAF912 /* LaunchScreen.storyboard in Resources */,
 				74538A491BEA0C7A00EAF912 /* Assets.xcassets in Resources */,
+				74538A561BEA455200EAF912 /* beep.mp3 in Resources */,
 				74538A471BEA0C7A00EAF912 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
