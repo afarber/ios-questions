@@ -106,6 +106,11 @@ Screenshots
 ![screenshot](https://raw.githubusercontent.com/afarber/ios-newbie/master/MySubtitle/screenshot.png)
 
 
+[QRCodeReader](https://github.com/afarber/ios-newbie/tree/master/QRCodeReader):
+
+![screenshot](https://raw.github.com/afarber/ios-newbie/master/QRCodeReader/screenshot.png)
+
+
 [MyWeb](https://github.com/afarber/ios-newbie/tree/master/MyWeb):
 
 ![screenshot](https://raw.github.com/afarber/ios-newbie/master/MyWeb/screenshot.png)
