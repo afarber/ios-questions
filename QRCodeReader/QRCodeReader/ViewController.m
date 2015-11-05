@@ -15,10 +15,13 @@
 @property (nonatomic, strong) AVCaptureSession *captureSession;
 @property (nonatomic, strong) AVCaptureVideoPreviewLayer *videoPreviewLayer;
 @property (nonatomic, strong) AVAudioPlayer *audioPlayer;
+@property (nonatomic, strong) CBCentralManager *centralManager;
+@property (nonatomic, strong) NSMutableArray *peripherals;
 
 -(void)loadBeepSound;
 -(BOOL)startReading;
 -(void)stopReading;
+-(void)startBluetoothScan;
 
 @end
 
@@ -29,6 +32,9 @@
 
     _isReading = NO;
     _captureSession = nil;
+    
+    _centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:dispatch_get_main_queue()];
+    _peripherals = [NSMutableArray new];
     
     [self loadBeepSound];
 }
@@ -97,11 +103,19 @@
     return YES;
 }
 
--(void)stopReading{
+-(void)stopReading {
     [_captureSession stopRunning];
     _captureSession = nil;
     
     [_videoPreviewLayer removeFromSuperlayer];
+}
+
+-(void)startBluetoothScan {
+    
+    NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], CBCentralManagerScanOptionAllowDuplicatesKey, nil];
+    
+    [_centralManager scanForPeripheralsWithServices:nil options:nil];
+    
 }
 
 -(void)captureOutput:(AVCaptureOutput *)captureOutput
@@ -123,5 +137,44 @@
         }
     }
 }
+
+- (void)centralManagerDidUpdateState:(CBCentralManager *)central {
+    switch (central.state) {
+        case CBCentralManagerStateUnknown:
+            NSLog(@"CBCentralManagerStateUnknown: %d", central.state);
+            break;
+        case CBCentralManagerStateResetting:
+            NSLog(@"CBCentralManagerStateResetting: %d", central.state);
+            break;
+        case CBCentralManagerStateUnsupported:
+            NSLog(@"CBCentralManagerStateUnsupported: %d", central.state);
+            break;
+        case CBCentralManagerStateUnauthorized:
+            NSLog(@"CBCentralManagerStateUnauthorized: %d", central.state);
+            break;
+        case CBCentralManagerStatePoweredOff:
+            NSLog(@"CBCentralManagerStatePoweredOff: %d", central.state);
+            break;
+        case CBCentralManagerStatePoweredOn:
+            NSLog(@"CBCentralManagerStatePoweredOn: %d", central.state);
+            [self startBluetoothScan];
+            break;
+        default:
+            NSLog(@"state: %d", central.state);
+            break;
+    }
+}
+
+
+- (void)centralManager:(CBCentralManager *)central
+ didDiscoverPeripheral:(CBPeripheral *)peripheral
+     advertisementData:(NSDictionary<NSString *, id> *)advertisementData
+                  RSSI:(NSNumber *)RSSI {
+    NSLog(@"peripheral: %@", peripheral);
+    [_peripherals addObject:peripheral];
+    //[_centralManager connectPeripheral:peripheral options:nil];
+}
+
+
 
 @end

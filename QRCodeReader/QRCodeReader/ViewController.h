@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 @import AVFoundation;
+@import CoreBluetooth;
 
-@interface ViewController : UIViewController <AVCaptureMetadataOutputObjectsDelegate>
+@interface ViewController : UIViewController <AVCaptureMetadataOutputObjectsDelegate, CBCentralManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *viewPreview;
 @property (weak, nonatomic) IBOutlet UILabel *lblStatus;
