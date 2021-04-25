@@ -23,18 +23,14 @@ struct FetchView1: View {
     }
 }
 
-let url = URL(string: "https://apple.com")!
+let url = URL(string: "https://slova.de/ws/top")!
 let task = URLSession.shared.dataTask(with: url) {
     data, response, error in
-    if let data = data {
-        print(data)
-    }
-    if let response = response {
-        print(response)
-    }
-    if let error = error {
-        print(error)
-    }
+    guard let data = data, error == nil
+    else { return }
+    //print(data)
+    let responseString = String(data: data, encoding: .utf8)
+    print(responseString as Any)
 }
 task.resume()
 
