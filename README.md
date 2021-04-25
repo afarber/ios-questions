@@ -36,6 +36,11 @@ Screenshots
 ![screenshot](https://raw.github.com/afarber/ios-newbie/master/CoreDataTutorial2/screenshot.png)
 
 
+[Drag1](https://github.com/afarber/ios-newbie/tree/master/Drag1.playground):
+
+![screenshot](https://raw.github.com/afarber/ios-newbie/master/Drag1.png)
+
+
 [DragScroll](https://github.com/afarber/ios-newbie/tree/master/DragScroll):
 
 ![screenshot](https://raw.github.com/afarber/ios-newbie/master/DragScroll/screenshot.png)
@@ -49,6 +54,11 @@ Screenshots
 [FailedBankCD](https://github.com/afarber/ios-newbie/tree/master/FailedBankCD) from the tutorial [Core Data Tutorial for iOS: Getting Started](http://www.raywenderlich.com/934/core-data-tutorial-for-ios-getting-started):
 
 ![screenshot](https://raw.github.com/afarber/ios-newbie/master/FailedBankCD/screenshot.png)
+
+
+[FetchJson1](https://github.com/afarber/ios-newbie/tree/master/FetchJson1.playground):
+
+![screenshot](https://raw.github.com/afarber/ios-newbie/master/FetchJson1.png)
 
 
 [MyAuth](https://github.com/afarber/ios-newbie/tree/master/MyAuth):
