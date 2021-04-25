@@ -1,5 +1,6 @@
-import SwiftUI
+import Foundation
 import PlaygroundSupport
+import SwiftUI
 
 struct FetchView1: View {
     
@@ -21,5 +22,20 @@ struct FetchView1: View {
         .padding(10)
     }
 }
+
+let url = URL(string: "https://apple.com")!
+let task = URLSession.shared.dataTask(with: url) {
+    data, response, error in
+    if let data = data {
+        print(data)
+    }
+    if let response = response {
+        print(response)
+    }
+    if let error = error {
+        print(error)
+    }
+}
+task.resume()
 
 PlaygroundPage.current.setLiveView(FetchView1().padding(5))
