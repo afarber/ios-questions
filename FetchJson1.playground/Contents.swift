@@ -24,7 +24,7 @@ struct FetchView1: View {
 }
 
 struct TopResponse: Codable {
-    let results: [Top]
+    let data: [Top]
 }
 struct Top: Codable {
     let uid: Int
@@ -32,7 +32,7 @@ struct Top: Codable {
     let given: String
     let photo: String?
     let motto: String?
-    let avg_score: String?
+    let avg_score: Double?
     let avg_time: String?
 }
 
@@ -40,15 +40,15 @@ let url = URL(string: "https://slova.de/ws/top")!
 let task = URLSession.shared.dataTask(with: url) {
     data, response, error in
     
-    guard let data1 = data, let json = try? JSONSerialization.jsonObject(with: data1, options: [])
-    else { return }
-    print(json)
-    
     let decoder = JSONDecoder()
-    guard let data2 = data,
-          let tops = try? decoder.decode(TopResponse.self, from:
-                                            data2) else { return }
-    print(tops.results[4].given)
+    guard let data = data else { return }
+    do {
+        let tops = try decoder.decode(TopResponse.self, from: data)
+        print(tops.data[4].given)
+    } catch {
+        print("Error while parsing: \(error)")
+        print("the data: \(String(data: data, encoding: .utf8))")
+    }
 }
 task.resume()
 
