@@ -11,7 +11,7 @@ import SwiftUI
 struct FetchJson4App: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MyView()
         }
     }
 }

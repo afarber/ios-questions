@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		74254EE6263B3D7400D43C23 /* FetchJson4App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74254EE5263B3D7400D43C23 /* FetchJson4App.swift */; };
-		74254EE8263B3D7400D43C23 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74254EE7263B3D7400D43C23 /* ContentView.swift */; };
+		74254EE8263B3D7400D43C23 /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74254EE7263B3D7400D43C23 /* MyView.swift */; };
 		74254EEA263B3D7600D43C23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74254EE9263B3D7600D43C23 /* Assets.xcassets */; };
 		74254EED263B3D7600D43C23 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74254EEC263B3D7600D43C23 /* Preview Assets.xcassets */; };
 		74254EF8263B3D7600D43C23 /* FetchJson4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74254EF7263B3D7600D43C23 /* FetchJson4Tests.swift */; };
 		74254F03263B3D7600D43C23 /* FetchJson4UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74254F02263B3D7600D43C23 /* FetchJson4UITests.swift */; };
+		74254F14263C925A00D43C23 /* MyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74254F13263C925A00D43C23 /* MyViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +36,7 @@
 /* Begin PBXFileReference section */
 		74254EE2263B3D7400D43C23 /* FetchJson4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FetchJson4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74254EE5263B3D7400D43C23 /* FetchJson4App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchJson4App.swift; sourceTree = "<group>"; };
-		74254EE7263B3D7400D43C23 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		74254EE7263B3D7400D43C23 /* MyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
 		74254EE9263B3D7600D43C23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		74254EEC263B3D7600D43C23 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		74254EEE263B3D7600D43C23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -45,6 +46,7 @@
 		74254EFE263B3D7600D43C23 /* FetchJson4UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FetchJson4UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		74254F02263B3D7600D43C23 /* FetchJson4UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchJson4UITests.swift; sourceTree = "<group>"; };
 		74254F04263B3D7600D43C23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		74254F13263C925A00D43C23 /* MyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +98,8 @@
 			isa = PBXGroup;
 			children = (
 				74254EE5263B3D7400D43C23 /* FetchJson4App.swift */,
-				74254EE7263B3D7400D43C23 /* ContentView.swift */,
+				74254EE7263B3D7400D43C23 /* MyView.swift */,
+				74254F13263C925A00D43C23 /* MyViewModel.swift */,
 				74254EE9263B3D7600D43C23 /* Assets.xcassets */,
 				74254EEE263B3D7600D43C23 /* Info.plist */,
 				74254EEB263B3D7600D43C23 /* Preview Content */,
@@ -259,8 +262,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				74254EE8263B3D7400D43C23 /* ContentView.swift in Sources */,
+				74254EE8263B3D7400D43C23 /* MyView.swift in Sources */,
 				74254EE6263B3D7400D43C23 /* FetchJson4App.swift in Sources */,
+				74254F14263C925A00D43C23 /* MyViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
