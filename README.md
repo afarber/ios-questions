@@ -61,6 +61,11 @@ Screenshots
 ![screenshot](https://raw.github.com/afarber/ios-newbie/master/FetchJson1.png)
 
 
+[FetchJson4](https://github.com/afarber/ios-newbie/tree/master/FetchJson4):
+
+![screenshot](https://raw.github.com/afarber/ios-newbie/master/FetchJson4/screenshot.png)
+
+
 [MyAuth](https://github.com/afarber/ios-newbie/tree/master/MyAuth):
 
 ![screenshot](https://raw.github.com/afarber/ios-newbie/master/MyAuth/screenshot.png)

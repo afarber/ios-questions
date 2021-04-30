@@ -2,22 +2,24 @@ import Foundation
 import PlaygroundSupport
 import SwiftUI
 
+
 struct FetchView1: View {
-    
+    let items = (1...4).map { number in "Item \(number)" }
+
     @State private var rotation: Double = 0
     
     var body: some View {
-        
         VStack {
             Rectangle()
                 .fill(Color.blue)
-                .frame(width: 200, height: 200)
-                .rotationEffect(.degrees(rotation))
-                .animation(.linear)
-            Button("Button1", action: {
-                rotation = (rotation < 360 ? rotation + 60 : 0)
-            })
-            Text("Rotate me")
+                .frame(width: 20, height: 20)
+            
+            List(items, id: \.self) { item in
+                Rectangle()
+                    .fill(Color.blue)
+                    .frame(width: 20, height: 20)
+            }
+ 
         }
         .padding(10)
     }
@@ -42,12 +44,12 @@ let task = URLSession.shared.dataTask(with: url) {
     
     let decoder = JSONDecoder()
     guard let data = data else { return }
+    //print(String(describing: String(data: data, encoding: .utf8)))
     do {
         let tops = try decoder.decode(TopResponse.self, from: data)
         print(tops.data[4].given)
     } catch {
         print("Error while parsing: \(error)")
-        print("the data: \(String(data: data, encoding: .utf8))")
     }
 }
 task.resume()
