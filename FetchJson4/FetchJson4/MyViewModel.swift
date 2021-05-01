@@ -39,8 +39,10 @@ class MyViewModel: ObservableObject {
                 let tops = try decoder.decode(TopResponse.self, from: data)
                 for (index, top) in tops.data.enumerated() {
                     let str = "\(index + 1): \(top.given)"
-                    self.items.append(str)
                     print(str)
+                    DispatchQueue.main.async {
+                        self.items.append(str)
+                    }
                 }
             } catch {
                 print("Error while parsing: \(error)")
