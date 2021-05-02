@@ -19,26 +19,28 @@ struct ContentView: View {
     private var items2:[String] = (1...200).map { number in "Item \(number)" }
 
     var body: some View {
-        VStack {
-            Text("FetchJsonEscapable").foregroundColor(.orange)
-            List {
-                ForEach(items2, id: \.self) { item in
-                    Text("Item  \(item)")
-                        .foregroundColor(.green)
+        NavigationView {
+            VStack {
+                Text("FetchJsonEscapable").foregroundColor(.orange)
+                List {
+    /*
+                    ForEach(items2, id: \.self) { item in
+                        Text("Item  \(item)")
+                            .foregroundColor(.green)
+                    }
+    */
+                    ForEach(items) { item in
+                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                            .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                    }
+                    .onDelete(perform: deleteItems)
                 }
-/*
-                ForEach(items) { item in
-                    Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                        .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-                }
-                .onDelete(perform: deleteItems)
- */
-            }
-            .toolbar {
-                EditButton()
+                .toolbar {
+                    EditButton()
 
-                Button(action: addItem) {
-                    Label("Add Item", systemImage: "plus")
+                    Button(action: addItem) {
+                        Label("Add Item", systemImage: "plus")
+                    }
                 }
             }
         }
