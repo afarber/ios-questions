@@ -8,7 +8,44 @@
 import SwiftUI
 import CoreData
 
+class MyViewModel: ObservableObject {
+    init() {
+    }
+    
+    func getPosts() {
+        guard let url = URL(string: "") else { return }
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let data = data else {
+                print("No data")
+                return
+            }
+            
+            guard error == nil else {
+                print("Error: \(String(describing: error))")
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse else {
+                print("Invalid response")
+                return
+            }
+            
+            guard response.statusCode >= 200 && response.statusCode < 300 else {
+                return
+            }
+            
+        }.resume()
+    }
+}
+
 struct ContentView: View {
+    @StateObject var vm = MyViewModel()
+    
+    var body: some View {
+        Text("FetchJsonEscapable").foregroundColor(.orange)
+    }
+    
+    
     @Environment(\.managedObjectContext) private var viewContext
     
     @FetchRequest(
@@ -18,7 +55,7 @@ struct ContentView: View {
     
     private var items2:[String] = (1...200).map { number in "Item \(number)" }
     
-    var body: some View {
+    var body2: some View {
         NavigationView {
             VStack {
                 Text("FetchJsonEscapable").foregroundColor(.orange)
