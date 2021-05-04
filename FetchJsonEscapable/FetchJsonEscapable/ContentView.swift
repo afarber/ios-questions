@@ -12,7 +12,8 @@ struct TopResponse: Codable {
     let data: [Top]
 }
 
-struct Top: Codable /*, Identifiable */ {
+struct Top: Codable, Identifiable {
+    var id: Int { uid }
     let uid: Int
     let elo: Int
     let given: String
@@ -32,6 +33,7 @@ class MyViewModel: ObservableObject {
     
     func getPosts() {
         guard let url = URL(string: "https://slova.de/ws/top") else { return }
+
         downloadData(fromURL: url) { (returnedData) in
             if let data = returnedData {
                 let decoder = JSONDecoder()
@@ -46,7 +48,6 @@ class MyViewModel: ObservableObject {
                 }
             }
         }
-        
     }
     
     func downloadData(fromURL url: URL, completionHandler: @escaping (_ data: Data?) -> Void) {
@@ -68,39 +69,39 @@ class MyViewModel: ObservableObject {
 struct ContentView: View {
     @StateObject var vm = MyViewModel()
     
-    var body: some View {
-        Text("FetchJsonEscapable").foregroundColor(.orange)
-    }
-    
-    
     @Environment(\.managedObjectContext) private var viewContext
     
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
     private var items: FetchedResults<Item>
-    
-    private var items2:[String] = (1...200).map { number in "Item \(number)" }
-    
-    var body2: some View {
+        
+    var body: some View {
         NavigationView {
             VStack {
                 Text("FetchJsonEscapable").foregroundColor(.orange)
                 List {
+                    ForEach(vm.tops) { top in
+                        VStack {
+                            Text(top.given)
+                            
+                            HStack {
+                                Text(String(top.elo))
+                                Text(top.avg_time ?? "")
+                                Text(String(top.avg_score ?? 0))
+                            }
+                        }
+                    }
                     /*
-                     ForEach(items2, id: \.self) { item in
-                     Text("Item  \(item)")
-                     .foregroundColor(.green)
-                     }
-                     */
                     ForEach(items) { item in
                         Text("Item at \(item.timestamp!, formatter: itemFormatter)")
                             .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
                     }
                     .onDelete(perform: deleteItems)
+                     */
                 }
                 .toolbar {
-                    
+                    /*
                     #if os(iOS)
                     ToolbarItem(placement: .navigationBarTrailing) {
                         
@@ -114,6 +115,7 @@ struct ContentView: View {
                             Label("Add Item", systemImage: "plus")
                         }
                     }
+                    */
                 }
             }
         }
