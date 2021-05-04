@@ -8,32 +8,59 @@
 import SwiftUI
 import CoreData
 
+struct TopResponse: Codable {
+    let data: [Top]
+}
+
+struct Top: Codable /*, Identifiable */ {
+    let uid: Int
+    let elo: Int
+    let given: String
+    let photo: String?
+    let motto: String?
+    let avg_score: Double?
+    let avg_time: String?
+}
+
 class MyViewModel: ObservableObject {
+    
+    @Published var tops: [Top] = []
+    
     init() {
+        getPosts()
     }
     
     func getPosts() {
-        guard let url = URL(string: "") else { return }
+        guard let url = URL(string: "https://slova.de/ws/top") else { return }
+        downloadData(fromURL: url) { (returnedData) in
+            if let data = returnedData {
+                let decoder = JSONDecoder()
+                do {
+                    let response = try decoder.decode(TopResponse.self, from: data)
+                    print(response.data[4].given)
+                    DispatchQueue.main.async { [weak self] in
+                        self?.tops = response.data
+                    }
+                } catch {
+                    print("Error while parsing: \(error)")
+                }
+            }
+        }
+        
+    }
+    
+    func downloadData(fromURL url: URL, completionHandler: @escaping (_ data: Data?) -> Void) {
         URLSession.shared.dataTask(with: url) { (data, response, error) in
-            guard let data = data else {
-                print("No data")
+            guard error == nil,
+                  let data = data,
+                  let response = response as? HTTPURLResponse,
+                  response.statusCode >= 200 && response.statusCode < 300 else {
+                print("Error")
+                completionHandler(nil)
                 return
             }
             
-            guard error == nil else {
-                print("Error: \(String(describing: error))")
-                return
-            }
-            
-            guard let response = response as? HTTPURLResponse else {
-                print("Invalid response")
-                return
-            }
-            
-            guard response.statusCode >= 200 && response.statusCode < 300 else {
-                return
-            }
-            
+            completionHandler(data)
         }.resume()
     }
 }
