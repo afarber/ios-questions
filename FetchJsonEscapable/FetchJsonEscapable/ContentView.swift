@@ -25,6 +25,8 @@ struct Top: Codable, Identifiable {
 
 class MyViewModel: ObservableObject {
     
+    let manager = CacheManager.instance
+    
     @Published var tops: [Top] = []
     
     init() {

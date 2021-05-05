@@ -5,9 +5,11 @@
 //  Created by Alexander Farber on 05.05.21.
 //
 
+import UIKit
+
 class CacheManager {
     static let instance = CacheManager()
-    private init()
+    private init() {}
 
     var imageCache: NSCache<NSString, UIImage> = {
         let cache = NSCache<NSString, UIImage>()
@@ -21,12 +23,10 @@ class CacheManager {
     }
 
     func remove(name: String) {
-        imageCache.removeObject(image, forKey: name as NSString)
+        imageCache.removeObject(forKey: name as NSString)
     }
 
     func get(name: String) -> UIImage? {
         return imageCache.object(forKey: name as NSString)
     }
-
 }
-

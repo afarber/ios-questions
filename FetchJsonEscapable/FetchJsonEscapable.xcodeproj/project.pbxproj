@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		74113025264332D100A1D532 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74113024264332D100A1D532 /* CacheManager.swift */; };
 		74CC0F59263EF52A008B3A45 /* FetchJsonEscapableApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CC0F58263EF52A008B3A45 /* FetchJsonEscapableApp.swift */; };
 		74CC0F5B263EF52A008B3A45 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CC0F5A263EF52A008B3A45 /* ContentView.swift */; };
 		74CC0F5D263EF52E008B3A45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74CC0F5C263EF52E008B3A45 /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		74113024264332D100A1D532 /* CacheManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		74CC0F55263EF52A008B3A45 /* FetchJsonEscapable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FetchJsonEscapable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74CC0F58263EF52A008B3A45 /* FetchJsonEscapableApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchJsonEscapableApp.swift; sourceTree = "<group>"; };
 		74CC0F5A263EF52A008B3A45 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 		74CC0F57263EF52A008B3A45 /* FetchJsonEscapable */ = {
 			isa = PBXGroup;
 			children = (
+				74113024264332D100A1D532 /* CacheManager.swift */,
 				74CC0F58263EF52A008B3A45 /* FetchJsonEscapableApp.swift */,
 				74CC0F5A263EF52A008B3A45 /* ContentView.swift */,
 				74CC0F5C263EF52E008B3A45 /* Assets.xcassets */,
@@ -266,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				74CC0F62263EF52E008B3A45 /* Persistence.swift in Sources */,
+				74113025264332D100A1D532 /* CacheManager.swift in Sources */,
 				74CC0F5B263EF52A008B3A45 /* ContentView.swift in Sources */,
 				74CC0F59263EF52A008B3A45 /* FetchJsonEscapableApp.swift in Sources */,
 				74CC0F65263EF52E008B3A45 /* FetchJsonEscapable.xcdatamodeld in Sources */,
