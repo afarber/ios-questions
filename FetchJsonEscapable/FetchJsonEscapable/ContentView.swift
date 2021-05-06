@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import Combine
 
 struct TopResponse: Codable {
     let data: [Top]
@@ -26,14 +27,40 @@ struct Top: Codable, Identifiable {
 class MyViewModel: ObservableObject {
     
     let manager = CacheManager.instance
-    
+    var cancellables = Set<AnyCancellable>()
     @Published var tops: [Top] = []
     
     init() {
-        getPosts()
+        getTopsCombine()
+        //getTopsEscapable()
     }
     
-    func getPosts() {
+    func getTopsCombine() {
+        guard let url = URL(string: "https://slova.de/ws/top") else { return }
+        URLSession.shared.dataTaskPublisher(for: url)
+            .subscribe(on: DispatchQueue.global(qos: .background))
+            .receive(on: DispatchQueue.main)
+            .tryMap(handleOutput)
+            .decode(type: TopResponse.self, decoder: JSONDecoder())
+            .sink{ ( completion ) in
+            } receiveValue: { [weak self] (returnedTops) in
+                self?.tops = returnedTops.data
+            }
+            .store(in: &cancellables)
+    }
+    
+    func handleOutput(output: URLSession.DataTaskPublisher.Output) throws -> Data {
+        guard
+            let response = output.response as? HTTPURLResponse,
+            response.statusCode >= 200 && response.statusCode < 300
+            else {
+                throw URLError(.badServerResponse)
+            }
+        
+        return output.data
+    }
+    
+    func getTopsEscapable() {
         guard let url = URL(string: "https://slova.de/ws/top") else { return }
 
         downloadData(fromURL: url) { (returnedData) in
