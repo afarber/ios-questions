@@ -109,18 +109,16 @@
 		74CC0F57263EF52A008B3A45 /* FetchJsonEscapable */ = {
 			isa = PBXGroup;
 			children = (
-				74113024264332D100A1D532 /* CacheManager.swift */,
 				74CC0F58263EF52A008B3A45 /* FetchJsonEscapableApp.swift */,
-				74CC0F5A263EF52A008B3A45 /* ContentView.swift */,
+				74ED4D5F264DAB2B00EDD901 /* Managers */,
+				74ED4D5E264DAAF900EDD901 /* ViewModels */,
 				74CC0F5C263EF52E008B3A45 /* Assets.xcassets */,
+				74ED4D60264DAB5D00EDD901 /* Views */,
+				74ED4D5D264DAAED00EDD901 /* Models */,
 				74CC0F61263EF52E008B3A45 /* Persistence.swift */,
 				74CC0F66263EF52E008B3A45 /* Info.plist */,
 				74CC0F63263EF52E008B3A45 /* FetchJsonEscapable.xcdatamodeld */,
 				74CC0F5E263EF52E008B3A45 /* Preview Content */,
-				74ED4D55264D1D6C00EDD901 /* TopViewModel.swift */,
-				74ED4D57264D34DC00EDD901 /* DownloadManager.swift */,
-				74ED4D59264D7C1700EDD901 /* TopModel.swift */,
-				74ED4D5B264D7D0200EDD901 /* TopRow.swift */,
 			);
 			path = FetchJsonEscapable;
 			sourceTree = "<group>";
@@ -149,6 +147,40 @@
 				74CC0F7C263EF52E008B3A45 /* Info.plist */,
 			);
 			path = FetchJsonEscapableUITests;
+			sourceTree = "<group>";
+		};
+		74ED4D5D264DAAED00EDD901 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				74ED4D59264D7C1700EDD901 /* TopModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		74ED4D5E264DAAF900EDD901 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				74ED4D55264D1D6C00EDD901 /* TopViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		74ED4D5F264DAB2B00EDD901 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				74113024264332D100A1D532 /* CacheManager.swift */,
+				74ED4D57264D34DC00EDD901 /* DownloadManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		74ED4D60264DAB5D00EDD901 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				74CC0F5A263EF52A008B3A45 /* ContentView.swift */,
+				74ED4D5B264D7D0200EDD901 /* TopRow.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
