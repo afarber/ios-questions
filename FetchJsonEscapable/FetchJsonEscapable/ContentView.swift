@@ -24,16 +24,9 @@ struct ContentView: View {
                 Text("FetchJsonEscapable").foregroundColor(.orange)
                 List {
                     ForEach(vm.tops) { top in
-                        VStack {
-                            Text(top.given)
-                            
-                            HStack {
-                                Text(String(top.elo))
-                                Text(top.avg_time ?? "")
-                                Text(String(top.avg_score ?? 0))
-                            }
-                        }
+                        TopRow(model: top)
                     }
+                    
                     /*
                     ForEach(items) { item in
                         Text("Item at \(item.timestamp!, formatter: itemFormatter)")

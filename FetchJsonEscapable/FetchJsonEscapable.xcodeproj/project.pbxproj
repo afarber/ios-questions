@@ -18,6 +18,8 @@
 		74CC0F7B263EF52E008B3A45 /* FetchJsonEscapableUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CC0F7A263EF52E008B3A45 /* FetchJsonEscapableUITests.swift */; };
 		74ED4D56264D1D6C00EDD901 /* TopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ED4D55264D1D6C00EDD901 /* TopViewModel.swift */; };
 		74ED4D58264D34DC00EDD901 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ED4D57264D34DC00EDD901 /* DownloadManager.swift */; };
+		74ED4D5A264D7C1700EDD901 /* TopModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ED4D59264D7C1700EDD901 /* TopModel.swift */; };
+		74ED4D5C264D7D0200EDD901 /* TopRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ED4D5B264D7D0200EDD901 /* TopRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		74CC0F7C263EF52E008B3A45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		74ED4D55264D1D6C00EDD901 /* TopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewModel.swift; sourceTree = "<group>"; };
 		74ED4D57264D34DC00EDD901 /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
+		74ED4D59264D7C1700EDD901 /* TopModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopModel.swift; sourceTree = "<group>"; };
+		74ED4D5B264D7D0200EDD901 /* TopRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,8 @@
 				74CC0F5E263EF52E008B3A45 /* Preview Content */,
 				74ED4D55264D1D6C00EDD901 /* TopViewModel.swift */,
 				74ED4D57264D34DC00EDD901 /* DownloadManager.swift */,
+				74ED4D59264D7C1700EDD901 /* TopModel.swift */,
+				74ED4D5B264D7D0200EDD901 /* TopRow.swift */,
 			);
 			path = FetchJsonEscapable;
 			sourceTree = "<group>";
@@ -279,6 +285,8 @@
 				74CC0F5B263EF52A008B3A45 /* ContentView.swift in Sources */,
 				74CC0F59263EF52A008B3A45 /* FetchJsonEscapableApp.swift in Sources */,
 				74ED4D56264D1D6C00EDD901 /* TopViewModel.swift in Sources */,
+				74ED4D5C264D7D0200EDD901 /* TopRow.swift in Sources */,
+				74ED4D5A264D7C1700EDD901 /* TopModel.swift in Sources */,
 				74CC0F65263EF52E008B3A45 /* FetchJsonEscapable.xcdatamodeld in Sources */,
 				74ED4D58264D34DC00EDD901 /* DownloadManager.swift in Sources */,
 			);

@@ -8,28 +8,13 @@
 import Foundation
 import Combine
 
-struct TopResponse: Codable {
-    let data: [Top]
-}
-
-struct Top: Codable, Identifiable {
-    var id: Int { uid }
-    let uid: Int
-    let elo: Int
-    let given: String
-    let photo: String?
-    let motto: String?
-    let avg_score: Double?
-    let avg_time: String?
-}
-
 class TopViewModel: ObservableObject {
     
+    @Published var tops: [Top] = []
+
     let cacheManager = CacheManager.instance
     let downloadManager = DownloadManager.instance
-    
     var cancellables = Set<AnyCancellable>()
-    @Published var tops: [Top] = []
     
     init() {
         addSubscribers()
@@ -37,8 +22,8 @@ class TopViewModel: ObservableObject {
     
     func addSubscribers() {
         downloadManager.$tops
-            .sink { [weak self] (returnedTopModels) in
-                self?.tops = returnedTopModels
+            .sink { [weak self] (returnedTops) in
+                self?.tops = returnedTops
             }
             .store(in: &cancellables)
     }
