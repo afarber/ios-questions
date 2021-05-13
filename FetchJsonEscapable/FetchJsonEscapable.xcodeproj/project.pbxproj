@@ -16,6 +16,8 @@
 		74CC0F65263EF52E008B3A45 /* FetchJsonEscapable.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 74CC0F63263EF52E008B3A45 /* FetchJsonEscapable.xcdatamodeld */; };
 		74CC0F70263EF52E008B3A45 /* FetchJsonEscapableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CC0F6F263EF52E008B3A45 /* FetchJsonEscapableTests.swift */; };
 		74CC0F7B263EF52E008B3A45 /* FetchJsonEscapableUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CC0F7A263EF52E008B3A45 /* FetchJsonEscapableUITests.swift */; };
+		74ED4D56264D1D6C00EDD901 /* TopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ED4D55264D1D6C00EDD901 /* TopViewModel.swift */; };
+		74ED4D58264D34DC00EDD901 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ED4D57264D34DC00EDD901 /* DownloadManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		74CC0F76263EF52E008B3A45 /* FetchJsonEscapableUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FetchJsonEscapableUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		74CC0F7A263EF52E008B3A45 /* FetchJsonEscapableUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchJsonEscapableUITests.swift; sourceTree = "<group>"; };
 		74CC0F7C263EF52E008B3A45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		74ED4D55264D1D6C00EDD901 /* TopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewModel.swift; sourceTree = "<group>"; };
+		74ED4D57264D34DC00EDD901 /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,8 @@
 				74CC0F66263EF52E008B3A45 /* Info.plist */,
 				74CC0F63263EF52E008B3A45 /* FetchJsonEscapable.xcdatamodeld */,
 				74CC0F5E263EF52E008B3A45 /* Preview Content */,
+				74ED4D55264D1D6C00EDD901 /* TopViewModel.swift */,
+				74ED4D57264D34DC00EDD901 /* DownloadManager.swift */,
 			);
 			path = FetchJsonEscapable;
 			sourceTree = "<group>";
@@ -272,7 +278,9 @@
 				74113025264332D100A1D532 /* CacheManager.swift in Sources */,
 				74CC0F5B263EF52A008B3A45 /* ContentView.swift in Sources */,
 				74CC0F59263EF52A008B3A45 /* FetchJsonEscapableApp.swift in Sources */,
+				74ED4D56264D1D6C00EDD901 /* TopViewModel.swift in Sources */,
 				74CC0F65263EF52E008B3A45 /* FetchJsonEscapable.xcdatamodeld in Sources */,
+				74ED4D58264D34DC00EDD901 /* DownloadManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -66,7 +66,8 @@ Screenshots
 ![screenshot](https://raw.github.com/afarber/ios-newbie/master/FetchJson4/screenshot.png)
 
 
-[FetchJsonEscapable](https://github.com/afarber/ios-newbie/tree/master/FetchJsonEscapable):
+[FetchJsonEscapable](https://github.com/afarber/ios-newbie/tree/master/FetchJsonEscapable)
+based on [Swiftful Thnking](https://github.com/SwiftfulThinking/SwiftUI-Continued-Learning) code by Nick Sarno:
 
 ![screenshot](https://raw.github.com/afarber/ios-newbie/master/FetchJsonEscapable/screenshot.png)
 
