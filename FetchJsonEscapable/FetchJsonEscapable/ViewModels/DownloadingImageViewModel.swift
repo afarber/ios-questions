@@ -15,25 +15,23 @@ class DownloadingImageViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     
     var cancellables = Set<AnyCancellable>()
-    //let manager = PhotoModelFileManager.instance
+    let manager = CacheManager.instance
     
     let urlString: String
-    let imageKey: String
     
-    init(url: String, key: String) {
+    init(url: String) {
         urlString = url
-        imageKey = key
         getImage()
     }
     
     func getImage() {
-//        if let savedImage = manager.get(key: imageKey) {
-//            image = savedImage
-//            print("Getting saved image!")
-//        } else {
+        if let savedImage = manager.get(name: urlString) {
+            image = savedImage
+            print("Getting saved image!")
+        } else {
             downloadImage()
             print("Downloading image now!")
-//        }
+        }
     }
     
     func downloadImage() {
@@ -54,9 +52,8 @@ class DownloadingImageViewModel: ObservableObject {
                     let image = returnedImage else { return }
                 
                 self.image = image
-                //self.manager.add(key: self.imageKey, value: image)
+                self.manager.add(image: image, name: self.urlString)
             }
             .store(in: &cancellables)
     }
-    
 }

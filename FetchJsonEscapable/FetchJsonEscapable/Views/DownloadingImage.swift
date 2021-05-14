@@ -10,8 +10,8 @@ import SwiftUI
 struct DownloadingImage: View {
     @StateObject var loader: DownloadingImageViewModel
     
-    init(url: String, key: String) {
-        _loader = StateObject(wrappedValue: DownloadingImageViewModel(url: url, key: key))
+    init(url: String) {
+        _loader = StateObject(wrappedValue: DownloadingImageViewModel(url: url))
     }
     
     var body: some View {
@@ -32,7 +32,7 @@ struct DownloadingImage: View {
 
 struct TopImageView_Previews: PreviewProvider {
     static var previews: some View {
-        DownloadingImage(url: "https://via.placeholder.com/600/92c952", key: "123")
+        DownloadingImage(url: "https://slova.de/words/images/female_happy.png")
             .frame(width: 75, height: 75)
             .previewLayout(.sizeThatFits)
     }

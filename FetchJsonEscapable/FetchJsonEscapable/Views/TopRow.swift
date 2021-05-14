@@ -21,7 +21,7 @@ struct TopRow: View {
                 Text("Average score: \(String(model.avg_score ?? 0.0))")
             }
             Spacer()
-            DownloadingImage(url: model.photo ?? "TODO", key: "\(model.id)")
+            DownloadingImage(url: model.photo ?? "TODO")
                 .frame(width: 75, height: 75)
         }
     }
