@@ -20,6 +20,8 @@
 		74ED4D58264D34DC00EDD901 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ED4D57264D34DC00EDD901 /* DownloadManager.swift */; };
 		74ED4D5A264D7C1700EDD901 /* TopModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ED4D59264D7C1700EDD901 /* TopModel.swift */; };
 		74ED4D5C264D7D0200EDD901 /* TopRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ED4D5B264D7D0200EDD901 /* TopRow.swift */; };
+		74ED4D62264DADDD00EDD901 /* DownloadingImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ED4D61264DADDD00EDD901 /* DownloadingImage.swift */; };
+		74ED4D64264DAFD400EDD901 /* DownloadingImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ED4D63264DAFD400EDD901 /* DownloadingImageViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		74ED4D57264D34DC00EDD901 /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		74ED4D59264D7C1700EDD901 /* TopModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopModel.swift; sourceTree = "<group>"; };
 		74ED4D5B264D7D0200EDD901 /* TopRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRow.swift; sourceTree = "<group>"; };
+		74ED4D61264DADDD00EDD901 /* DownloadingImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadingImage.swift; sourceTree = "<group>"; };
+		74ED4D63264DAFD400EDD901 /* DownloadingImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadingImageViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				74ED4D55264D1D6C00EDD901 /* TopViewModel.swift */,
+				74ED4D63264DAFD400EDD901 /* DownloadingImageViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -179,6 +184,7 @@
 			children = (
 				74CC0F5A263EF52A008B3A45 /* ContentView.swift */,
 				74ED4D5B264D7D0200EDD901 /* TopRow.swift */,
+				74ED4D61264DADDD00EDD901 /* DownloadingImage.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -314,7 +320,9 @@
 			files = (
 				74CC0F62263EF52E008B3A45 /* Persistence.swift in Sources */,
 				74113025264332D100A1D532 /* CacheManager.swift in Sources */,
+				74ED4D62264DADDD00EDD901 /* DownloadingImage.swift in Sources */,
 				74CC0F5B263EF52A008B3A45 /* ContentView.swift in Sources */,
+				74ED4D64264DAFD400EDD901 /* DownloadingImageViewModel.swift in Sources */,
 				74CC0F59263EF52A008B3A45 /* FetchJsonEscapableApp.swift in Sources */,
 				74ED4D56264D1D6C00EDD901 /* TopViewModel.swift in Sources */,
 				74ED4D5C264D7D0200EDD901 /* TopRow.swift in Sources */,

@@ -11,17 +11,18 @@ struct TopRow: View {
     let model:Top
     
     var body: some View {
-        
-        VStack {
+        HStack {
             Text(model.given)
-            
-            HStack {
-                Text(String(model.elo))
-                Spacer()
-                Text(model.avg_time ?? "")
-                Spacer()
-                Text(String(model.avg_score ?? 0))
+                .font(.headline)
+            Spacer()
+            VStack {
+                Text("Elo rating: \(model.elo)")
+                Text("Average time: \(model.avg_time ?? "")")
+                Text("Average score: \(String(model.avg_score ?? 0.0))")
             }
+            Spacer()
+            DownloadingImage(url: model.photo ?? "TODO", key: "\(model.id)")
+                .frame(width: 75, height: 75)
         }
     }
 }
@@ -29,15 +30,15 @@ struct TopRow: View {
 struct TopRow_Previews: PreviewProvider {
     static var previews: some View {
         TopRow(model: Top(
-                uid: 19265,
-                elo: 2659,
-                given: "Alex",
-                photo: "https://avt-20.foto.mail.ru/mail/farber72/_avatar180",
-                motto: nil,
-                avg_score: 18.8,
-                avg_time: "03:06"
-            ))
-            .padding()
-            .previewLayout(.sizeThatFits)
+            uid: 19265,
+            elo: 2659,
+            given: "Alex",
+            photo: "https://avt-20.foto.mail.ru/mail/farber72/_avatar180",
+            motto: nil,
+            avg_score: 18.8,
+            avg_time: "03:06"
+        ))
+        .padding()
+        .previewLayout(.sizeThatFits)
     }
 }
