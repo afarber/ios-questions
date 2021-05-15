@@ -13,9 +13,11 @@ struct PersistenceController {
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
-        for _ in 0..<10 {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+        for var i in 0..<10 {
+            let newTop = TopEntity(context: viewContext)
+            newTop.uid = Int32(i)
+            newTop.elo = 1500
+            newTop.given = "Person \(newTop.uid + 1)"
         }
         do {
             try viewContext.save()
@@ -31,7 +33,7 @@ struct PersistenceController {
     let container: NSPersistentContainer
 
     init(inMemory: Bool = false) {
-        container = NSPersistentContainer(name: "FetchJsonEscapable")
+        container = NSPersistentContainer(name: "Tops")
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }

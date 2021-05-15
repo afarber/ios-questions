@@ -13,7 +13,7 @@ struct TopRow: View {
     var body: some View {
         HStack {
             Text(model.given)
-                .frame(minWidth: 60, maxWidth: .infinity)
+                .frame(minWidth: 60, maxWidth: .infinity, alignment: .leading)
             Spacer()
             VStack {
                 Text("Elo rating: \(model.elo)")
@@ -33,7 +33,7 @@ struct TopRow_Previews: PreviewProvider {
             uid: 19265,
             elo: 2659,
             given: "Alex",
-            photo: "https://avt-20.foto.mail.ru/mail/farber72/_avatar180",
+            photo: "https://slova.de/words/images/female_happy.png",
             motto: nil,
             avg_score: 18.8,
             avg_time: "03:06"

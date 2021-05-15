@@ -14,9 +14,9 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var moc
     
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \TopEntity.elo, ascending: true)],
         animation: .default)
-    private var items: FetchedResults<Item>
+    private var items: FetchedResults<TopEntity>
         
     var body: some View {
         NavigationView {
@@ -58,8 +58,10 @@ struct ContentView: View {
     
     private func addItem() {
         withAnimation {
-            let newItem = Item(context: moc)
-            newItem.timestamp = Date()
+            let newTop = TopEntity(context: moc)
+            newTop.uid = Int32.random(in: 1000..<2000)
+            newTop.elo = 1500
+            newTop.given = "Person \(newTop.uid + 1)"
             
             do {
                 try moc.save()

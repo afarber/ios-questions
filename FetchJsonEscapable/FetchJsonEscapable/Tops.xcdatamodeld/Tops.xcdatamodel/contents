@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20E241" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="TopEntity" representedClassName="TopEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="avg_score" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="avg_time" optional="YES" attributeType="String"/>
+        <attribute name="elo" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="given" attributeType="String"/>
+        <attribute name="motto" optional="YES" attributeType="String"/>
+        <attribute name="photo" optional="YES" attributeType="String"/>
+        <attribute name="uid" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <elements>
+        <element name="TopEntity" positionX="-63" positionY="-18" width="128" height="14"/>
+    </elements>
+</model>

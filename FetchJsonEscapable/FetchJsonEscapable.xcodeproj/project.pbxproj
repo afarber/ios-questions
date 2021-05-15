@@ -13,7 +13,6 @@
 		74CC0F5D263EF52E008B3A45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74CC0F5C263EF52E008B3A45 /* Assets.xcassets */; };
 		74CC0F60263EF52E008B3A45 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74CC0F5F263EF52E008B3A45 /* Preview Assets.xcassets */; };
 		74CC0F62263EF52E008B3A45 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CC0F61263EF52E008B3A45 /* Persistence.swift */; };
-		74CC0F65263EF52E008B3A45 /* FetchJsonEscapable.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 74CC0F63263EF52E008B3A45 /* FetchJsonEscapable.xcdatamodeld */; };
 		74CC0F70263EF52E008B3A45 /* FetchJsonEscapableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CC0F6F263EF52E008B3A45 /* FetchJsonEscapableTests.swift */; };
 		74CC0F7B263EF52E008B3A45 /* FetchJsonEscapableUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CC0F7A263EF52E008B3A45 /* FetchJsonEscapableUITests.swift */; };
 		74ED4D56264D1D6C00EDD901 /* TopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ED4D55264D1D6C00EDD901 /* TopViewModel.swift */; };
@@ -22,6 +21,7 @@
 		74ED4D5C264D7D0200EDD901 /* TopRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ED4D5B264D7D0200EDD901 /* TopRow.swift */; };
 		74ED4D62264DADDD00EDD901 /* DownloadingImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ED4D61264DADDD00EDD901 /* DownloadingImage.swift */; };
 		74ED4D64264DAFD400EDD901 /* DownloadingImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ED4D63264DAFD400EDD901 /* DownloadingImageViewModel.swift */; };
+		74ED4D6726505C3600EDD901 /* Tops.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 74ED4D6526505C3600EDD901 /* Tops.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +49,6 @@
 		74CC0F5C263EF52E008B3A45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		74CC0F5F263EF52E008B3A45 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		74CC0F61263EF52E008B3A45 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		74CC0F64263EF52E008B3A45 /* FetchJsonEscapable.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FetchJsonEscapable.xcdatamodel; sourceTree = "<group>"; };
 		74CC0F66263EF52E008B3A45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		74CC0F6B263EF52E008B3A45 /* FetchJsonEscapableTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FetchJsonEscapableTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		74CC0F6F263EF52E008B3A45 /* FetchJsonEscapableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchJsonEscapableTests.swift; sourceTree = "<group>"; };
@@ -63,6 +62,7 @@
 		74ED4D5B264D7D0200EDD901 /* TopRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRow.swift; sourceTree = "<group>"; };
 		74ED4D61264DADDD00EDD901 /* DownloadingImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadingImage.swift; sourceTree = "<group>"; };
 		74ED4D63264DAFD400EDD901 /* DownloadingImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadingImageViewModel.swift; sourceTree = "<group>"; };
+		74ED4D6626505C3600EDD901 /* Tops.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tops.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,8 +121,8 @@
 				74ED4D5D264DAAED00EDD901 /* Models */,
 				74CC0F61263EF52E008B3A45 /* Persistence.swift */,
 				74CC0F66263EF52E008B3A45 /* Info.plist */,
-				74CC0F63263EF52E008B3A45 /* FetchJsonEscapable.xcdatamodeld */,
 				74CC0F5E263EF52E008B3A45 /* Preview Content */,
+				74ED4D6526505C3600EDD901 /* Tops.xcdatamodeld */,
 			);
 			path = FetchJsonEscapable;
 			sourceTree = "<group>";
@@ -325,9 +325,9 @@
 				74ED4D64264DAFD400EDD901 /* DownloadingImageViewModel.swift in Sources */,
 				74CC0F59263EF52A008B3A45 /* FetchJsonEscapableApp.swift in Sources */,
 				74ED4D56264D1D6C00EDD901 /* TopViewModel.swift in Sources */,
+				74ED4D6726505C3600EDD901 /* Tops.xcdatamodeld in Sources */,
 				74ED4D5C264D7D0200EDD901 /* TopRow.swift in Sources */,
 				74ED4D5A264D7C1700EDD901 /* TopModel.swift in Sources */,
-				74CC0F65263EF52E008B3A45 /* FetchJsonEscapable.xcdatamodeld in Sources */,
 				74ED4D58264D34DC00EDD901 /* DownloadManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -650,13 +650,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		74CC0F63263EF52E008B3A45 /* FetchJsonEscapable.xcdatamodeld */ = {
+		74ED4D6526505C3600EDD901 /* Tops.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				74CC0F64263EF52E008B3A45 /* FetchJsonEscapable.xcdatamodel */,
+				74ED4D6626505C3600EDD901 /* Tops.xcdatamodel */,
 			);
-			currentVersion = 74CC0F64263EF52E008B3A45 /* FetchJsonEscapable.xcdatamodel */;
-			path = FetchJsonEscapable.xcdatamodeld;
+			currentVersion = 74ED4D6626505C3600EDD901 /* Tops.xcdatamodel */;
+			path = Tops.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
