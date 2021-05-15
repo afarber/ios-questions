@@ -14,12 +14,13 @@ struct TopRow: View {
         HStack {
             Text(model.given)
                 .font(.headline)
+                .frame(minWidth: 0, maxWidth: .infinity)
             Spacer()
             VStack {
                 Text("Elo rating: \(model.elo)")
                 Text("Average time: \(model.avg_time ?? "")")
                 Text("Average score: \(String(model.avg_score ?? 0.0))")
-            }
+            }.fixedSize(horizontal: true, vertical: false)
             Spacer()
             DownloadingImage(url: model.photo ?? "TODO")
                 .frame(width: 75, height: 75)
