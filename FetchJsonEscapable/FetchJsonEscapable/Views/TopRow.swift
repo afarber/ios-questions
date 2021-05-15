@@ -13,8 +13,7 @@ struct TopRow: View {
     var body: some View {
         HStack {
             Text(model.given)
-                .font(.headline)
-                .frame(minWidth: 0, maxWidth: .infinity)
+                .frame(minWidth: 60, maxWidth: .infinity)
             Spacer()
             VStack {
                 Text("Elo rating: \(model.elo)")
@@ -23,8 +22,8 @@ struct TopRow: View {
             }.fixedSize(horizontal: true, vertical: false)
             Spacer()
             DownloadingImage(url: model.photo ?? "TODO")
-                .frame(width: 75, height: 75)
-        }
+                .frame(width: 60, height: 60)
+        }.font(.footnote)
     }
 }
 
