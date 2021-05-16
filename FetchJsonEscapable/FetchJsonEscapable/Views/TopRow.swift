@@ -8,37 +8,40 @@
 import SwiftUI
 
 struct TopRow: View {
-    let model:Top
+    let top:TopEntity
     
     var body: some View {
         HStack {
-            Text(model.given)
+            DownloadingImage(url: top.photo ?? "TODO")
+                .frame(width: 60, height: 60)
+            Spacer()
+            Text(top.given ?? "unknown")
                 .frame(minWidth: 60, maxWidth: .infinity, alignment: .leading)
             Spacer()
             VStack {
-                Text("Elo rating: \(model.elo)")
-                Text("Average time: \(model.avg_time ?? "")")
-                Text("Average score: \(String(model.avg_score ?? 0.0))")
+                Text("Elo rating: \(top.elo)")
+                Text("Average time: \(top.avg_time ?? "")")
+                Text("Average score: \(String(top.avg_score))")
             }.fixedSize(horizontal: true, vertical: false)
-            Spacer()
-            DownloadingImage(url: model.photo ?? "TODO")
-                .frame(width: 60, height: 60)
         }.font(.footnote)
     }
 }
 
+/*
 struct TopRow_Previews: PreviewProvider {
     static var previews: some View {
-        TopRow(model: Top(
-            uid: 19265,
-            elo: 2659,
-            given: "Alex",
-            photo: "https://slova.de/words/images/female_happy.png",
-            motto: nil,
-            avg_score: 18.8,
-            avg_time: "03:06"
-        ))
+        let topEntity = TopEntity(context: PersistenceController.preview.container.viewContext)
+        topEntity.uid = 19265
+        topEntity.elo = 2659
+        topEntity.given = "Alex"
+        topEntity.motto = "TODO"
+        topEntity.photo = "https://slova.de/words/images/female_happy.png"
+        topEntity.avg_score = 18.8
+        topEntity.avg_time = "03:06"
+        
+        TopRow(top: topEntity)
         .padding()
         .previewLayout(.sizeThatFits)
     }
 }
+ */

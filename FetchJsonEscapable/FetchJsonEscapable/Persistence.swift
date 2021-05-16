@@ -12,15 +12,15 @@ struct PersistenceController {
 
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
-        let viewContext = result.container.viewContext
+        let moc = result.container.viewContext
         for var i in 0..<10 {
-            let newTop = TopEntity(context: viewContext)
+            let newTop = TopEntity(context: moc)
             newTop.uid = Int32(i)
             newTop.elo = 1500
             newTop.given = "Person \(newTop.uid + 1)"
         }
         do {
-            try viewContext.save()
+            try moc.save()
         } catch {
             // Replace this implementation with code to handle the error appropriately.
             // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.

@@ -13,6 +13,7 @@ class DownloadManager {
     
     @Published var tops: [Top] = []
     var cancellables = Set<AnyCancellable>()
+    let moc = PersistenceController.shared.container.viewContext;
     
     private init() {
         getTopsCombine()
@@ -29,9 +30,32 @@ class DownloadManager {
             .sink{ ( completion ) in
                 print(completion)
             } receiveValue: { [weak self] (returnedTops) in
-                self?.tops = returnedTops.data
+                for top in returnedTops.data {
+                    print(top)
+                    let topEntity = TopEntity(context: PersistenceController.shared.container.viewContext)
+                    topEntity.uid = Int32(top.id)
+                    topEntity.elo = Int32(top.elo)
+                    topEntity.given = top.given
+                    topEntity.motto = top.motto
+                    topEntity.photo = top.photo
+                    topEntity.avg_score = top.avg_score ?? 0.0
+                    topEntity.avg_time = top.avg_time
+                }
+                self?.save()
+                //self?.tops = returnedTops.data
             }
             .store(in: &cancellables)
+    }
+    
+    func save() {
+        do {
+            try moc.save()
+        } catch {
+            // Replace this implementation with code to handle the error appropriately.
+            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        }
     }
     
     func handleOutput(output: URLSession.DataTaskPublisher.Output) throws -> Data {
