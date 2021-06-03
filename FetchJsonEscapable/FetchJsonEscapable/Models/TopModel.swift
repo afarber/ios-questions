@@ -8,10 +8,10 @@
 import Foundation
 
 struct TopResponse: Codable {
-    let data: [Top]
+    let data: [TopModel]
 }
 
-struct Top: Codable, Identifiable {
+struct TopModel: Codable, Identifiable {
     var id: Int { uid }
     let uid: Int
     let elo: Int

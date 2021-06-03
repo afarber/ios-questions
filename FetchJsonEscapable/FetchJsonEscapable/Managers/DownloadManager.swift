@@ -11,7 +11,7 @@ import Combine
 class DownloadManager {
     static let instance = DownloadManager()
     
-    @Published var tops: [Top] = []
+    @Published var tops: [TopModel] = []
     var cancellables = Set<AnyCancellable>()
     let moc = PersistenceController.shared.container.viewContext;
     

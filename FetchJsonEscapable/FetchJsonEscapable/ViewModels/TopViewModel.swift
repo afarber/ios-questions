@@ -10,7 +10,7 @@ import Combine
 
 class TopViewModel: ObservableObject {
     
-    @Published var tops: [Top] = []
+    @Published var tops: [TopModel] = []
 
     let cacheManager = CacheManager.instance
     let downloadManager = DownloadManager.instance
