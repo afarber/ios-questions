@@ -15,6 +15,8 @@ struct ContentView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \TopEntity.elo, ascending: false)],
         animation: .default)
     private var topEntities: FetchedResults<TopEntity>
+    
+    @StateObject var vm = TopViewModel()
 
     var body: some View {
         List {
