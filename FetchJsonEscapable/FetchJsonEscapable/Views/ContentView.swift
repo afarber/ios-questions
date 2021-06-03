@@ -14,7 +14,7 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var moc
     
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \TopEntity.elo, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \TopEntity.elo, ascending: false)],
         animation: .default)
     private var tops: FetchedResults<TopEntity>
     
