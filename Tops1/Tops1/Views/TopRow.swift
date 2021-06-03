@@ -26,20 +26,23 @@ struct TopRow: View {
         }.font(.footnote)
     }
 }
-/*
+
 struct TopRow_Previews: PreviewProvider {
-    static var topEntity = TopEntity(context: PersistenceController.preview.container.viewContext)
-    topEntity.uid = 19265
-    topEntity.elo = 2659
-    topEntity.given = "Alex"
-    topEntity.motto = "TODO"
-    topEntity.photo = "https://slova.de/words/images/female_happy.png"
-    topEntity.avg_score = 18.8
-    topEntity.avg_time = "03:06"
+    static var topEntity : TopEntity {
+        let topEntity = TopEntity(context: PersistenceController.preview.container.viewContext)
+        topEntity.uid = 19265
+        topEntity.elo = 2659
+        topEntity.given = "Alex"
+        topEntity.motto = "TODO"
+        topEntity.photo = "https://slova.de/words/images/female_happy.png"
+        topEntity.avg_score = 18.8
+        topEntity.avg_time = "03:06"
+        return topEntity
+    }
+
     static var previews: some View {
         TopRow(top: topEntity)
             .padding()
             .previewLayout(.sizeThatFits)
     }
 }
-*/

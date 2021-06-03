@@ -27,9 +27,8 @@ struct TopRow: View {
     }
 }
 
-/*
 struct TopRow_Previews: PreviewProvider {
-    static var previews: some View {
+    static var topEntity : TopEntity {
         let topEntity = TopEntity(context: PersistenceController.preview.container.viewContext)
         topEntity.uid = 19265
         topEntity.elo = 2659
@@ -38,10 +37,12 @@ struct TopRow_Previews: PreviewProvider {
         topEntity.photo = "https://slova.de/words/images/female_happy.png"
         topEntity.avg_score = 18.8
         topEntity.avg_time = "03:06"
-        
+        return topEntity
+    }
+
+    static var previews: some View {
         TopRow(top: topEntity)
-        .padding()
-        .previewLayout(.sizeThatFits)
+            .padding()
+            .previewLayout(.sizeThatFits)
     }
 }
- */
