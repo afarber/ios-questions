@@ -19,7 +19,7 @@ struct ContentView: View {
     var body: some View {
         List {
             ForEach(topEntities) { top in
-                Text(top.given ?? "Unknown person")
+                TopRow(top: top)
             }
         }
     }

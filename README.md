@@ -208,7 +208,7 @@ by [TomSwift](http://stackoverflow.com/users/291788/tomswift):
 ![screenshot](https://raw.github.com/afarber/ios-newbie/master/sdImageCopied/screenshot.png)
 
 
-[Tops1](https://github.com/afarber/ios-newbie/tree/master/Tops1):
+[Tops1](https://github.com/afarber/ios-newbie/tree/master/Tops1) SwiftUI and Core Data:
 
 ![screenshot](https://raw.github.com/afarber/ios-newbie/master/Tops1/screenshot.png)
 
