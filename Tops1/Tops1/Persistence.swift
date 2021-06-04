@@ -31,7 +31,7 @@ struct PersistenceController {
     }()
 
     let container: NSPersistentContainer
-
+    
     init(inMemory: Bool = false) {
         container = NSPersistentContainer(name: "Tops1")
         container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump

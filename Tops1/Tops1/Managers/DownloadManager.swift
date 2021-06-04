@@ -12,8 +12,9 @@ class DownloadManager {
     static let instance = DownloadManager()
     
     var cancellables = Set<AnyCancellable>()
-    let viewContext = PersistenceController.shared.container.viewContext;
-    
+    // how to run this line on the background thread of URLSession.shared.dataTaskPublisher?
+    let backgroundContext = PersistenceController.shared.container.newBackgroundContext()
+
     private init() {
         getTops()
     }
@@ -22,8 +23,6 @@ class DownloadManager {
         guard let url = URL(string: "https://slova.de/ws/top") else { return }
         
         URLSession.shared.dataTaskPublisher(for: url)
-            .subscribe(on: DispatchQueue.global(qos: .background))
-            .receive(on: DispatchQueue.main)
             .tryMap(handleOutput)
             .decode(type: TopResponse.self, decoder: JSONDecoder())
             .sink{ completion in
@@ -31,7 +30,7 @@ class DownloadManager {
             } receiveValue: { [weak self] returnedTops in
                 for top in returnedTops.data {
                     print(top)
-                    let topEntity = TopEntity(context: PersistenceController.shared.container.viewContext)
+                    let topEntity = TopEntity(context: self!.backgroundContext)
                     topEntity.uid = Int32(top.id)
                     topEntity.elo = Int32(top.elo)
                     topEntity.given = top.given
@@ -47,7 +46,7 @@ class DownloadManager {
     
     func save() {
         do {
-            try viewContext.save()
+            try backgroundContext.save()
         } catch {
             // Replace this implementation with code to handle the error appropriately.
             // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
