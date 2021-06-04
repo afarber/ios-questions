@@ -8,6 +8,11 @@
         <attribute name="motto" optional="YES" attributeType="String"/>
         <attribute name="photo" optional="YES" attributeType="String"/>
         <attribute name="uid" attributeType="Integer 32" usesScalarValueType="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="uid"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <elements>
         <element name="TopEntity" positionX="-63" positionY="-18" width="128" height="134"/>
