@@ -11,24 +11,24 @@ import Combine
 class DownloadManager {
     static let instance = DownloadManager()
     
-    @Published var tops: [TopModel] = []
     var cancellables = Set<AnyCancellable>()
-    let moc = PersistenceController.shared.container.viewContext;
+    let viewContext = PersistenceController.shared.container.viewContext;
     
     private init() {
-        getTopsCombine()
+        getTops()
     }
     
-    func getTopsCombine() {
+    func getTops() {
         guard let url = URL(string: "https://slova.de/ws/top") else { return }
+        
         URLSession.shared.dataTaskPublisher(for: url)
             .subscribe(on: DispatchQueue.global(qos: .background))
             .receive(on: DispatchQueue.main)
             .tryMap(handleOutput)
             .decode(type: TopResponse.self, decoder: JSONDecoder())
-            .sink{ ( completion ) in
+            .sink{ completion in
                 print(completion)
-            } receiveValue: { [weak self] (returnedTops) in
+            } receiveValue: { [weak self] returnedTops in
                 for top in returnedTops.data {
                     print(top)
                     let topEntity = TopEntity(context: PersistenceController.shared.container.viewContext)
@@ -41,14 +41,13 @@ class DownloadManager {
                     topEntity.avg_time = top.avg_time
                 }
                 self?.save()
-                //self?.tops = returnedTops.data
             }
             .store(in: &cancellables)
     }
     
     func save() {
         do {
-            try moc.save()
+            try viewContext.save()
         } catch {
             // Replace this implementation with code to handle the error appropriately.
             // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.

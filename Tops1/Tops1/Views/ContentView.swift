@@ -16,7 +16,7 @@ struct ContentView: View {
         animation: .default)
     private var topEntities: FetchedResults<TopEntity>
     
-    @StateObject var vm = TopViewModel()
+    let downloadManager = DownloadManager.instance
 
     var body: some View {
         List {
