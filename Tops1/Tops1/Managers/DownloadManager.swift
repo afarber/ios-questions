@@ -7,13 +7,12 @@
 
 import Foundation
 import Combine
+import CoreData
 
 class DownloadManager {
     static let instance = DownloadManager()
     
     var cancellables = Set<AnyCancellable>()
-    // how to run this line on the background thread of URLSession.shared.dataTaskPublisher?
-    let backgroundContext = PersistenceController.shared.container.newBackgroundContext()
 
     private init() {
         getTops()
@@ -25,34 +24,34 @@ class DownloadManager {
         URLSession.shared.dataTaskPublisher(for: url)
             .tryMap(handleOutput)
             .decode(type: TopResponse.self, decoder: JSONDecoder())
-            .sink{ completion in
+            .sink { completion in
                 print(completion)
-            } receiveValue: { [weak self] returnedTops in
-                for top in returnedTops.data {
-                    print(top)
-                    let topEntity = TopEntity(context: self!.backgroundContext)
-                    topEntity.uid = Int32(top.id)
-                    topEntity.elo = Int32(top.elo)
-                    topEntity.given = top.given
-                    topEntity.motto = top.motto
-                    topEntity.photo = top.photo
-                    topEntity.avg_score = top.avg_score ?? 0.0
-                    topEntity.avg_time = top.avg_time
+            } receiveValue: { fetchedTops in
+                PersistenceController.shared.container.performBackgroundTask { backgroundContext in
+                    backgroundContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
+                    backgroundContext.automaticallyMergesChangesFromParent = true
+                    backgroundContext.perform {
+                        for topModel in fetchedTops.data {
+                            //print(topModel)
+                            let topEntity = TopEntity(context: backgroundContext)
+                            topEntity.uid = Int32(topModel.id)
+                            topEntity.elo = Int32(topModel.elo)
+                            topEntity.given = topModel.given
+                            topEntity.motto = topModel.motto
+                            topEntity.photo = topModel.photo
+                            topEntity.avg_score = topModel.avg_score ?? 0.0
+                            topEntity.avg_time = topModel.avg_time
+                        }
+                        do {
+                            try backgroundContext.save()
+                        } catch {
+                            let nsError = error as NSError
+                            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                        }
+                    }
                 }
-                self?.save()
             }
             .store(in: &cancellables)
-    }
-    
-    func save() {
-        do {
-            try backgroundContext.save()
-        } catch {
-            // Replace this implementation with code to handle the error appropriately.
-            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-        }
     }
     
     func handleOutput(output: URLSession.DataTaskPublisher.Output) throws -> Data {
