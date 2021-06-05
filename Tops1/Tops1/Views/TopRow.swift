@@ -12,8 +12,7 @@ struct TopRow: View {
     
     var body: some View {
         HStack {
-            Circle()
-                .foregroundColor(.gray)
+            DownloadImage(url: top.photo ?? "TODO")
                 .frame(width: 60, height: 60)
             Spacer()
             Text(top.given ?? "Unknown Person")
