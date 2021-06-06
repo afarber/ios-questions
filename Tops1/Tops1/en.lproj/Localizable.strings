@@ -6,6 +6,6 @@
   
 */
 
-"elo-rating %@" = "Elo rating: %@";
+"elo-rating %d" = "Elo rating: %d";
 "avg-time %@" = "Average time: %@";
-"avg-score %@" = "Average score: %@";
+"avg-score %lf" = "Average score: %l.1f";

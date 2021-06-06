@@ -20,7 +20,7 @@ struct TopRow: View {
             Spacer()
             VStack {
                 Text("elo-rating \(topEntity.elo)")
-                Text("avg-time \(topEntity.avg_time ?? "")")
+                Text("avg-time \(topEntity.avg_time ?? "00:00")")
                 Text("avg-score \(topEntity.avg_score)")
             }.fixedSize(horizontal: true, vertical: false)
         }.font(.footnote)
