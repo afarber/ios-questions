@@ -21,6 +21,7 @@
 		74DC5BD9266C1BDB00230089 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DC5BD8266C1BDB00230089 /* CacheManager.swift */; };
 		74DC5BDB266C1C1200230089 /* DownloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DC5BDA266C1C1200230089 /* DownloadImage.swift */; };
 		74DC5BDE266C1C6900230089 /* DownloadImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DC5BDD266C1C6900230089 /* DownloadImageViewModel.swift */; };
+		74DC5BE8266D277600230089 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 74DC5BEA266D277600230089 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,9 @@
 		74DC5BD8266C1BDB00230089 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		74DC5BDA266C1C1200230089 /* DownloadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImage.swift; sourceTree = "<group>"; };
 		74DC5BDD266C1C6900230089 /* DownloadImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageViewModel.swift; sourceTree = "<group>"; };
+		74DC5BE9266D277600230089 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		74DC5BEB266D277D00230089 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		74DC5BEC266D277E00230089 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,7 @@
 				7446DBF22668DE2700C2C8E5 /* Info.plist */,
 				7446DBEF2668DE2700C2C8E5 /* Tops1.xcdatamodeld */,
 				7446DBEA2668DE2700C2C8E5 /* Preview Content */,
+				74DC5BEA266D277600230089 /* Localizable.strings */,
 			);
 			path = Tops1;
 			sourceTree = "<group>";
@@ -271,6 +276,8 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
+				de,
 			);
 			mainGroup = 7446DBD82668DE2300C2C8E5;
 			productRefGroup = 7446DBE22668DE2300C2C8E5 /* Products */;
@@ -290,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7446DBEC2668DE2700C2C8E5 /* Preview Assets.xcassets in Resources */,
+				74DC5BE8266D277600230089 /* Localizable.strings in Resources */,
 				7446DBE92668DE2700C2C8E5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,6 +366,19 @@
 			targetProxy = 7446DC032668DE2800C2C8E5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		74DC5BEA266D277600230089 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				74DC5BE9266D277600230089 /* en */,
+				74DC5BEB266D277D00230089 /* de */,
+				74DC5BEC266D277E00230089 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		7446DC092668DE2800C2C8E5 /* Debug */ = {

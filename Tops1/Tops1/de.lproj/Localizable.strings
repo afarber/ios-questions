@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  Tops1
+
+  Created by Alexander Farber on 06.06.21.
+  
+*/
+
+"elo-rating %@" = "Elo-Zahl: %@";
+"avg-time %@" = "Zeit / Zug: %@";
+"avg-score %@" = "Punkte / Zug: %@";

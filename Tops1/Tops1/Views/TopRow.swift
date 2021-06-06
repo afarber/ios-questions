@@ -19,9 +19,9 @@ struct TopRow: View {
                 .frame(minWidth: 60, maxWidth: .infinity, alignment: .leading)
             Spacer()
             VStack {
-                Text("Elo rating: \(top.elo)")
-                Text("Average time: \(top.avg_time ?? "")")
-                Text("Average score: \(String(top.avg_score))")
+                Text("elo-rating \(top.elo)")
+                Text("avg-time \(top.avg_time ?? "")")
+                Text("avg-score \(top.avg_score)")
             }.fixedSize(horizontal: true, vertical: false)
         }.font(.footnote)
     }

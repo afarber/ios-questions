@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  Tops1
+
+  Created by Alexander Farber on 06.06.21.
+  
+*/
+
+"elo-rating %@" = "Рейтинг Эло: %@";
+"avg-time %@" = "Время / ход: %@";
+"avg-score %@" = "Очки / ход: %@";
