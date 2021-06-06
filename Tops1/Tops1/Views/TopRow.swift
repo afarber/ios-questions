@@ -8,20 +8,20 @@
 import SwiftUI
 
 struct TopRow: View {
-    let top:TopEntity
+    let topEntity:TopEntity
     
     var body: some View {
         HStack {
-            DownloadImage(url: top.photo ?? "TODO")
+            DownloadImage(url: topEntity.photo ?? "TODO")
                 .frame(width: 60, height: 60)
             Spacer()
-            Text(top.given ?? "Unknown Person")
+            Text(topEntity.given ?? "Unknown Person")
                 .frame(minWidth: 60, maxWidth: .infinity, alignment: .leading)
             Spacer()
             VStack {
-                Text("elo-rating \(top.elo)")
-                Text("avg-time \(top.avg_time ?? "")")
-                Text("avg-score \(top.avg_score)")
+                Text("elo-rating \(topEntity.elo)")
+                Text("avg-time \(topEntity.avg_time ?? "")")
+                Text("avg-score \(topEntity.avg_score)")
             }.fixedSize(horizontal: true, vertical: false)
         }.font(.footnote)
     }
@@ -41,7 +41,7 @@ struct TopRow_Previews: PreviewProvider {
     }
 
     static var previews: some View {
-        TopRow(top: topEntity)
+        TopRow(topEntity: topEntity)
             .padding()
             .previewLayout(.sizeThatFits)
     }

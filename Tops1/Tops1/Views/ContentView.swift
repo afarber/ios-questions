@@ -21,7 +21,7 @@ struct ContentView: View {
     var body: some View {
         List {
             ForEach(topEntities) { top in
-                TopRow(top: top)
+                TopRow(topEntity: top)
             }
         }
     }
