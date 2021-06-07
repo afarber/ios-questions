@@ -19,9 +19,17 @@ struct ContentView: View {
     let downloadManager = DownloadManager.instance
 
     var body: some View {
-        List {
-            ForEach(topEntities) { top in
-                TopRow(topEntity: top)
+        VStack(alignment: .trailing) {
+            Menu("🇺🇸 EN") {
+                Button("🇺🇸 EN", action: {})
+                Button("🇩🇪 DE", action: {})
+                Button("🇷🇺 RU", action: {})
+            }.padding()
+            
+            List {
+                ForEach(topEntities) { top in
+                    TopRow(topEntity: top)
+                }
             }
         }
     }
