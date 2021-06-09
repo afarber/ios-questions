@@ -41,8 +41,13 @@ struct TopRow_Previews: PreviewProvider {
     }
 
     static var previews: some View {
-        TopRow(topEntity: topEntity)
-            .padding()
-            .previewLayout(.sizeThatFits)
+        ForEach(["en", "de", "ru"], id: \.self) { localeId in
+            TopRow(topEntity: topEntity)
+                .environment(\.locale, .init(identifier: localeId))
+                .padding()
+                .previewLayout(.sizeThatFits)
+                .previewDisplayName("locale: \(localeId)")
+
+        }
     }
 }
