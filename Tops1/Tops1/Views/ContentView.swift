@@ -17,13 +17,15 @@ struct ContentView: View {
     private var topEntities: FetchedResults<TopEntity>
     
     let downloadManager = DownloadManager.instance
+    
+    @AppStorage("language") var language:String = "en"
 
     var body: some View {
         VStack(alignment: .trailing) {
             Menu("🇺🇸 EN") {
-                Button("🇺🇸 EN", action: {})
-                Button("🇩🇪 DE", action: {})
-                Button("🇷🇺 RU", action: {})
+                Button("🇺🇸 EN", action: { language = "en" })
+                Button("🇩🇪 DE", action: { language = "de" })
+                Button("🇷🇺 RU", action: { language = "ru" })
             }.padding()
             
             List {
@@ -31,7 +33,7 @@ struct ContentView: View {
                     TopRow(topEntity: top)
                 }
             }
-        }
+        }.environment(\.locale, .init(identifier: language))
     }
 }
 
