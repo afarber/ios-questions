@@ -18,11 +18,18 @@ struct ContentView: View {
     
     let downloadManager = DownloadManager.instance
     
+    let labels = [
+        "en" : "🇺🇸 EN",
+        "de" : "🇩🇪 DE",
+        "ru" : "🇷🇺 RU"
+    ]
+    
     @AppStorage("language") var language:String = "en"
 
     var body: some View {
         VStack(alignment: .trailing) {
-            Menu("🇺🇸 EN") {
+
+            Menu(language) {
                 Button("🇺🇸 EN", action: { language = "en" })
                 Button("🇩🇪 DE", action: { language = "de" })
                 Button("🇷🇺 RU", action: { language = "ru" })
