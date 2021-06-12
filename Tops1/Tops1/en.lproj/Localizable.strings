@@ -6,6 +6,7 @@
   
 */
 
+"app-title" = "Tops1 app";
 "elo-rating %d" = "Elo rating: %d";
 "avg-time %@" = "Average time: %@";
 "avg-score %lf" = "Average score: %l.1f";

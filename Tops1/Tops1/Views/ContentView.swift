@@ -27,7 +27,7 @@ struct ContentView: View {
     @AppStorage("language") var language:String = "en"
 
     var body: some View {
-        VStack(alignment: .trailing) {
+        VStack() {
 
             Picker(selection: $language, label: Text(labels[language]!)) {
                 ForEach(labels.sorted(by: <), id: \.key) { key, value in
@@ -35,9 +35,13 @@ struct ContentView: View {
                 }
             }.pickerStyle(SegmentedPickerStyle())
             
-            Menu(labels[language]!) {
-                ForEach(labels.sorted(by: <), id: \.key) { key, value in
-                    Button(value, action: { language = key })
+            HStack {
+                Text("app-title")
+                Spacer()
+                Menu(labels[language]!) {
+                    ForEach(labels.sorted(by: <), id: \.key) { key, value in
+                        Button(value, action: { language = key })
+                    }
                 }
             }.padding()
             
