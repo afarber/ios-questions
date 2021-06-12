@@ -29,10 +29,10 @@ struct ContentView: View {
     var body: some View {
         VStack(alignment: .trailing) {
 
-            Menu(language) {
-                Button("🇺🇸 EN", action: { language = "en" })
-                Button("🇩🇪 DE", action: { language = "de" })
-                Button("🇷🇺 RU", action: { language = "ru" })
+            Menu(labels[language]!) {
+                ForEach(labels.sorted(by: <), id: \.key) { key, value in
+                    Button(value, action: { language = key })
+                }
             }.padding()
             
             List {
