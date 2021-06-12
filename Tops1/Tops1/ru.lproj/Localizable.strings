@@ -6,7 +6,7 @@
   
 */
 
-"app-title" = "Tops1 Апп";
+"app-title" = "Приложение Tops1";
 "elo-rating %d" = "Рейтинг Эло: %d";
 "avg-time %@" = "Время / ход: %@";
 "avg-score %lf" = "Очки / ход: %l.1f";
