@@ -18,9 +18,6 @@ struct ContentView: View {
     
     let downloadManager = DownloadManager.instance
     
-    @State private var selection = 0
-    private let items: [String] = ["Mon", "Tue", "Wed", "Thu", "Fri"]
-    
     let labels = [
         "en" : "🇺🇸 EN",
         "de" : "🇩🇪 DE",
@@ -32,9 +29,9 @@ struct ContentView: View {
     var body: some View {
         VStack(alignment: .trailing) {
 
-            Picker(selection: $selection, label: Text("")) {
-                ForEach(0..<items.count, id: \.self) { index in
-                    Text(self.items[index]).tag(index)
+            Picker(selection: $language, label: Text(labels[language]!)) {
+                ForEach(labels.sorted(by: <), id: \.key) { key, value in
+                    Text(value).tag(key)
                 }
             }.pickerStyle(SegmentedPickerStyle())
             
