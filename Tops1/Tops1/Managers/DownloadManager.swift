@@ -21,11 +21,12 @@ class DownloadManager {
     var cancellables = Set<AnyCancellable>()
 
     private init() {
-        getTops()
+        // TODO get the app language from UserDefaults
+        getTops(language: "en")
     }
     
-    func getTops() {
-        guard let url = urls["en"] else { return }
+    func getTops(language:String) {
+        guard let url = urls[language] else { return }
         
         URLSession.shared.dataTaskPublisher(for: url)
             .tryMap(handleOutput)
