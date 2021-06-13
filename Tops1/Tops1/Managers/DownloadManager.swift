@@ -12,6 +12,12 @@ import CoreData
 class DownloadManager {
     static let instance = DownloadManager()
     
+    let urls = [
+        "en" : URL(string: "https://wordsbyfarber.com/ws/top"),
+        "de" : URL(string: "https://wortefarbers.de/ws/top"),
+        "ru" : URL(string: "https://slova.de/ws/top")
+    ]
+    
     var cancellables = Set<AnyCancellable>()
 
     private init() {
@@ -19,7 +25,7 @@ class DownloadManager {
     }
     
     func getTops() {
-        guard let url = URL(string: "https://slova.de/ws/top") else { return }
+        guard let url = urls["en"] else { return }
         
         URLSession.shared.dataTaskPublisher(for: url)
             .tryMap(handleOutput)
