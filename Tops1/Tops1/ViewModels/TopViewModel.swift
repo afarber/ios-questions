@@ -18,17 +18,27 @@ class TopViewModel: ObservableObject {
     
     var cancellables = Set<AnyCancellable>()
     
-    // get language string from UserDefault (but how to observe it?)
-    var language = UserDefaults.standard.string(forKey: "language") ?? "en"
-
     @Published var topEntities: [TopEntity] = []
 
     init() {
-        updateTopEntities()
+        //UserDefaults.standard.addObserver(self, forKeyPath: "language", options: NSKeyValueObservingOptions.new, context: nil)
+
+        let language = UserDefaults.standard.string(forKey: "language") ?? "en"
+        updateTopEntities(language: language)
         fetchTopModels(language: language)
     }
+    
+    //deinit() {
+        //UserDefaults.standard.removeObserver(self, forKeyPath: "language")
+    //}
+    
+    func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        // How to get language here from the params?
+        //updateTopEntities(language: language)
+        //fetchTopModels(language: language)
+    }
 
-    func updateTopEntities() {
+    func updateTopEntities(language:String) {
         let viewContext = PersistenceController.shared.container.viewContext
         let request = NSFetchRequest<TopEntity>(entityName: "TopEntity")
         request.sortDescriptors = [ NSSortDescriptor(keyPath: \TopEntity.elo, ascending: false) ]
@@ -76,7 +86,7 @@ class TopViewModel: ObservableObject {
                             }
                             
                             DispatchQueue.main.async { [weak self] in
-                                self?.updateTopEntities()
+                                self?.updateTopEntities(language: language)
                             }
                         }
                     }
