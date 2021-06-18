@@ -9,7 +9,7 @@ import Foundation
 import Combine
 import CoreData
 
-class TopViewModel: ObservableObject {
+class TopViewModel: NSObject, ObservableObject {
     let urls = [
         "en" : URL(string: "https://wordsbyfarber.com/ws/top"),
         "de" : URL(string: "https://wortefarbers.de/ws/top"),
@@ -20,19 +20,28 @@ class TopViewModel: ObservableObject {
     
     @Published var topEntities: [TopEntity] = []
 
-    init() {
-        //UserDefaults.standard.addObserver(self, forKeyPath: "language", options: NSKeyValueObservingOptions.new, context: nil)
+    override init() {
+        super.init()
+        UserDefaults.standard.addObserver(self,
+                                          forKeyPath: "language",
+                                          options: NSKeyValueObservingOptions.new, context: nil)
 
         let language = UserDefaults.standard.string(forKey: "language") ?? "en"
         updateTopEntities(language: language)
         fetchTopModels(language: language)
     }
     
-    //deinit() {
-        //UserDefaults.standard.removeObserver(self, forKeyPath: "language")
-    //}
+    deinit {
+        UserDefaults.standard.removeObserver(self, forKeyPath: "language")
+    }
     
-    func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    override func observeValue(forKeyPath keyPath: String?,
+                      of object: Any?,
+                      change: [NSKeyValueChangeKey : Any]?,
+                      context: UnsafeMutableRawPointer?) {
+        guard keyPath == "language" else { return }
+        guard change?.count == 2 else { return }
+        print("observeValue language=\(change["new"].value)")
         // How to get language here from the params?
         //updateTopEntities(language: language)
         //fetchTopModels(language: language)
