@@ -16,12 +16,12 @@
 		7446DBFC2668DE2800C2C8E5 /* Tops1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7446DBFB2668DE2800C2C8E5 /* Tops1Tests.swift */; };
 		7446DC072668DE2800C2C8E5 /* Tops1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7446DC062668DE2800C2C8E5 /* Tops1UITests.swift */; };
 		748F079526691E6F00570987 /* TopRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748F079426691E6F00570987 /* TopRow.swift */; };
-		748F079826695DE500570987 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748F079726695DE500570987 /* DownloadManager.swift */; };
 		748F079B26695E4D00570987 /* TopModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748F079A26695E4D00570987 /* TopModel.swift */; };
 		74DC5BD9266C1BDB00230089 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DC5BD8266C1BDB00230089 /* CacheManager.swift */; };
 		74DC5BDB266C1C1200230089 /* DownloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DC5BDA266C1C1200230089 /* DownloadImage.swift */; };
 		74DC5BDE266C1C6900230089 /* DownloadImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DC5BDD266C1C6900230089 /* DownloadImageViewModel.swift */; };
 		74DC5BE8266D277600230089 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 74DC5BEA266D277600230089 /* Localizable.strings */; };
+		74DC5BEE267CC6C100230089 /* TopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DC5BED267CC6C100230089 /* TopViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,7 +57,6 @@
 		7446DC062668DE2800C2C8E5 /* Tops1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tops1UITests.swift; sourceTree = "<group>"; };
 		7446DC082668DE2800C2C8E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		748F079426691E6F00570987 /* TopRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRow.swift; sourceTree = "<group>"; };
-		748F079726695DE500570987 /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		748F079A26695E4D00570987 /* TopModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopModel.swift; sourceTree = "<group>"; };
 		74DC5BD8266C1BDB00230089 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		74DC5BDA266C1C1200230089 /* DownloadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImage.swift; sourceTree = "<group>"; };
@@ -65,6 +64,7 @@
 		74DC5BE9266D277600230089 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		74DC5BEB266D277D00230089 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		74DC5BEC266D277E00230089 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		74DC5BED267CC6C100230089 /* TopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,7 +169,6 @@
 		748F079626695DCC00570987 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				748F079726695DE500570987 /* DownloadManager.swift */,
 				74DC5BD8266C1BDB00230089 /* CacheManager.swift */,
 			);
 			path = Managers;
@@ -187,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				74DC5BDD266C1C6900230089 /* DownloadImageViewModel.swift */,
+				74DC5BED267CC6C100230089 /* TopViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -326,8 +326,8 @@
 				74DC5BDE266C1C6900230089 /* DownloadImageViewModel.swift in Sources */,
 				7446DBEE2668DE2700C2C8E5 /* Persistence.swift in Sources */,
 				74DC5BDB266C1C1200230089 /* DownloadImage.swift in Sources */,
-				748F079826695DE500570987 /* DownloadManager.swift in Sources */,
 				748F079B26695E4D00570987 /* TopModel.swift in Sources */,
+				74DC5BEE267CC6C100230089 /* TopViewModel.swift in Sources */,
 				7446DBF12668DE2700C2C8E5 /* Tops1.xcdatamodeld in Sources */,
 				74DC5BD9266C1BDB00230089 /* CacheManager.swift in Sources */,
 				748F079526691E6F00570987 /* TopRow.swift in Sources */,

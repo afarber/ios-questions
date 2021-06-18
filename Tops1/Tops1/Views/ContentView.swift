@@ -9,15 +9,6 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \TopEntity.elo, ascending: false)],
-        animation: .default)
-    private var topEntities: FetchedResults<TopEntity>
-    
-    let downloadManager = DownloadManager.instance
-    
     let labels = [
         "en" : "🇺🇸 EN",
         "de" : "🇩🇪 DE",
@@ -26,9 +17,12 @@ struct ContentView: View {
     
     @AppStorage("language") var language:String = "en"
 
+    @StateObject var vm: TopViewModel = TopViewModel()
+        
     var body: some View {
         VStack() {
 
+            // ! means "this might trap"
             Picker(selection: $language, label: Text(labels[language]!)) {
                 ForEach(labels.sorted(by: <), id: \.key) { key, value in
                     Text(value).tag(key)
@@ -38,6 +32,8 @@ struct ContentView: View {
             HStack {
                 Text("app-title")
                 Spacer()
+                
+                // ! means "this might trap"
                 Menu(labels[language]!) {
                     ForEach(labels.sorted(by: <), id: \.key) { key, value in
                         Button(value, action: { language = key })
@@ -46,7 +42,7 @@ struct ContentView: View {
             }.padding()
             
             List {
-                ForEach(topEntities) { top in
+                ForEach(vm.topEntities) { top in
                     TopRow(topEntity: top)
                 }
             }
@@ -56,6 +52,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        ContentView()
     }
 }

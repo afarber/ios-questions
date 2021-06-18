@@ -1,17 +1,15 @@
 //
-//  DownloadManager.swift
+//  TopViewModel.swift
 //  Tops1
 //
-//  Created by Alexander Farber on 03.06.21.
+//  Created by Alexander Farber on 18.06.21.
 //
 
 import Foundation
 import Combine
 import CoreData
 
-class DownloadManager {
-    static let instance = DownloadManager()
-    
+class TopViewModel: ObservableObject {
     let urls = [
         "en" : URL(string: "https://wordsbyfarber.com/ws/top"),
         "de" : URL(string: "https://wortefarbers.de/ws/top"),
@@ -20,13 +18,30 @@ class DownloadManager {
     
     var cancellables = Set<AnyCancellable>()
 
-    private init() {
-        // TODO get the app language from UserDefaults
-        getTops(language: "en")
+    @Published var topEntities: [TopEntity] = []
+
+    init() {
+        updateTopEntities()
+        // TODO get the language from UserDefaults and observe it
+        fetchTopModels(language: "ru")
+    }
+
+    func updateTopEntities() {
+        let viewContext = PersistenceController.shared.container.viewContext
+        let request = NSFetchRequest<TopEntity>(entityName: "TopEntity")
+        request.sortDescriptors = [ NSSortDescriptor(keyPath: \TopEntity.elo, ascending: false) ]
+        request.predicate = NSPredicate(format: "language == %@", "ru")
+        
+        do {
+            topEntities = try viewContext.fetch(request)
+        } catch let error {
+            print("Error fetching. \(error)")
+        }
     }
     
-    func getTops(language:String) {
-        guard let url = urls[language] else { return }
+    func fetchTopModels(language:String) {
+        // as? means "this might be nil"
+        guard let url = urls[language] as? URL else { return }
         
         URLSession.shared.dataTaskPublisher(for: url)
             .tryMap(handleOutput)
@@ -41,6 +56,7 @@ class DownloadManager {
                         for topModel in fetchedTops.data {
                             //print(topModel)
                             let topEntity = TopEntity(context: backgroundContext)
+                            topEntity.language = language
                             topEntity.uid = Int32(topModel.id)
                             topEntity.elo = Int32(topModel.elo)
                             topEntity.given = topModel.given
@@ -49,11 +65,17 @@ class DownloadManager {
                             topEntity.avg_score = topModel.avg_score ?? 0.0
                             topEntity.avg_time = topModel.avg_time
                         }
-                        do {
-                            try backgroundContext.save()
-                        } catch {
-                            let nsError = error as NSError
-                            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                        if (backgroundContext.hasChanges) {
+                            do {
+                                try backgroundContext.save()
+                            } catch {
+                                let nsError = error as NSError
+                                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                            }
+                            
+                            DispatchQueue.main.async { [weak self] in
+                                self?.updateTopEntities()
+                            }
                         }
                     }
                 }
@@ -71,4 +93,5 @@ class DownloadManager {
         
         return output.data
     }
+
 }

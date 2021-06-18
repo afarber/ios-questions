@@ -5,6 +5,7 @@
         <attribute name="avg_time" optional="YES" attributeType="String" defaultValueString=""/>
         <attribute name="elo" attributeType="Integer 32" defaultValueString="1500" usesScalarValueType="YES"/>
         <attribute name="given" attributeType="String"/>
+        <attribute name="language" attributeType="String"/>
         <attribute name="motto" optional="YES" attributeType="String"/>
         <attribute name="photo" optional="YES" attributeType="String"/>
         <attribute name="uid" attributeType="Integer 32" usesScalarValueType="YES"/>
@@ -15,6 +16,6 @@
         </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="TopEntity" positionX="-63" positionY="-18" width="128" height="134"/>
+        <element name="TopEntity" positionX="-63" positionY="-18" width="128" height="149"/>
     </elements>
 </model>
