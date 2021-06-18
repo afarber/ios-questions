@@ -17,20 +17,22 @@ class TopViewModel: ObservableObject {
     ]
     
     var cancellables = Set<AnyCancellable>()
+    
+    // get language string from UserDefault (but how to observe it?)
+    var language = UserDefaults.standard.string(forKey: "language") ?? "en"
 
     @Published var topEntities: [TopEntity] = []
 
     init() {
         updateTopEntities()
-        // TODO get the language from UserDefaults and observe it
-        fetchTopModels(language: "ru")
+        fetchTopModels(language: language)
     }
 
     func updateTopEntities() {
         let viewContext = PersistenceController.shared.container.viewContext
         let request = NSFetchRequest<TopEntity>(entityName: "TopEntity")
         request.sortDescriptors = [ NSSortDescriptor(keyPath: \TopEntity.elo, ascending: false) ]
-        request.predicate = NSPredicate(format: "language == %@", "ru")
+        request.predicate = NSPredicate(format: "language = %@", language)
         
         do {
             topEntities = try viewContext.fetch(request)
