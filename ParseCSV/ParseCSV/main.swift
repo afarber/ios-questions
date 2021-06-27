@@ -8,7 +8,13 @@
 import Foundation
 
 func process(string: String) throws {
-    print("your code here")
+    let lines = string.split(separator: "\n")
+    for line in lines {
+        let columns = line.split(separator: "|", omittingEmptySubsequences: true)
+        for column in columns {
+            print("column: \(column)")
+        }
+    }
 }
 
 func processFile(at url: URL) throws {
