@@ -79,6 +79,21 @@ class TopViewModel: NSObject, ObservableObject {
                     backgroundContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
                     backgroundContext.automaticallyMergesChangesFromParent = true
                     backgroundContext.perform {
+                        
+                    /*
+                        var numberOfInsertedItems = 0
+                        let batchInsert = NSBatchInsertRequest(entity: ToDoItem.entity()) { (dictionary: NSMutableDictionary) in
+                          dictionary["dueDate"] = Date().addingTimeInterval(3600)
+                          dictionary["title"] = "Generated Task \(UUID().uuidString)"
+
+                          numberOfInsertedItems += 1
+
+                          return numberOfInsertedItems == 10
+                        }
+
+                        try! context.execute(batchInsert)
+                    */
+                        
                         for topModel in fetchedTops.data {
                             //print(topModel)
                             let topEntity = TopEntity(context: backgroundContext)
