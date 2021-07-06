@@ -218,6 +218,11 @@ by [TomSwift](http://stackoverflow.com/users/291788/tomswift):
 ![screenshot](https://raw.github.com/afarber/ios-questions/master/Tops1/screenshot.png)
 
 
+[TopsBatchInsert](https://github.com/afarber/ios-questions/tree/master/TopsBatchInsert) SwiftUI, Core Data, Localization, Batch Insert as shown in the [Practical Core Data](https://www.donnywals.com) book by Donny Wals:
+
+![screenshot](https://raw.github.com/afarber/ios-questions/master/TopsBatchInsert/screenshot.png)
+
+
 ![StackOverflow](http://stackoverflow.com/users/flair/165071.png)
 
 [My iOS-related questions at StackOverflow](http://stackoverflow.com/search?q=user:165071+[ios])
