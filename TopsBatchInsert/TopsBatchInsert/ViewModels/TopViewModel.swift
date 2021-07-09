@@ -74,49 +74,24 @@ class TopViewModel: NSObject, ObservableObject {
             .decode(type: TopResponse.self, decoder: JSONDecoder())
             .sink { completion in
                 print("fetchTopModels completion=\(completion)")
-            } receiveValue: { fetchedTops in
+            } receiveValue: { topResponse in
+                guard let fetchedTops = topResponse.data as? [[String: Any]] else { return }
                 PersistenceController.shared.container.performBackgroundTask { backgroundContext in
                     backgroundContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
                     backgroundContext.automaticallyMergesChangesFromParent = true
                     backgroundContext.perform {
                         
-                    /*
-                        var numberOfInsertedItems = 0
-                        let batchInsert = NSBatchInsertRequest(entity: ToDoItem.entity()) { (dictionary: NSMutableDictionary) in
-                          dictionary["dueDate"] = Date().addingTimeInterval(3600)
-                          dictionary["title"] = "Generated Task \(UUID().uuidString)"
+                        let batchInsert = NSBatchInsertRequest(entity: TopEntity.entity(), objects: fetchedTops)
 
-                          numberOfInsertedItems += 1
-
-                          return numberOfInsertedItems == 10
+                        do {
+                            try backgroundContext.execute(batchInsert)
+                        } catch {
+                            let nsError = error as NSError
+                            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
                         }
-
-                        try! context.execute(batchInsert)
-                    */
                         
-                        for topModel in fetchedTops.data {
-                            //print(topModel)
-                            let topEntity = TopEntity(context: backgroundContext)
-                            topEntity.language = language
-                            topEntity.uid = Int32(topModel.id)
-                            topEntity.elo = Int32(topModel.elo)
-                            topEntity.given = topModel.given
-                            topEntity.motto = topModel.motto
-                            topEntity.photo = topModel.photo
-                            topEntity.avg_score = topModel.avg_score ?? 0.0
-                            topEntity.avg_time = topModel.avg_time
-                        }
-                        if (backgroundContext.hasChanges) {
-                            do {
-                                try backgroundContext.save()
-                            } catch {
-                                let nsError = error as NSError
-                                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-                            }
-                            
-                            DispatchQueue.main.async { [weak self] in
-                                self?.updateTopEntities(language: language)
-                            }
+                        DispatchQueue.main.async { [weak self] in
+                            self?.updateTopEntities(language: language)
                         }
                     }
                 }
