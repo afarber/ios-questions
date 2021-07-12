@@ -73,18 +73,24 @@ class TopViewModel: NSObject, ObservableObject {
             .tryMap(handleOutput)
             .tryMap { jsonData -> [[String: Any]] in
                 let json = try? JSONSerialization.jsonObject(with: jsonData, options: [])
-                guard let jsonDict = json as? [String:Any],
-                      let dataList = jsonDict["data"] as? [[String:Any]]
+                guard let jsonDict = json as? [String: Any],
+                      let dataList = jsonDict["data"] as? [[String: Any]]
                     else { throw URLError(.badServerResponse) }
                     return dataList
             }
-            // TODO How to set language on each dataList member?
-            //.map {
-                  //$0.language = language
-            //}
+            // set language on each dataList member
+            .map { array in
+                array.map { dict -> [String: Any] in
+                    var temp = dict
+                    temp["language"] = language
+                    return temp
+                }
+            }
             .sink { completion in
                 print("fetchTopModels completion=\(completion)")
             } receiveValue: { fetchedTops in
+                guard !fetchedTops.isEmpty else { return }
+
                 PersistenceController.shared.container.performBackgroundTask { backgroundContext in
                     backgroundContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
                     backgroundContext.automaticallyMergesChangesFromParent = true
