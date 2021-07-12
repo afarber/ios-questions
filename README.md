@@ -72,6 +72,11 @@ based on [Swiftful Thinking](https://github.com/SwiftfulThinking/SwiftUI-Continu
 ![screenshot](https://raw.github.com/afarber/ios-questions/master/FetchJsonEscapable/screenshot.png)
 
 
+[JsonPlayground](https://github.com/afarber/ios-questions/tree/master/JsonPlayground.playground):
+
+![screenshot](https://raw.github.com/afarber/ios-questions/master/JsonPlayground.png)
+
+
 [MyAuth](https://github.com/afarber/ios-questions/tree/master/MyAuth):
 
 ![screenshot](https://raw.github.com/afarber/ios-questions/master/MyAuth/screenshot.png)
