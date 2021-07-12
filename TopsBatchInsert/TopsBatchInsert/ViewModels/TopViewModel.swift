@@ -71,11 +71,20 @@ class TopViewModel: NSObject, ObservableObject {
         
         URLSession.shared.dataTaskPublisher(for: url)
             .tryMap(handleOutput)
-            .decode(type: TopResponse.self, decoder: JSONDecoder())
+            .tryMap { jsonData -> [[String: Any]] in
+                let json = try? JSONSerialization.jsonObject(with: jsonData, options: [])
+                guard let jsonDict = json as? [String:Any],
+                      let dataList = jsonDict["data"] as? [[String:Any]]
+                    else { throw URLError(.badServerResponse) }
+                    return dataList
+            }
+            // TODO How to set language on each dataList member?
+            //.map {
+                  //$0.language = language
+            //}
             .sink { completion in
                 print("fetchTopModels completion=\(completion)")
-            } receiveValue: { topResponse in
-                guard let fetchedTops = topResponse.data as? [[String: Any]] else { return }
+            } receiveValue: { fetchedTops in
                 PersistenceController.shared.container.performBackgroundTask { backgroundContext in
                     backgroundContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
                     backgroundContext.automaticallyMergesChangesFromParent = true
@@ -102,7 +111,8 @@ class TopViewModel: NSObject, ObservableObject {
     func handleOutput(output: URLSession.DataTaskPublisher.Output) throws -> Data {
         guard
             let response = output.response as? HTTPURLResponse,
-            response.statusCode >= 200 && response.statusCode < 300
+            response.statusCode >= 200,
+            response.statusCode < 300
             else {
                 throw URLError(.badServerResponse)
             }

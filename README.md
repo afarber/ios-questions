@@ -72,7 +72,7 @@ based on [Swiftful Thinking](https://github.com/SwiftfulThinking/SwiftUI-Continu
 ![screenshot](https://raw.github.com/afarber/ios-questions/master/FetchJsonEscapable/screenshot.png)
 
 
-[JsonPlayground](https://github.com/afarber/ios-questions/tree/master/JsonPlayground.playground):
+[JsonPlayground](https://github.com/afarber/ios-questions/tree/master/JsonPlayground.playground) parse JSON into a [[String:Any]] for NSBatchInsertRequest:
 
 ![screenshot](https://raw.github.com/afarber/ios-questions/master/JsonPlayground.png)
 

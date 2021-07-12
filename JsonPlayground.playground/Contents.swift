@@ -8,8 +8,8 @@ var str =
 let data = Data(str.utf8)
 let json = try? JSONSerialization.jsonObject(with: data, options: [])
 guard let jsonDict = json as? [String:Any],
-      let dataDict = jsonDict["data"] as? [[String:Any]]
+      let dataList = jsonDict["data"] as? [[String:Any]]
     else { fatalError("Error") }
 
-print(dataDict)
-print(dataDict[0]["elo"] ?? 1500)
+print(dataList)
+print(dataList[0]["elo"] ?? 1500)
