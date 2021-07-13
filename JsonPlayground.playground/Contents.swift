@@ -7,9 +7,16 @@ var str =
 
 let data = Data(str.utf8)
 let json = try? JSONSerialization.jsonObject(with: data, options: [])
-guard let jsonDict = json as? [String:Any],
-      let dataList = jsonDict["data"] as? [[String:Any]]
+guard let jsonDict = json as? [String: Any],
+      let dataList = jsonDict["data"] as? [[String: Any]]
     else { fatalError("Error") }
 
-print(dataList)
-print(dataList[0]["elo"] ?? 1500)
+// add property "language" to each element in the dictionary
+let newDataList = dataList.map { dict -> [String: Any] in
+    var temp = dict
+    temp["language"] = "ru"
+    return temp
+}
+
+print(newDataList)
+//print(newDataList[0])

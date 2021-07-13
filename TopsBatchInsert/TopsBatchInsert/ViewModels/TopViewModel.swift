@@ -76,11 +76,9 @@ class TopViewModel: NSObject, ObservableObject {
                 guard let jsonDict = json as? [String: Any],
                       let dataList = jsonDict["data"] as? [[String: Any]]
                     else { throw URLError(.badServerResponse) }
-                    return dataList
-            }
-            // set language on each dataList member
-            .map { array in
-                array.map { dict -> [String: Any] in
+
+                // set language property on each dataList member
+                return dataList.map { dict -> [String: Any] in
                     var temp = dict
                     temp["language"] = language
                     return temp
