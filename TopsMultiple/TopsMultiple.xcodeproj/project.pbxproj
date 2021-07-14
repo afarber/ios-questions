@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7451D645269F769700D9C816 /* TopEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7451D643269F769700D9C816 /* TopEntity+CoreDataClass.swift */; };
+		7451D646269F769700D9C816 /* TopEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7451D644269F769700D9C816 /* TopEntity+CoreDataProperties.swift */; };
 		74F3BE5B269F28F400A2C0C5 /* TopsMultipleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F3BE5A269F28F400A2C0C5 /* TopsMultipleApp.swift */; };
 		74F3BE5D269F28F400A2C0C5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F3BE5C269F28F400A2C0C5 /* ContentView.swift */; };
 		74F3BE5F269F28FA00A2C0C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74F3BE5E269F28FA00A2C0C5 /* Assets.xcassets */; };
@@ -44,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7451D643269F769700D9C816 /* TopEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TopEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7451D644269F769700D9C816 /* TopEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TopEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		74F3BE57269F28F400A2C0C5 /* TopsMultiple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TopsMultiple.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74F3BE5A269F28F400A2C0C5 /* TopsMultipleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopsMultipleApp.swift; sourceTree = "<group>"; };
 		74F3BE5C269F28F400A2C0C5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -99,6 +103,8 @@
 		74F3BE4E269F28F400A2C0C5 = {
 			isa = PBXGroup;
 			children = (
+				7451D643269F769700D9C816 /* TopEntity+CoreDataClass.swift */,
+				7451D644269F769700D9C816 /* TopEntity+CoreDataProperties.swift */,
 				74F3BE59269F28F400A2C0C5 /* TopsMultiple */,
 				74F3BE70269F28FA00A2C0C5 /* TopsMultipleTests */,
 				74F3BE7B269F28FA00A2C0C5 /* TopsMultipleUITests */,
@@ -332,6 +338,8 @@
 				74F3BE64269F28FA00A2C0C5 /* Persistence.swift in Sources */,
 				74F3BEA2269F2D7B00A2C0C5 /* DownloadImage.swift in Sources */,
 				74F3BE9C269F2AFE00A2C0C5 /* DownloadImageViewModel.swift in Sources */,
+				7451D645269F769700D9C816 /* TopEntity+CoreDataClass.swift in Sources */,
+				7451D646269F769700D9C816 /* TopEntity+CoreDataProperties.swift in Sources */,
 				74F3BE9E269F2B7100A2C0C5 /* TopViewModel.swift in Sources */,
 				74F3BE90269F295C00A2C0C5 /* en.xcdatamodeld in Sources */,
 				74F3BE98269F29C100A2C0C5 /* TopModel.swift in Sources */,

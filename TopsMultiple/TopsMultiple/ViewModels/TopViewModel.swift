@@ -55,9 +55,9 @@ class TopViewModel: NSObject, ObservableObject {
         let viewContext = PersistenceController.shared.container.viewContext
         let request = NSFetchRequest<TopEntity>(entityName: "TopEntity")
         request.sortDescriptors = [ NSSortDescriptor(keyPath: \TopEntity.elo, ascending: false) ]
-        request.predicate = NSPredicate(format: "language = %@", language)
         
         do {
+            // TODO select context depending on language
             topEntities = try viewContext.fetch(request)
         } catch let error {
             print("Error fetching. \(error)")
@@ -94,7 +94,6 @@ class TopViewModel: NSObject, ObservableObject {
                             if let topEntity = managedObject as? TopEntity {
                                 let topModel = fetchedTops.data[index]
 
-                                topEntity.language = language
                                 topEntity.uid = Int32(topModel.id)
                                 topEntity.elo = Int32(topModel.elo)
                                 topEntity.given = topModel.given
@@ -110,6 +109,7 @@ class TopViewModel: NSObject, ObservableObject {
                         }
 
                         do {
+                            // TODO select context depending on language
                             try backgroundContext.execute(batchInsert)
                         } catch {
                             let nsError = error as NSError
