@@ -68,33 +68,46 @@ class TopViewModel: NSObject, ObservableObject {
         print("fetchTopModels language=\(language)")
         // as? means "this might be nil"
         guard let url = urls[language] as? URL else { return }
-        
+
         URLSession.shared.dataTaskPublisher(for: url)
             .tryMap(handleOutput)
-            .tryMap { jsonData -> [[String: Any]] in
-                let json = try? JSONSerialization.jsonObject(with: jsonData, options: [])
-                guard let jsonDict = json as? [String: Any],
-                      let dataList = jsonDict["data"] as? [[String: Any]]
-                    else { throw URLError(.badServerResponse) }
-
-                // set language property on each dataList member
-                return dataList.map { dict -> [String: Any] in
-                    var temp = dict
-                    temp["language"] = language
-                    return temp
-                }
-            }
+            .decode(type: TopResponse.self, decoder: JSONDecoder())
             .sink { completion in
                 print("fetchTopModels completion=\(completion)")
             } receiveValue: { fetchedTops in
-                guard !fetchedTops.isEmpty else { return }
+                guard !fetchedTops.data.isEmpty else { return }
 
                 PersistenceController.shared.container.performBackgroundTask { backgroundContext in
                     backgroundContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
                     backgroundContext.automaticallyMergesChangesFromParent = true
                     backgroundContext.perform {
-                        
-                        let batchInsert = NSBatchInsertRequest(entity: TopEntity.entity(), objects: fetchedTops)
+
+                        // batchInsert does not work with multiple constraints: uid,language
+
+                        var index = 0
+                        let batchInsert = NSBatchInsertRequest(
+                            entity: TopEntity.entity()) { (managedObject: NSManagedObject) -> Bool in
+
+                            // return true to complete creating the batch insert request
+                            guard index < fetchedTops.data.count else { return true }
+
+                            if let topEntity = managedObject as? TopEntity {
+                                let topModel = fetchedTops.data[index]
+
+                                topEntity.language = language
+                                topEntity.uid = Int32(topModel.id)
+                                topEntity.elo = Int32(topModel.elo)
+                                topEntity.given = topModel.given
+                                topEntity.motto = topModel.motto
+                                topEntity.photo = topModel.photo
+                                topEntity.avg_score = topModel.avg_score ?? 0.0
+                                topEntity.avg_time = topModel.avg_time
+                            }
+
+                            index += 1
+                            // return false to continue creating the batch insert request
+                            return false
+                        }
 
                         do {
                             try backgroundContext.execute(batchInsert)
