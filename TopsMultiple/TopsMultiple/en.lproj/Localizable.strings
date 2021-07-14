@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  TopsMultiple
+
+  Created by Alexander Farber on 14.07.21.
+  
+*/
+
+"app-title" = "TopsMultiple app";
+"elo-rating %d" = "Elo rating: %d";
+"avg-time %@" = "Average time: %@";
+"avg-score %lf" = "Average score: %l.1f";

@@ -123,7 +123,6 @@
 				742710F02694D7EE0091E7D9 /* Assets.xcassets */,
 				742710F52694D7EE0091E7D9 /* Persistence.swift */,
 				742710FA2694D7EE0091E7D9 /* Info.plist */,
-				742710F72694D7EE0091E7D9 /* TopsBatchInsert.xcdatamodeld */,
 				742710F22694D7EE0091E7D9 /* Preview Content */,
 				742711302694DCAC0091E7D9 /* Localizable.strings */,
 			);
@@ -186,6 +185,7 @@
 		7427111F2694D8250091E7D9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				742710F72694D7EE0091E7D9 /* TopsBatchInsert.xcdatamodeld */,
 				742711202694D8360091E7D9 /* TopModel.swift */,
 			);
 			path = Models;

@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  TopsMultiple
+
+  Created by Alexander Farber on 14.07.21.
+  
+*/
+
+"app-title" = "Приложение TopsMultiple";
+"elo-rating %d" = "Рейтинг Эло: %d";
+"avg-time %@" = "Время / ход: %@";
+"avg-score %lf" = "Очки / ход: %l.1f";

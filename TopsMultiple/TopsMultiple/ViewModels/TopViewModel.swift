@@ -1,8 +1,8 @@
 //
 //  TopViewModel.swift
-//  TopsBatchInsert
+//  TopsMultiple
 //
-//  Created by Alexander Farber on 06.07.21.
+//  Created by Alexander Farber on 14.07.21.
 //
 
 import Foundation
@@ -82,7 +82,7 @@ class TopViewModel: NSObject, ObservableObject {
                     backgroundContext.automaticallyMergesChangesFromParent = true
                     backgroundContext.perform {
 
-                        // TODO batch insert does not work with multiple constraints: uid,language
+                        // batch insert does not work with multiple constraints: uid,language
 
                         var index = 0
                         let batchInsert = NSBatchInsertRequest(

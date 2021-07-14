@@ -223,9 +223,14 @@ by [TomSwift](http://stackoverflow.com/users/291788/tomswift):
 ![screenshot](https://raw.github.com/afarber/ios-questions/master/Tops1/screenshot.png)
 
 
-[TopsBatchInsert](https://github.com/afarber/ios-questions/tree/master/TopsBatchInsert) SwiftUI, Core Data, Localization, Batch Insert as shown in the [Practical Core Data](https://www.donnywals.com) book by Donny Wals:
+[TopsBatchInsert](https://github.com/afarber/ios-questions/tree/master/TopsBatchInsert) NSBatchInsertRequest does not work with multiple constraints: uid,language and fails with NSCoreDataOptimisticLockingFailureConflictsKey:
 
 ![screenshot](https://raw.github.com/afarber/ios-questions/master/TopsBatchInsert/screenshot.png)
+
+
+[TopsMultiple](https://github.com/afarber/ios-questions/tree/master/TopsMultiple) multiple Core Data contexts:
+
+![screenshot](https://raw.github.com/afarber/ios-questions/master/TopsMultiple/screenshot.png)
 
 
 ![StackOverflow](http://stackoverflow.com/users/flair/165071.png)
