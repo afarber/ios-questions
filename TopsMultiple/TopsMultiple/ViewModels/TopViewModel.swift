@@ -65,9 +65,10 @@ class TopViewModel: NSObject, ObservableObject {
     
     func fetchTopModels(language:String) {
         print("fetchTopModels language=\(language)")
-        guard let container = PersistenceController.shared[language]?.container else { return }
         // as? means "this might be nil"
-        guard let url = urls[language] as? URL else { return }
+        guard let url = urls[language] as? URL,
+              let container = PersistenceController.shared[language]?.container
+            else { return }
 
         URLSession.shared.dataTaskPublisher(for: url)
             .tryMap(handleOutput)
@@ -81,8 +82,6 @@ class TopViewModel: NSObject, ObservableObject {
                     backgroundContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
                     backgroundContext.automaticallyMergesChangesFromParent = true
                     backgroundContext.perform {
-
-                        // batch insert does not work with multiple constraints: uid,language
 
                         var index = 0
                         let batchInsert = NSBatchInsertRequest(
@@ -109,7 +108,6 @@ class TopViewModel: NSObject, ObservableObject {
                         }
 
                         do {
-                            // TODO select context depending on language
                             try backgroundContext.execute(batchInsert)
                         } catch {
                             let nsError = error as NSError
