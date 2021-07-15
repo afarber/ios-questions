@@ -103,8 +103,6 @@
 		74F3BE4E269F28F400A2C0C5 = {
 			isa = PBXGroup;
 			children = (
-				7451D643269F769700D9C816 /* TopEntity+CoreDataClass.swift */,
-				7451D644269F769700D9C816 /* TopEntity+CoreDataProperties.swift */,
 				74F3BE59269F28F400A2C0C5 /* TopsMultiple */,
 				74F3BE70269F28FA00A2C0C5 /* TopsMultipleTests */,
 				74F3BE7B269F28FA00A2C0C5 /* TopsMultipleUITests */,
@@ -178,6 +176,8 @@
 		74F3BE8B269F291900A2C0C5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7451D643269F769700D9C816 /* TopEntity+CoreDataClass.swift */,
+				7451D644269F769700D9C816 /* TopEntity+CoreDataProperties.swift */,
 				74F3BE8E269F295C00A2C0C5 /* en.xcdatamodeld */,
 				74F3BE91269F297000A2C0C5 /* de.xcdatamodeld */,
 				74F3BE94269F298000A2C0C5 /* ru.xcdatamodeld */,

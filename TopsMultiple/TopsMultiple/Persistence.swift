@@ -8,10 +8,14 @@
 import CoreData
 
 struct PersistenceController {
-    static let shared = PersistenceController()
+    static let shared = [
+        "en": PersistenceController(language: "en"),
+        "de": PersistenceController(language: "de"),
+        "ru": PersistenceController(language: "ru")
+    ]
 
     static var preview: PersistenceController = {
-        let result = PersistenceController(inMemory: true)
+        let result = PersistenceController(language: "en", inMemory: true)
         let viewContext = result.container.viewContext
         for var i in 0..<10 {
             let newTop = TopEntity(context: viewContext)
@@ -30,8 +34,8 @@ struct PersistenceController {
 
     let container: NSPersistentContainer
     
-    init(inMemory: Bool = false) {
-        container = NSPersistentContainer(name: "en")
+    init(language: String, inMemory: Bool = false) {
+        container = NSPersistentContainer(name: language)
         container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
         container.viewContext.automaticallyMergesChangesFromParent = true
         if inMemory {
