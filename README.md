@@ -142,6 +142,11 @@ based on [Swiftful Thinking](https://github.com/SwiftfulThinking/SwiftUI-Continu
 ![screenshot](https://raw.github.com/afarber/ios-questions/master/MyWeb/screenshot.png)
 
 
+[ParseJsonEnum](https://github.com/afarber/ios-questions/tree/master/ParseJsonEnum.playground):
+
+![screenshot](https://raw.github.com/afarber/ios-questions/master/ParseJsonEnum.png)
+
+
 [PassAppStorage](https://github.com/afarber/ios-questions/tree/master/PassAppStorage):
 
 ![screenshot](https://raw.github.com/afarber/ios-questions/master/PassAppStorage/screenshot.png)

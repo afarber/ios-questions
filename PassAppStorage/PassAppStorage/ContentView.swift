@@ -19,6 +19,12 @@ struct ContentView: View {
     
     @AppStorage("language") var language:String = "en"
 
+    @StateObject var vm:MyViewModel
+
+    init(language: String) {
+        _vm = StateObject(wrappedValue: MyViewModel(language: language))
+    }
+    
     var body: some View {
         Text("Hello, world!")
             .padding()
@@ -27,6 +33,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(language: "en")
     }
 }
