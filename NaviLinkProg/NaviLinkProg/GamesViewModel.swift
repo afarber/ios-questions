@@ -7,7 +7,7 @@
 
 import Foundation
 
-class GameViewModel: ObservableObject /*, WebSocketDelegate */ {
+class GamesViewModel: ObservableObject /*, WebSocketDelegate */ {
     @Published var currentGames: [Int] = []
     @Published var displayedGame: Int = 0
     
