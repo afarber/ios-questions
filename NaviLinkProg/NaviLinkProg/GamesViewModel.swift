@@ -8,7 +8,7 @@
 import Foundation
 
 class GamesViewModel: ObservableObject /*, WebSocketDelegate */ {
-    @Published var currentGames: [Int] = []
+    @Published var currentGames: [Int] = [2, 3]
     @Published var displayedGame: Int = 0
     
     func updateCurrentGames() {

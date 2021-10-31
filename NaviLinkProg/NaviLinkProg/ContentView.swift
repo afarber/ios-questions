@@ -13,7 +13,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             List {
-                ForEach((1...10).reversed(), id: \.self) { gameNumber in
+                ForEach(vm.currentGames, id: \.self) { gameNumber in
                     NavigationLink(destination: GameView(gameNumber: gameNumber)) {
                         Text("Game #\(gameNumber)")
                     }
@@ -21,9 +21,14 @@ struct ContentView: View {
             }
 
             Button(
+                action: { vm.updateCurrentGames() },
+                label: { Text("Update games") }
+            ).padding(4)
+
+            Button(
                 action: { vm.updateDisplayedGame() },
                 label: { Text("Join a random game") }
-            )
+            ).padding(4)
        }
     }
 }
