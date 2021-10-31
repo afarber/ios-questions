@@ -142,6 +142,11 @@ based on [Swiftful Thinking](https://github.com/SwiftfulThinking/SwiftUI-Continu
 ![screenshot](https://raw.github.com/afarber/ios-questions/master/MyWeb/screenshot.png)
 
 
+[NaviLinkProg](https://github.com/afarber/ios-questions/tree/master/NaviLinkProg):
+
+![screenshot](https://raw.github.com/afarber/ios-questions/master/NaviLinkProg/screenshot.png)
+
+
 [ParseJsonEnum](https://github.com/afarber/ios-questions/tree/master/ParseJsonEnum.playground):
 
 ![screenshot](https://raw.github.com/afarber/ios-questions/master/ParseJsonEnum.png)
