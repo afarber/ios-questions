@@ -15,8 +15,10 @@ struct ContentView: View {
             VStack {
                 List {
                     ForEach(vm.currentGames, id: \.self) { gameNumber in
-                        NavigationLink(destination: GameView(gameNumber: gameNumber)
-                                       /* , isActive: $vm.displayedGame == gameNumber */ ) {
+                        NavigationLink(
+                                destination: GameView(gameNumber: gameNumber),
+                                isActive: vm.navigationBinding(gameNumber: gameNumber)
+                            ) {
                             Text("Game #\(gameNumber)")
                         }
                     }
