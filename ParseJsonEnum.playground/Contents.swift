@@ -33,6 +33,8 @@ struct UserModel: Codable {
     let stamp:Int
 }
 
+let decoder = JSONDecoder()
+
 let jsonLogin:String? =
 """
 {"gid":0,"social":4,"auth":"abcde","action":"login","sid":"12345","users":[
@@ -41,8 +43,6 @@ let jsonLogin:String? =
 ]}
 """
 
-let decoder = JSONDecoder()
-
 if let loginData = jsonLogin?.data(using: .utf8),
    let loginModel = try? decoder.decode(LoginModel.self, from: loginData),
     loginModel.gid == 0,
@@ -50,5 +50,119 @@ if let loginData = jsonLogin?.data(using: .utf8),
 {
     print("Parsed users: ", loginModel.users)
 } else {
-    print("Can not parse")
+    print("Can not parse users")
+}
+
+struct GameModel: Codable, Identifiable {
+    var id: Int { gid }
+    let gid: Int
+    let bid: Int        // board id: can be 0, 1, 2 or 3
+    let created: Int
+    let finished: Int?
+    let letters: [[String?]]
+    let values: [[Int?]]
+    let pilelen: Int
+    let tiles: [TileModel]
+    
+    let score: Int
+    let player1: Int
+    let player2: Int?
+    let score1: Int
+    let score2: Int
+    let diff1: Int?
+    let diff2: Int?
+    let open1: Bool
+    let state1: String
+    let hint1: String
+    let chat1: Int
+    let elo1: Int
+    let elo2: Int?
+    let motto2: String?
+    let avg_score2: Double?
+    let avg_time2: String?
+    let lat2: Double?
+    let lng2: Double?
+    let given1: String
+    let given2: String?
+    let photo1: String?
+    let photo2: String?
+    let played1: Int
+    let played2: Int?
+    let hand1: String
+    let left1: Int?
+    let left2: Int?
+}
+
+struct TileModel: Codable {
+    let col: Int
+    let row: Int
+    let value: Int
+    let letter: String
+}
+
+let jsonGames:String? =
+"""
+[
+{"gid":266,"created":1632249990,"finished":null,"letters":[
+[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+[null,null,null,null,null,null,null,"H",null,null,null,null,null,null,null],
+[null,null,null,null,null,null,null,"U",null,null,null,null,null,null,null],
+[null,null,null,null,null,null,null,"E",null,null,null,null,null,null,null],
+[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]],
+"values":[
+[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+[null,null,null,null,null,null,null,4,null,null,null,null,null,null,null],
+[null,null,null,null,null,null,null,1,null,null,null,null,null,null,null],
+[null,null,null,null,null,null,null,1,null,null,null,null,null,null,null],
+[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]],
+"bid":1,"pilelen":83,
+"tiles":[
+{"col": 8, "row": 7, "value": 1, "letter": "E"},
+{"col": 7, "row": 7, "value": 1, "letter": "U"},
+{"col": 6, "row": 7, "value": 4, "letter": "H"}
+],
+"score":6,"player1":5,"player2":null,
+"score1":6,"score2":0,
+"diff1":null,"diff2":null,
+"open1":false,"state1":"winning",
+"hint1":"Score 6:0. It is opponent's turn.",
+"chat1":0,
+"elo1":1926,"elo2":null,
+"motto2":null,"avg_time2":null,"avg_score2":null,
+"lat2":null,"lng2":null,
+"given1":"Apple 001084",
+"given2":null,
+"photo1":null,"photo2":null,
+"played1":1634033539,"played2":null,
+"hand1":"IAIOYTI","left1":null,"left2":null}
+]
+"""
+
+if let gamesData = jsonGames?.data(using: .utf8),
+   let gamesModel = try? decoder.decode([GameModel].self, from: gamesData),
+    gamesModel[0].gid > 0
+{
+    print("Parsed games: ", gamesModel)
+} else {
+    print("Can not parse games")
 }
