@@ -13,11 +13,16 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
+                NavigationLink(
+                        destination: GameView(gameNumber: vm.displayedGame),
+                        isActive: Binding(get: { vm.displayedGame > 0 }, set: { _,_ in })
+                ) {
+                    EmptyView()
+                }
                 List {
                     ForEach(vm.currentGames, id: \.self) { gameNumber in
                         NavigationLink(
-                                destination: GameView(gameNumber: gameNumber),
-                                isActive: vm.navigationBinding(gameNumber: gameNumber)
+                                destination: GameView(gameNumber: gameNumber)
                             ) {
                             Text("Game #\(gameNumber)")
                         }
