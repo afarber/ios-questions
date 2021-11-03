@@ -13,12 +13,15 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
+                
+                // the NavigationLink/EmptyView should stay visible onscreen for the isActive to work
                 NavigationLink(
                         destination: GameView(gameNumber: vm.displayedGame),
-                        isActive: Binding(get: { vm.displayedGame > 0 }, set: { _,_ in })
+                        isActive: vm.navigationBinding()
                 ) {
                     EmptyView()
                 }
+                
                 List {
                     ForEach(vm.currentGames, id: \.self) { gameNumber in
                         NavigationLink(
