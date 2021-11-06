@@ -22,13 +22,12 @@ struct ContentView: View {
                     EmptyView()
                 }
                 
-                List {
-                    ForEach(vm.currentGames, id: \.self) { gameNumber in
-                        NavigationLink(
-                                destination: GameView(gameNumber: gameNumber)
-                            ) {
-                            Text("Game #\(gameNumber)")
-                        }
+                // iOS 15 feature: create a List from binding
+                List($vm.currentGames, id: \.self) { $gameNumber in
+                    NavigationLink(
+                            destination: GameView(gameNumber: gameNumber)
+                        ) {
+                        Text("Game #\(gameNumber)")
                     }
                 }
                 Button(
