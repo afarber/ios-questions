@@ -18,18 +18,17 @@ let jsonMoves:String =
 """
 { "moves":
     [
-        [0, 'CAT (7)', 'ACT']
-        [1, 'EXTRA (14)', 'ERXT']
-        [0, 'TOP (22)', 'PO']
+        [0, 'CAT (7)', 'ACT'],
+        [1, 'EXTRA (14)', 'ERXT'],
+        [0, 'TOP (22)', 'PO'],
         [1, 'TOY (9)', 'Y']
     ]
  }
 """
 
-if let movesData = jsonMoves.data(using: .utf8),
-   let movesModel = try? decoder.decode(MovesResponse.self, from: movesData),
-   movesModel.count > 0
+if let movesData = jsonMoves.data(using: .utf8)
 {
+    let movesModel = try! decoder.decode(MovesResponse.self, from: movesData)
     print("Parsed moves: ", movesModel)
 } else {
     print("Can not parse moves")
