@@ -1,6 +1,40 @@
 import UIKit
 import Foundation
 
+let decoder = JSONDecoder()
+
+struct MovesResponse: Codable {
+    let moves: [[MoveModel]]
+}
+
+struct MoveModel: Codable {
+    let mine: Int
+    let words: String
+    let letters: String
+}
+
+let jsonMoves:String =
+
+"""
+{ "moves":
+    [
+        [0, 'CAT (7)', 'ACT']
+        [1, 'EXTRA (14)', 'ERXT']
+        [0, 'TOP (22)', 'PO']
+        [1, 'TOY (9)', 'Y']
+    ]
+ }
+"""
+
+if let movesData = jsonMoves.data(using: .utf8),
+   let movesModel = try? decoder.decode(MovesResponse.self, from: movesData),
+   movesModel.count > 0
+{
+    print("Parsed moves: ", movesModel)
+} else {
+    print("Can not parse moves")
+}
+
 enum Social: Int, Decodable, Encodable {
     case
         UNKNOWN       = 0,
@@ -32,8 +66,6 @@ struct UserModel: Codable {
     let photo:String?
     let stamp:Int
 }
-
-let decoder = JSONDecoder()
 
 let jsonLogin:String? =
 """
@@ -166,3 +198,4 @@ if let gamesData = jsonGames?.data(using: .utf8),
 } else {
     print("Can not parse games")
 }
+
