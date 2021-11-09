@@ -37,11 +37,41 @@ if let movesData = jsonMoves.data(using: .utf8),
     let movesResponse = try? decoder.decode(MovesResponse.self, from: movesData),
    movesResponse.moves.count > 0,
    movesResponse.moves[0].letters.count > 0
-   
 {
     print("Parsed moves: ", movesResponse)
 } else {
     print("Can not parse moves")
+}
+
+let jsonChat:String =
+
+"""
+{ "chat": [ [1, "Hi"], [0, "Hello"] ] }
+"""
+
+struct ChatResponse: Codable {
+    let chat: [ChatModel]
+}
+
+struct ChatModel: Codable {
+    let mine: Int
+    let msg: String
+    
+    init(from decoder: Decoder) throws {
+        var container = try decoder.unkeyedContainer()
+        mine = try container.decode(Int.self)
+        msg = try container.decode(String.self)
+    }
+}
+
+if let chatData = jsonChat.data(using: .utf8),
+    let chatResponse = try? decoder.decode(ChatResponse.self, from: chatData),
+   chatResponse.chat.count > 0,
+   chatResponse.chat[0].msg.count > 0
+{
+    print("Parsed chat: ", chatResponse)
+} else {
+    print("Can not parse chat")
 }
 
 enum Social: Int, Decodable, Encodable {
