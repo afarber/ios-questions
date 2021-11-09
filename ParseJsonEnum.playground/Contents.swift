@@ -4,13 +4,20 @@ import Foundation
 let decoder = JSONDecoder()
 
 struct MovesResponse: Codable {
-    let moves: [[MoveModel]]
+    let moves: [MoveModel]
 }
 
 struct MoveModel: Codable {
     let mine: Int
     let words: String
     let letters: String
+    
+    init(from decoder: Decoder) throws {
+        var container = try decoder.unkeyedContainer()
+        mine = try container.decode(Int.self)
+        words = try container.decode(String.self)
+        letters = try container.decode(String.self)
+    }
 }
 
 let jsonMoves:String =
@@ -26,10 +33,13 @@ let jsonMoves:String =
   }
 """
 
-if let movesData = jsonMoves.data(using: .utf8)
+if let movesData = jsonMoves.data(using: .utf8),
+    let movesResponse = try? decoder.decode(MovesResponse.self, from: movesData),
+   movesResponse.moves.count > 0,
+   movesResponse.moves[0].letters.count > 0
+   
 {
-    let movesModel = try! decoder.decode(MovesResponse.self, from: movesData)
-    print("Parsed moves: ", movesModel)
+    print("Parsed moves: ", movesResponse)
 } else {
     print("Can not parse moves")
 }

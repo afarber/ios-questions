@@ -147,7 +147,7 @@ based on [Swiftful Thinking](https://github.com/SwiftfulThinking/SwiftUI-Continu
 ![screenshot](https://raw.github.com/afarber/ios-questions/master/NaviLinkProg/screenshot.png)
 
 
-[ParseJsonEnum](https://github.com/afarber/ios-questions/tree/master/ParseJsonEnum.playground):
+[ParseJsonEnum](https://github.com/afarber/ios-questions/tree/master/ParseJsonEnum.playground) parse array of arrays and refer to the inner array elements by name:
 
 ![screenshot](https://raw.github.com/afarber/ios-questions/master/ParseJsonEnum.png)
 
