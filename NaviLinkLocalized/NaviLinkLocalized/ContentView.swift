@@ -11,9 +11,6 @@ struct ContentView: View {
     let labels = [
         "de": "🇩🇪 DE",
         "en": "🇺🇸 EN",
-        "fr": "🇫🇷 FR",
-        "nl": "🇳🇱 NL",
-        "pl": "🇵🇱 PL",
         "ru": "🇷🇺 RU"
     ]
     
@@ -26,8 +23,56 @@ struct ContentView: View {
     }
     
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            VStack {
+                
+                // the NavigationLink/EmptyView should stay visible onscreen for the isActive to work
+                NavigationLink(
+                        destination: GameView(gameNumber: vm.displayedGame),
+                        isActive: vm.navigationBinding()
+                ) {
+                    EmptyView()
+                }
+                
+                // iOS 15 feature: create a List from binding
+                List($vm.currentGames, id: \.self) { $gameNumber in
+                    NavigationLink(
+                            destination: GameView(gameNumber: gameNumber)
+                        ) {
+                        Text("Game #\(gameNumber)")
+                    }
+                }
+                Button(
+                    action: { vm.updateCurrentGames() },
+                    label: { Text("Update games") }
+                ).padding(4)
+
+                Button(
+                    action: { vm.updateDisplayedGame() },
+                    label: { Text("Join a random game") }
+                ).padding(4)
+            }.navigationTitle("app-title")
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarItems(trailing:
+                // ! means "this might trap"
+                Menu(labels[language]!) {
+                    ForEach(labels.sorted(by: <), id: \.key) { key, value in
+                        if language == key {
+                            Button(
+                                action: { },
+                                label: { Label(value, systemImage: "checkmark") }
+                            )
+                        } else {
+                            Button(
+                                action: { language = key },
+                                label: { Text(value) }
+                            )
+                        }
+                    }
+                }
+            )
+        }
+        .environmentObject(vm)
     }
 }
 
