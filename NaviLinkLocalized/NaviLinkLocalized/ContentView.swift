@@ -39,7 +39,7 @@ struct ContentView: View {
                     NavigationLink(
                             destination: GameView(gameNumber: gameNumber)
                         ) {
-                        Text("Game #\(gameNumber)")
+                        Text("game-number #\(gameNumber)")
                     }
                 }
                 Button(

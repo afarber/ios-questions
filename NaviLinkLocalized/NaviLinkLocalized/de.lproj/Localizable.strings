@@ -9,3 +9,4 @@
 "app-title" = "Wähle ein Spiel!";
 "update-games" = "Spiele erneuern";
 "join-random-game" = "Zufallsspiel beitreten";
+"game-number #%d" = "Spiel #%d";

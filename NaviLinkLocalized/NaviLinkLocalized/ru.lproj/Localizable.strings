@@ -9,3 +9,4 @@
 "app-title" = "Выбери игру!";
 "update-games" = "Обнови игры";
 "join-random-game" = "Выбери случайную игру";
+"game-number #%d" = "Игра #%d";

@@ -15,7 +15,7 @@ struct GameView: View {
     }
 
     var body: some View {
-        Text("Game #\(gameNumber)")
+        Text("game-number #\(gameNumber)")
     }
 }
 
