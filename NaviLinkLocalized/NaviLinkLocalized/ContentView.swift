@@ -40,6 +40,9 @@ struct ContentView: View {
                             destination: GameView(gameNumber: gameNumber)
                         ) {
                         Text("game-number #\(gameNumber)")
+/*
+                        Text(LocalizedStringKey("game-number #\(gameNumber)"))
+ */
                     }
                 }
                 Button(
