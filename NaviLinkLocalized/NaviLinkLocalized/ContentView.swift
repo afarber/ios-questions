@@ -44,12 +44,12 @@ struct ContentView: View {
                 }
                 Button(
                     action: { vm.updateCurrentGames() },
-                    label: { Text("Update games") }
+                    label: { Text("update-games") }
                 ).padding(4)
 
                 Button(
                     action: { vm.updateDisplayedGame() },
-                    label: { Text("Join a random game") }
+                    label: { Text("join-random-game") }
                 ).padding(4)
             }.navigationTitle("app-title")
             .navigationBarTitleDisplayMode(.inline)

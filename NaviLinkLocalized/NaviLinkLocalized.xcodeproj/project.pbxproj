@@ -16,6 +16,7 @@
 		74332477274177990068DEC7 /* NaviLinkLocalizedUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74332476274177990068DEC7 /* NaviLinkLocalizedUITestsLaunchTests.swift */; };
 		74332484274179E40068DEC7 /* GamesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74332483274179E40068DEC7 /* GamesViewModel.swift */; };
 		7433248627417A0C0068DEC7 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7433248527417A0C0068DEC7 /* GameView.swift */; };
+		7433248927417FFB0068DEC7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7433248B27417FFB0068DEC7 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,9 @@
 		74332476274177990068DEC7 /* NaviLinkLocalizedUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaviLinkLocalizedUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		74332483274179E40068DEC7 /* GamesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesViewModel.swift; sourceTree = "<group>"; };
 		7433248527417A0C0068DEC7 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		7433248A27417FFB0068DEC7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7433248C274180130068DEC7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7433248D2741801E0068DEC7 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,7 @@
 				74332459274177950068DEC7 /* NaviLinkLocalizedApp.swift */,
 				7433245D274177980068DEC7 /* Assets.xcassets */,
 				7433245F274177980068DEC7 /* Preview Content */,
+				7433248B27417FFB0068DEC7 /* Localizable.strings */,
 			);
 			path = NaviLinkLocalized;
 			sourceTree = "<group>";
@@ -219,6 +224,8 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
+				ru,
 			);
 			mainGroup = 7433244D274177950068DEC7;
 			productRefGroup = 74332457274177950068DEC7 /* Products */;
@@ -238,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				74332461274177980068DEC7 /* Preview Assets.xcassets in Resources */,
+				7433248927417FFB0068DEC7 /* Localizable.strings in Resources */,
 				7433245E274177980068DEC7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -301,6 +309,19 @@
 			targetProxy = 74332471274177990068DEC7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7433248B27417FFB0068DEC7 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7433248A27417FFB0068DEC7 /* en */,
+				7433248C274180130068DEC7 /* de */,
+				7433248D2741801E0068DEC7 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		74332478274177990068DEC7 /* Debug */ = {
