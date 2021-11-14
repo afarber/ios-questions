@@ -142,6 +142,11 @@ based on [Swiftful Thinking](https://github.com/SwiftfulThinking/SwiftUI-Continu
 ![screenshot](https://raw.github.com/afarber/ios-questions/master/MyWeb/screenshot.png)
 
 
+[NaviLinkLocalized](https://github.com/afarber/ios-questions/tree/master/NaviLinkLocalized) localized version of the NaviLinkProg project below:
+
+![screenshot](https://raw.github.com/afarber/ios-questions/master/NaviLinkLocalized/screenshot.png)
+
+
 [NaviLinkProg](https://github.com/afarber/ios-questions/tree/master/NaviLinkProg) programmatically activate NavigationLink in a List ForEach:
 
 ![screenshot](https://raw.github.com/afarber/ios-questions/master/NaviLinkProg/screenshot.png)
