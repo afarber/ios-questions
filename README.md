@@ -238,7 +238,7 @@ by [TomSwift](http://stackoverflow.com/users/291788/tomswift):
 ![screenshot](https://raw.github.com/afarber/ios-questions/master/sdImageCopied/screenshot.png)
 
 
-[Tops1](https://github.com/afarber/ios-questions/tree/master/Tops1) SwiftUI, Core Data, Localization:
+[Tops1](https://github.com/afarber/ios-questions/tree/master/Tops1) SwiftUI, Core Data, Localization, observe UserDefaults from TopViewModel:
 
 ![screenshot](https://raw.github.com/afarber/ios-questions/master/Tops1/screenshot.png)
 
