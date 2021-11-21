@@ -133,9 +133,8 @@ struct GameModel: Codable, Identifiable {
     let letters: [[String?]]
     let values: [[Int?]]
     let pilelen: Int
-    let tiles: [TileModel]
-    
-    let score: Int
+    let tiles: [TileModel]?  // the previous move as an array
+    let score: Int?          // the score of the previous move
     let player1: Int
     let player2: Int?
     let score1: Int
@@ -157,7 +156,7 @@ struct GameModel: Codable, Identifiable {
     let given2: String?
     let photo1: String?
     let photo2: String?
-    let played1: Int
+    let played1: Int?
     let played2: Int?
     let hand1: String
     let left1: Int?
