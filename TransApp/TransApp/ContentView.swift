@@ -12,18 +12,18 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \GameEntity.gid, ascending: true)],
         animation: .default)
-    private var items: FetchedResults<Item>
+    private var games: FetchedResults<GameEntity>
 
     var body: some View {
         NavigationView {
             List {
-                ForEach(items) { item in
+                ForEach(games) { game in
                     NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                        Text("Game \(game.gid)")
                     } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
+                        Text("Game \(game.gid)")
                     }
                 }
                 .onDelete(perform: deleteItems)
@@ -44,8 +44,8 @@ struct ContentView: View {
 
     private func addItem() {
         withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+            let newGame = GameEntity(context: viewContext)
+            newGame.gid = Int32.random(in: 0..<100)
 
             do {
                 try viewContext.save()
@@ -60,7 +60,7 @@ struct ContentView: View {
 
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
+            offsets.map { games[$0] }.forEach(viewContext.delete)
 
             do {
                 try viewContext.save()

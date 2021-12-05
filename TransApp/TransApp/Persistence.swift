@@ -13,9 +13,9 @@ struct PersistenceController {
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
-        for _ in 0..<10 {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+        for var i in 0..<10 {
+            let newGame = GameEntity(context: viewContext)
+            newGame.gid = Int32(i)
         }
         do {
             try viewContext.save()
@@ -31,6 +31,10 @@ struct PersistenceController {
     let container: NSPersistentContainer
 
     init(inMemory: Bool = false) {
+        ValueTransformer.setValueTransformer(ValuesToDataTransformer(), forName: .valuesToDataTransformer)
+        ValueTransformer.setValueTransformer(LettersToDataTransformer(), forName: .lettersToDataTransformer)
+        ValueTransformer.setValueTransformer(TilesToDataTransformer(), forName: .tilesToDataTransformer)
+
         container = NSPersistentContainer(name: "TransApp")
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
