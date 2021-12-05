@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="GameEntity" representedClassName="GameEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="gid" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="letters" attributeType="Transformable"/>
+        <attribute name="tiles" optional="YES" attributeType="Transformable"/>
+        <attribute name="values" attributeType="Transformable"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="gid"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+    </entity>
+    <elements>
+        <element name="Item" positionX="-63" positionY="-18" width="128" height="44"/>
+        <element name="GameEntity" positionX="-63" positionY="-9" width="128" height="89"/>
+    </elements>
+</model>

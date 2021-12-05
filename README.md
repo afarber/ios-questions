@@ -253,6 +253,11 @@ by [TomSwift](http://stackoverflow.com/users/291788/tomswift):
 ![screenshot](https://raw.github.com/afarber/ios-questions/master/TopsMultiple/screenshot.png)
 
 
+[TransApp](https://github.com/afarber/ios-questions/tree/master/TransApp) Core Data Transformable type for arrays:
+
+![screenshot](https://raw.github.com/afarber/ios-questions/master/TransApp/screenshot.png)
+
+
 ![StackOverflow](http://stackoverflow.com/users/flair/165071.png)
 
 [My iOS-related questions at StackOverflow](http://stackoverflow.com/search?q=user:165071+[ios])
