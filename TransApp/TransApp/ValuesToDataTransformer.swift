@@ -8,6 +8,14 @@
 import Foundation
 
 class ValuesToDataTransformer: ValueTransformer {
+    override class func transformedValueClass() -> AnyClass {
+        return NSString.self
+    }
+    
+    override class func allowsReverseTransformation() -> Bool {
+        return true
+    }
+    
     override func transformedValue(_ value: Any?) -> Any? {
         guard let valuesArray = value as? [[Int32?]] else { return nil }
         
@@ -34,4 +42,8 @@ class ValuesToDataTransformer: ValueTransformer {
             return nil
         }
     }
+}
+
+extension NSValueTransformerName {
+    static let valuesToDataTransformer = NSValueTransformerName(rawValue: "ValuesToDataTransformer")
 }
