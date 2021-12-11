@@ -20,6 +20,7 @@
 		74139B8F275D324700AB7733 /* ValuesToDataTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74139B8E275D324700AB7733 /* ValuesToDataTransformer.swift */; };
 		74139B91275D325800AB7733 /* LettersToDataTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74139B90275D325800AB7733 /* LettersToDataTransformer.swift */; };
 		74139B93275D326B00AB7733 /* TilesToDataTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74139B92275D326B00AB7733 /* TilesToDataTransformer.swift */; };
+		74E7CE17276533B400104BBD /* GameEntity+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E7CE16276533B400104BBD /* GameEntity+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		74139B8E275D324700AB7733 /* ValuesToDataTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValuesToDataTransformer.swift; sourceTree = "<group>"; };
 		74139B90275D325800AB7733 /* LettersToDataTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LettersToDataTransformer.swift; sourceTree = "<group>"; };
 		74139B92275D326B00AB7733 /* TilesToDataTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TilesToDataTransformer.swift; sourceTree = "<group>"; };
+		74E7CE16276533B400104BBD /* GameEntity+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameEntity+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				74139B5D275D31A500AB7733 /* TransApp.swift */,
 				74139B5F275D31A500AB7733 /* ContentView.swift */,
 				74139B8C275D31CE00AB7733 /* GameModel.swift */,
+				74E7CE16276533B400104BBD /* GameEntity+Extensions.swift */,
 				74139B8E275D324700AB7733 /* ValuesToDataTransformer.swift */,
 				74139B90275D325800AB7733 /* LettersToDataTransformer.swift */,
 				74139B92275D326B00AB7733 /* TilesToDataTransformer.swift */,
@@ -277,6 +280,7 @@
 			files = (
 				74139B93275D326B00AB7733 /* TilesToDataTransformer.swift in Sources */,
 				74139B8D275D31CE00AB7733 /* GameModel.swift in Sources */,
+				74E7CE17276533B400104BBD /* GameEntity+Extensions.swift in Sources */,
 				74139B91275D325800AB7733 /* LettersToDataTransformer.swift in Sources */,
 				74139B67275D31A700AB7733 /* Persistence.swift in Sources */,
 				74139B60275D31A500AB7733 /* ContentView.swift in Sources */,

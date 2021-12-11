@@ -31,9 +31,11 @@ struct PersistenceController {
     let container: NSPersistentContainer
 
     init(inMemory: Bool = false) {
+        /*
         ValueTransformer.setValueTransformer(ValuesToDataTransformer(), forName: .valuesToDataTransformer)
         ValueTransformer.setValueTransformer(LettersToDataTransformer(), forName: .lettersToDataTransformer)
         ValueTransformer.setValueTransformer(TilesToDataTransformer(), forName: .tilesToDataTransformer)
+        */
 
         container = NSPersistentContainer(name: "TransApp")
         if inMemory {

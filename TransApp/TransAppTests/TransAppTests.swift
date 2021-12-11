@@ -87,6 +87,4 @@ class TransAppTests: XCTestCase {
             return
         }
     }
-
-
 }
