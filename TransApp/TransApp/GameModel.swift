@@ -22,11 +22,12 @@ struct GameModel: Codable, Identifiable {
 
     // create a new Core Data entity and copy the properties
     func toEntity(viewContext: NSManagedObjectContext) -> GameEntity {
+        let encoder = JSONEncoder()
         let gameEntity = GameEntity(context: viewContext)
         gameEntity.gid = self.gid
-        gameEntity.letters = self.letters
-        gameEntity.values = self.values
-        gameEntity.tiles = self.tiles
+        gameEntity.letters = try? encoder.encode(self.letters)
+        gameEntity.values = try? encoder.encode(self.values)
+        gameEntity.tiles = try? encoder.encode(self.tiles)
         return gameEntity
     }
 }

@@ -2,9 +2,9 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="GameEntity" representedClassName="GameEntity" syncable="YES" codeGenerationType="class">
         <attribute name="gid" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="letters" attributeType="Transformable"/>
-        <attribute name="tiles" optional="YES" attributeType="Transformable"/>
-        <attribute name="values" attributeType="Transformable"/>
+        <attribute name="letters" attributeType="Transformable" customClassName="NSString"/>
+        <attribute name="tiles" optional="YES" attributeType="Transformable" customClassName="NSString"/>
+        <attribute name="values" attributeType="Transformable" customClassName="NSString"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="gid"/>

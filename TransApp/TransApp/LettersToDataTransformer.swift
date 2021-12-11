@@ -16,29 +16,35 @@ class LettersToDataTransformer: ValueTransformer {
         return true
     }
     
+    // [[String?]] -> String
     override func transformedValue(_ value: Any?) -> Any? {
-        guard let valuesArray = value as? [[String?]] else { return nil }
+        guard let array = value as? [[String?]] else { return nil }
+        
+        let encoder = JSONEncoder()
         
         do {
-            let data = try NSKeyedArchiver.archivedData(withRootObject:valuesArray, requiringSecureCoding: true)
-            return data
+            let data = try encoder.encode(array)
+            let str = String(data: data, encoding: .utf8)
+            return str
         }
-        catch
-        {
+        catch {
             return nil
         }
     }
     
+    // String -> [[String?]]
     override func reverseTransformedValue(_ value: Any?) -> Any?
     {
-        guard let data = value as? Data else { return nil }
+        guard let str = value as? String else { return nil }
         
+        let decoder = JSONDecoder()
+
         do {
-            let valuesArray = try NSKeyedUnarchiver.unarchivedObject(ofClass:[[String?]].self, from: data)
-            return valuesArray
+            let data = str.data(using: .utf8)!
+            let array = try decoder.decode([[String?]].self, from: data)
+            return array
         }
-        catch
-        {
+        catch {
             return nil
         }
     }
