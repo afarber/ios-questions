@@ -29,7 +29,7 @@ class MyViewModel: ObservableObject {
     }
     
     func updateItems() {
-        let url = URL(string: "https://slova.de/ws/top")!
+        let url = URL(string: "https://wordsbyfarber.com/ru/top-all")!
         let task = URLSession.shared.dataTask(with: url) {
             data, response, error in
             

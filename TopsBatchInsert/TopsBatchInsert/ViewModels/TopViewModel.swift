@@ -12,9 +12,9 @@ import CoreData
 class TopViewModel: NSObject, ObservableObject {
 
     let urls = [
-        "en" : URL(string: "https://wordsbyfarber.com/ws/top"),
-        "de" : URL(string: "https://wortefarbers.de/ws/top"),
-        "ru" : URL(string: "https://slova.de/ws/top")
+        "en" : URL(string: "https://wordsbyfarber.com/en/top-all"),
+        "de" : URL(string: "https://wordsbyfarber.com/de/top-all"),
+        "ru" : URL(string: "https://wordsbyfarber.com/ru/top-all")
     ]
     
     var cancellables = Set<AnyCancellable>()

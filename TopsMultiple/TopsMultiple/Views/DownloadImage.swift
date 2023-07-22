@@ -32,7 +32,7 @@ struct DownloadImage: View {
 
 struct TopImageView_Previews: PreviewProvider {
     static var previews: some View {
-        DownloadImage(url: "https://slova.de/words/images/female_happy.png")
+        DownloadImage(url: "https://wordsbyfarber.com/images/female_happy.png")
             .frame(width: 60, height: 60)
             .previewLayout(.sizeThatFits)
     }

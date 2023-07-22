@@ -21,7 +21,7 @@ class DownloadManager {
     }
     
     func getTopsCombine() {
-        guard let url = URL(string: "https://slova.de/ws/top") else { return }
+        guard let url = URL(string: "https://wordsbyfarber.com/ru/top-all") else { return }
         URLSession.shared.dataTaskPublisher(for: url)
             .subscribe(on: DispatchQueue.global(qos: .background))
             .receive(on: DispatchQueue.main)
@@ -70,7 +70,7 @@ class DownloadManager {
     }
     
     func getTopsEscapable() {
-        guard let url = URL(string: "https://slova.de/ws/top") else { return }
+        guard let url = URL(string: "https://wordsbyfarber.com/ru/top-all") else { return }
 
         downloadData(fromURL: url) { (returnedData) in
             if let data = returnedData {
